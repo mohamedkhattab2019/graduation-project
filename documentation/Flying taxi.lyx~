@@ -11210,8 +11210,8 @@ obstacle avoidance methods can be concluded as follows:
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="50col%">
+<column alignment="center" valignment="top" width="50col%">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -11470,7 +11470,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Bug1.png
-	width 1000col%
+	width 100col%
 
 \end_inset
 
@@ -11508,7 +11508,7 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status collapsed
+status open
 
 \begin_layout Itemize
 wall follow the obstacle and leave when meets the goal line such that the
@@ -11573,12 +11573,12 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Bug2.png
-	width 100page%
+	width 100col%
 
 \end_inset
 
