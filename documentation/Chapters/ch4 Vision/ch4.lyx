@@ -1,0 +1,1758 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+  
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\myTOC
+\clearpage
+\pagenumbering{arabic}
+}
+\renewcommand{\ps@plain}{\pagestyle{fancy}}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+braille
+changebars
+customHeadersFooters
+shapepar
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.54cm
+\topmargin 2.54cm
+\rightmargin 2.54cm
+\bottommargin 2.54cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Vision navigation and Obstacle Avoidance
+\end_layout
+
+\begin_layout Section
+Stereo Vision
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="30page%">
+<column alignment="center" valignment="top" width="27page%">
+<column alignment="center" valignment="top" width="20page%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stereo Camera
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depth Cameras
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Laser Scanner
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+\noindent
+\align left
+2 cameras are rigidily mounted to a common mechanical structure.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+Its performance depends on : mechanical design , resolution , lens type
+ & quality ,....
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+It can only estimate the distances to features like: sharp , high contrast
+ corners (because they have high gradient in x,y directions).
+ so It can't get distance to featureless wall but practically outdoor scenes
+ have sufficient textures for stereo vision to work well.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+ROS message: sensor_msgs/Image and sensor_msgs/CameraInfo
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+Image processing packages can be used to handle the outputs of the cameras
+ to achieve the stereo vision
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100line%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted16.png
+	lyxscale 15
+	width 6.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted17.png
+	width 6.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+ZED stereo Camera : from 0.5 to 20m at 100FPS, indoors and outdoors.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+\noindent
+\align left
+Unlike the passive stereo camera, they are active cameras that shine a texture
+ pattern on the surfaces and from the deformation of the pattern thay can
+ get the informations of the scene.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+They greatly improves the system performance.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+typically operate near-infrared wavelength to reduce system sensitivity
+ to the colors of the objects.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+There are 3 types of depth cameras: Kinect(structured light) - unstructured
+ light depth cameras which employ a random texture - time-of-flight depth
+ cameras which use an IR or laser pulses and special pixel structures in
+ image sensors to estimate the depth from the time of laser bounding back
+ and the speed of light.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+the output of those cameras is point clouds which are estimated 3D points
+ of the scene
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+ROS message: sensor_msgs/PointCloud2
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align left
+\begin_inset Graphics
+	filename pics/pasted18.png
+	width 4.5cm
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Itemize
+\noindent
+\align left
+superior accuracy (about 14 mm error)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\align left
+longer sensing range than cameras (0.2 - 6 m)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted19.png
+	lyxscale 20
+	width 4.5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted20.png
+	lyxscale 20
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ROS message: 
+\begin_inset Newline newline
+\end_inset
+
+sensor_msgs/LaserScan
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+different sensors for vision
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+discussion
+\end_layout
+
+\begin_layout Standard
+Pose(position and orientation) estimation problem can be solved using :
+\end_layout
+
+\begin_layout Itemize
+integration of IMU readings which degrads over time due to error integration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Visual Odometry (more accurate for pose estimation).
+\begin_inset Newline newline
+\end_inset
+
+In visual Odometry arises the scaling factor problem because we don't sense
+ distance in real world and some possible solutions are:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Known environment operation: for example, we can put a land mark with known
+ size so when capture images we can extract scale factor and get distances
+ from pixels.(off-board example
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monocular vision_off-board"
+literal "false"
+
+\end_inset
+
+, on-board example
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monocular vision_on-board"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+We can use 1 camera + Ultrasound(which measures distances) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monocular visin_ultrasound_SLAM"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We can use 1 camera + accelerometer + pressure sensor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monocular vision_accel&pressure_SLAM_onboard"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We can use 1 camera + IMU 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "monocular vision_IMU"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We can use 2 cameras (Stereo vision) which eliminate the scaling factor
+ problem but increases the computational cost
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Cameras are less energy consumer and lighter than 3D-localization sensors
+ such as LIDARs
+\end_layout
+
+\begin_layout Itemize
+There are 2 types of stereo processing algorithms:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Dense stereo algorithm: high computational cost.
+ In Ref
+\begin_inset CommandInset citation
+LatexCommand cite
+key "dense stereo algoritm"
+literal "false"
+
+\end_inset
+
+, they used 2 downward cameras and did the dense stereo processing on-board
+ at frame rate of just 3Hz then they fused the visual odometry with laser
+ scanner data.
+\end_layout
+
+\begin_layout Itemize
+Sparse stereo matching algorithm: faster - can maintain a high pose estimation
+ rate of 30 Hz
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ZED stereo camera vs Kinect:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="14" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="10page%">
+<column alignment="center" valignment="top" width="15page%">
+<column alignment="center" valignment="top" width="15page%">
+<column alignment="center" valignment="top" width="15page%">
+<column alignment="center" valignment="top" width="15page%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ZED mini
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+https://www.stereolabs.com/zed-mini/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ZED stereo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://www.stereolabs.com/zed/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kinect
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://en.wikipedia.org/wiki/Kinect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+62.9 gm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+159 gm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+425.2 gm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weight is very important in aerospace applications
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+operating condition
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+indoor & outdoor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+indoor & outdoor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+indoor (due to the usage of IR)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Flaying Taxi is mainly outdoor application
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Range
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15 cm - 12 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30 cm - 20m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2 m - 3.5 m
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Features
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Motion Sensors : Gyroscope, Accelerometer with Sampling Rate: 800 Hz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RGB camera (640×480 pixels @ 30 Hz)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The ZED stereo does its calculations on a host 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6-axis Pose Accuracy : 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+Position: +/- 1mm 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ Orientation: 0.1°
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+same as mini
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+IR depth sensor (640×480 pixels @ 30 Hz)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hardware running SDK system which has the following 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technology : Visual-inertial stereo SLAM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Technology : Real-time depth-based visual odometry and SLAM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multi-array microphone running proprietary software
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+requirements :
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pose Update Rate : Up to 100Hz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Frequency : Up to 100Hz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+full-body 3D motion capture, facial recognition and voice recognition capabiliti
+es
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Dual-core 2,3GHz or faster processor / 4 GB RAM or more
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nvidia GPU with compute capability > 3.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Note that ZED requires significant computation cost to apply
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+the dense stereo matching at reasonable rate by using the GPU fucntions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in OpenCV to accomplish this.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Connectivity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+USB 3.0 Type-C port
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+USB 3.0 port with 1.5m integrated cable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+USB 2.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Power
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Power via USB 5V / 380mA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Power via USB 5V / 380mA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+USB 12V, 1.08A (needs high power for the motors)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kinect has a higher power consumption
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ZED stereo camera vs Kinect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Using 4 cameras + IMU for self-localization
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Stereo Vision"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/pasted21.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ref
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Stereo Vision"
+literal "false"
+
+\end_inset
+
+ MAV uses 4 cameras to get pose estimate real-time on-board
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Paper in Ref
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Stereo Vision"
+literal "false"
+
+\end_inset
+
+ introduces novel design for an autonomous quadrotor by employing four cameras
+ in two stereo configurations with on-board real-time processing:
+\end_layout
+
+\begin_layout Itemize
+2 forward cameras used with reduced(modified) SLAM based on PTAM
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Parallel Tracking And Mapping (PTAM), which is a popular open source SLAM
+ implementation known for its robustness and efficiency.
+\end_layout
+
+\end_inset
+
+ and it estimates the pose of the MAV
+\end_layout
+
+\begin_layout Itemize
+2 downward cameras used with ground-plane detection algorithm(to estimate
+ the height , pitch and roll) and frame-to-frame tracking algorithm(to estimate
+ the yaw and horizontal displacement)
+\end_layout
+
+\begin_layout Itemize
+finally, they fused the data from the 2 stereo configurations and outputted
+ an estimate for the MAV pose used to control the position and attitude
+ of the MAV instead of IMU only unlike PIXHAWK
+\end_layout
+
+\begin_layout Itemize
+They used stereo matching algoritnm twice for both the foraward stereo and
+ backward stereo on-board
+\end_layout
+
+\begin_layout Itemize
+They showed that adding 2 downward cameras significantly improved the self-local
+ization
+\end_layout
+
+\begin_layout Itemize
+Hardware:
+\series bold
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+PIXHAWK
+\end_layout
+
+\begin_layout Itemize
+4 USB cameras / gray scale image / 640*480 :
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+2 forward cameras : 11 cm baseline - frame rate of 30Hz
+\end_layout
+
+\begin_layout Itemize
+2 downward cameras : 5 cm baseline - frame rate of 15Hz to reduce computations
+\end_layout
+
+\begin_layout Itemize
+both configurations are synchronoused to capture data ar the same time.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+On-board computer with Intel Core 2 Due CPU with 1.86GHz to execute image
+ processing and motion estimation
+\end_layout
+
+\begin_layout Itemize
+Microcontroller with IMU to send IMU data to the on-board computer and receive
+ from it the high-level control instructions using I2c bus.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+The 2 forward facing cameras
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+apply feature detection (800 feature upper bond) then do the sparse stereo
+ matching
+\end_layout
+
+\begin_layout Itemize
+SLAM employed to get pose from the successfully matched features
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/pasted22.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+2 forward-facing stereo configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rotation is predicted using ESM(Efficient 2nd order Minimization based image
+ alignment method).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+The 2 downward facing cameras
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+apply sparse stereo matching but with 300 feature at 15Hz because the algorithms
+ used here are less sensitive to the features count and image rate than
+ the above LocalSLAM
+\end_layout
+
+\begin_layout Itemize
+RANSAC algorithm: to detect ground-plane & extract
+\bar under
+ Height(h)
+\bar default
+ , 
+\bar under
+Pitch angle
+\bar default
+ and 
+\bar under
+Roll angle
+\bar default
+ , unlike the height , pitch and roll extracted from the Local SLAM they
+ here don't depend on the old values (In the LocalSLAM we use the old values
+ in the motion model).
+ So they resist drifting and give high accuracy
+\end_layout
+
+\begin_layout Itemize
+frame-to-frame Tracking: They used the ESM algorithm to get the Affine transform
+ation between 2 frames to get the 
+\bar under
+Yaw
+\bar default
+ and 
+\bar under
+Horizontal displacement
+\end_layout
+
+\begin_layout Itemize
+To have a large field of view (FOV) , they used small focal length which
+ causes strong lens distortion which disrupt the frame-to-frame tracking,
+ so they did image rectification first.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Final Configurarion
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/pasted23.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+final configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Final Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted24.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted25.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted26.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted27.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted28.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

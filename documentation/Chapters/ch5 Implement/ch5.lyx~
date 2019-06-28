@@ -1,0 +1,6199 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+  
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\myTOC
+\clearpage
+\pagenumbering{arabic}
+}
+\renewcommand{\ps@plain}{\pagestyle{fancy}}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+braille
+changebars
+customHeadersFooters
+shapepar
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.54cm
+\topmargin 2.54cm
+\rightmargin 2.54cm
+\bottommargin 2.54cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Implementation
+\end_layout
+
+\begin_layout Section
+ROS
+\end_layout
+
+\begin_layout Subsection
+What is ROS
+\end_layout
+
+\begin_layout Itemize
+ROS is “Robot Operating System”
+\end_layout
+
+\begin_layout Itemize
+An open source frame work for building robots
+\end_layout
+
+\begin_layout Itemize
+provides tools and libraries for helping software developers to create robot
+ applications.
+ It provides hardware abstraction, device drivers, libraries, visualizers,
+ message-passing, package management, ...
+ .
+ 
+\end_layout
+
+\begin_layout Itemize
+ROS is licensed under an open source, BSD license.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted1.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROS architecture
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+History of ROS
+\end_layout
+
+\begin_layout Itemize
+originally developed in 2007 at the Stanford Artificial Intelligence Laboratory.
+\end_layout
+
+\begin_layout Itemize
+Since 2013 managed by OSRF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Open Source Robotics Foundation
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Today used by many commercial robots, universities and companies.
+\end_layout
+
+\begin_layout Itemize
+It became a standard for robot programming
+\end_layout
+
+\begin_layout Subsubsection
+ROS Philosophy
+\end_layout
+
+\begin_layout Description
+Peer-to-Peer-communication: individual programs communicate over defined
+ API
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Application programming interface : it is a set of methods of communication
+ among various components
+\end_layout
+
+\end_inset
+
+,(ROS messages–Services- Action)
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Merit:
+\series default
+ everyone can work in separate part from the big project easily also there
+ will be clear structure of the interactions between different subsystems
+ in our UAV.
+\end_layout
+
+\begin_layout Description
+Distributed can be run on multiple computers and communicate over the network.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Merit:
+\series default
+ It is very useful in SLAM projects
+\end_layout
+
+\begin_layout Description
+Multi-lingual we can use Python , C++ , and even LabVIEW and Arduino C ...
+ .
+\end_layout
+
+\begin_layout Description
+Light-weight standalone libraries are wrapped around with a thin ROS layer.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Merit:
+\series default
+ It is very important in SLAM because we will distribute the jobs between
+ multi-computers so every HW will have only the SW it needs.
+\end_layout
+
+\begin_layout Description
+Free
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+Open
+\begin_inset space ~
+\end_inset
+
+source most ROS software is open source & free to use.
+\end_layout
+
+\begin_layout Description
+Eco-system Large supporting community , tutorials and powerful documentation
+ (WikiROS).
+ It is used by most if not all the robotics community so It will be good
+ if we can contribute with our project in this community.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Why ROS?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+NOTE
+\end_layout
+
+\begin_layout Standard
+Despite the proved power of using LabVIEW&MyRIO in building Autopilots ,
+ in all LabVIEW community there are only 2 topics (in the time this project
+ is started) which talking about using LabVIEW + LabVIEW Robotics Environment
+ Simulator in implementing simple SLAM (EKF based) and Obstacle avoidance
+ on an 2D differential-drive robot.
+ So it is very useful to integrate ROS with LabVIEW&MyRIO or replacing them
+ with ready-made (C++ or Python) packages if possible
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+If that will achieve the real-time requirements which is a must in Aeronutical
+ applications
+\end_layout
+
+\end_inset
+
+to reduce the cost (MyRIO is expenssive).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted3.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROS graph of Stanford’s STAIR robot nodes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pros and Cons of ROS
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+It's a common software platform for those who are building and using robots
+ 
+\end_layout
+
+\begin_layout Enumerate
+Makes people share code and ideas more readily so we do not have to spend
+ much time writing software infrastructure before robot starts moving! 
+\end_layout
+
+\begin_layout Enumerate
+ROS has been remarkably successful in 2015 there were: over 2,000 software
+ packages, 80 commercial robots are supported and at least 1850 academic
+ papers that mention ROS.
+ 
+\end_layout
+
+\begin_layout Enumerate
+We no longer have to write everything from scratch so we can concentrate
+ on the part we are working on control,state-estimation,planning,...
+ .
+\end_layout
+
+\begin_layout Enumerate
+We no longer need to write device drivers as a set of drivers that let you
+ read data from sensors and send commands to motors and other actuators
+ written already for many hardwares
+\end_layout
+
+\begin_layout Enumerate
+A large collection of fundamental robotics algorithms that allow you to
+ build maps , navigate, represent and interpret sensor data, plan motions,manipu
+late objects, ...
+ .
+ 
+\end_layout
+
+\begin_layout Enumerate
+All of the computational infrastructure that allows you to move data around,
+ to connect the various components of a complex robot system, and to incorporate
+ your own algorithms.
+ ROS allows you to split the workload across multiple computers.
+\end_layout
+
+\begin_layout Enumerate
+ROS is an ecosystem includes an extensive set of resources, such as a wiki
+ , a question-and-answer site.
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Standard
+There’s a fair amount of complexity in ROS such as : distributed computation,
+ multi-threading , event-driven programming, and other concepts lie at the
+ heart of the system.
+ If you’re not already familiar with at least some of these, ROS can have
+ a hard learning curve
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+but can be flattened out a bit by introducing the basics of ROS and having
+ some practical examples of how to use it for real applications on real
+ (and simulated) robots which is already exist in many books and online
+ courses.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Example
+\end_layout
+
+\begin_layout Standard
+This is an example of a ROS-based project of a 4-wheel autonomous robot
+ with obstacle avoidance and SLAM algorithms.
+ 
+\end_layout
+
+\begin_layout Itemize
+a PC operating ROS is used as a ground control station to communicate with
+ the robot
+\end_layout
+
+\begin_layout Itemize
+an android device operating ROS control application is used as a joystick.
+\end_layout
+
+\begin_layout Itemize
+a mini-onboard PC operating ROS is used to receive all controls (Waypoints,...)
+ and to process SLAM algorithm and obstacle avoidance.
+\end_layout
+
+\begin_layout Itemize
+STM32 board running free-RTOS is used as a low-level controller (deals with
+ the motors) also it's used as an interface for gathering data from sensors(Hall
+ effect sensor, IMU sensor and RPLIDAR) to send these data to the mini-onboard
+ PC to be processed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted4.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted5.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset VSpace bigskip*
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted6.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted7.png
+	scale 35
+
+\end_inset
+
+
+\begin_inset VSpace bigskip*
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted8.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROS example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Summary of some important features in ROS
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+Catkin
+\end_layout
+
+\begin_layout Enumerate
+Catkin is a collection of CMake macros and associated code 
+\series bold
+used to build packages
+\series default
+ used in ROS.
+\end_layout
+
+\begin_layout Enumerate
+It was initially introduced as part of the ROS Fuerte release where it was
+ used for a small set of base packages.
+ 
+\begin_inset Newline newline
+\end_inset
+
+For Groovy and Hydro it was significantly modified, and used by many more
+ packages.
+ All released Hydro packages were built using catkin, although existing
+ rosbuild packages can still be built from source on top of the catkin packages.
+\begin_inset Newline newline
+\end_inset
+
+Indigo is very similar, except for some deprecated features that were removed.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+Catkin Workspace
+\end_layout
+
+\begin_layout Enumerate
+catkin packages can be built as a standalone project, in the same way that
+ normal cmake projects can be built, but catkin also provides the concept
+ of workspaces, 
+\series bold
+where you can build multiple, interdependent packages together all at once
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+A catkin workspace
+\series bold
+ is a folder where you modify, build, and install catkin packages.
+
+\series default
+ The following is the recommended and typical catkin workspace layout:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted50.png
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Source Space (Folder)
+\begin_inset Newline newline
+\end_inset
+
+
+\bar default
+The source space contains the source code of catkin packages.
+ This is where you can extract , checkout , or clone source code for the
+ packages you want to build.
+ Each folder within the source space contains one or more catkin packages.
+ This space should remain unchanged by configuring, building, or installing.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Build Space (Folder)
+\begin_inset Newline newline
+\end_inset
+
+
+\bar default
+The build space is where CMake is invoked to build the catkin packages in
+ the source space.
+ CMake and catkin keep their cache information and other intermediate files
+ here.
+ The build space does not have to be contained within the workspace nor
+ does it have to be outside of the source space, but this is recommended.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Development (Devel) Space (Folder)
+\begin_inset Newline newline
+\end_inset
+
+
+\bar default
+The development space (or devel space) is where built targets are placed
+ prior to being installed.
+ The way targets are organized in the devel space is the same as their layout
+ when they are installed.
+ This provides a useful testing and development environment which does not
+ require invoking the installation step.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Install Space (Folder)
+\begin_inset Newline newline
+\end_inset
+
+
+\bar default
+Once targets are built, they can be installed into the install space by
+ invoking the install target, usually with make install.
+ The install space does not have to be contained within the workspace.
+ Since the install space is set by the CMAKE_INSTALL_PREFIX, it defaults
+ to /usr/local, which you should not use (because uninstall is near-impossible,
+ and using multiple ROS distributions does not work either).
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+default workspace is loaded with:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>source /opy/ros/indigo
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+replace with your ROS distribution
+\end_layout
+
+\end_inset
+
+/setup.bash
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+usually this instruction is written in the ~/.bashrc to launch automatically
+ when you open a terminal
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+overlay your catkin workspace with :
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>cd ~/catkin_ws
+\end_layout
+
+\begin_layout Plain Layout
+>source devel/setup.bash
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Or another approach if you are using only one workspace in your /opt/ros/indigo/
+setup.bash write :
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>source ~/catkin_ws/devel/setup.bash
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+check your catkin workspace with by:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>echo $ROS_PACKAGE_PATH
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Or by writing
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>roscd
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+you should get to directory: ~/catkin_ws/ not /opt/ros/indigo/
+\end_layout
+
+\begin_layout Itemize
+A catkin workspace can contain up to four different spaces which each serve
+ a different role in the software development process.
+\end_layout
+
+\begin_layout Itemize
+To clean the build and devel folders without touching src folder so you
+ can build the src again use:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>catkin clean
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS master
+\end_layout
+
+\begin_layout Itemize
+manages the communication between nodes
+\end_layout
+
+\begin_layout Itemize
+Every node registers at startup with the master
+\end_layout
+
+\begin_layout Itemize
+start a master with:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>roscore
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+starts multiple elements including rosmaster
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS nodes
+\end_layout
+
+\begin_layout Itemize
+single-purpuse executable program
+\end_layout
+
+\begin_layout Itemize
+individually compiled, executed and manged
+\end_layout
+
+\begin_layout Itemize
+organized in packages
+\end_layout
+
+\begin_layout Itemize
+Run a node:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>rosrun package_name node_name
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+See active nodes:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>rosnode list
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Retrieve info about a node:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>rosnode info node_name
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ROS can launch identical nodes into separate namespaces for example if we
+ have a node that generate PWM to one motor called 
+\begin_inset Quotes eld
+\end_inset
+
+motor_node
+\begin_inset Quotes erd
+\end_inset
+
+ , we can run it as /left_motor/motor_node and /right_motor/motor_node and
+ when running the motor_node we can pass to it the pin number of the motor
+ depending on the namespace it will be run in.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS topics
+\end_layout
+
+\begin_layout Itemize
+Typically, there is a node which is a publisher (talks or send msgs) and
+ another one which is a subscriber (listens or recieves msgs).
+ They can communicate with each others using Topics which act as a channel
+ to pass data from publishers to subscribers.
+\end_layout
+
+\begin_layout Itemize
+It is very normal to have multiple subscribers on the same topic but we
+ should avoid multiple publishers to avid race conditions
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>rostopic list
+\end_layout
+
+\begin_layout Plain Layout
+>rostopic echo /topic
+\end_layout
+
+\begin_layout Plain Layout
+>rostopic info /topic
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+to publish in a topic manually(not from a real node):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+rostopic pub /cmd_vel geometry_msgs/Twist 
+\begin_inset Quotes eld
+\end_inset
+
+Linear: x:0.0 y:0.0 z:0.0 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+angular: x:0.0 y:0.0 z:0.0
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+/cmd_vel is a topic used usually to control angular an linear velocities
+ in 3D .
+ It holds a msg called 
+\begin_inset Quotes eld
+\end_inset
+
+Twist
+\begin_inset Quotes erd
+\end_inset
+
+ which defined in a package called 
+\begin_inset Quotes eld
+\end_inset
+
+geometry_msgs
+\begin_inset Quotes erd
+\end_inset
+
+ and this msg contains Linear and Angular velocities in x,y,and z deirections
+\end_layout
+
+\begin_layout Itemize
+remapping is a very useful feature ROS can do on topics.
+ For example if I have a node called 
+\begin_inset Quotes eld
+\end_inset
+
+image_view
+\begin_inset Quotes erd
+\end_inset
+
+ reads from a topic called 
+\begin_inset Quotes eld
+\end_inset
+
+image
+\begin_inset Quotes erd
+\end_inset
+
+ which published in by the 
+\begin_inset Quotes eld
+\end_inset
+
+camera
+\begin_inset Quotes erd
+\end_inset
+
+ node but we have two cameras (left and right) so we can remap the topic
+ to be exist in a two separate name spaces each hold different data for
+ each camera but definitely the same msg so now we can have 
+\begin_inset Quotes eld
+\end_inset
+
+/right/image
+\begin_inset Quotes erd
+\end_inset
+
+ topic and 
+\begin_inset Quotes eld
+\end_inset
+
+/left/image
+\begin_inset Quotes erd
+\end_inset
+
+ topic and makes 
+\begin_inset Quotes eld
+\end_inset
+
+image_view
+\begin_inset Quotes erd
+\end_inset
+
+ node to read from both.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS messages
+\end_layout
+
+\begin_layout Itemize
+Data structure defining the type of a topic.
+\end_layout
+
+\begin_layout Itemize
+comromised of a nested structure of integers, floats, booleans, strings,
+ arrays of objects, ...
+\end_layout
+
+\begin_layout Itemize
+We can define one in *.msg files but It is preferred to use ready-made ROS
+ messages to keep compatible with the commuinity besides there is a varity
+ of messages that we may never need to define new one.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>rostopic type /topic_name
+\end_layout
+
+\begin_layout Plain Layout
+>rostopic pub /topic_name msg_type data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted9.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROS msgs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS Launch
+\end_layout
+
+\begin_layout Itemize
+launch is a tool for launching multiple nodes (as well as setting parameters)
+ because it isn't practicle to use rosrun on every node.
+\end_layout
+
+\begin_layout Itemize
+We can define launch file as *.launch in launch folder in our package.
+\end_layout
+
+\begin_layout Itemize
+If the roscore isn't running, launch automatically starts a roscore
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+> roslaunch package_name launchfile.launch
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS Packages
+\end_layout
+
+\begin_layout Itemize
+can be thought of as a collection of resources that are built and distributed
+ together.
+\end_layout
+
+\begin_layout Itemize
+Package folder tree:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+package_name
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+config
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> parameter files(YAML)
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+include/package_name 
+\begin_inset space ~
+\end_inset
+
+==>c++ header files
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+launch
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> *.launch files
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+src
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> source files
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+test
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> ROS tests
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+CMakeLists.txt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> CMake build file
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+package.xml
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> package information
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Usually package depends on other packages for example other package holds
+ our custom msgs, services and actions :
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Doublebox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+package_name_msgs
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+action
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> action definitions
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+msg
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> message definitions
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+srv
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+==> service definitions
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+CMakeLists.txt
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+package.xml
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+this separation of our custom msgs in a separate package from other packages
+ is a good practice.
+\end_layout
+
+\begin_layout Itemize
+for creating a package go to ~/catkin_ws/src and use this instruction in
+ the terminal:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>catkin_create_pkg package_name <dependencies>{for example: package_name_msgs}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+package.xml
+\bar default
+ defines:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+package name
+\end_layout
+
+\begin_layout Itemize
+version number
+\end_layout
+
+\begin_layout Itemize
+authors
+\end_layout
+
+\begin_layout Itemize
+dependencies on other packages
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\bar under
+CMakeLists.txt
+\bar default
+ It is the input to the CMake build system and defines:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+required CMake version
+\end_layout
+
+\begin_layout Itemize
+Package naem
+\end_layout
+
+\begin_layout Itemize
+find other CMake or catkin packages needed for build: find_package()
+\end_layout
+
+\begin_layout Itemize
+for adding msgs / actions / sevices: add_message_files() - add_action_files()
+ - add_service_files()
+\end_layout
+
+\begin_layout Itemize
+invoke msg / service / action generation: generate_messages()
+\end_layout
+
+\begin_layout Itemize
+Libraries and Executables to build: add_library() - add_executable() - target_li
+nk_libraries()
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS services
+\end_layout
+
+\begin_layout Itemize
+Unlike topics which multiple nodes can read and write from and into the
+ topic, service consists of server (to conduct the service) and a node (that
+ receive the service).
+\end_layout
+
+\begin_layout Itemize
+Unlike action (as we will see in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:ROS-actions"
+
+\end_inset
+
+) the node will wait for the server to finish and then it will continue
+ working.
+\end_layout
+
+\begin_layout Itemize
+From this we can say that we can use services in tasks that executed instantaneo
+usly and actions in tasks that takes much time to be executed like for a
+ robot to go to a specific point.
+ 
+\end_layout
+
+\begin_layout Itemize
+To call a service from a terminal:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+>rosservice call /service_demo 
+\begin_inset Quotes eld
+\end_inset
+
+{}
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+{}
+\begin_inset Quotes erd
+\end_inset
+
+ is an Empty msg we can use if we want to only exicte the server without
+ data needed to be send.
+ This msg is defined in package called 
+\begin_inset Quotes eld
+\end_inset
+
+std_msgs
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+ROS actions
+\end_layout
+
+\begin_layout Itemize
+Similar to service but the node doesn't need to stop until the action is
+ finished
+\end_layout
+
+\begin_layout Itemize
+Internally actions uses topics to communicate with the node that called
+ the action server
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted10.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROS actions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+status : 0(pending) - 1(active) - 2(done) - 3(warning) - 4(error)
+\begin_inset Newline newline
+\end_inset
+
+we can get the status in node1.py :
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Ovalbox
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+status = client.get_status()
+\end_layout
+
+\begin_layout Plain Layout
+DONE = 2
+\end_layout
+
+\begin_layout Plain Layout
+while state_result < DONE
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+DO SOMETHING unlike server where we waited for server to finish
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/comparision.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+comparison between ROS parameters, Dynamic Reconfigure , Topics , Services
+ , and Actions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "80page%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Proof of Concept
+\end_layout
+
+\begin_layout Subsection
+State Estimation (Rover)
+\end_layout
+
+\begin_layout Standard
+We wanted to increase our experience in ROS so we decided to build a differentia
+l drive robot using ROS.
+ In addition the very useful feature of ROS is that we can use the Odometry
+ message resulting from encoders (very simple sensors) to simulate the results
+ of algorithms that handles the vision navigation.
+ Hence, this project deepens our understanding of ROS independently of the
+ complexity of the sensors (Cameras and Lidars) and the controlled system(Multi-
+rotor which is more critical in control than DD robots).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/ddrobot.PNG
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Differential Drive Robot (DD robot)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Objective
+\end_layout
+
+\begin_layout Enumerate
+Control the DD robot linear velocity and angular velocity , which will be
+ the required inputs to the DD robot from the high-level algorithms as shown
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:differential-drive-model"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ , this control needs encoders and IMU as feedback in case of using Incremental
+ encoders , encoders only in case of using quadrature encoders , or fusion
+ of encoders and IMU.
+ In our case , It is very fine that our DD robot won't have backward movement
+ for motors so we don't need to neither fuse data for the linear and angular
+ velocities control loop nor using quadrature encoders.
+\end_layout
+
+\begin_layout Enumerate
+Localize the DD robot by fusing the data from IMU and odometry from encoders
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Modeling
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted12.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+differential drive model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Block Diagram
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted11.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+differential_drive package
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Hardware
+\end_layout
+
+\begin_layout Standard
+MPU 6050 & Encoder
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted14.png
+	scale 40
+
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted15.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Software
+\end_layout
+
+\begin_layout Standard
+Control the DD robot linear velocity and angular velocity
+\end_layout
+
+\begin_layout Itemize
+nodes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="32" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="10page%">
+<column alignment="center" valignment="top" width="25page%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+package
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+node name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+parameters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential_drive
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+twist_to_motors
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+transforms the required linearvelocity and angular velocity(Twist) of the
+ DD robot torequired velocity of motors.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~rate (float, default:10)
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ticks_meter (int, default:50)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~base_width (float, default:0.245)
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~base_frame_id (string, default:"base_link")
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~odom_frame_id (string, default:"odom")
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+encoder_min (int, default:-32768)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+encoder_max (int, default: 32768)
+\series default
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+wheel_low_wrap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+wheel_high_wrap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pid_velocity
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The controller using feedbackfrom encoder and set pointfrom twist_to_motors
+ andoutputs the PWM to the motor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~Kp (float, default:10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~Ki (float, default:10)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~Kd (float, default:0.001)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~out_min (float, default: -255)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~out_max (float, default: 255)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~rate (float, default: 20)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~rolling_pts (float, default: 2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~timeout_ticks (int, default: 2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ticks_meter (float, default: 20)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+encoder_min (int, default:-32768)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+encoder_max (int, default: 32768)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+wheel_low_wrap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+wheel_high_wrap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diff_tf
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="left" valignment="middle" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+produces the axestransformations of the DDrobot due to the movementwhich
+ detected by encoders,and publishes the odometry(the current pose and twist)
+ of the robot.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~rate (float, default:10)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ticks_meter (int, default:50)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~base_width (float, default:0.245)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~base_frame_id (string, default:"base_link")
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+~odom_frame_id (string, default:"odom")
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+encoder_min (int, default:-32768)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+encoder_max 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+wheel_low_wrap 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+wheel_high_wrap
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+topics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+msg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Published by
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Subscribers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+odom 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nav_msgs/Odometry
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diff_tf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+any one
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tf/tfMessage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+diff_tf
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/tf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+lwheel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+std_msgs/Int16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+left encoder
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pid_velocity and diff_tf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rwheel
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+std_msgs/Int16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+right encoder
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pid_velocity and diff_tf
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Localization
+\end_layout
+
+\begin_layout Itemize
+nodes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="22page%">
+<column alignment="center" valignment="top" width="20page%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+package
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+node name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+description
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+parameters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+teleop_twist_keyboard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "teleop_twist_keyboard pkg"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+teleop_twist_keyboard
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+publishes the required linear velocity and angular velocity 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+_speed
+\series default
+ is the required linear velocity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in the /cmd_vel topic
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+_turn
+\series default
+ is the required angular velocity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+topics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="3.5cm">
+<column alignment="center" valignment="top" width="3.5cm">
+<column alignment="center" valignment="top" width="3.5cm">
+<column alignment="center" valignment="top" width="5cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+name
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+msg
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Published by
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Subscribers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/cmd_vel remapped to /Twist
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nav_msgs/Odometry
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+teleop_twist_keyboard
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+differential_drive pkg/twist_to_motors node
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+to be identified by twist_to_motors node
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Control (half quad)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Block diagram & Software
+\end_layout
+
+\begin_layout Standard
+Purpose of this experiment is to validate ROS performance in aerospace applicati
+ons and compare its performance with Ardupilot.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/oneD.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Configuration 1 (ROS pid)
+\end_layout
+
+\begin_layout Standard
+using ready-made PID in ROS community with Low-pass filter on derivative
+ term.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/one_D block diagram.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+1D Bi-rotor conf1 Block Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Book1.pdf
+	width 100page%
+	height 80pheight%
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Configuration 2 (myPIDA)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/one_D block diagram2.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+1D Bi-rotor conf2 Block Diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Package
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Node
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameters
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+myPID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PID_node
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ts sampling time = 0.008 (default)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kp
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ki
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kd
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ka
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\series bold
+Results & Conclusions
+\end_layout
+
+\begin_layout Itemize
+Sampling Time
+\end_layout
+
+\begin_layout Standard
+configuration 2 has better control on sampling time than configuration 1
+ because config1 depends on the frequency of the setpoint and the feedback
+ , we build a similar code to ROSpid and the Ts was collected and plotted
+ alongside with Ts achieved by myPID as shown
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/sampling time.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To show the effect of not constant sampling time , we choose the gains as
+ Kp = some value , Ki = Kd = Ka = 0 , so the control should be = Kp * error
+ = - Kp * state
+\begin_inset Newline newline
+\end_inset
+
+which is simply a scaled reflection of the state if the sampling time is
+ constant and synchronous with the feedback.
+\end_layout
+
+\begin_layout Itemize
+IMU Bias
+\end_layout
+
+\begin_layout Standard
+We noticed that when motors are on , there is biasing in the IMU readings
+\end_layout
+
+\begin_layout Itemize
+Gains tuning
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+px4 and Mavros
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+The definition of Auto pilot in general that it is a system used to control
+ the trajectory of an aircraft without constant ’hands-on’ control by a
+ human operator being required.
+ 
+\end_layout
+
+\begin_layout Standard
+Autopilots do not replace human operators but assist them in controlling
+ the aircraft, allowing them to focus on broader aspects of operations such
+ as monitoring the trajectory, weather and systems.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+What's Pixhawk
+\end_layout
+
+\begin_layout Standard
+Pixhawk is an independent open-hardware project that aims to provide the
+ standard for readily-available, hiqh-quality and low-cost autopilot hardware
+ designs for the academic, hobby and developer communities.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Other devices like Pixhawk
+\end_layout
+
+\begin_layout Standard
+Arducopter : This is the full-featured, open-source multicopter UAV controller
+ that won the Sparkfun 2013 and 2014 Autonomous Vehicle Competition (dominating
+ with the top five spots).
+ 
+\end_layout
+
+\begin_layout Standard
+A team of developers from around the globe are constantly improving and
+ refining the performance and capabilities of ArduCopter.
+\end_layout
+
+\begin_layout Standard
+Copter is capable of the full range of flight requirements from fast paced
+ FPV racing to smooth aerial photography, and fully autonomous complex missions
+ which can be programmed through a number of compatible software ground
+ stations.
+ The entire package is designed to be safe, feature rich, open-ended for
+ custom applications, and is increasingly easy to use even for the novice.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Comparison between various autopilot devices
+\end_layout
+
+\begin_layout Standard
+The APM flight controller uses an Atmega2560, uses an I2c bus and runs at
+ 16mhz, Pixhawk uses an Arm Cortex 32bit STM32 F4 running at 168mhz on a
+ much faster SPI bus, has CAN bus, also faster and has a backup processor
+ STM32 F1 chip that runs at 72 Mhz.
+ All the original CC3D flight controllers use the STM32 F1 chip, the better
+ ones use the STM32 F3 chip that adds a floating point coprocessor and more
+ memory, newer ones use the STM32 F4 and the newest ones use STM32 F7 at
+ 216mhz.
+ A faster processor computes better PID loop times and creates a more stable
+ and responsive platform with increased capabilities.
+ All these run their motion sensors on the faster SPI bus, they use the
+ slower I2c bus for less critical things.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Why Pixhawk
+\end_layout
+
+\begin_layout Standard
+We choose the Pixhawk over Arducopter for the following reasons
+\end_layout
+
+\begin_layout Itemize
+It has much more capabilities and processing power .
+\end_layout
+
+\begin_layout Itemize
+It can connect using two telemetry ports one for ground station and the
+ other for manual control using a flight controller.
+ 
+\end_layout
+
+\begin_layout Itemize
+It has faster response for actions which is good.
+\end_layout
+
+\begin_layout Itemize
+It supports quad plane mode which is similar to our design.
+ 
+\end_layout
+
+\begin_layout Itemize
+Available in Egypt.
+ 
+\end_layout
+
+\begin_layout Standard
+So Pixhawk was a better choice for our project as we will be processing
+ images and we will use SLAM so we need a lot of processing power for our
+ mission .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+User guides to Pixhawk
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 1: Wiring and Connections
+\end_layout
+
+\begin_layout Standard
+In order to get the Pixhawk running we will need the following components
+ 
+\end_layout
+
+\begin_layout Itemize
+Power module
+\end_layout
+
+\begin_layout Itemize
+Telemetry
+\end_layout
+
+\begin_layout Itemize
+PPM
+\end_layout
+
+\begin_layout Itemize
+Flight controller and receiver
+\end_layout
+
+\begin_layout Itemize
+Power Distribution Board (PDB)
+\end_layout
+
+\begin_layout Itemize
+Jumper wires
+\end_layout
+
+\begin_layout Itemize
+Android USB cable
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+power module:
+\series default
+The power module is used in order to power the Pixhawk from the battery
+ or from any power supply and to power the ESCs through the PDB , and it
+ is connected to the Pixhawk as shown 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/powermodule-analog-pixhawk.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Telemetry
+\bar under
+: 
+\series default
+\bar default
+The telemetry is divided into two parts , the first part is connected to
+ the ground station to receive and send signals to the other part which
+ is onboard to receive and send signals from and to the ground station .
+\end_layout
+
+\begin_layout Standard
+It is connected to the Pixhawk as shown
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/maxresdefault.jpg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Vcc-GND-Rx-Tx must be connected.
+\end_layout
+
+\begin_layout Itemize
+RTS - CTS can be ignored.
+\end_layout
+
+\begin_layout Itemize
+RX in Pixhawk is connected to Tx in receiver.
+\end_layout
+
+\begin_layout Itemize
+TX in Pixhawk is connected to Rx in receiver.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+PPM: 
+\series default
+It is a module used to connect the channels of flight controller receiver
+ to the Pixhawk ,as the Pixhawk has only one input for all channels so we
+ used it to do this mission to connect he flight controller receiver to
+ the Pixhawk.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/jDrones_PPM_Encoder_V21_Above_with_numbers_500px.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flight controller and receiver: 
+\end_layout
+
+\begin_layout Standard
+The flight controller is used to control the vehicle manually by sending
+ PWM signals to the receiver which sends the signals to the PPM then the
+ PPM fuses them to one channel and sends them to the Pixhawk to perform
+ the control action sent.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Power Distribution Board (PDB): 
+\end_layout
+
+\begin_layout Standard
+Is a board used to distribute the power that comes from the battery or power
+ supply to the ESCs used.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/download.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Android USB cable: 
+\end_layout
+
+\begin_layout Standard
+The cable will only be used during the Calibration of the gyros and ESCs.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 2: Connect to PC
+\end_layout
+
+\begin_layout Standard
+First connect the Pixhawk only to the PC using the usb cable.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 3: Ground Station
+\end_layout
+
+\begin_layout Standard
+Open Qgroundconrol app to connect the Pixhawk to the ground station.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 4: Firmware selection
+\end_layout
+
+\begin_layout Standard
+After connecting the Pixhawk to the Qgroundcontrol we will need to install
+ the PX4 firmware on the Pixhawk by selecting it from the setting menu,
+ it will be downloaded and installed on the Pixhawk.
+\end_layout
+
+\begin_layout Itemize
+note that before connecting the Pixhawk you need to remove any other power
+ source to avoid spoiling the device.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 5: Frame Selection
+\end_layout
+
+\begin_layout Standard
+Next we will select the frame type of the vehicle you are using.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/AQ-All-Frames.jpg
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Take care of the direction of the propellers (clockwise & anti clockwise).
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 6: Calibration
+\end_layout
+
+\begin_layout Standard
+The next step is calibrating the gyros and compass of the Pixhawk just go
+ from setting to calibration and follow the steps one by one and you will
+ be done.
+\end_layout
+
+\begin_layout Standard
+calibration can be done in two ways 
+\end_layout
+
+\begin_layout Itemize
+The first way is doing it on the Pixhawk alone.(recommended and easier)
+\end_layout
+
+\begin_layout Itemize
+the second way is doing it after manufacturing the vehicle.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 7: Radio calibration
+\end_layout
+
+\begin_layout Standard
+In this phase we will need to connect the flight controller to the Pixhawk
+ using the receiver and PPM encoder as shown before.
+\end_layout
+
+\begin_layout Itemize
+Select radio calibration from setting menu.
+\end_layout
+
+\begin_layout Itemize
+Set all trimming to zero before start the calibration.
+\end_layout
+
+\begin_layout Itemize
+start the calibration and follow the steps given by the Qgroundcontrol.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 8: Modes
+\end_layout
+
+\begin_layout Itemize
+Select Flight modes from setting menu.
+\end_layout
+
+\begin_layout Itemize
+Choose manual mode and set it to an AUX channel.
+ 
+\end_layout
+
+\begin_layout Itemize
+Choose stabilize mode and set it to an AUX channel.
+\end_layout
+
+\begin_layout Standard
+We will be using stabilize mode during testing and flight.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 9: ESCs and motors
+\end_layout
+
+\begin_layout Standard
+In this phase we will recommend that you follow the following steps exactly
+ to avoid any damage to the Pixhawk.
+\end_layout
+
+\begin_layout Itemize
+Remove any power source from the Pixhawk (USB till now).
+\end_layout
+
+\begin_layout Itemize
+Connect the motors to the ESCs.
+\end_layout
+
+\begin_layout Itemize
+Connect the ESCs to the PDB.
+\end_layout
+
+\begin_layout Itemize
+Connect the PDB to the Power module (DO NOT CONNECT THE BATTERY OR POWER
+ SUPPLY).
+\end_layout
+
+\begin_layout Itemize
+Connect the signal pins of the ESCs to the Pixhawk output channels according
+ to the order of the selected frame before.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/cae0384839ae0630258b3882725779b08ab5a024.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From setting select Power.
+\end_layout
+
+\begin_layout Itemize
+Start the calibration of the ESCs.
+\end_layout
+
+\begin_layout Itemize
+You will be asked to connect the battery(power supply), note that this is
+ the only case to connect two power sources together (USB,battery).
+\end_layout
+
+\begin_layout Itemize
+The ESCs will make some sound and noise wait until its done(about 10-15
+ sec).
+\end_layout
+
+\begin_layout Itemize
+Disconnect the battery then remove the USB cable .
+\end_layout
+
+\begin_layout Itemize
+Connect the USB cable again and we are done with ESCs calibration.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Step 9: Tuning
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Throttle Tuning:
+\bar default
+The first thing to do before tuning is to set your vehicle to stablize mode
+ .
+\end_layout
+
+\begin_layout Standard
+Now we should set the hovering thrust of the vehicle in order to make it
+ mapped on the thrust lever of the flight controller.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/px4_copter_basic.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In our case the Hover Throttle is set to 80% because the power supply is
+ not strong enough to provide the ESCs with the power needed.
+\end_layout
+
+\begin_layout Standard
+The Manual minimum throttle is set to 8%.
+\end_layout
+
+\begin_layout Itemize
+The next step is going into the advanced PID tuning of the vehicle by clicking
+ on 
+\begin_inset Quotes eld
+\end_inset
+
+advanced
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\bar under
+PID Tuning: 
+\bar default
+Stabilize Roll/Pitch P controls the responsiveness of the copter’s roll
+ and pitch to pilot input and errors between the desired and actual roll
+ and pitch angles.
+ The default of 4.5 will command a 4.5deg/sec rotation rate for each 1 degree
+ of error in the angle.
+ A higher gain such as 7 or 8 will allow you to have a more responsive copter
+ and resist wind gusts more quickly.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A low stabilize P will cause the copter to rotate very slowly and may cause
+ the copter to feel unresponsive and could cause a crash if the wind disturbs
+ it.
+ Try lowering the RC_Feel parameter before lowering Stability P if smoother
+ flight is desired.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Rate Roll/Pitch P, I and D terms control the output to the motors based
+ on the desired rotation rate from the upper Stabilize (i.e.
+ angular) controller.
+ These terms are generally related to the power-to-weight ratio of the copter
+ with more powerful copters requiring lower rate PID values.
+ For example a copter with high thrust might have Rate Roll/Pitch P number
+ of 0.08 while a lower thrust copter might use 0.18 or even higher.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rate Roll/Pitch P is the single most important value to tune correctly for
+ your copter.
+ 
+\end_layout
+
+\begin_layout Itemize
+The higher the P the higher the motor response to achieve the desired turn
+ rate.
+ 
+\end_layout
+
+\begin_layout Itemize
+Default is P = 0.15 for standard Copter.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rate Roll/Pitch I is used to compensate for outside forces that would make
+ your copter not maintain the desired rate for a longer period of time 
+\end_layout
+
+\begin_layout Itemize
+A high I term will ramp quickly to hold the desired rate, and will ramp
+ down quickly to avoid overshoot.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rate Roll/Pitch D is used to dampen the response of the copter to accelerations
+ toward the desired set point.
+ 
+\end_layout
+
+\begin_layout Itemize
+A high D can cause very unusual vibrations and a “memory” effect where the
+ controls feel like they are slow or unresponsive.
+ A properly mounted controller should allow a Rate D value of .011.
+ 
+\end_layout
+
+\begin_layout Itemize
+Values as low as 0.001 and as high as .02 have all been used depending upon
+ the vehicle.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In our case after tuning and testing the final values set to the first quad
+ copter prototype PID is as following for pitching and rolling and yawing.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pitch.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/rolling.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/yaw2.PNG
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ground Station
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Subsubsection
+What's a Ground Station
+\end_layout
+
+\begin_layout Standard
+Ground Station is a fully managed service that lets you control the air
+ vehicle communications, process data, and scale your operations without
+ having to worry about building or managing your own ground station infrastructu
+re.
+ Drones are used for a wide variety of use cases, including surface imaging,
+ communications, and video broadcasts.
+ Ground stations form the core of communication between drone and user.
+ These facilities provide communications between the ground and the vehicle
+ in the air.
+ Today, you must either build your own ground stations, or obtain long-term
+ contracts with ground station providers.
+\end_layout
+
+\begin_layout Subsubsection
+Ground Station software 
+\end_layout
+
+\begin_layout Standard
+There is a lot of ground station softwares available for users, in our project
+ we are using two softwares which are 
+\end_layout
+
+\begin_layout Itemize
+Qgroundcontrol
+\end_layout
+
+\begin_layout Itemize
+Mission Planner
+\end_layout
+
+\begin_layout Subsection
+User guides to Qgroundcontrol
+\end_layout
+
+\begin_layout Standard
+Qgroundcontrol is a ground station software which is very simple to use
+ and also is an OPEN SOURCE software so it's free to use and develop.
+\end_layout
+
+\begin_layout Standard
+For beginners Qgroundcontrol is a very good software to start with as it
+ is very simple and has a very friendly interface which will help you to
+ get your vehicle moving and flying as fast as possible.
+\end_layout
+
+\begin_layout Standard
+QGroundControl provides full flight control and mission planning for any
+ MAVLink enabled drone.
+ Its primary goal is ease of use for professional users and developers.
+ All the code is open-source source, so you can contribute and evolve it
+ as you want.
+\end_layout
+
+\begin_layout Itemize
+Step 1: Installation 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+First of all, all you need to get started is to download the software from
+ it's official website.
+\end_layout
+
+\begin_layout Standard
+Then follow the installation step by step then you are done with installation
+ and you are ready to start with the vehicle.
+\end_layout
+
+\begin_layout Standard
+QgroundControl is available for windows,Mac,Android and IOS.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Step 2: Connect to Pixhawk
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The first thing to do after installation is to connect to your Vehicle.
+\end_layout
+
+\begin_layout Standard
+You can do that through various methods 
+\end_layout
+
+\begin_layout Itemize
+USB cable 
+\end_layout
+
+\begin_layout Itemize
+Telemetry
+\end_layout
+
+\begin_layout Standard
+At the beginning we will use USB.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+User interface of Qground
+\end_layout
+
+\begin_layout Standard
+Most of the user interface has been discussed in the previous chapter except
+ for a few tabs.
+\end_layout
+
+\begin_layout Standard
+Before you are connected to the Pixhawk the Interface you get is as shown
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/map.png
+	width 80page%
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After you connect the Pixhawk you will have more tabs available for more
+ options to access the autopilot control parameters.
+\end_layout
+
+\begin_layout Subsection
+User guides to Mission Planner
+\end_layout
+
+\begin_layout Standard
+Mission Planner is a ground control station for Plane, Copter and Rover.
+ It is compatible with Windows only.
+ Mission Planner can be used as a configuration utility or as a dynamic
+ control supplement for your autonomous vehicle.
+ Here are just a few things you can do with Mission Planner:
+\end_layout
+
+\begin_layout Itemize
+Load the firmware (the software) into the autopilot board (i.e.
+ Pixhawk series) that controls your vehicle.
+\end_layout
+
+\begin_layout Itemize
+Setup, configure, and tune your vehicle for optimum performance.
+\end_layout
+
+\begin_layout Itemize
+Plan, save and load autonomous missions into you autopilot with simple point-and
+-click way-point entry on Google or other maps.
+\end_layout
+
+\begin_layout Itemize
+Download and analyze mission logs created by your autopilot.
+\end_layout
+
+\begin_layout Itemize
+Interface with a PC flight simulator to create a full hardware-in-the-loop
+ UAV simulator.
+\end_layout
+
+\begin_layout Itemize
+With appropriate telemetry hardware you can:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monitor your vehicle’s status while in operation.
+\end_layout
+
+\begin_layout Itemize
+Record telemetry logs which contain much more information the the on-board
+ autopilot logs.
+\end_layout
+
+\begin_layout Itemize
+View and analyze the telemetry logs.
+\end_layout
+
+\begin_layout Itemize
+Operate your vehicle in FPV (first person view).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Mission Planner is also an OPEN SOURCE software.
+\end_layout
+
+\begin_layout Itemize
+Step 1: Installation
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The first thing to do is to download the software from it's official site,
+ and then follow the installation instruction step by step till you finish
+ installation then you are ready to work with the Mission Planner as Ground
+ station.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/mp_installation.png
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Step 2: Connect to Pixhawk
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Once you have installed a ground station on your computer, connect the flight
+ controller using the micro USB cable as shown below.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pixhawk_usb_connection.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On Mission Planner, the connection and data rate are set up using the drop
+ down boxes in the upper right portion of the screen.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/MisionPlanner_ConnectButton.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once you have attached the USB or Telemetry Radio, Windows will automatically
+ assign your autopilot a COM port number, and that will show in the drop-down
+ menu (the actual number does not matter).
+ The appropriate data rate for the connection is also set (typically the
+ USB connection data rate is 115200 and the radio connection rate is 57600).
+ 
+\end_layout
+
+\begin_layout Standard
+Select the desired port and data rate and then press the Connect button
+ to connect to the autopilot.
+ After connecting Mission Planner will download parameters from the autopilot
+ and the button will change to Disconnect as shown:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/MisionPlanner_DisconnectButton.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+User interface of Mission Planner
+\end_layout
+
+\begin_layout Standard
+The sections are organized to match the major section of the Mission Planner
+ as selected in the menu along the top of the Mission Planner window.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Connect (Upper right corner) - How to connect the Mission Planner to your
+ ArduPilot.
+ Selecting communication devices and rates.
+ 
+\end_layout
+
+\begin_layout Itemize
+Flight Data - Information about what you see, and things you can do in the
+ Flight Data screens.
+ 
+\end_layout
+
+\begin_layout Itemize
+Flight Plan - Information about the various aspects of preparing flight
+ plans (Missions).
+ 
+\end_layout
+
+\begin_layout Itemize
+Initial Setup - Information about what you see and things you can do in
+ the Initial Setup screens.
+ 
+\end_layout
+
+\begin_layout Itemize
+Configuration Tuning - Information about what you see and things you can
+ do in the Configuration/Tuning screens.
+\end_layout
+
+\begin_layout Itemize
+Simulation - How you can use the Mission Planner and a flight simulator
+ to ‘simulate’ flying.
+\end_layout
+
+\begin_layout Itemize
+Terminal - Information about what you see and things you can do in the Terminal
+ screens.
+\end_layout
+
+\begin_layout Itemize
+Help - About the help screen, and how to get help with your questions about
+ Mission Planner.
+\end_layout
+
+\begin_layout Itemize
+Other Mission Planner Features - Catch all for miscellaneous items.
+\end_layout
+
+\begin_layout Itemize
+Flight Data Screen.
+\end_layout
+
+\begin_layout Itemize
+Initial Setup.
+\end_layout
+
+\begin_layout Itemize
+Simulation Screen.
+\end_layout
+
+\begin_layout Itemize
+Configuration and Tuning Screen.
+\end_layout
+
+\begin_layout Itemize
+Compass Calibration.
+\end_layout
+
+\begin_layout Itemize
+Accelerometer Calibration.
+\end_layout
+
+\begin_layout Itemize
+Radio Control Calibration.
+\end_layout
+
+\begin_layout Itemize
+RC Transmitter Flight Mode Configuration.
+\end_layout
+
+\begin_layout Itemize
+Flight Plan.
+\end_layout
+
+\begin_layout Itemize
+Flight Data.
+\end_layout
+
+\begin_layout Itemize
+Language Translations.
+\end_layout
+
+\begin_layout Itemize
+Other Mission Planner Features
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/mp_hud_full.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/mp_hud_detail.jpg
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Air speed ( Ground speed if no airspeed sensor is fitted )
+\end_layout
+
+\begin_layout Enumerate
+Crosstrack error and turn rate (T) 
+\end_layout
+
+\begin_layout Enumerate
+Heading direction 
+\end_layout
+
+\begin_layout Enumerate
+Bank angle 
+\end_layout
+
+\begin_layout Enumerate
+Telemetry connection link quality (averaged percentage of good packets)
+ 
+\end_layout
+
+\begin_layout Enumerate
+GPS time 
+\end_layout
+
+\begin_layout Enumerate
+Altitude ( blue bar is rate of climb ) 
+\end_layout
+
+\begin_layout Enumerate
+Air speed 
+\end_layout
+
+\begin_layout Enumerate
+Ground speed 
+\end_layout
+
+\begin_layout Enumerate
+Battery status 
+\end_layout
+
+\begin_layout Enumerate
+Artificial Horizon 
+\end_layout
+
+\begin_layout Enumerate
+Aircraft Attitude 
+\end_layout
+
+\begin_layout Enumerate
+GPS Status 
+\end_layout
+
+\begin_layout Enumerate
+Current Waypoint Number > Distance to Waypoint 
+\end_layout
+
+\begin_layout Enumerate
+Current Flight Mode
+\end_layout
+
+\begin_layout Standard
+For more details you can find in documentation on the official website for
+ both Qgroundcontrol and Mission Planner.
+ 
+\end_layout
+
+\begin_layout Standard
+In our Project we used both Qgroundcontrol and Mission Planner in order
+ to get the required mission, We will discuss how We have done that and
+ how We managed to fly Our vehicle using both ground stations in the next
+ chapter.
+\end_layout
+
+\end_body
+\end_document

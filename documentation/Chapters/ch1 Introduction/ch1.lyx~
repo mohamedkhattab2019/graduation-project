@@ -1,0 +1,393 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+  
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\myTOC
+\clearpage
+\pagenumbering{arabic}
+}
+\renewcommand{\ps@plain}{\pagestyle{fancy}}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+braille
+changebars
+customHeadersFooters
+shapepar
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.54cm
+\topmargin 2.54cm
+\rightmargin 2.54cm
+\bottommargin 2.54cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Section
+FLYING TAXI 
+\end_layout
+
+\begin_layout Standard
+An air taxi is a small commercial aircraft which makes short flights on
+ demand, In 2001 air taxi operations were promoted in the United States
+ by a NASA and aerospace industry study on the potential Small Aircraft
+ Transportation System (SATS) and the rise of light-jet aircraft manufacturing,
+ the Flying taxi is a direct application of the VTOL which will have a great
+ impact in the future, many companies now like: Google,Uber and Audi ,..etc
+ invest much money in the self-driving cars and they achieved good steps,
+ On the other hand part of this companies in addition to the air transport
+ companies think in another way to build a flying vehicle which can carry
+ a person from point A and reach point B ,Actually by the start of 2019
+ Boeing released their first self-flying taxi which completed it's first
+ flight successfully.
+\end_layout
+
+\begin_layout Standard
+So it's obvious now that we are a step far from a new technology in the
+ Air transport that will make air transportation not limited for the Traveling
+ between countries, it's a new fast growing path which means that we need
+ more aerospace engineers who are aware about many concepts like path planning,s
+tate estimation, computer vision ,..etc.
+\end_layout
+
+\begin_layout Standard
+Of course they are many difficulties face this technology , technical difficulti
+es for example the test experiments as it cost too much and other difficulties
+ related to the laws and how much people will trust an autonomous flying
+ vehicle.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/190123140308-02-boeing-vtol-exlarge-169.jpeg
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+BOEING’S flying taxi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This year we aim to build an scaled prototype which take in consideration
+ a weight of one passenger , We start by build a prototype as in this stage
+ our main purpose is to build a software architecture of the flying taxi
+ so this prototype which is less cost comparing to a full scale model is
+ only used to verify the concept of vision navigation.
+\end_layout
+
+\begin_layout Standard
+as we mentioned before the flying taxi is a direct application of the VTOL
+ so we need to have a proper background about the VTOL.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The VTOL
+\end_layout
+
+\begin_layout Standard
+A vertical take-off and landing (VTOL) aircraft is one that can hover, take
+ off, and land vertically.
+ This classification can include a variety of types of aircraft including
+ fixed-wing aircraft as well as helicopters and other aircraft with powered
+ rotors.
+\begin_inset Newline newline
+\end_inset
+
+Some VTOL aircraft can operate in other modes as well, such as CTOL (conventiona
+l take-off and landing), STOL (short take-off and landing), and/or STOVL
+ (short take-off and vertical landing).
+ Others, such as some helicopters, can only operate by VTOL, due to the
+ aircraft lacking landing gear that can handle horizontal motion.
+ VTOL is a subset of V/STOL (vertical and/or short take-off and landing).
+ Some lighter-than-air aircraft also qualify as VTOL aircraft, as they can
+ hover, takeoff, and land with vertical approach/departure profiles.
+\begin_inset Newline newline
+\end_inset
+
+Electric and hybrid-electric vertical takeoff and landing aircraft eVTOL
+ is a technology being used in the quest for fully autonomous passenger
+ air vehicles (PAV).
+\begin_inset Newline newline
+\end_inset
+
+So why VTOL ? 
+\end_layout
+
+\begin_layout Standard
+vertical take off and landing, enables a traveler to travel directly from
+ point A to point B, instead of going from point A to an airport in a car
+ say, then fly from the airport to another airport, and then drive with
+ a car from the other airport to point B.
+ Not only in travel is VTOL very useful, in rescue operations as well as
+ in military and law enforcement applications it is often 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Advantages of VTOL
+\end_layout
+
+\begin_layout Standard
+VTOL is challenging.
+ It is far more technically difficult than conventional winged flight, but
+ in exchange, it has several advantages.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Time and fuel savings:
+\series default
+ Vertical take off and landing enables an aerial vehicle to take off from
+ many more locations than an aircraft that requires an airport.
+ This means that the journey to and from the airport can be eliminated,
+ saving time and fuel, and the researchers in US found out that A person
+ in the US lives an average of 17 miles away to the next airport.
+ But he lives on average less than 1 mile away from a location that is suitable
+ for vertical take-off and landing of a small civilian VTOL.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Efficiency and speed:
+\series default
+ For personal aircraft the the wing is typically constructed with a compromise
+ in mind.
+ Typically it is desired that personal airplanes can take off and land at
+ fairly low speeds such as 100kph , so that they can use small regional
+ airfields, for example.
+ On the other hand speed and efficiency are desired, but an overly large
+ wing is a hindrance to this.
+ Since lift (like drag) increases with speed, a very large wing at cruise
+ speed generates more lift than needed, requiring the pilot to trim the
+ elevator down, causing drag.
+ The large wing itself, is also causing drag due to skin friction, and the
+ larger it is, the more 'skin' is in contact with the air, the more drag
+ is caused, the slower the airplane can fly and the more fuel it burns.
+ A VTOL plane can be built such that its wings are optimized strictly for
+ speed and efficiency since take off and landing are not handled by the
+ wing.
+ If the VTOL components in turn do not cause much additional drag, then
+ real net drag reductions can be achieved making the plane faster and more
+ efficient than even a pure aircraft.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Safety: 
+\series default
+More than 85% of all airplane accidents (and fatalities) happen during their
+ conventional take off and landing.
+ The initial climb and the final descent are the most dangerous segments
+ of a flight.
+ An aircraft is safest when cruising at high altitude.
+ It is most vulnerable when flying close to the ground or rolling on the
+ ground at high speeds because the margin for error and error recovery is
+ small to non-existent.
+ This is why take off and landings are comparatively dangerous, even on
+ airports with their vastly long and empty runways.
+ Vertical take off and landing greatly reduces this risk because the plane
+ is accelerated and decelerated while high in the air adding margin for
+ error and recovery.
+ This makes already safe air travel even safer.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Different types of VTOL
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Rotorcraft , 
+\series default
+or rotary wing aircraft, are those that use lift generated by rotor blades
+ spinning around a central mast, so helicopters, quadcopters and gyrocopters.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Powered-lift vehicles 
+\series default
+are those that take off and land vertically but perform differently from
+ rotorcraft when in flight.
+ They typically have a more conventional fixed wing plane design.
+ Examples include convertiplanes such as the Bell Boeing V-22 Osprey, which
+ takes off and lands vertically but uses fixed wing lift in normal flight.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+The future of VTOL
+\end_layout
+
+\begin_layout Standard
+the VTOL aircraft has the potential to change the course of aviation history
+ and create a new chapter in modern day travel.
+\end_layout
+
+\begin_layout Itemize
+A number of firms are developing aircraft that use a VTOL system.
+ Despite a flood of recent controversies, ride-sharing app firm Uber has
+ pledged to launch its first flying taxis in 2020 using VTOL.
+\end_layout
+
+\begin_layout Itemize
+Munich-based aviation startup Lilium aims to offer an on-demand flying taxi
+ service that it claims will be five times faster than traveling in a car.
+ The current prototype is a two-seater aircraft shaped like a conventional
+ plane that uses a VTOL system.
+\end_layout
+
+\begin_layout Itemize
+at the 2017 Geneva Motor Show, Airbus showcased a prototype flying hybrid
+ car.
+ The modular vehicle can disconnect from it wheels, after which it is picked
+ up by a flying set of rotors.
+\end_layout
+
+\begin_layout Itemize
+Nasa has developed the battery-powered GL-10, which take off and land vertically
+ but flies efficiently like a conventional plane.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
