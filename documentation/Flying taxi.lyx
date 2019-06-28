@@ -118,7 +118,7 @@ tabs-within-sections
 \begin_layout Title
 
 \series bold
-Autonomous Airtransportation using vision navigation (Flying Taxi)
+Autonomous Airtransportation using Vision Navigation 
 \end_layout
 
 \begin_layout Author
@@ -154,7 +154,8 @@ Asst.
 \begin_inset Newline newline
 \end_inset
 
-Eng.
+Asst.
+ Prof.
  Mohanad
 \size default
 
@@ -232,103 +233,6 @@ Prof.
 for their time and their contribution in the design phase, and we also want
  to thank the all members in ASTL & UDC who helped us alot with their technical
  information.
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter*
-\begin_inset CommandInset nomencl_print
-LatexCommand printnomenclature
-set_width "auto"
-
-\end_inset
-
-Preface
-\end_layout
-
-\begin_layout Section*
-Project Structure
-\end_layout
-
-\begin_layout Standard
-This project is a new chapter of the cooperation between Boeing and Aerospace
- Department at Cairo University, This project aims to build a (VTOL) flying
- taxi prototype which can carry one passenger.
-\begin_inset Newline newline
-\end_inset
-
-In order to do that the work was divided in two paths: the design and build
- of a VTOL vehicle which can satisfy certain ODD, and the second path is
- related to the visual SLAM using stereo camera and the ROS working frame
- which we used to build our software architecture.
-\end_layout
-
-\begin_layout Section*
-Chapters Overview
-\end_layout
-
-\begin_layout Standard
-this Thesis is divided into five chapters each one is related to certain
- topic and discuss it completely with full details started with Introduction
- followed by how to implement the module.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Chapter 1
-\series default
- : is related to the structural design and the stability analysis as we
- had to build the model by ourself so we have to analyse it using computer
- software before starting to build it.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Chapter 2 
-\series default
-: in a parallel way we had build the mathematical model of the vehicle so
- we can have a characteristics that we use in the control loops to get the
- controller gains.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Chapter 3
-\series default
- : a comparison between self builded Autopilot and the commercial Autopilot
- we use.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Chapter 4
-\series default
- : a vision navigation and obstacle avoidance is the main core of the software
- architecture in this chapter we discuss the difference between the vision
- sensors and the difference between the obstacle avoidance algorithms and
- the one we used.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Chapter 5
-\series default
- : this chapter include complete explain to the ROS and the px4 autopilot
- and how we used them.
 \end_layout
 
 \begin_layout Standard
@@ -711,8 +615,97 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter*
-Motivation
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Section
+FLYING TAXI 
+\end_layout
+
+\begin_layout Standard
+An air taxi is a small commercial aircraft which makes short flights on
+ demand, In 2001 air taxi operations were promoted in the United States
+ by a NASA and aerospace industry study on the potential Small Aircraft
+ Transportation System (SATS) and the rise of light-jet aircraft manufacturing,
+ the Flying taxi is a direct application of the VTOL which will have a great
+ impact in the future, many companies now like: Google,Uber and Audi ,..etc
+ invest much money in the self-driving cars and they achieved good steps,
+ On the other hand part of this companies in addition to the air transport
+ companies think in another way to build a flying vehicle which can carry
+ a person from point A and reach point B ,Actually by the start of 2019
+ Boeing released their first self-flying taxi which completed it's first
+ flight successfully.
+\end_layout
+
+\begin_layout Standard
+So it's obvious now that we are a step far from a new technology in the
+ Air transport that will make air transportation not limited for the Traveling
+ between countries, it's a new fast growing path which means that we need
+ more aerospace engineers who are aware about many concepts like path planning,s
+tate estimation, computer vision ,..etc.
+\end_layout
+
+\begin_layout Standard
+Of course they are many difficulties face this technology , technical difficulti
+es for example the test experiments as it cost too much and other difficulties
+ related to the laws and how much people will trust an autonomous flying
+ vehicle.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/ch1 Introduction/190123140308-02-boeing-vtol-exlarge-169.jpeg
+	scale 30
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+BOEING’S flying taxi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This year we aim to build an scaled prototype which take in consideration
+ a weight of one passenger , We start by build a prototype as in this stage
+ our main purpose is to build a software architecture of the flying taxi
+ so this prototype which is less cost comparing to a full scale model is
+ only used to verify the concept of vision navigation.
+\end_layout
+
+\begin_layout Standard
+as we mentioned before the flying taxi is a direct application of the VTOL
+ so we need to have a proper background about the VTOL.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The VTOL
 \end_layout
 
 \begin_layout Standard
@@ -889,71 +882,6 @@ Nasa has developed the battery-powered GL-10, which take off and land vertically
  but flies efficiently like a conventional plane.
 \end_layout
 
-\begin_layout Paragraph*
-FLYING TAXI 
-\end_layout
-
-\begin_layout Standard
-An air taxi is a small commercial aircraft which makes short flights on
- demand, In 2001 air taxi operations were promoted in the United States
- by a NASA and aerospace industry study on the potential Small Aircraft
- Transportation System (SATS) and the rise of light-jet aircraft manufacturing,
- the Flying taxi is a direct application of the VTOL which will have a great
- impact in the future, many companies now like: Google,Uber and Audi ,..etc
- invest much money in the self-driving cars and they achieved good steps,
- On the other hand part of this companies in addition to the air transport
- companies think in another way to build a flying vehicle which can carry
- a person from point A and reach point B ,Actually by the start of 2019
- Boeing released their first self-flying taxi which completed it's first
- flight successfully.
-\end_layout
-
-\begin_layout Standard
-So it's obvious now that we are a step far from a new technology in the
- Air transport that will make air transportation not limited for the Traveling
- between countries, it's a new fast growing path which means that we need
- more aerospace engineers who are aware about many concepts like path planning,s
-tate estimation, computer vision ,..etc.
-\end_layout
-
-\begin_layout Standard
-Of course they are many difficulties face this technology , technical difficulti
-es for example the test experiments as it cost too much and other difficulties
- related to the laws and how much people will trust an autonomous flying
- vehicle.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../ch1 Introduction/190123140308-02-boeing-vtol-exlarge-169.jpeg
-	scale 30
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-BOEING’S flying taxi
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -962,7 +890,14 @@ BOEING’S flying taxi
 \end_layout
 
 \begin_layout Chapter
-Design
+Aircraft Design
+\end_layout
+
+\begin_layout Standard
+In this chapter we will discuss the mission that we put in our consideration
+ , So we can estimate the constraints and the initial weights, and this
+ procedure lead us to start with the Aerodynamic design then go forward
+ to the mechanical design.
 \end_layout
 
 \begin_layout Section
@@ -1025,398 +960,6 @@ Passenger payload
 comfortable chair
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-components weight estimation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="12" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-components
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-masses (gm)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-quantity
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Pixhawk
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-37
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Mini Jetson KIT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-150
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RP Lidar A1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-190
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ZED camera
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-159
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quad motors
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quad propellers
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quad ESC
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Pusher motor
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Pusher propeller
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Pusher ESC
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Battery
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-380
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-components masses
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Aerodynamic Design
 \end_layout
@@ -1452,10 +995,16 @@ We choose XFLR5 program that is suitable platform to analyze this application
  basic concepts of aerodynamics such as; lift, drag, Reylond’s number and
  also things like viscosity, laminar flow, turbulence flow and transition
  for more flow to the other all things which are the core of the xflr5.
- Finally we preferred to use Tandem wing plane to get greater lift than
- conventional wing, because we have two independent source of lift (two
- wings).
  
+\end_layout
+
+\begin_layout Standard
+Finally we preferred to use 
+\series bold
+Tandem
+\series default
+ wing plane to get greater lift than conventional wing, because we have
+ two independent source of lift (two wings).
 \end_layout
 
 \begin_layout Standard
@@ -1512,10 +1061,6 @@ Tandem wing plane
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1554,7 +1099,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Aerodynamic-design-First-iteration/results/NACA0015-Eppler42322.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/2 airfoils.png
 	scale 50
 
 \end_inset
@@ -1575,16 +1120,12 @@ The 2 airfoils
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Then we can see the boundary layer and pressure distribution along the two
  airfoils in fig.
  below with change at angle of attack from: (0 to 10 & from 0 to -6 ) degree:
@@ -1621,7 +1162,37 @@ Pressure distribution along NACA0015 with difference angle of attack
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/Cp-distirbution2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pressure distribution along NACA0015 at certain angle of attack and Reylonds
+ number
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1660,7 +1231,37 @@ Pressure distribution along Eppler423 with difference angle of attack
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/Cp-distirbution(Eppler423).png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pressure distribution along Eppler423 at certain angle of attack and Reylonds
+ number
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -1670,6 +1271,13 @@ Pressure distribution along Eppler423 with difference angle of attack
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 We make analysis at different Re (from 20,000 to 1,000,000) and see plots
  on polar figure:
 \end_layout
@@ -1718,6 +1326,45 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/foil analysis(NACA0015).png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Polar graph of NACA0015 at a certain Reylonds number=100,000 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
 	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Aerodynamic-design-First-iteration/results/Eppler-Batch analysis.png
 	scale 50
 
@@ -1739,10 +1386,48 @@ Polar graph of Eppler423
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/foil analysis(Eppler423).png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Polar graph of Eppler423 at a certain Reylonds number=130,000 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1788,17 +1473,6 @@ Configuration
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1817,7 +1491,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Aerodynamic-design-First-iteration/results/NACA0015-change in cg.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/lift analysis(NACA0015).png
 	scale 50
 
 \end_inset
@@ -1843,6 +1517,13 @@ NACA0015 Lift and Cm-alpha
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Eppler423
 \end_layout
@@ -1856,7 +1537,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Aerodynamic-design-First-iteration/results/Eppler lift and cm-alpha.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/lift analysis2(Eppler423).png
 	scale 50
 
 \end_inset
@@ -1877,17 +1558,6 @@ Eppler423 Lift and Cm
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -2321,10 +1991,6 @@ comparison between 2 airfoils
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2334,6 +2000,37 @@ comparison between 2 airfoils
 Conclusion of results:
 \end_layout
 
+\begin_layout Enumerate
+For configuration:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Before we illustration the main reason to select tandem wing plane to get
+ greater lift than conventional wing, because we have two independent source
+ of lift (two wings).
+\end_layout
+
+\begin_layout Itemize
+Then now we can say the reason of vertical distance (Gap) between 2 wings
+ that can affect the resulting vortex and vortex interactions that the wing
+ spacing has a noticeable effect on the resultant flow field and aerodynamic
+ forces, finally we selected this distance to prevent wings from weak as
+ a wing spacing is decrease, vortex structure at last wing became elongated
+ and spread due to interactions with the front wing.
+\end_layout
+
+\begin_layout Itemize
+Difference at dimension between 2 wings to equivalent to moment results
+ from wings.
+\end_layout
+
+\begin_layout Standard
+So this configuration help us to more stable quad-plane that increase stability
+ due to wing spacing.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 For incidence angle: All models we build it before almost of them have a
  negative incidence angle for tail not exceed -3 degree, So we highlight
@@ -2357,8 +2054,8 @@ For Lift: We find trim angle of attack at 4.5 degree, and we go to Fz VS
 \end_layout
 
 \begin_layout Standard
-So, we select model (1) , next step we modified the design to satisfy position
- of C.G.
+So, we select model (1) because model (1) is more effective than model (2),,
+ next step we modified the design to satisfy position of C.G.
 \end_layout
 
 \begin_layout Standard
@@ -2810,11 +2507,6 @@ Lift Vs alpha and Cm Vs alpha
 
 \end_layout
 
-\begin_layout Plain Layout
-\align center
-
-\end_layout
-
 \end_inset
 
 
@@ -2858,10 +2550,6 @@ Cl Vs alpha and Cl/Cd Vs alpha
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2894,10 +2582,6 @@ Cl
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2919,7 +2603,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Aerodynamic-design-First-iteration/results/ahm 2 fig.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/ahm 2fig(NACA0015).png
 	scale 50
 
 \end_inset
@@ -2937,10 +2621,6 @@ Fz vs alpha and Cm vs alpha
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -3021,10 +2701,6 @@ zero pole map for Longitudinal mode
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -3468,6 +3144,109 @@ Neutral Point position= 0.38245 m
 
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Time response characteristics:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/short period.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Short period mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where u: horizontal speed.
+ w: vertical speed.
+ q: pitch rate.
+ theta: pitch angle,We noticed that is heavy damped mode (quick mode), all
+ parameters reached to zero at very small time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/short period2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+zero at very small time.
+ Motion around steady flight mode 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At total time=100 second, and step=0.1 second we see the signal is converge
+ with time.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 For lateral
 \end_layout
@@ -3524,10 +3303,6 @@ zero pole map for Lateral mode
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -3982,6 +3757,58 @@ C
 \begin_layout Itemize
 
 \series bold
+Time response characteristics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/abd el adel/figs/Lateral response.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Lateral response modes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where v: velocity speed.
+ p: roll rate.
+ r: yaw rate.
+ phi: bank angle.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 Non-dimensional Stability Derivatives calculated by program: 
 \end_layout
 
@@ -3997,7 +3824,7 @@ Non-dimensional Stability Derivatives calculated by program:
 \begin_inset Text
 
 \begin_layout Plain Layout
-CXu = -0.05768
+CXu = -0.12599
 \end_layout
 
 \end_inset
@@ -4006,7 +3833,7 @@ CXu = -0.05768
 \begin_inset Text
 
 \begin_layout Plain Layout
-CYb = -0.45694
+CYb = -0.24520
 \end_layout
 
 \end_inset
@@ -4017,7 +3844,7 @@ CYb = -0.45694
 \begin_inset Text
 
 \begin_layout Plain Layout
-CLu = 0.00031
+CLu = 0.00057
 \end_layout
 
 \end_inset
@@ -4026,7 +3853,7 @@ CLu = 0.00031
 \begin_inset Text
 
 \begin_layout Plain Layout
-Clb = -0.05641
+Clb = -0.05277
 \end_layout
 
 \end_inset
@@ -4046,7 +3873,7 @@ Cmu = 0.00000
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cnb = 0.27372
+Cnb = 0.12824
 \end_layout
 
 \end_inset
@@ -4057,7 +3884,7 @@ Cnb = 0.27372
 \begin_inset Text
 
 \begin_layout Plain Layout
-CXa = 0.10753
+CXa = 0.28216
 \end_layout
 
 \end_inset
@@ -4066,7 +3893,7 @@ CXa = 0.10753
 \begin_inset Text
 
 \begin_layout Plain Layout
-CYp = -0.05404
+CYp = -0.06327
 \end_layout
 
 \end_inset
@@ -4077,7 +3904,7 @@ CYp = -0.05404
 \begin_inset Text
 
 \begin_layout Plain Layout
-CLa = 5.46422
+CLa = 6.95194
 \end_layout
 
 \end_inset
@@ -4086,7 +3913,7 @@ CLa = 5.46422
 \begin_inset Text
 
 \begin_layout Plain Layout
-Clp = -0.51794
+Clp = -0.90835
 \end_layout
 
 \end_inset
@@ -4097,7 +3924,7 @@ Clp = -0.51794
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cma = -1.09910
+Cma = -0.78024
 \end_layout
 
 \end_inset
@@ -4106,7 +3933,7 @@ Cma = -1.09910
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cnp = -0.05093
+Cnp = -0.15792
 \end_layout
 
 \end_inset
@@ -4117,7 +3944,7 @@ Cnp = -0.05093
 \begin_inset Text
 
 \begin_layout Plain Layout
-CXq = -0.49272
+CXq = -0.24026
 \end_layout
 
 \end_inset
@@ -4126,7 +3953,7 @@ CXq = -0.49272
 \begin_inset Text
 
 \begin_layout Plain Layout
-CYr = 0.62552
+CYr = 0.29289
 \end_layout
 
 \end_inset
@@ -4137,7 +3964,7 @@ CYr = 0.62552
 \begin_inset Text
 
 \begin_layout Plain Layout
-CLq = 12.54598
+CLq = 13.60765
 \end_layout
 
 \end_inset
@@ -4146,7 +3973,7 @@ CLq = 12.54598
 \begin_inset Text
 
 \begin_layout Plain Layout
-Clr = 0.21810
+Clr = 0.38927
 \end_layout
 
 \end_inset
@@ -4157,7 +3984,7 @@ Clr = 0.21810
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cmq = -16.59853
+Cmq = -42.88605
 \end_layout
 
 \end_inset
@@ -4166,62 +3993,13 @@ Cmq = -16.59853
 \begin_inset Text
 
 \begin_layout Plain Layout
-Cnr = -0.37974
+Cnr = -0.15451
 \end_layout
 
 \end_inset
 </cell>
 </row>
 </lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Time response characteristics
-\end_layout
-
-\begin_layout Standard
-At total time=100 second, and step=0.1 second we see the signal is converge
- with time.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Aerodynamic-design-First-iteration/results/response.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Time Response
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \end_inset
 
@@ -4236,7 +4014,23 @@ Time Response
 \end_layout
 
 \begin_layout Section
-Structural Design
+Mechanical Design
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Standard
+In this chapter, we will discuss how to build and efficient and sufficient
+ mechanical design for an autonomous flying taxi.
+\end_layout
+
+\begin_layout Standard
+Our design is both sufficient and efficient so that it can withstand all
+ the mechanical loads and vibrations and also carry the payload with a minimum
+ weight of its components, it's also characterized by the good and attractive
+ appearance to attract passenger's attention.
 \end_layout
 
 \begin_layout Subsection
@@ -4245,15 +4039,18 @@ Building a 3D model
 
 \begin_layout Standard
 Solid Works is used to create a 3D model and AutoCAD is used to edit 2D
- sketches for machining purposes
+ sketches for machining purposes.
+ SolidWorks and AutoCAD are solid modeling computer-aided design (CAD) and
+ computer-aided engineering (CAE) computer programs that runs on Microsoft
+ Windows.
 \end_layout
 
 \begin_layout Subsubsection
-aolidWorks outputs:
+SolidWorks outputs:
 \end_layout
 
 \begin_layout Enumerate
-Files used in machining
+Files used in machining (laser cutting and 3D printing)
 \end_layout
 
 \begin_layout Enumerate
@@ -4273,17 +4070,17 @@ Steps to draw a 3D model in SolidWorks
 \end_layout
 
 \begin_layout Enumerate
+Define components of the payload, their dimensions, weight and fixation
+ points
+\end_layout
+
+\begin_layout Enumerate
 Define important dimensions created through aerodynamic analysis process
  such as: arm, span, chord ...
 \end_layout
 
 \begin_layout Enumerate
 Define CG position needed for aerodynamic stability
-\end_layout
-
-\begin_layout Enumerate
-Define components of the payload, their dimensions, weight and fixation
- points
 \end_layout
 
 \begin_layout Enumerate
@@ -4294,14 +4091,268 @@ define the components that needs mounts
 Clearance needed for wiring and connections
 \end_layout
 
-\begin_layout Subsection
-Components
+\begin_layout Subsubsection
+AutoCAD outputs
 \end_layout
 
+\begin_layout Enumerate
+edit 2D machining files obtained from SolidWorks
+\end_layout
+
+\begin_layout Enumerate
+Connected to a CNC Laser cutting machine and modify files into G-code for
+ the machine
+\end_layout
+
+\begin_layout Subsection
+Configurations
+\end_layout
+
+\begin_layout Standard
+In this part various configurations will be discussed and a certain configuratio
+n will be chosen
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/configurations/conv.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Conventional configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/configurations/wwing.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flying wing configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/configurations/Bode.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pod and Boom Configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After deep research, Tandem wing configuration is found to be the most suitable
+ configuration for a flying taxi vehicle where it needs to land and takeoff
+ in streets between buildings so it needs to be with very small span, tandem
+ wing configurations provide high left with small span
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/configurations/4.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tandem wing configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Payload 3D models
+\end_layout
+
+\begin_layout Itemize
+Human 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Assuming a regular Human body weighs 200 kg, a scaled model is used to be
+ the passenger of our vehicle on a scale of 1/1000
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/passenger.PNG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+1/1000 Scaled Passemger
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Chair
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/chair.PNG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Chair
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Pixhawk
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 Pixhawk position and orientation are the constraints that must be taken
  in consideration during vehicle design.
@@ -4319,8 +4370,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/Components/pixhawk.png
-	width 50page%
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/pixhawk.png
+	scale 50
 
 \end_inset
 
@@ -4344,17 +4395,12 @@ Pixhawk 3D model
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Itemize
 Pixhawk mount
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -4364,8 +4410,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/Components/pixhawk mount.png
-	width 50page%
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/pixhawk mount.png
+	scale 50
 
 \end_inset
 
@@ -4389,10 +4435,12 @@ Pixhawk mount 3D model
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 ZED camera
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -4402,8 +4450,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/Components/ZED.png
-	width 50page%
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/ZED.png
+	scale 50
 
 \end_inset
 
@@ -4427,32 +4475,67 @@ ZED stereo camera 3D model
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-Jetson nano
+RP Lidar A1
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
-\begin_inset Newpage pagebreak
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/lidar.png
+	scale 50
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+RP Lidar A1 3D model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Jetson Nano KIT
 \end_layout
 
 \begin_layout Itemize
 Quad Motor
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/Components/hover motor.png
-	width 20page%
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/hover motor.png
+	scale 50
 
 \end_inset
 
@@ -4476,10 +4559,12 @@ Hovering quad motor 3D model
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Pusher motor
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -4489,8 +4574,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/Components/pusher motor.png
-	scale 35
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/pusher motor.png
+	scale 50
 
 \end_inset
 
@@ -4514,10 +4599,12 @@ Pusher motor 3D model
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Battery
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -4527,8 +4614,8 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/Components/battery.png
-	width 30page%
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/Components/battery.png
+	scale 50
 
 \end_inset
 
@@ -4552,6 +4639,7 @@ Battery 3D model
 
 \end_layout
 
+\end_deeper
 \begin_layout Subsection
 Wing fixation method
 \end_layout
@@ -4581,7 +4669,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/wing fixation/Capture.JPG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/wing fixation/Capture.JPG
 	width 75page%
 
 \end_inset
@@ -4616,7 +4704,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/wing fixation/explanition incidince.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/wing fixation/explanition incidince.jpg
 	width 75page%
 
 \end_inset
@@ -4651,7 +4739,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/wing fixation/zero incidince.JPG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/wing fixation/zero incidince.JPG
 	width 75page%
 
 \end_inset
@@ -4686,7 +4774,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/wing fixation/-4.JPG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/wing fixation/-4.JPG
 	width 75page%
 
 \end_inset
@@ -4721,7 +4809,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/wing fixation/4.JPG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/wing fixation/4.JPG
 	width 75page%
 
 \end_inset
@@ -4768,7 +4856,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/wing fixation/constant incidence 1.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/wing fixation/constant incidence 1.png
 	width 75page%
 
 \end_inset
@@ -4798,6 +4886,508 @@ Constant incidence fixation at 2 degrees incidence
 Fuselage
 \end_layout
 
+\begin_layout Standard
+Fuselage is the main structure of the aircraft which holds all other components
+ and substructures together and also carries the payload.
+\end_layout
+
+\begin_layout Standard
+After Aerodynamic analysis and bringing our CG in the middle between the
+ four motors, a mechanical design must be done depending on Fuselage.
+ Many iterations are designed, manufactured and tested for reliability ,
+ sufficiency and efficiency and in this part we will discuss some of these
+ iterations and our final mechanical design 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+NOTE: 
+\series default
+after the eighth iteration, new set of motors with higher propulsive power
+ was available increasing the maximum takeoff weight so, the ability of
+ creating more stiff designs increased
+\end_layout
+
+\begin_layout Itemize
+First iteration :This iteration was manufactures and tested and found to
+ be very efficient but it has one fetal disadvantage, that the tractor propeller
+ covers the vision of the ZED camera so, we had to switch to a pusher motor
+ instead of tractor motor
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/1st iteration/1.JPG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/1st iteration/4.JPG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/1st iteration/2.JPG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/1st iteration/6.JPG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+1st mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Second iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/2nd iteration/Capture.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+2nd mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Third iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/3rd iteration/Capture.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/3rd iteration/4.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/3rd iteration/Capture2.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\backslash
+
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/3rd iteration/3.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+3rd mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fourth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/4th iteration/1.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+4th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fifth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/5th iteration/1.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+5th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sixth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/6th iteration/Capture.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+6th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Seventh iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/7th iteration/1.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+7th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Eighth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/8th iteration/Capture.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+8th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ninth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/9th iteration/Capture.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+9th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Tenth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/10th iteration/Capture.PNG
+	width 25page%
+	height 25pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+10th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Propulsion system selection
 \end_layout
@@ -4807,8 +5397,13 @@ Vertical takeoff propulsion system
 \end_layout
 
 \begin_layout Itemize
-Motors : the rule of thump in choosing a vertical takeoff propulsion system
- is that the total propulsive force is twice the weight of the vehicle.
+Motors
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+the rule of thump in choosing a vertical takeoff propulsion system is that
+ the total propulsive force is twice the weight of the vehicle.
  See eq
 \end_layout
 
@@ -4826,7 +5421,7 @@ Motors : the rule of thump in choosing a vertical takeoff propulsion system
 Note:
 \series default
  Due to limited resources of available motors, we had to estimate the maximum
- takeoff weight from the available set of motors .
+ takeoff weight from the available set of motors 
 \end_layout
 
 \begin_layout Standard
@@ -4838,7 +5433,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/propulsion system/KDE2315XF_III_865e1186-de77-4a5d-88dc-2ecf16fd3482_large.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/propulsion system/KDE2315XF_III_865e1186-de77-4a5d-88dc-2ecf16fd3482_large.jpg
 	scale 50
 
 \end_inset
@@ -5029,7 +5624,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/propulsion system/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/propulsion system/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
 	scale 70
 
 \end_inset
@@ -5054,6 +5649,7 @@ Hover motor's preformance data
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 ESCs
 \end_layout
@@ -5067,8 +5663,13 @@ Cruise propulsion system
 \end_layout
 
 \begin_layout Itemize
-Motors : According to many references, the rule of thump in choosing a pusher
- motor is according to the following table
+Motors
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+According to many references, the rule of thump in choosing a pusher motor
+ is according to the following table
 \end_layout
 
 \begin_layout Standard
@@ -5237,7 +5838,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/propulsion system/gpmg4595.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/propulsion system/gpmg4595.jpg
 	width 30page%
 
 \end_inset
@@ -5459,6 +6060,7 @@ Pusher motor specifications
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 ESCs
 \end_layout
@@ -5483,11 +6085,11 @@ A MATlab code is created that roughly calculates the capacity if the battery
 Assumptions:
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
 The working time of the hovering motors is 20% of the mission endurance
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
 The working time of pusher motor is the total mission endurance 
 \end_layout
 
@@ -5495,6 +6097,7 @@ The working time of pusher motor is the total mission endurance
 Battery used in vehicle
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 A high quality Lithium battery, low weight /size and high power make it
  suitable for our application
@@ -5508,7 +6111,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../Michael T lyx~/Lyx/propulsion system/lpb5200.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_2/micheal_tharwat/propulsion system/lpb5200.jpg
 	width 50page%
 
 \end_inset
@@ -5534,10 +6137,12 @@ Lithium Polymer Battery (11.1 V, 5200 mAH- 35C)
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 Battery specification
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset Float table
 wide false
@@ -5645,7 +6250,7 @@ size
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+140x30x30 mm
 \end_layout
 
 \end_inset
@@ -5695,14 +6300,12 @@ Battery specification
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
+\end_deeper
+\begin_layout Chapter
+Autopilot Design
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Mathematical Model
 \end_layout
 
@@ -5711,7 +6314,7 @@ The mathematical model will be derived mainly to design the controller during
  phase in which the flying taxi acts as multicopter.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Equations of Motion(
 \series bold
 Rigid-Body dynamics
@@ -5719,8 +6322,18 @@ Rigid-Body dynamics
 )
 \end_layout
 
-\begin_layout Subsection
-Kinetics ( the study of forces and moments on system in motion)
+\begin_layout Subsubsection
+Kinetics 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+the study of forces and moments on system in motion
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -5932,15 +6545,39 @@ motor 1: CCW drag , motor 2: CW drag , motor 3: CCW drag , motor 4: CW drag
 \end_inset
 
 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename pasted1.png
+	filename ../shady/modify_iteration1/pasted1.png
 
 \end_inset
 
 
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+motor configuration
+\end_layout
+
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 also 
 \begin_inset Formula $T_{i}=b_{i}\omega_{i}^{2}$
 \end_inset
@@ -6015,9 +6652,26 @@ directions
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \end_deeper
-\begin_layout Subsection
-Kinematics (the study of motion without regard to forces or moments)
+\begin_layout Subsubsection
+Kinematics 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+the study of motion without regard to forces or moments
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -6235,7 +6889,7 @@ r
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Resultant Nonlinear model
 \end_layout
 
@@ -6335,7 +6989,14 @@ from equ.s (1,2,10,11) , we don't have direct control over positions (X ,Y)
  required position.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Linearization 
 \end_layout
 
@@ -6387,7 +7048,7 @@ all rates = 0 ,
  gains for guidance system.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Parameters
 \end_layout
 
@@ -6397,6 +7058,7 @@ s needed to design the controller in the next step:
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features tabularvalignment="middle">
@@ -6426,7 +7088,10 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kg
+\begin_inset Formula $kg$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6542,29 +7207,29 @@ Iz
 
 \end_layout
 
-\begin_layout Chapter
+\begin_layout Section
 Autopilot
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Autopilot design
 \end_layout
 
 \begin_layout Standard
-From previous notes stated after deriving the nonlinear model, control block
- diagram is designed to be as follows:
+From previous notes we stated after deriving the nonlinear model, we designed
+ our control block diagram to be as follows:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename control loops of autopilot.png
+	filename ../shady/modify_iteration1/control loops of autopilot.png
 	lyxscale 80
 	scale 80
 
@@ -6590,7 +7255,7 @@ Autopilot design
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Attitude controller
 \end_layout
 
@@ -6638,12 +7303,12 @@ ignoring motor dynamics as it has fast response w.r.t.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename roll controller.png
+	filename ../shady/modify_iteration1/roll controller.png
 
 \end_inset
 
@@ -6692,12 +7357,12 @@ The roll step response and control action for linear and nonlinear models
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename roll.bmp
+	filename ../shady/modify_iteration1/roll.bmp
 	lyxscale 70
 	width 100col%
 
@@ -6729,12 +7394,12 @@ The response for 5 deg desired roll input and control action (to show the
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename roll_5deg.bmp
+	filename ../shady/modify_iteration1/roll_5deg.bmp
 	lyxscale 50
 	width 100col%
 
@@ -6755,20 +7420,12 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Standard
 
 \series bold
 \bar under
@@ -6812,12 +7469,12 @@ ignoring motor dynamics as it has fast response w.r.t.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pitch controller.png
+	filename ../shady/modify_iteration1/pitch controller.png
 
 \end_inset
 
@@ -6871,12 +7528,12 @@ The pitch step response and control action for linear and nonlinear models
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pitch.bmp
+	filename ../shady/modify_iteration1/pitch.bmp
 	lyxscale 70
 	width 100col%
 
@@ -6908,12 +7565,12 @@ The response for 5 deg desired pitch input and control action (to show the
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pitch_5deg.bmp
+	filename ../shady/modify_iteration1/pitch_5deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -6937,9 +7594,9 @@ status open
 \end_inset
 
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \series bold
 \bar under
@@ -6983,12 +7640,12 @@ ignoring motor dynamics as it has fast response w.r.t.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename yaw controller.png
+	filename ../shady/modify_iteration1/yaw controller.png
 
 \end_inset
 
@@ -7043,12 +7700,12 @@ The yaw step response and control action for linear and nonlinear models
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename yaw.bmp
+	filename ../shady/modify_iteration1/yaw.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7080,12 +7737,12 @@ The response for 5 deg desired Yaw input and control action (to show the
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename yaw_5deg.bmp
+	filename ../shady/modify_iteration1/yaw_5deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7109,9 +7766,9 @@ status open
 \end_inset
 
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \series bold
 \bar under
@@ -7132,12 +7789,12 @@ As we see from the nonlinear model all attitude states affects each others
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Coupling_R5_P0_Y5.bmp
+	filename ../shady/modify_iteration1/Coupling_R5_P0_Y5.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7158,16 +7815,12 @@ desired roll = 5 deg , desired pitch = 0 , desired yaw = 5
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Altitude Controller
 \end_layout
 
@@ -7193,7 +7846,14 @@ noprefix "false"
 \end_inset
 
 ): 
-\begin_inset Formula $\therefore\ddot{Z}=-\frac{\Delta T_{allmotors}}{m}\Rightarrow G_{Z}=\frac{Z}{\Delta T_{allmotors}}=\frac{1}{m\,s^{2}}$
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\therefore\ddot{Z}=-\frac{\Delta T_{allmotors}}{m}\Rightarrow G_{Z}=\frac{Z}{\Delta T_{allmotors}}=\frac{1}{m\,s^{2}}
+\]
+
 \end_inset
 
 
@@ -7208,12 +7868,12 @@ ignoring motor dynamics as it has fast response w.r.t.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename altitude controller.png
+	filename ../shady/modify_iteration1/altitude controller.png
 
 \end_inset
 
@@ -7267,12 +7927,12 @@ The altitude step response (Z = -1 m) and control action for linear and
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename altitude_1m.bmp
+	filename ../shady/modify_iteration1/altitude_1m.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7304,12 +7964,12 @@ The response for -4 m (Z = 4 m) desired altitude input and control action
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename altitude_-4m.bmp
+	filename ../shady/modify_iteration1/altitude_-4m.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7344,7 +8004,7 @@ doesn't mean reversed motors thrust but means that the thrust will decrease
  below nominal thrust.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Attitude & Altitude controllers together in action
 \end_layout
 
@@ -7359,12 +8019,12 @@ We will study the effect of changing both attitude and altitude because
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename coupling_R-5_P-5_Z-4.bmp
+	filename ../shady/modify_iteration1/coupling_R-5_P-5_Z-4.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7386,16 +8046,12 @@ desired roll = -5 deg , desired pitch = -5 deg , desired altitude = -4 m
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Line-of-sight (LOS) Guidance
 \end_layout
 
@@ -7414,12 +8070,12 @@ er flight phase of the flying taxi.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LOS.png
+	filename ../shady/modify_iteration1/LOS.png
 	lyxscale 70
 	scale 70
 
@@ -7437,10 +8093,6 @@ LOS
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -7469,12 +8121,12 @@ e_{along-track} & =R-s
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LOS block diagram.png
+	filename ../shady/modify_iteration1/LOS block diagram.png
 
 \end_inset
 
@@ -7545,12 +8197,12 @@ component doesn't appear
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename X guidance.png
+	filename ../shady/modify_iteration1/X guidance.png
 
 \end_inset
 
@@ -7594,12 +8246,12 @@ Using SISO tool :
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename along track control_alt_contr_effect.bmp
+	filename ../shady/modify_iteration1/along track control_alt_contr_effect.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7634,12 +8286,12 @@ changing the gains in LabVIEW Simulation (Shown in the next section) by
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LabVIEW frontpanel.png
+	filename ../shady/modify_iteration1/LabVIEW frontpanel.png
 	lyxscale 80
 	width 100col%
 
@@ -7669,12 +8321,12 @@ LabVIEW front panel
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename along track control_newGains.bmp
+	filename ../shady/modify_iteration1/along track control_newGains.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7704,12 +8356,12 @@ along-track control (trial : 2 increasing P) : high steady-state error
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename along track control_newGains2_decreaseKd.bmp
+	filename ../shady/modify_iteration1/along track control_newGains2_decreaseKd.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7746,7 +8398,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename along track control_newGains2_with Iterm.bmp
+	filename ../shady/modify_iteration1/along track control_newGains2_with Iterm.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7777,12 +8429,12 @@ along-track control (trial : 3 adding small I term to eliminate steady-state
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename along track control.bmp
+	filename ../shady/modify_iteration1/along track control.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7877,12 +8529,12 @@ component doesn't appear
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename Y guidance.png
+	filename ../shady/modify_iteration1/Y guidance.png
 
 \end_inset
 
@@ -7968,12 +8620,12 @@ as seen from the figure below , the yaw angle is changed to -90 deg quickly
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename guidance_y_only.bmp
+	filename ../shady/modify_iteration1/guidance_y_only.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7997,10 +8649,6 @@ X,Y guidance waypoint(X=0 , Y=1 , Z=-1)
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -8014,34 +8662,84 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename XYG1.png
+	filename ../shady/modify_iteration1/XYG1.png
 	width 45col%
 
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
-	filename XYG2.png
+	filename ../shady/modify_iteration1/XYG2.png
 	width 45col%
 
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
+
 \begin_inset Graphics
-	filename XYG3.png
+	filename ../shady/modify_iteration1/XYG3.png
 	width 45col%
 
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Graphics
-	filename XYG4.png
+	filename ../shady/modify_iteration1/XYG4.png
 	width 45col%
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -8050,8 +8748,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename XYG5.png
-	width 50col%
+	filename ../shady/modify_iteration1/XYG5.png
+	width 45col%
 
 \end_inset
 
@@ -8070,10 +8768,6 @@ X,Y Guidance waypoint(X=1 , Y=1 , Z=-1)
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -8087,14 +8781,14 @@ Simulation using LabVIEW
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LabVIEW frontpanel.png
+	filename ../shady/modify_iteration1/LabVIEW frontpanel.png
 	lyxscale 80
-	width 100col%
+	width 50page%
 
 \end_inset
 
@@ -8122,14 +8816,14 @@ LabVIEW front panel
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LabVIEW blockdiagram.png
+	filename ../shady/modify_iteration1/LabVIEW blockdiagram.png
 	lyxscale 80
-	width 100col%
+	width 50col%
 
 \end_inset
 
@@ -8157,14 +8851,14 @@ LabVIEW blockdiagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LabVIEW guidance bloackdiagram.png
+	filename ../shady/modify_iteration1/LabVIEW guidance bloackdiagram.png
 	lyxscale 80
-	width 100col%
+	width 80page%
 
 \end_inset
 
@@ -8192,13 +8886,13 @@ LabVIEW Guidance blockdiagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LabVIEW altitude  blockdiagram.png
-	width 90col%
+	filename ../shady/modify_iteration1/LabVIEW altitude  blockdiagram.png
+	scale 80
 
 \end_inset
 
@@ -8226,13 +8920,13 @@ LabVIEW altitude BD
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename LabVIEW attitude  blockdiagram.png
-	width 90col%
+	filename ../shady/modify_iteration1/LabVIEW attitude  blockdiagram.png
+	scale 80
 
 \end_inset
 
@@ -8256,1095 +8950,11 @@ LabVIEW attitude controller BD
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Commercial Autopilot
 \end_layout
 
-\begin_layout Standard
-We used PIXHAWK as a commercial autopilot.
- PIXHAWK is an autopilot hardware for academic, hobby and developer communitites
- and supports flight stacks software like PX4 and ArduPilot.
- We used PX4 software.
- PX4 software consists of 2 main parts: Middleware and Flightstack as follows:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="40col%">
-<column alignment="center" valignment="top" width="40col%">
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="90col%">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PX4 Software
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Middleware
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Flightstack
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-general robotics layer for any autonomous robot not only drones like rovers.
- It handles the internal communications between the different running programs
- using asynchronous message passing(uORB) and external communication using
- MAVLink or FastRTPS.
- It provides the hardware integration (GPS-IMU-....)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-It contains the estimation and flight control system.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename PX4_Architecture.svg
-	lyxscale 60
-	width 60col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-PX4 architecture from PX4 website
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We are concerned more with the Flightstack so we will take a small dive
- to show the basics of each subsystem in the flightstack.
- The flightstack consists of 7 main subsystems: Commander - Navigator -
- Position Controller - Attitude & Rate Controller - Sensors Hub - Estimator
- - Output Driver
-\end_layout
-
 \begin_layout Subsection
-Commander
-\end_layout
-
-\begin_layout Standard
-The commander is a state-machine architecture which can switch the flight
- modes based on specific conditions from the remote control or even from
- the mavlink (using companion computer).
- A simple example shows how the commander works: The commander has a main
- loop inside which check if there is an 
-\begin_inset Quotes eld
-\end_inset
-
-Arming
-\begin_inset Quotes erd
-\end_inset
-
- signal coming from the remote control and if there is , it will call a
- function called 
-\begin_inset Quotes eld
-\end_inset
-
-arming_state_transition()
-\begin_inset Quotes erd
-\end_inset
-
- and after checking if it's valid to 
-\begin_inset Quotes eld
-\end_inset
-
-Arm
-\begin_inset Quotes erd
-\end_inset
-
- the muticopter.
- the arm variable will be changed to the arming value and then published
- for other programs using the uORB message system which is built inside
- the PX4 middleware.When the output drivers programs read the arm variable,
- they will initiate the spinning of the motors.
- We will explain the 
-\begin_inset Quotes eld
-\end_inset
-
-flight modes
-\begin_inset Quotes erd
-\end_inset
-
- later in this section.
-\end_layout
-
-\begin_layout Subsection
-Navigator
-\end_layout
-
-\begin_layout Standard
-The navigator takes its 
-\series bold
-inputs
-\series default
- from 
-\bar under
-database(store waypoints or mission),RC(Remote control) or the Commandar
-\bar default
-, and 
-\series bold
-outputs
-\series default
- 
-\bar under
-position setpoints
-\bar default
- to be used by the position controller.
-\end_layout
-
-\begin_layout Subsection
-Position controller
-\end_layout
-
-\begin_layout Standard
-inputs: Position setpoints & heading
-\end_layout
-
-\begin_layout Standard
-outputs: 
-\series bold
-Thrust vector
-\series default
- which can be decomposed into 
-\bar under
-attitude(angles) setpoints
-\bar default
- and 
-\bar under
-thrust magnitude.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pasted2.png
-	width 80page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-cascaded control architecture from 
-\begin_inset Quotes eld
-\end_inset
-
-Nonlinear Quadrocopter Attitude Control Technical Report,Brescianini, Dario;
- Hehn, Markus; D'Andrea, Raffaello,2013
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The feedforward signal isn't used for multirotors.
-\end_layout
-
-\begin_layout Standard
-The position controller is implemented such that it consists of 2 loops
- :
-\end_layout
-
-\begin_layout Enumerate
-
-\bar under
-1st loop
-\bar default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-inputs: position setpoints , outputs: velocity setpoints , controller: P-control
-ler
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename pasted4.png
-	width 90col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\bar under
-2nd loop
-\bar default
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-inputs: velocity setpoint , outputs: required thrust vector , controller:
- PID-controller
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename pasted5.png
-	width 90col%
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename pasted6.png
-	width 90col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-But the D-term in the controller don't use the error rate as usual PIDs
- , it uses the negative rate of the estimated plant velocity to avoid 
-\begin_inset Quotes eld
-\end_inset
-
-the derivative kick
-\begin_inset Quotes erd
-\end_inset
-
- which causes high control action due to the discrete implementation of
- the PID.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename position controller.png
-	width 80col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Position Controller
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Attitude & Rate Controller
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pasted3.png
-	width 80col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-cascaded control architecture from 
-\begin_inset Quotes eld
-\end_inset
-
-Nonlinear Quadrocopter Attitude Control Technical Report,Brescianini, Dario;
- Hehn, Markus; D'Andrea, Raffaello,2013
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-inputs: attitude setpoints(Roll-Pitch-Yaw)
-\end_layout
-
-\begin_layout Standard
-outputs: 
-\series bold
-Required Forces and Moments
-\end_layout
-
-\begin_layout Standard
-The Attitude controller consists also of 2 loops :
-\end_layout
-
-\begin_layout Enumerate
-
-\bar under
-1st loop
-\bar default
- 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-inputs: attitude setpoints , outputs: angular rates setpoints , controller:
- P-controller (
-\begin_inset Formula $\frac{1}{\tau}$
-\end_inset
-
-)
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename pasted7.png
-	width 60col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\bar under
-2nd loop
-\bar default
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-inputs: angular rates setpoint , outputs: required forces and moments ,
- controller: PID-controller
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename pasted8.png
-	width 90col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The PX4 provides some measures to account for the nonlinear behavior of
- the motor in practice.
- For example if we noticed oscillations when we go towards full-throttle,
- we can solve this problem using 2 approaches:
-\end_layout
-
-\begin_layout Enumerate
-Thrust Curve method : 
-\begin_inset Formula $thrust=(1-factor)PWM+(factor)\,PWM^{2}$
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-the 
-\begin_inset Formula $factor$
-\end_inset
-
- is stored in 
-\begin_inset Quotes eld
-\end_inset
-
-THR_MDL_FAC
-\begin_inset Quotes erd
-\end_inset
-
- parameter so we can change it to model our motors characteristics.
-\end_layout
-
-\begin_layout Enumerate
-PID attenuation method : after some value of the throttle (for example:
- 70%) called 
-\begin_inset Quotes eld
-\end_inset
-
-break-point
-\begin_inset Quotes erd
-\end_inset
-
-, we can attenuate the gains to decrease the control effort according to
- a parameter called 
-\begin_inset Quotes eld
-\end_inset
-
-rate
-\begin_inset Quotes erd
-\end_inset
-
-.
- The break-point value is configured using 
-\begin_inset Quotes eld
-\end_inset
-
-MC_TPA_BREAK_*
-\begin_inset Quotes erd
-\end_inset
-
- parameters , and the rate is configured using 
-\begin_inset Quotes eld
-\end_inset
-
-MC_TPA_RATE_* 
-\begin_inset Quotes erd
-\end_inset
-
- parameters.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename pasted9.png
-	width 50col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename attitude controller.png
-	width 80col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Attitude&rate controller
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Estimator
-\end_layout
-
-\begin_layout Standard
-In PX4 flightstack, there is 4 types of estimators are defined so we can
- choose the one that suits our application.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="22col%">
-<column alignment="center" valignment="top" width="22col%">
-<column alignment="center" valignment="top" width="22col%">
-<column alignment="center" valignment="top" width="22col%">
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Estimator
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Q attitude estimator
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-INAV position estimator
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-LPE position estimator
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-EKF2
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-It's a quaternion based 
-\series bold
-complementary filter
-\series default
- for 
-\series bold
-attitude.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-It's a 
-\series bold
-complementary filter
-\series default
- for estimating 
-\series bold
-3D position and velocities.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-It's an 
-\series bold
-EKF(Extended Kalman filter)
-\series default
- for estimating 
-\series bold
-3D position and velocities.
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-It's as an 
-\series bold
-EKF(Extended Kalman filter)
-\series default
- for estimating 
-\series bold
-3D postion , velocities , wind states and attitude.
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can choose the required estimator using SYS_MC_EST_GROUP parameter which
- has 3 possible values to choose the estimator as follows:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="30col%">
-<column alignment="center" valignment="top" width="30col%">
-<column alignment="center" valignment="top" width="30col%">
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-SYS_MC_EST_GROUP
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Q estimator (Complementary filter for attitude)
-\begin_inset Newline newline
-\end_inset
-
-INAV (Complementary filter for position)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Q estimator (Complementary filter for attitude)
-\begin_inset Newline newline
-\end_inset
-
-LPE (EKF for position)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-EKF2 (all multicopter states and wind)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We used the 
-\series bold
-EKF2
-\series default
- .
-\end_layout
-
-\begin_layout Subsection
-Output drivers
-\end_layout
-
-\begin_layout Standard
-They are responsible for the interfacing including the driver responsible
- for communicating with the motors ESCs to set the required PWM.
- They are incude also a program called 
-\begin_inset Quotes eld
-\end_inset
-
-Mixer
-\begin_inset Quotes erd
-\end_inset
-
- the required forces and moments goes to the mixer which separates the airframe
- configuraion from the controller.
- This generalizes the controller to various configurations
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-There is also a very important software called 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-Logger
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-, it's implemented in the Middleware.
- It's very important to log data for tuning and performance analysis.
- The logger is automatically started when arming the vehicle and stopped
- when disarming it and a new log file is generated.
- There is 2 ways to have the logged data :
-\end_layout
-
-\begin_layout Enumerate
-The most efficient way for large data size is using SD card on the PIXHAWK
- where the data is logged.
-\end_layout
-
-\begin_layout Enumerate
-The Log Streaming way, which sends the same logging data via MAVLink.
- The requirement is that the link(for example WiFi) provides at least 50
- KB/s and only one client can request log streaming at the same time.
- The connection doesn't necessarily need to be reliable because the protocol
- can handle drops.
-\end_layout
-
-\begin_layout Standard
-Both methods can be used independently or can be used at the same time.
- After getting the log file using any way we need to convert the generated
- 
-\begin_inset Quotes eld
-\end_inset
-
-.ulg
-\begin_inset Quotes erd
-\end_inset
-
- file to another more useful data structure like 
-\begin_inset Quotes eld
-\end_inset
-
-.csv
-\begin_inset Quotes erd
-\end_inset
-
- to open using excel or matlab, there is a lot of tools can handle the log
- file , analyze the data and generate graphs automatically offline like
- 
-\begin_inset Quotes eld
-\end_inset
-
-PyFlightAnalysis
-\begin_inset Quotes erd
-\end_inset
-
- or online like 
-\begin_inset Quotes eld
-\end_inset
-
-Flight Review
-\begin_inset Quotes erd
-\end_inset
-
-.
- We used a python tool to only convert the log file to excel files called
- 
-\begin_inset Quotes eld
-\end_inset
-
-pylog
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Section
 Gains Comparison
 \end_layout
 
@@ -9357,47 +8967,6 @@ Gains Comparison
 
 \begin_layout Chapter
 Vision navigation and Obstacle Avoidance
-\end_layout
-
-\begin_layout Standard
-Unlike rovers or cars air vehicles don't have the option to use wheel encoders
- to determine its pose (state estimation) since they rely on GPS, IMU and
- vision to estimate their state, they subject to significant uncertainties.
- GPS accuracy is about 4 m but It's useful for long-term global position
- determination also GPS is with limited use indoor or closed places generally
- where there is a bad connection with satellites.
- The embedded estimator in the PIXHAWK which uses gyro and accelerometer
- to determine local position but the problem of using these inertial sensors
- is the dead-reckoning which drifts over time due to error accumulation.
- Although the reference gravity vector of the accelerometer is fused with
- the attitude from the gyros, long-term correction is still needed especially
- for high acceleration cases which causes deviation of the gravity vector.
- Usually GPS is used but it's insufficient due to its low accuracy and operating
- conditions.
- Here comes the need for visual odometry which is state estimation from
- visual data.
- Visual odometry is more accurate than GPS in state estimation and even
- in some cases from the inertial data when there is a suitable operating
- conditions and relatively low speed.
- For times of high speed or bad textured surrounding, the Iinertial data
- can aid the visual odometry.
- So GPS, IMU and Visual odometry can be used together for better state estimatio
-n.
- In our case, the ZED Stereo camera is used to get Point Cloud data
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Point cloud is a set of data points in space
-\end_layout
-
-\end_inset
-
- from which we can get visual odometry as well as information about obstacles.
- Obstacles information is used by the obstacle avoidance algorithm which
- evaluates the path planning and generates the reference trajectory.
- The visual odometry is fused with the PX4 position and/or attitude estimations
- to get a better state estimates.
 \end_layout
 
 \begin_layout Section
@@ -9517,7 +9086,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted16.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted16.png
 	lyxscale 15
 	width 6.5cm
 
@@ -9528,7 +9097,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted17.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted17.png
 	width 6.5cm
 
 \end_inset
@@ -9598,7 +9167,7 @@ ROS message: sensor_msgs/PointCloud2
 \noindent
 \align left
 \begin_inset Graphics
-	filename ../pasted18.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted18.png
 	width 4.5cm
 
 \end_inset
@@ -9625,7 +9194,7 @@ longer sensing range than cameras (0.2 - 6 m)
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted19.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted19.png
 	lyxscale 20
 	width 4.5cm
 
@@ -9636,7 +9205,7 @@ longer sensing range than cameras (0.2 - 6 m)
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted20.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted20.png
 	lyxscale 20
 	width 5cm
 
@@ -9672,10 +9241,6 @@ different sensors for vision
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -9793,7 +9358,7 @@ There are 2 types of stereo processing algorithms:
 
 \begin_deeper
 \begin_layout Itemize
-Dense stereo algorithm : high computational cost.
+Dense stereo algorithm: high computational cost.
  In Ref
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -9808,7 +9373,7 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
-Sparse stereo matching algorithm : faster - can maintain a high pose estimation
+Sparse stereo matching algorithm: faster - can maintain a high pose estimation
  rate of 30 Hz
 \end_layout
 
@@ -9828,7 +9393,7 @@ ZED stereo camera vs Kinect:
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -10594,10 +10159,6 @@ ZED stereo camera vs Kinect
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -10635,7 +10196,7 @@ status collapsed
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../pasted21.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted21.png
 
 \end_inset
 
@@ -10708,12 +10269,12 @@ finally, they fused the data from the 2 stereo configurations and outputted
 \end_layout
 
 \begin_layout Itemize
-They used stereo matching algoritm twice for both the forward stereo and
- downward stereo on-board
+They used stereo matching algoritnm twice for both the foraward stereo and
+ backward stereo on-board
 \end_layout
 
 \begin_layout Itemize
-They showed that adding 2 downward cameras significantly improves the self-local
+They showed that adding 2 downward cameras significantly improved the self-local
 ization
 \end_layout
 
@@ -10784,7 +10345,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../pasted22.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted22.png
 	scale 80
 
 \end_inset
@@ -10890,7 +10451,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../pasted23.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted23.png
 	scale 70
 
 \end_inset
@@ -10937,7 +10498,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted24.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted24.png
 	scale 60
 
 \end_inset
@@ -10984,7 +10545,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../pasted25.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted25.png
 	scale 80
 
 \end_inset
@@ -10999,7 +10560,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../pasted26.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted26.png
 	scale 70
 
 \end_inset
@@ -11009,7 +10570,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted27.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted27.png
 	scale 50
 
 \end_inset
@@ -11019,8 +10580,11 @@ status open
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../pasted28.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted28.png
 	scale 50
 
 \end_inset
@@ -11033,765 +10597,6 @@ status open
 
 \end_layout
 
-\begin_layout Section
-Autonomous robots architecture
-\end_layout
-
-\begin_layout Standard
-Important terminologies in autonomous robots:
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Mapping
-\bar default
- : modelling the environment.
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Localization
-\bar default
- : estimating the pose of the robot with respect to a given model of the
- environment.
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-SLAM (Simultaneous Localization and Mapping)
-\bar default
- : doing both tasks at the same time
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Motion Planning (Path planning) 
-\bar default
-: determining the desired motion that satisfies constraints and optimize
- some aspect of movement.
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Navigation
-\bar default
- : determination of the robot position(
-\series bold
-Localization
-\series default
-) and then planning a path towards some goal and avoiding obstacles(
-\series bold
-Motion planning
-\series default
-).
- 
-\series bold
-Mapping
-\series default
- also can be done if needed and used for both Localization and Motion planning.
-\end_layout
-
-\begin_layout Standard
-Autonomous robot architecture can be abstracted into 3 main layers:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="30col%">
-<column alignment="center" valignment="top" width="30col%">
-<column alignment="center" valignment="top" width="30col%">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Strategic Level
-\begin_inset Newline newline
-\end_inset
-
-(High-level planning)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Operational Level
-\begin_inset Newline newline
-\end_inset
-
-(Low-level plannig)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Tactical Level
-\begin_inset Newline newline
-\end_inset
-
-(Execution level)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-generating the waypoint or reference trajectory that the vehicle should
- follow.
-\begin_inset Newline newline
-\end_inset
-
-(Motion Planning)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-how to follow the required path by generating the required forces and moments.
-\begin_inset Newline newline
-\end_inset
-
-(Guidance and Position&Attitude control)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-how to achieve the required forces and moments using a specific motors configura
-tion.
-\end_layout
-
-\begin_layout Plain Layout
-(Mixer and Output drivers)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Obstacle Avoidance
-\end_layout
-
-\begin_layout Standard
-obstacle avoidance methods can be concluded as follows:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="50col%">
-<column alignment="center" valignment="top" width="50col%">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Global Obstacle avoidance
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Local Obstacle avoidance 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Grassfire algorithm - Dijkstra's algorithm - A* search
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Bug algorithms - Vector field histogram
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Local methods
-\end_layout
-
-\begin_layout Standard
-It's called also 
-\begin_inset Quotes eld
-\end_inset
-
-reactive
-\begin_inset Quotes erd
-\end_inset
-
- methods as they react to the sensor data at the current time step, unlike
- global methods they don't build a map of the environment so the generated
- path isn't optimal but they are memory efficient and fast enough to operate
- on-board.
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-\bar under
-Bug Algorithms
-\series default
-\bar default
-
-\begin_inset Newline newline
-\end_inset
-
-inspired by insects which follow the obstacle wall to bypass it.
- There is many variants of Bug algorithms.
- They differ in sensors and amount of the memory used.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\bar under
-Bug 0
-\bar default
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "65col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Itemize
-follow obstacle boundary until goal is clear
-\end_layout
-
-\begin_layout Itemize
-No memory used
-\end_layout
-
-\begin_layout Itemize
-It's either right or left wall following
-\end_layout
-
-\begin_layout Itemize
-Don't guarantee 
-\series bold
-Completeness
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Assuming there is a path to the goal, Bug 0 don't guarantee finding it.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename Bug0_completeness.png
-	width 80col%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename bug0.png
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Bug 1
-\bar default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "65col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Itemize
-Fully circle the obstacle and stores the closest point to the goal.
-\end_layout
-
-\begin_layout Itemize
-Leave at this point in the next circle
-\end_layout
-
-\begin_layout Itemize
-inefficient but guarantee completeness
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Bug1.png
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Bug 2
-\bar default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "65col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Itemize
-wall follow the obstacle and leave when meets the goal line such that the
- second point on the goal line is closest to the goal than the first point
- at which we left the goal line and started to follow the wall.
-\end_layout
-
-\begin_layout Itemize
-This method is complete.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-If there is a path to the goal, it will find it.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Faster than Bug.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Graphics
-	filename Bug2_2.png
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Bug2.png
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Vector Field Histogram
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\bar under
-VFH
-\bar default
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "65col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-creates local occupancy grid (1D polar histogram) via recent readings to
- specify the probability of object existence at every angle in the front
- view of the vehicle.
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "b"
-use_parbox 0
-use_makebox 0
-width "30col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename VFH.png
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-VFH+
-\bar default
-
-\begin_inset Newline newline
-\end_inset
-
-includes kinematic constraints due to which the vehicle can't go in specific
- directions not only object existence constraint.
- Finally, the chosen path is evaluated using cost function which has 2 weighting
- parameters: the target direction
-\begin_inset Foot
-status open
-
-\begin_layout Itemize
-difference between the new direction and the goal direction
-\end_layout
-
-\end_inset
-
- and the previous direction 
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-difference between the previously selected direction and the new direction
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-VFH*
-\bar default
-
-\begin_inset Newline newline
-\end_inset
-
-enhance the global optimallity problem in VFH & VFH+ by using A* search
- algorithm to minimize the cost function and heuristic function used to
- guide the search in the goal direction.
- It has been shown that it can successfully deal with problematic situations
- that VFH & VFH+ can't handle.
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-Global methods
-\end_layout
-
-\begin_layout Standard
-The vehicle has a map of the environment or builds it at run-time then computati
-onal motion planning methods, it finds the optimal path to the goal which
- avoids any obstacles.
-\end_layout
-
-\begin_layout Itemize
-Grassfire algorithm
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Graphics
-	filename D:/00-GraduationProject/final_documentation/1st iteration/Grassfire.PNG
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Graphics
-	filename D:/00-GraduationProject/final_documentation/1st iteration/Grassfire_nosol.PNG
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Dijkstra's algorithm
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Graphics
-	filename D:/00-GraduationProject/final_documentation/1st iteration/Dijkstra.PNG
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-A* search algorithm
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Graphics
-	filename D:/00-GraduationProject/final_documentation/1st iteration/A_alg..PNG
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename D:/00-GraduationProject/final_documentation/1st iteration/A_alg_compared to Dijk or Grossf.PNG
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -11841,7 +10646,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted1.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted1.png
 	scale 40
 
 \end_inset
@@ -11990,7 +10795,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted2.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted2.png
 	scale 50
 
 \end_inset
@@ -12053,7 +10858,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted3.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted3.png
 	scale 40
 
 \end_inset
@@ -12219,7 +11024,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted4.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted4.png
 	scale 35
 
 \end_inset
@@ -12230,7 +11035,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../pasted5.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted5.png
 	scale 35
 
 \end_inset
@@ -12241,7 +11046,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../pasted6.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted6.png
 	scale 35
 
 \end_inset
@@ -12252,7 +11057,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../pasted7.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted7.png
 	scale 35
 
 \end_inset
@@ -12263,7 +11068,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../pasted8.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted8.png
 	scale 35
 
 \end_inset
@@ -12391,7 +11196,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted50.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted50.png
 	scale 85
 
 \end_inset
@@ -13188,6 +11993,13 @@ height "1pt"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 
 \series bold
@@ -13246,12 +12058,12 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted9.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted9.png
 	scale 40
 
 \end_inset
@@ -13951,12 +12763,12 @@ Internally actions uses topics to communicate with the node that called
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted10.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted10.png
 	scale 40
 
 \end_inset
@@ -14053,12 +12865,12 @@ DO SOMETHING unlike server where we waited for server to finish
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../comparision.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/comparision.png
 	scale 40
 
 \end_inset
@@ -14131,7 +12943,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../ddrobot.PNG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/ddrobot.PNG
 	scale 45
 
 \end_inset
@@ -14197,12 +13009,12 @@ Modeling
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted12.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted12.png
 	scale 60
 
 \end_inset
@@ -14237,12 +13049,12 @@ Block Diagram
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted11.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted11.png
 
 \end_inset
 
@@ -14285,7 +13097,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../pasted14.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted14.png
 	scale 40
 
 \end_inset
@@ -14296,7 +13108,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../pasted15.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted15.png
 	scale 40
 
 \end_inset
@@ -16211,12 +15023,12 @@ ons and compare its performance with Ardupilot.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../oneD.PNG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/oneD.PNG
 	scale 40
 
 \end_inset
@@ -16249,7 +15061,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../one_D block diagram.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/one_D block diagram.jpg
 	scale 40
 
 \end_inset
@@ -16285,7 +15097,7 @@ status collapsed
 \begin_layout Standard
 \begin_inset External
 	template PDFPages
-	filename ../Book1.pdf
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Book1.pdf
 	width 100page%
 	height 80pheight%
 
@@ -16313,7 +15125,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../one_D block diagram2.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/one_D block diagram2.jpg
 	scale 40
 
 \end_inset
@@ -16567,7 +15379,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../sampling time.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/sampling time.png
 	scale 40
 
 \end_inset
@@ -16588,7 +15400,7 @@ To show the effect of not constant sampling time , we choose the gains as
 \end_inset
 
 which is simply a scaled reflection of the state if the sampling time is
- constant and synchronous with the feedback.(MISSING FIGURES!!)
+ constant and synchronous with the feedback.
 \end_layout
 
 \begin_layout Itemize
@@ -16802,7 +15614,7 @@ The power module is used in order to power the Pixhawk from the battery
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/powermodule-analog-pixhawk.png
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/powermodule-analog-pixhawk.png
 	scale 70
 
 \end_inset
@@ -16831,7 +15643,7 @@ It is connected to the Pixhawk as shown
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/maxresdefault.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/maxresdefault.jpg
 	scale 20
 
 \end_inset
@@ -16874,7 +15686,7 @@ It is a module used to connect the channels of flight controller receiver
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/jDrones_PPM_Encoder_V21_Above_with_numbers_500px.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/jDrones_PPM_Encoder_V21_Above_with_numbers_500px.jpg
 	scale 50
 
 \end_inset
@@ -16917,7 +15729,7 @@ Is a board used to distribute the power that comes from the battery or power
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/download.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/download.jpg
 
 \end_inset
 
@@ -16994,7 +15806,7 @@ Next we will select the frame type of the vehicle you are using.
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/AQ-All-Frames.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/AQ-All-Frames.jpg
 	height 8cm
 
 \end_inset
@@ -17118,7 +15930,7 @@ Connect the signal pins of the ESCs to the Pixhawk output channels according
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/cae0384839ae0630258b3882725779b08ab5a024.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/cae0384839ae0630258b3882725779b08ab5a024.jpg
 	scale 50
 
 \end_inset
@@ -17180,7 +15992,7 @@ Now we should set the hovering thrust of the vehicle in order to make it
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/px4_copter_basic.jpg
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/px4_copter_basic.jpg
 	scale 50
 
 \end_inset
@@ -17306,7 +16118,7 @@ In our case after tuning and testing the final values set to the first quad
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/pitch.PNG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/pitch.PNG
 	scale 40
 
 \end_inset
@@ -17318,7 +16130,7 @@ In our case after tuning and testing the final values set to the first quad
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/rolling.PNG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/rolling.PNG
 	scale 40
 
 \end_inset
@@ -17330,7 +16142,7 @@ In our case after tuning and testing the final values set to the first quad
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../documentation3/pixhawk/yaw2.PNG
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/figures/pixhawk/yaw2.PNG
 	scale 40
 
 \end_inset
@@ -17343,6 +16155,533 @@ In our case after tuning and testing the final values set to the first quad
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Ground Station
+\end_layout
+
+\begin_layout Subsection
+Introduction
+\end_layout
+
+\begin_layout Subsubsection
+What's a Ground Station
+\end_layout
+
+\begin_layout Standard
+Ground Station is a fully managed service that lets you control the air
+ vehicle communications, process data, and scale your operations without
+ having to worry about building or managing your own ground station infrastructu
+re.
+ Drones are used for a wide variety of use cases, including surface imaging,
+ communications, and video broadcasts.
+ Ground stations form the core of communication between drone and user.
+ These facilities provide communications between the ground and the vehicle
+ in the air.
+ Today, you must either build your own ground stations, or obtain long-term
+ contracts with ground station providers.
+\end_layout
+
+\begin_layout Subsubsection
+Ground Station software 
+\end_layout
+
+\begin_layout Standard
+There is a lot of ground station softwares available for users, in our project
+ we are using two softwares which are 
+\end_layout
+
+\begin_layout Itemize
+Qgroundcontrol
+\end_layout
+
+\begin_layout Itemize
+Mission Planner
+\end_layout
+
+\begin_layout Subsection
+User guides to Qgroundcontrol
+\end_layout
+
+\begin_layout Standard
+Qgroundcontrol is a ground station software which is very simple to use
+ and also is an OPEN SOURCE software so it's free to use and develop.
+\end_layout
+
+\begin_layout Standard
+For beginners Qgroundcontrol is a very good software to start with as it
+ is very simple and has a very friendly interface which will help you to
+ get your vehicle moving and flying as fast as possible.
+\end_layout
+
+\begin_layout Standard
+QGroundControl provides full flight control and mission planning for any
+ MAVLink enabled drone.
+ Its primary goal is ease of use for professional users and developers.
+ All the code is open-source source, so you can contribute and evolve it
+ as you want.
+\end_layout
+
+\begin_layout Itemize
+Step 1: Installation 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+First of all, all you need to get started is to download the software from
+ it's official website.
+\end_layout
+
+\begin_layout Standard
+Then follow the installation step by step then you are done with installation
+ and you are ready to start with the vehicle.
+\end_layout
+
+\begin_layout Standard
+QgroundControl is available for windows,Mac,Android and IOS.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Step 2: Connect to Pixhawk
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The first thing to do after installation is to connect to your Vehicle.
+\end_layout
+
+\begin_layout Standard
+You can do that through various methods 
+\end_layout
+
+\begin_layout Itemize
+USB cable 
+\end_layout
+
+\begin_layout Itemize
+Telemetry
+\end_layout
+
+\begin_layout Standard
+At the beginning we will use USB.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+User interface of Qground
+\end_layout
+
+\begin_layout Standard
+Most of the user interface has been discussed in the previous chapter except
+ for a few tabs.
+\end_layout
+
+\begin_layout Standard
+Before you are connected to the Pixhawk the Interface you get is as shown
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename ../micheal magdy/qground/1.png
+	width 80page%
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After you connect the Pixhawk you will have more tabs available for more
+ options to access the autopilot control parameters.
+\end_layout
+
+\begin_layout Subsection
+User guides to Mission Planner
+\end_layout
+
+\begin_layout Standard
+Mission Planner is a ground control station for Plane, Copter and Rover.
+ It is compatible with Windows only.
+ Mission Planner can be used as a configuration utility or as a dynamic
+ control supplement for your autonomous vehicle.
+ Here are just a few things you can do with Mission Planner:
+\end_layout
+
+\begin_layout Itemize
+Load the firmware (the software) into the autopilot board (i.e.
+ Pixhawk series) that controls your vehicle.
+\end_layout
+
+\begin_layout Itemize
+Setup, configure, and tune your vehicle for optimum performance.
+\end_layout
+
+\begin_layout Itemize
+Plan, save and load autonomous missions into you autopilot with simple point-and
+-click way-point entry on Google or other maps.
+\end_layout
+
+\begin_layout Itemize
+Download and analyze mission logs created by your autopilot.
+\end_layout
+
+\begin_layout Itemize
+Interface with a PC flight simulator to create a full hardware-in-the-loop
+ UAV simulator.
+\end_layout
+
+\begin_layout Itemize
+With appropriate telemetry hardware you can:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monitor your vehicle’s status while in operation.
+\end_layout
+
+\begin_layout Itemize
+Record telemetry logs which contain much more information the the on-board
+ autopilot logs.
+\end_layout
+
+\begin_layout Itemize
+View and analyze the telemetry logs.
+\end_layout
+
+\begin_layout Itemize
+Operate your vehicle in FPV (first person view).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Mission Planner is also an OPEN SOURCE software.
+\end_layout
+
+\begin_layout Itemize
+Step 1: Installation
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The first thing to do is to download the software from it's official site,
+ and then follow the installation instruction step by step till you finish
+ installation then you are ready to work with the Mission Planner as Ground
+ station.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/mp_installation.png
+	scale 80
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Step 2: Connect to Pixhawk
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Once you have installed a ground station on your computer, connect the flight
+ controller using the micro USB cable as shown below.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/pixhawk_usb_connection.jpg
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On Mission Planner, the connection and data rate are set up using the drop
+ down boxes in the upper right portion of the screen.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/MisionPlanner_ConnectButton.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once you have attached the USB or Telemetry Radio, Windows will automatically
+ assign your autopilot a COM port number, and that will show in the drop-down
+ menu (the actual number does not matter).
+ The appropriate data rate for the connection is also set (typically the
+ USB connection data rate is 115200 and the radio connection rate is 57600).
+ 
+\end_layout
+
+\begin_layout Standard
+Select the desired port and data rate and then press the Connect button
+ to connect to the autopilot.
+ After connecting Mission Planner will download parameters from the autopilot
+ and the button will change to Disconnect as shown:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/MisionPlanner_DisconnectButton.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+User interface of Mission Planner
+\end_layout
+
+\begin_layout Standard
+The sections are organized to match the major section of the Mission Planner
+ as selected in the menu along the top of the Mission Planner window.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/1.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Connect (Upper right corner) - How to connect the Mission Planner to your
+ ArduPilot.
+ Selecting communication devices and rates.
+ 
+\end_layout
+
+\begin_layout Itemize
+Flight Data - Information about what you see, and things you can do in the
+ Flight Data screens.
+ 
+\end_layout
+
+\begin_layout Itemize
+Flight Plan - Information about the various aspects of preparing flight
+ plans (Missions).
+ 
+\end_layout
+
+\begin_layout Itemize
+Initial Setup - Information about what you see and things you can do in
+ the Initial Setup screens.
+ 
+\end_layout
+
+\begin_layout Itemize
+Configuration Tuning - Information about what you see and things you can
+ do in the Configuration/Tuning screens.
+\end_layout
+
+\begin_layout Itemize
+Simulation - How you can use the Mission Planner and a flight simulator
+ to ‘simulate’ flying.
+\end_layout
+
+\begin_layout Itemize
+Terminal - Information about what you see and things you can do in the Terminal
+ screens.
+\end_layout
+
+\begin_layout Itemize
+Help - About the help screen, and how to get help with your questions about
+ Mission Planner.
+\end_layout
+
+\begin_layout Itemize
+Other Mission Planner Features - Catch all for miscellaneous items.
+\end_layout
+
+\begin_layout Itemize
+Flight Data Screen.
+\end_layout
+
+\begin_layout Itemize
+Initial Setup.
+\end_layout
+
+\begin_layout Itemize
+Simulation Screen.
+\end_layout
+
+\begin_layout Itemize
+Configuration and Tuning Screen.
+\end_layout
+
+\begin_layout Itemize
+Compass Calibration.
+\end_layout
+
+\begin_layout Itemize
+Accelerometer Calibration.
+\end_layout
+
+\begin_layout Itemize
+Radio Control Calibration.
+\end_layout
+
+\begin_layout Itemize
+RC Transmitter Flight Mode Configuration.
+\end_layout
+
+\begin_layout Itemize
+Flight Plan.
+\end_layout
+
+\begin_layout Itemize
+Flight Data.
+\end_layout
+
+\begin_layout Itemize
+Language Translations.
+\end_layout
+
+\begin_layout Itemize
+Other Mission Planner Features
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/mp_hud_full.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../micheal magdy/missionplanner/mp_hud_detail.jpg
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Air speed ( Ground speed if no airspeed sensor is fitted )
+\end_layout
+
+\begin_layout Enumerate
+Crosstrack error and turn rate (T) 
+\end_layout
+
+\begin_layout Enumerate
+Heading direction 
+\end_layout
+
+\begin_layout Enumerate
+Bank angle 
+\end_layout
+
+\begin_layout Enumerate
+Telemetry connection link quality (averaged percentage of good packets)
+ 
+\end_layout
+
+\begin_layout Enumerate
+GPS time 
+\end_layout
+
+\begin_layout Enumerate
+Altitude ( blue bar is rate of climb ) 
+\end_layout
+
+\begin_layout Enumerate
+Air speed 
+\end_layout
+
+\begin_layout Enumerate
+Ground speed 
+\end_layout
+
+\begin_layout Enumerate
+Battery status 
+\end_layout
+
+\begin_layout Enumerate
+Artificial Horizon 
+\end_layout
+
+\begin_layout Enumerate
+Aircraft Attitude 
+\end_layout
+
+\begin_layout Enumerate
+GPS Status 
+\end_layout
+
+\begin_layout Enumerate
+Current Waypoint Number > Distance to Waypoint 
+\end_layout
+
+\begin_layout Enumerate
+Current Flight Mode
+\end_layout
+
+\begin_layout Standard
+For more details you can find in documentation on the official website for
+ both Qgroundcontrol and Mission Planner.
+ 
+\end_layout
+
+\begin_layout Standard
+In our Project we used both Qgroundcontrol and Mission Planner in order
+ to get the required mission, We will discuss how We have done that and
+ how We managed to fly Our vehicle using both ground stations in the next
+ chapter.
 \end_layout
 
 \begin_layout Chapter*
