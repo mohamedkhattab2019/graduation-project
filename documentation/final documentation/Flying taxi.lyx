@@ -8967,6 +8967,47 @@ Gains Comparison
 Vision navigation and Obstacle Avoidance
 \end_layout
 
+\begin_layout Standard
+Unlike rovers or cars air vehicles don't have the option to use wheel encoders
+ to determine its pose (state estimation) since they rely on GPS, IMU and
+ vision to estimate their state, they subject to significant uncertainties.
+ GPS accuracy is about 4 m but It's useful for long-term global position
+ determination also GPS is with limited use indoor or closed places generally
+ where there is a bad connection with satellites.
+ The embedded estimator in the PIXHAWK which uses gyro and accelerometer
+ to determine local position but the problem of using these inertial sensors
+ is the dead-reckoning which drifts over time due to error accumulation.
+ Although the reference gravity vector of the accelerometer is fused with
+ the attitude from the gyros, long-term correction is still needed especially
+ for high acceleration cases which causes deviation of the gravity vector.
+ Usually GPS is used but it's insufficient due to its low accuracy and operating
+ conditions.
+ Here comes the need for visual odometry which is state estimation from
+ visual data.
+ Visual odometry is more accurate than GPS in state estimation and even
+ in some cases from the inertial data when there is a suitable operating
+ conditions and relatively low speed.
+ For times of high speed or bad textured surrounding, the Iinertial data
+ can aid the visual odometry.
+ So GPS, IMU and Visual odometry can be used together for better state estimatio
+n.
+ In our case, the ZED Stereo camera is used to get Point Cloud data
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Point cloud is a set of data points in space
+\end_layout
+
+\end_inset
+
+ from which we can get visual odometry as well as information about obstacles.
+ Obstacles information is used by the obstacle avoidance algorithm which
+ evaluates the path planning and generates the reference trajectory.
+ The visual odometry is fused with the PX4 position and/or attitude estimations
+ to get a better state estimates.
+\end_layout
+
 \begin_layout Section
 Stereo Vision
 \end_layout
@@ -10595,6 +10636,763 @@ status open
 
 \end_layout
 
+\begin_layout Section
+Obstacle Avoidance
+\end_layout
+
+\begin_layout Standard
+Important terminologies in autonomous robots:
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Mapping
+\bar default
+ : modelling the environment.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Localization
+\bar default
+ : estimating the pose of the robot with respect to a given model of the
+ environment.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+SLAM (Simultaneous Localization and Mapping)
+\bar default
+ : doing both tasks at the same time
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Motion Planning (Path planning) 
+\bar default
+: determining the desired motion that satisfies constraints and optimize
+ some aspect of movement.
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Navigation
+\bar default
+ : determination of the robot position(
+\series bold
+Localization
+\series default
+) and then planning a path towards some goal and avoiding obstacles(
+\series bold
+Motion planning
+\series default
+).
+ 
+\series bold
+Mapping
+\series default
+ also can be done if needed and used for both Localization and Motion planning.
+\end_layout
+
+\begin_layout Standard
+Autonomous robot architecture can be abstracted into 3 main layers:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="30col%">
+<column alignment="center" valignment="top" width="30col%">
+<column alignment="center" valignment="top" width="30col%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Strategic Level
+\begin_inset Newline newline
+\end_inset
+
+(High-level planning)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Operational Level
+\begin_inset Newline newline
+\end_inset
+
+(Low-level plannig)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tactical Level
+\begin_inset Newline newline
+\end_inset
+
+(Execution level)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+generating the waypoint or reference trajectory that the vehicle should
+ follow.
+\begin_inset Newline newline
+\end_inset
+
+(Motion Planning)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+how to follow the required path by generating the required forces and moments.
+\begin_inset Newline newline
+\end_inset
+
+(Guidance and Position&Attitude control)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+how to achieve the required forces and moments using a specific motors configura
+tion.
+\end_layout
+
+\begin_layout Plain Layout
+(Mixer and Output drivers)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+obstacle avoidance methods can be concluded as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="50col%">
+<column alignment="center" valignment="top" width="50col%">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Global Obstacle avoidance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Local Obstacle avoidance 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Grassfire algorithm - Dijkstra's algorithm - A* search
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bug algorithms - Vector field histogram
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Local methods
+\end_layout
+
+\begin_layout Standard
+It's called also 
+\begin_inset Quotes eld
+\end_inset
+
+reactive
+\begin_inset Quotes erd
+\end_inset
+
+ methods as they react to the sensor data at the current time step, unlike
+ global methods they don't build a map of the environment so the generated
+ path isn't optimal but they are memory efficient and fast enough to operate
+ on-board.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\bar under
+Bug Algorithms
+\series default
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+inspired by insects which follow the obstacle wall to bypass it.
+ There is many variants of Bug algorithms.
+ They differ in sensors and amount of the memory used.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+Bug 0
+\bar default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "65col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+follow obstacle boundary until goal is clear
+\end_layout
+
+\begin_layout Itemize
+No memory used
+\end_layout
+
+\begin_layout Itemize
+It's either right or left wall following
+\end_layout
+
+\begin_layout Itemize
+Don't guarantee 
+\series bold
+Completeness
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Assuming there is a path to the goal, Bug 0 don't guarantee finding it.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Bug0_completeness.png
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename bug0.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Bug 1
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "65col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+Fully circle the obstacle and stores the closest point to the goal.
+\end_layout
+
+\begin_layout Itemize
+Leave at this point in the next circle
+\end_layout
+
+\begin_layout Itemize
+inefficient but guarantee completeness
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Bug1.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Bug 2
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "65col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+wall follow the obstacle and leave when meets the goal line such that the
+ second point on the goal line is closest to the goal than the first point
+ at which we left the goal line and started to follow the wall.
+\end_layout
+
+\begin_layout Itemize
+This method is complete.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+If there is a path to the goal, it will find it.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Faster than Bug.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Bug2_2.png
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Bug2.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vector Field Histogram
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\bar under
+VFH
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "65col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+creates local occupancy grid (1D polar histogram) via recent readings to
+ specify the probability of object existence at every angle in the front
+ view of the vehicle.
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename VFH.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+VFH+
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+includes kinematic constraints due to which the vehicle can't go in specific
+ directions not only object existence constraint.
+ Finally, the chosen path is evaluated using cost function which has 2 weighting
+ parameters: the target direction
+\begin_inset Foot
+status open
+
+\begin_layout Itemize
+difference between the new direction and the goal direction
+\end_layout
+
+\end_inset
+
+ and the previous direction 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+difference between the previously selected direction and the new direction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+VFH*
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+enhance the global optimallity problem in VFH & VFH+ by using A* search
+ algorithm to minimize the cost function and heuristic function used to
+ guide the search in the goal direction.
+ It has been shown that it can successfully deal with problematic situations
+ that VFH & VFH+ can't handle.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Global methods
+\end_layout
+
+\begin_layout Standard
+The vehicle has a map of the environment or builds it at run-time then computati
+onal motion planning methods, it finds the optimal path to the goal which
+ avoids any obstacles.
+\end_layout
+
+\begin_layout Itemize
+Grassfire algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Graphics
+	filename Grassfire.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Graphics
+	filename Grassfire_nosol.PNG
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Dijkstra's algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Graphics
+	filename Dijkstra.PNG
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A* search algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Graphics
+	filename A_alg..PNG
+	width 40col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename A_alg_compared to Dijk or Grossf.PNG
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -10793,7 +11591,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/pasted2.png
+	filename pics/pasted2.png
 	scale 50
 
 \end_inset
