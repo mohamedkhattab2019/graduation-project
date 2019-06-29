@@ -563,13 +563,13 @@ grid minor
 
 
 %% Coupling altitude and attitude
-inputR = 5;
-inputP = 0;
-inputY = 5;
+inputR = -5;
+inputP = -5;
+inputY = 0;
 inputZ = -4;
 
 % roll
-temp = lvm_import('A-4R5P0Y5/roll_response.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/roll_response.lvm',0);
 nonL_roll_response = temp.Segment1.data;
 figure
 subplot(4,2,1)
@@ -580,7 +580,7 @@ legend('NonLinear','Linear')
 title(['Roll step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2str(inputY)])
 ylabel('phi(deg)')
 grid minor
-temp = lvm_import('A-4R5P0Y5/roll_action.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/roll_action.lvm',0);
 nonL_roll_action = temp.Segment1.data;
 subplot(4,2,2)
 hold all
@@ -592,7 +592,7 @@ ylabel('Roll Torque (N.m)')
 grid minor
 
 %pitch
-temp = lvm_import('A-4R5P0Y5/pitch_response.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/pitch_response.lvm',0);
 nonL_pitch_response = temp.Segment1.data;
 subplot(4,2,3)
 hold all
@@ -602,7 +602,7 @@ legend('NonLinear','Linear')
 title(['pitch step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2str(inputY)])
 ylabel('theta(deg)')
 grid minor
-temp = lvm_import('A-4R5P0Y5/pitch_action.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/pitch_action.lvm',0);
 nonL_pitch_action = temp.Segment1.data;
 subplot(4,2,4)
 hold all
@@ -614,7 +614,7 @@ ylabel('pitch torque (N.m)')
 grid minor
 
 %yaw
-temp = lvm_import('A-4R5P0Y5/yaw_response.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/yaw_response.lvm',0);
 nonL_yaw_response = temp.Segment1.data;
 subplot(4,2,5)
 hold all
@@ -624,7 +624,7 @@ legend('NonLinear','Linear')
 title(['yaw step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2str(inputY)])
 ylabel('psi(deg)')
 grid minor
-temp = lvm_import('A-4R5P0Y5/yaw_action.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/yaw_action.lvm',0);
 nonL_yaw_action = temp.Segment1.data;
 subplot(4,2,6)
 hold all
@@ -636,7 +636,7 @@ ylabel('Yaw Torque (N.m)')
 grid minor
 
 % altitude
-temp = lvm_import('A-4R5P0Y5/alt_response.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/alt_response.lvm',0);
 nonL_alt_response = temp.Segment1.data;
 subplot(4,2,7)
 hold all
@@ -646,7 +646,7 @@ legend('NonLinear','Linear')
 title('altitude step response')
 ylabel('alt (m)')
 grid minor
-temp = lvm_import('A-4R5P0Y5/alt_action.lvm',0);
+temp = lvm_import('A-4R5P-5Y0/alt_action.lvm',0);
 nonL_alt_action = temp.Segment1.data;
 subplot(4,2,8)
 hold all
