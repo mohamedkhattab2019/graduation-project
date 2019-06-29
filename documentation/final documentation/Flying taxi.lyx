@@ -6308,8 +6308,37 @@ Mathematical Model
 \end_layout
 
 \begin_layout Standard
-The mathematical model will be derived mainly to design the controller during
- phase in which the flying taxi acts as multicopter.
+The mathematical model for the flying taxi will be derived then the linearized
+ model will be used to design the autopilot.
+ The main purpose is to estimate initial gains for the PIXHAWK to make it
+ easier to tune since our vehicle isn't conventional.
+ The flying taxi is a quad-plane with 2 main phases, the 1st phase is the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+quad-copter
+\begin_inset Quotes erd
+\end_inset
+
+ phase in which the flying taxi pusher is turned off and the flying taxi
+ acts as ordinary quad-copter during landing or takeoff which has the advantage
+ of less distance for landing or takeoff and higher maneuverability especially
+ for narrow places .
+ In the 2nd phase after finishing takeoff and reaching the required altitude,
+ the pusher is turned on and controlled via external controller code on
+ the companion computer which sends the control action for the pusher to
+ the PIXHAWK such that it achieves required cruise speed.
+ It's assumed that during the 2nd phase (quad-plane phase) the flying taxi
+ has constant heading and this is reasonable as it operates mainly between
+ 2 waypoints at high altitude so we don't need to consider the quad-plane
+ lateral dynamics.
+ On the other hand, during the quad-copter phase, the flying taxi has low
+ speed and low altitude so the position accuracy is important to be more
+ accurate than the GPS readings.
+ Luckily these operating conditions is suitable for generating visual odometry
+ which can aid the GPS also the obstacle avoidance is important during this
+ phase so it's turned on.
 \end_layout
 
 \begin_layout Subsection
