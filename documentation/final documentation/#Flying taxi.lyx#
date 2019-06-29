@@ -6336,9 +6336,8 @@ quad-copter
  On the other hand, during the quad-copter phase, the flying taxi has low
  speed and low altitude so the position accuracy is important to be more
  accurate than the GPS readings.
- Luckily these operating conditions is suitable for generating visual odometry
- which can aid the GPS also the obstacle avoidance is important during this
- phase so it's turned on.
+ Luckily these operating conditions is suitable for the generating visual
+ odometry which can aid the GPS also the obstacle avoidance is im
 \end_layout
 
 \begin_layout Subsection
