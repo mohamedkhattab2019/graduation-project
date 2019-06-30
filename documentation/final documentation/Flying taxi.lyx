@@ -4146,7 +4146,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch2 Design/pics/configurations/wwing.png
+	filename pics/wwing.png
 
 \end_inset
 
@@ -6369,7 +6369,7 @@ the study of forces and moments on system in motion
 Translational motion:
 \bar default
  
-\begin_inset Formula $\overrightarrow{F}=\frac{d}{dt}(m\overrightarrow{v})=m(\mathring{\overrightarrow{v}}+\overrightarrow{\omega}\times\overrightarrow{v})=\overrightarrow{F}_{Aero}+\overrightarrow{F}_{motors}+\overrightarrow{g}$
+\begin_inset Formula $\overrightarrow{F}=\frac{d}{dt}(m\overrightarrow{v})=m(\mathring{\overrightarrow{v}}+\overrightarrow{\omega}\times\overrightarrow{v})=\overrightarrow{F}_{Aero}+\overrightarrow{F}_{pusher}+\overrightarrow{F}_{motors}+\overrightarrow{g}$
 \end_inset
 
 
@@ -6450,7 +6450,25 @@ directions
 \end_inset
 
 can be ignored because during multicopter phase, the flying taxi encounters
- negligible aerodynamic force due to low speed
+ negligible aerodynamic force due to low speed but can't be ignored during
+ the quad-plane phase as the higher velocity of this phase increases the
+ effect of the aerodynamic forces which generates drag forces and lift force
+ which is the main advantage for quad-plane over quad-copter since the generated
+ lift increases range and endurance significantly with respect to the quad-copte
+r configuration.
+ This shows the effectiveness of the quad-plane configuration in the flying
+ taxi application.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\overrightarrow{F}_{pusher}=\left[\begin{array}{c}
+F_{pusher}\\
+0\\
+0
+\end{array}\right]$
+\end_inset
+
+ required to overcome the drag force to achieve required cruise speed.
 \end_layout
 
 \begin_layout Itemize
@@ -6638,11 +6656,15 @@ ed in the body axes directions which is very beneficial also in derivation
 \end_inset
 
 is the inertia tensor in body axes.
- For our flying taxi it's symmetric about xz plane 
+ For our flying taxi it's symmetric only about xz plane
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset Formula $\therefore I=\left[\begin{array}{ccc}
-Ixx & 0 & -Ixz\\
+Ixx & 0 & \boldsymbol{-Ixz}\\
 0 & Iyy & 0\\
--Ixz & 0 & Izz
+\boldsymbol{-Ixz} & 0 & Izz
 \end{array}\right]$
 \end_inset
 
@@ -6954,12 +6976,12 @@ system:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\mathring{u} & =-gsinθ-qw+rv\\
+\mathring{u} & =-gsinθ-qw+rv+\frac{F_{pusher}}{m}+\frac{X_{aero}}{m}\\
 \mathring{v} & =gcosθsinϕ-ru+pw\\
-\mathring{w} & =gcosθcosϕ-pv+qu-\frac{T_{allmotors}}{m}\\
-\mathring{p} & =\frac{Iy-Iz}{Ix}qr+\frac{M_{x}}{I_{x}}\\
-\mathring{q} & =\frac{Iz-Ix}{Iy}pr+\frac{My}{Iy}\\
-\mathring{r} & =\frac{Iy-Ix}{Iz}pq+\frac{M_{z}}{Iz}\\
+\mathring{w} & =gcosθcosϕ-pv+qu-\frac{T_{allmotors}}{m}+\frac{Z_{aero}}{m}\\
+\mathring{p} & =\frac{I_{x}I_{xz}pq-I_{xz}^{2}qr-I_{xz}I_{y}pq+I_{xz}I_{z}pq+I_{y}I_{z}qr-I_{z}^{2}qr+I_{xz}M_{z}+I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
+\mathring{q} & =\frac{M_{y}-pr(I_{x}-I_{z})-I_{xz}(p^{2}-r^{2})}{I_{y}}=\frac{Iz-Ix}{Iy}pr+\frac{My}{Iy}\\
+\mathring{r} & =\frac{I_{x}^{2}pq-I_{x}I_{xz}qr-I_{x}I_{y}pq+I_{xz}^{2}pq+I_{xz}I_{y}qr-I_{xz}I_{z}qr+I_{x}M_{z}+I_{xz}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
 \mathring{\phi} & =p+qsinϕtanθ+rcosϕtanθ\\
 \mathring{\theta} & =qcosϕ-rsinϕ\\
 \mathring{\psi} & =qsinϕsecθ+rcosϕsecθ\\
@@ -6971,49 +6993,6 @@ system:
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\bar under
-Notes:
-\end_layout
-
-\begin_layout Itemize
-from equ.s (4,5,6,7,8,9) , we have full control over all attitude angles
- (
-\begin_inset Formula $\phi$
-\end_inset
-
-, 
-\begin_inset Formula $\theta$
-\end_inset
-
- , 
-\begin_inset Formula $\psi$
-\end_inset
-
-) using 
-\begin_inset Formula $M_{x},M_{y},M_{z}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-from equ.
- (3,12) , we have direct control over Z (so altitude) using 
-\begin_inset Formula $T_{allmotors}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-from equ.s (1,2,10,11) , we don't have direct control over positions (X ,Y)
- but we can using attitude, so if we want to control the position we can't
- independently set specific attitude as it will be determined based on the
- required position.
 \end_layout
 
 \begin_layout Standard
@@ -7029,16 +7008,20 @@ Linearization
 
 \begin_layout Standard
 We linearize the dynamics of the flying taxi around equilibrium point at
- hovering where : 
+ steady flight where : 
 \end_layout
 
 \begin_layout Standard
 all rates = 0 , 
-\begin_inset Formula $\phi=\theta=0$
+\begin_inset Formula $\phi_{o}=\theta_{o}=0$
 \end_inset
 
 , 
 \begin_inset Formula $p=q=r=0$
+\end_inset
+
+ , 
+\begin_inset Formula $\alpha=0$
 \end_inset
 
 
@@ -7047,12 +7030,12 @@ all rates = 0 ,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\therefore\mathring{u} & =-g\theta\label{u_rate}\\
-\mathring{v} & =-g\phi\label{v_rate}\\
-\mathring{w} & =-\frac{\Delta T_{allmotors}}{m}\label{w_rate}\\
-\mathring{p} & =\frac{M_{x}}{Ix}\label{p_rate_equ}\\
+\therefore\mathring{\Delta u} & =-g\theta+\frac{\Delta X_{pusher}}{m}+\frac{X_{u}^{aero}}{m}\Delta u+\frac{X_{w}^{aero}}{m}\Delta w\label{u_rate}\\
+\mathring{v} & =g\phi-u_{o}r\label{v_rate}\\
+\mathring{w} & =u_{o}q-\frac{\Delta T_{allmotors}}{m}+\frac{Z_{u}^{aero}}{m}\Delta u+\frac{Z_{w}^{aero}}{m}\Delta w+\frac{Z_{q}^{aero}}{m}\Delta q\label{w_rate}\\
+\mathring{p} & =\frac{I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{xz}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}\label{p_rate_equ}\\
 \mathring{q} & =\frac{M_{y}}{Iy}\label{q_rate}\\
-\mathring{r} & =\frac{Mz}{Iz}\label{r_rate}\\
+\mathring{r} & =\frac{I_{x}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{zx}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\label{r_rate}\\
 \mathring{\phi} & =p\label{roll_rate_equ}\\
 \mathring{\theta} & =q\label{pitch rate}\\
 \mathring{\psi} & =r\label{yaw_rate}\\
@@ -7064,15 +7047,6 @@ all rates = 0 ,
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\mathring{u},\mathring{v},\mathring{X},\mathring{Y}$
-\end_inset
-
- considered not so good approximations as will be proved later by comparing
- linear and nonlinear models but we will use them only to estimate initial
- gains for guidance system.
 \end_layout
 
 \begin_layout Subsection
@@ -7106,7 +7080,7 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.4
+1.9
 \end_layout
 
 \end_inset
@@ -7138,7 +7112,7 @@ Ix
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.050595
+0.12
 \end_layout
 
 \end_inset
@@ -7170,7 +7144,7 @@ Iy
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.0817086
+0.16
 \end_layout
 
 \end_inset
@@ -7202,7 +7176,7 @@ Iz
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.117281
+0.23
 \end_layout
 
 \end_inset
@@ -7361,15 +7335,19 @@ Roll Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.025298$
+\begin_inset Formula $P=0.296$
 \end_inset
 
  , 
-\begin_inset Formula $D=0.043$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0.147533$
+\end_inset
+
+ for inner loop and outer loop controller as 
+\begin_inset Formula $P=1.1681$
 \end_inset
 
 
@@ -7389,9 +7367,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/roll.bmp
+	filename pics/roll_1deg.bmp
 	lyxscale 70
-	width 100col%
+	width 100pc
 
 \end_inset
 
@@ -7402,7 +7380,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Roll Step response and control action
+1 deg desired Roll input
 \end_layout
 
 \end_inset
@@ -7412,7 +7390,7 @@ Roll Step response and control action
 
 \end_inset
 
-The response for 5 deg desired roll input and control action (to show the
+The response for 10 deg desired roll input and control action (to show the
  effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
@@ -7426,7 +7404,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/roll_5deg.bmp
+	filename pics/roll_10_deg.bmp
 	lyxscale 50
 	width 100col%
 
@@ -7439,7 +7417,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-5 deg desired Roll input
+10 deg desired Roll input
 \end_layout
 
 \end_inset
@@ -7489,7 +7467,7 @@ noprefix "false"
 
 \begin_layout Standard
 ignoring motor dynamics as it has fast response w.r.t.
- vehicle dynamics
+ vehicle dynamics 
 \end_layout
 
 \begin_layout Standard
@@ -7527,15 +7505,19 @@ Pitch Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.040854$
+\begin_inset Formula $P=0.32$
 \end_inset
 
  , 
-\begin_inset Formula $D=0.06945$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0.156$
+\end_inset
+
+ for inner loop ,and outer loop controller as 
+\begin_inset Formula $P=0.89671$
 \end_inset
 
 
@@ -7560,7 +7542,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/pitch.bmp
+	filename pics/pitch_1deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7573,7 +7555,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Pitch Step response and control action
+1 deg desired pitch input
 \end_layout
 
 \end_inset
@@ -7583,8 +7565,8 @@ Pitch Step response and control action
 
 \end_inset
 
-The response for 5 deg desired pitch input and control action (to show the
- effect of larger input on the nonlinear model) :
+The response for 10 deg desired pitch input and control action (to show
+ the effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
 
@@ -7597,7 +7579,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/pitch_5deg.bmp
+	filename pics/pitch_10deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7610,7 +7592,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-5 deg desired pitch input
+10 deg desired pitch input
 \end_layout
 
 \end_inset
@@ -7698,15 +7680,19 @@ Yaw Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.058641$
+\begin_inset Formula $P=0.72$
 \end_inset
 
  , 
-\begin_inset Formula $D=0.1$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0.5634$
+\end_inset
+
+ for inner loop ,and outer loop controller as 
+\begin_inset Formula $P=1.8681$
 \end_inset
 
 
@@ -7732,7 +7718,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/yaw.bmp
+	filename pics/yaw_1deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7755,7 +7741,7 @@ Yaw Step response and control action
 
 \end_inset
 
-The response for 5 deg desired Yaw input and control action (to show the
+The response for 10deg desired Yaw input and control action (to show the
  effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
@@ -7769,7 +7755,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/yaw_5deg.bmp
+	filename pics/yaw_10deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7782,7 +7768,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-5 deg desired yaw input
+10 deg desired yaw input
 \end_layout
 
 \end_inset
@@ -7821,7 +7807,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Coupling_R5_P0_Y5.bmp
+	filename pics/R5P0Y5.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7926,15 +7912,19 @@ Altitude Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.7$
+\begin_inset Formula $P=3.753$
 \end_inset
 
  , 
-\begin_inset Formula $D=1.19$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=1.853$
+\end_inset
+
+ for inner loop ,and outer loop controller as 
+\begin_inset Formula $P=.86913$
 \end_inset
 
 
@@ -7959,7 +7949,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/altitude_1m.bmp
+	filename pics/altitude_1deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7982,7 +7972,7 @@ Altitude Step response and control action
 
 \end_inset
 
-The response for -4 m (Z = 4 m) desired altitude input and control action
+The response for -10 m (Z = 10 m) desired altitude input and control action
  (to show the effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
@@ -7996,7 +7986,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/altitude_-4m.bmp
+	filename pics/altitude_10m.bmp
 	lyxscale 70
 	width 100col%
 
@@ -8051,7 +8041,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/coupling_R-5_P-5_Z-4.bmp
+	filename pics/att_alt_coup_A4R-5P-Y0.bmp
 	lyxscale 80
 	width 100col%
 
@@ -11471,7 +11461,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/Chapters/ch5 Implement/pics/ross.png
+	filename pics/ross.png
 	scale 40
 
 \end_inset
@@ -12016,12 +12006,12 @@ separation "3pt"
 shadowsize "4pt"
 framecolor "black"
 backgroundcolor "none"
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/pasted50.png
+	filename pics/pasted50.png
 	scale 85
 
 \end_inset
@@ -15920,11 +15910,20 @@ status open
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset External
 	template PDFPages
-	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/Book1.pdf
+	filename Book1.pdf
 	width 100page%
 	height 80pheight%
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
