@@ -6996,49 +6996,6 @@ system:
 \end_layout
 
 \begin_layout Standard
-
-\bar under
-Notes:
-\end_layout
-
-\begin_layout Itemize
-from equ.s (4,5,6,7,8,9) , we have full control over all attitude angles
- (
-\begin_inset Formula $\phi$
-\end_inset
-
-, 
-\begin_inset Formula $\theta$
-\end_inset
-
- , 
-\begin_inset Formula $\psi$
-\end_inset
-
-) using 
-\begin_inset Formula $M_{x},M_{y},M_{z}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-from equ.
- (3,12) , we have direct control over Z (so altitude) using 
-\begin_inset Formula $T_{allmotors}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-from equ.s (1,2,10,11) , we don't have direct control over positions (X ,Y)
- but we can using attitude, so if we want to control the position we can't
- independently set specific attitude as it will be determined based on the
- required position.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -7123,21 +7080,7 @@ m
 \begin_inset Text
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
-1.4
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Need to be modified
-\end_layout
-
-\end_inset
-
-
-=======
 1.9
->>>>>>> 20eb0f4027c4c12059bdf8144203923e30914d03
 \end_layout
 
 \end_inset
