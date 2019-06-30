@@ -7388,15 +7388,19 @@ Roll Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.025298$
+\begin_inset Formula $P=0.296$
 \end_inset
 
  , 
-\begin_inset Formula $D=0.043$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0.147533$
+\end_inset
+
+ for inner loop and outer loop controller as 
+\begin_inset Formula $P=1.1681$
 \end_inset
 
 
@@ -7416,9 +7420,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/roll.bmp
+	filename pics/roll_1deg.bmp
 	lyxscale 70
-	width 100col%
+	width 100pc
 
 \end_inset
 
@@ -7429,7 +7433,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Roll Step response and control action
+1 deg desired Roll input
 \end_layout
 
 \end_inset
@@ -7439,7 +7443,7 @@ Roll Step response and control action
 
 \end_inset
 
-The response for 5 deg desired roll input and control action (to show the
+The response for 10 deg desired roll input and control action (to show the
  effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
@@ -7453,7 +7457,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/roll_5deg.bmp
+	filename pics/roll_10_deg.bmp
 	lyxscale 50
 	width 100col%
 
@@ -7466,7 +7470,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-5 deg desired Roll input
+10 deg desired Roll input
 \end_layout
 
 \end_inset
@@ -7516,7 +7520,7 @@ noprefix "false"
 
 \begin_layout Standard
 ignoring motor dynamics as it has fast response w.r.t.
- vehicle dynamics
+ vehicle dynamics 
 \end_layout
 
 \begin_layout Standard
@@ -7554,15 +7558,19 @@ Pitch Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.040854$
+\begin_inset Formula $P=0.32$
 \end_inset
 
  , 
-\begin_inset Formula $D=0.06945$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0.156$
+\end_inset
+
+ for inner loop ,and outer loop controller as 
+\begin_inset Formula $P=0.89671$
 \end_inset
 
 
@@ -7587,7 +7595,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/pitch.bmp
+	filename pics/pitch_1deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7600,7 +7608,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Pitch Step response and control action
+1 deg desired pitch input
 \end_layout
 
 \end_inset
@@ -7610,8 +7618,8 @@ Pitch Step response and control action
 
 \end_inset
 
-The response for 5 deg desired pitch input and control action (to show the
- effect of larger input on the nonlinear model) :
+The response for 10 deg desired pitch input and control action (to show
+ the effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
 
@@ -7624,7 +7632,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/pitch_5deg.bmp
+	filename pics/pitch_10deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7637,7 +7645,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-5 deg desired pitch input
+10 deg desired pitch input
 \end_layout
 
 \end_inset
@@ -7725,15 +7733,19 @@ Yaw Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.058641$
+\begin_inset Formula $P=0.72$
 \end_inset
 
  , 
-\begin_inset Formula $D=0.1$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0.5634$
+\end_inset
+
+ for inner loop ,and outer loop controller as 
+\begin_inset Formula $P=1.8681$
 \end_inset
 
 
@@ -7759,7 +7771,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/yaw.bmp
+	filename pics/yaw_1deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7782,7 +7794,7 @@ Yaw Step response and control action
 
 \end_inset
 
-The response for 5 deg desired Yaw input and control action (to show the
+The response for 10deg desired Yaw input and control action (to show the
  effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
@@ -7796,7 +7808,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/yaw_5deg.bmp
+	filename pics/yaw_10deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -7809,7 +7821,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-5 deg desired yaw input
+10 deg desired yaw input
 \end_layout
 
 \end_inset
@@ -7848,7 +7860,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Coupling_R5_P0_Y5.bmp
+	filename pics/R5P0Y5.bmp
 	lyxscale 80
 	width 100col%
 
@@ -7953,15 +7965,19 @@ Altitude Controller
 
 \begin_layout Standard
 Using Matlab SISO tool to obtain robust controller : 
-\begin_inset Formula $P=0.7$
+\begin_inset Formula $P=3.753$
 \end_inset
 
  , 
-\begin_inset Formula $D=1.19$
+\begin_inset Formula $D=0$
 \end_inset
 
  , 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=1.853$
+\end_inset
+
+ for inner loop ,and outer loop controller as 
+\begin_inset Formula $P=.86913$
 \end_inset
 
 
@@ -7986,7 +8002,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/altitude_1m.bmp
+	filename pics/altitude_1deg.bmp
 	lyxscale 70
 	width 100col%
 
@@ -8009,7 +8025,7 @@ Altitude Step response and control action
 
 \end_inset
 
-The response for -4 m (Z = 4 m) desired altitude input and control action
+The response for -10 m (Z = 10 m) desired altitude input and control action
  (to show the effect of larger input on the nonlinear model) :
 \begin_inset Newline newline
 \end_inset
@@ -8023,7 +8039,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/altitude_-4m.bmp
+	filename pics/altitude_10m.bmp
 	lyxscale 70
 	width 100col%
 
@@ -8078,7 +8094,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/coupling_R-5_P-5_Z-4.bmp
+	filename pics/att_alt_coup_A4R-5P-Y0.bmp
 	lyxscale 80
 	width 100col%
 
