@@ -1414,73 +1414,6 @@ Chapter 6:discuss the flight test results.
 Aircraft Design
 \end_layout
 
-\begin_layout Standard
-In this chapter we will discuss the mission that we put in our consideration
- , So we can estimate the constraints and the initial weights, and this
- procedure lead us to start with the Aerodynamic design then go forward
- to the mechanical design.
-\end_layout
-
-\begin_layout Section
-Mission
-\end_layout
-
-\begin_layout Standard
-The vehicles mission is to take the passenger from a certain location to
- a certain destination
-\end_layout
-
-\begin_layout Subsection
-Payload
-\end_layout
-
-\begin_layout Standard
-Payload consists of the components that are loaded on the vehicle to carry
- out its mission so, the payload will be divided into two sections: control
- payload and passenger payload
-\end_layout
-
-\begin_layout Subsubsection
-Control payload
-\end_layout
-
-\begin_layout Standard
-From the team working on control, the following payload is needed on the
- vehicle to be autonomously driven
-\end_layout
-
-\begin_layout Enumerate
-Pixhawk
-\end_layout
-
-\begin_layout Enumerate
-Pixhawk telemetry
-\end_layout
-
-\begin_layout Enumerate
-Pixhawk power module
-\end_layout
-
-\begin_layout Enumerate
-ZED stereo camera
-\end_layout
-
-\begin_layout Enumerate
-Jetson nano
-\end_layout
-
-\begin_layout Enumerate
-Li-PO battery
-\end_layout
-
-\begin_layout Subsubsection
-Passenger payload
-\end_layout
-
-\begin_layout Standard
-comfortable chair
-\end_layout
-
 \begin_layout Section
 Aerodynamic Design
 \end_layout
@@ -1490,46 +1423,77 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-When we started building the vehicle, we had some goals to achieve, and
- among of these goals is to get the highest performance and efficiency and
- to ensure that we must know the mission of the vehicle and its constraints:
+Before designing the vehicle, goals, mission and constraints must be defined
+ well to achieve the highest performance and efficiency.
 \end_layout
 
 \begin_layout Itemize
-Max.
- takeoff weight about 3 Kg.
-\end_layout
 
-\begin_layout Itemize
-Max.
- wide of vehicle 0.8 meter.
-\end_layout
-
-\begin_layout Itemize
-Minimum size for easy landing at any place.
-\end_layout
-
-\begin_layout Standard
-We choose XFLR5 program that is suitable platform to analyze this application
- because XFLR5 is a program to perform a plane analysis starting from airfoil
- design right to the stability of analysis of the complete plane and Define
- basic concepts of aerodynamics such as; lift, drag, Reylond’s number and
- also things like viscosity, laminar flow, turbulence flow and transition
- for more flow to the other all things which are the core of the xflr5.
+\series bold
+Mission
+\series default
+: Flying taxi should take-off as a quad-copter.
+ When it gains the required and safe altitude, the flying taxi starts the
+ quad-plane phase by turning the pusher on to achieve the required cruise
+ speed which is specified from range, endurance and available power consideratio
+ns.
+ The flying taxi continues its quad-plane phase until it’s near from the
+ landing point, it switches to the quad-copter mode and gradually lowering
+ its altitude with visual odometry generated to aid the GPS for accurate
+ position estimation and the obstacle avoidance algorithm is on to guide
+ the flying taxi through a safe path to the landing point.
  
 \end_layout
 
-\begin_layout Standard
-Finally we preferred to use 
+\begin_layout Itemize
+
 \series bold
-Tandem
+Constraints
 \series default
- wing plane to get greater lift than conventional wing, because we have
- two independent source of lift (two wings).
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Max.
+ takeoff weight about 3 Kg, Where preliminary weight estimation of vehicle
+ contains components about 2.8 Kg.
+ 
+\end_layout
+
+\begin_layout Itemize
+Max.
+ width of vehicle 0.8 meter, This constraint has been selected to satisfy
+ mission, be easy to manufacture and to suit the wind tunnel width for future
+ work in testing.
+ 
+\end_layout
+
+\begin_layout Itemize
+Minimum length for easy landing at any place.
+ XFLR5 program is chosen to design and analyse the aerodynamic parts of
+ the flying taxi starting from airfoil design to the stability analysis
+ of the complete plane.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Wing configuration 
 \end_layout
 
 \begin_layout Standard
-Basic definitions of Tandem wing plane:
+There are a lot of wing configuration but the suitable configuration for
+ our vehicle constraints and mission should be chosen.
+ Since one of the important constraint of the flying taxi is to have small
+ size, small span constraint should be achieved with generating the required
+ lift so tandem wing plane is preferred to be used to get greater lift than
+ conventional wing, as it has two independent source of lift (two wings)
+ to be able to manage the takeoff weight.
+\end_layout
+
+\begin_layout Standard
+Design parameters of Tandem wing plane:
 \end_layout
 
 \begin_layout Itemize
@@ -1557,7 +1521,7 @@ Decalage (δ=α
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1588,34 +1552,61 @@ Tandem wing plane
 \end_layout
 
 \begin_layout Subsection
-Design Plan
+Design Criterion
+\end_layout
+
+\begin_layout Subsubsection
+Airfoil selection
 \end_layout
 
 \begin_layout Standard
-Select the Airfoil of our plane that satisfied requirements; That the xflr5
- program has a library of NACA series built in the program, but we can import
- another airfoils from UIUC Airfoil Data site that has all database of airfoils.
- 
-\begin_inset Newline newline
-\end_inset
+In this section there is two constraints:
+\end_layout
 
-We make analyze for some airfoils that have high lift to carry the weight
- of vehicle; such as (Eppler421, Eppler423, MH14, NACA0018, NACA0015, Clark(Y)
- and NACA632615),Then we choose suitable airfoil dependent on: simplicity
- of manufacturing and lift generated.
-\begin_inset Newline newline
-\end_inset
+\begin_layout Itemize
+The thickness of the standard foam sheets (in some cases it was little than
+ the camber of the airfoil)
+\end_layout
 
-So the most airfoils satisfy requirements are: Eppler423 and NACA0015,Then
- we now ready to analyse two airfoils and make it very smooth by re-panel
- foil from 100 to 150 panel to make distribution of panels is smoothly.
+\begin_layout Itemize
+Highly cambered airfoils are difficult to be manufactured using foam cutter
+ machine (less accuracy).
 \end_layout
 
 \begin_layout Standard
+The selection of the Airfoil should consider these constraints along with
+ the requirements.
+ xflr5 program has a built-in library of NACA series, but another airfoils
+ can be imported.
+\end_layout
+
+\begin_layout Standard
+First, airfoils that have high lift and low Reynold number; such as (Eppler421,
+ Eppler423, MH14, NACA0018, NACA0015, Clark(Y) and NACA632615) are analysed,
+ then suitable airfoil is chosen according to the previously stated constraints
+ and requirements.
+ So the airfoils that satisfy requirements are: 
+\end_layout
+
+\begin_layout Itemize
+Eppler423 (higher lift)
+\end_layout
+
+\begin_layout Itemize
+NACA0015 (easy to manufacture)
+\end_layout
+
+\begin_layout Standard
+The two airfoils are analysed using panel method with 150 panel for smooth
+ results.
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1646,18 +1637,18 @@ The 2 airfoils
 
 \end_layout
 
-\begin_layout Itemize
-Then we can see the boundary layer and pressure distribution along the two
- airfoils in fig.
- below with change at angle of attack from: (0 to 10 & from 0 to -6 ) degree:
- 
+\begin_layout Standard
+Shown below the boundary layer thickness and pressure distribution along
+ the two selected airfoils with change at angle of attack from: (0 to 6
+ & 0 to -4 ) degree :
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1689,44 +1680,11 @@ Pressure distribution along NACA0015 with difference angle of attack
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pics/Cp-distirbution2.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Pressure distribution along NACA0015 at certain angle of attack and Reylonds
- number
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1758,56 +1716,16 @@ Pressure distribution along Eppler423 with difference angle of attack
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pics/Cp-distirbution(Eppler423).png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Pressure distribution along Eppler423 at certain angle of attack and Reylonds
- number
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
 We make analysis at different Re (from 20,000 to 1,000,000) and see plots
  on polar figure:
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1839,45 +1757,11 @@ Polar graph of NACA0015
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/foil analysis(NACA0015).png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Polar graph of NACA0015 at a certain Reylonds number=100,000 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1908,59 +1792,19 @@ Polar graph of Eppler423
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
+\begin_layout Subsection
+Aerodynamic analysis:
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
+Now after choosing air foils, the wing will be designed.
+ After trying different trials considering constraints and requirements,
+ the best configuration has been chosen then stability and lift produced
+ is checked.
+\end_layout
+
+\begin_layout Standard
 \align center
-\begin_inset Graphics
-	filename pics/foil analysis(Eppler423).png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Polar graph of Eppler423 at a certain Reylonds number=130,000 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now we ready to build design after prepared airfoils, after trying different
- dimensions we get the best configuration then check stability and lift
- produced by vehicle we make analysis by different stream speed and found
- there isn't any effect on stability but affected at lift produced over
- Airfoil but the main reason affected on stability is the position of cg
- but not affected at another results shown in fig.
- below:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1995,20 +1839,298 @@ Configuration
 
 \end_layout
 
+\begin_layout Subsubsection
+Investigating goals and requirements:
+\end_layout
+
+\begin_layout Itemize
+For stability: 
+\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Cm-alpha(NACA0015).png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating stability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For lift: At trim angle the lift must carry the vehicle
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/lift(NACA0015).png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating lift
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Design parameters
+\end_layout
+
+\begin_layout Standard
+In this part stability of quad-plane is checked and the airfoil design parameter
+s (incidence angle, CG position, cruise speed and dimensions of wings) is
+ chosen
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Effect on the vehicle
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Span
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+proportional with lift
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chord
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+proportional with lift
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Cruise speed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+proportional with lift
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Arm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Static stability
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Incidence angle
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Static stability
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Position of CG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Static stability
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Position of second wing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Static stability
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Results:
+\end_layout
+
 \begin_layout Itemize
 NACA0015
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/lift analysis(NACA0015).png
+	filename pics/lift analysis NACA0015.PNG
 	scale 50
 
 \end_inset
@@ -2034,27 +2156,21 @@ NACA0015 Lift and Cm-alpha
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Eppler423
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/lift analysis2(Eppler423).png
+	filename pics/lift analysis Eppler423.PNG
 	scale 50
 
 \end_inset
@@ -2081,19 +2197,11 @@ Eppler423 Lift and Cm
 \end_layout
 
 \begin_layout Itemize
-
-\series bold
-Quick comparison between 2 airfoils:
+Comparison between 2 air foils:
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
 <features tabularvalignment="middle">
@@ -2105,9 +2213,7 @@ status collapsed
 \begin_inset Text
 
 \begin_layout Plain Layout
-Comparisons 
-\backslash
- Models
+Comparisons
 \end_layout
 
 \end_inset
@@ -2145,7 +2251,7 @@ Position of Main wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-x= 0 , z= -0.5 m 
+x= 0 z= -0.05 m 
 \end_layout
 
 \end_inset
@@ -2154,7 +2260,7 @@ x= 0 , z= -0.5 m
 \begin_inset Text
 
 \begin_layout Plain Layout
-x= 0 , z= -0.05 m 
+x= 0 z= -0.05 m 
 \end_layout
 
 \end_inset
@@ -2174,7 +2280,7 @@ Position of Second wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-x= 0.45 m , z= 0.2 m 
+x= 0.45 m z= 0.1 m 
 \end_layout
 
 \end_inset
@@ -2183,7 +2289,7 @@ x= 0.45 m , z= 0.2 m
 \begin_inset Text
 
 \begin_layout Plain Layout
-x= 0.45 m , z= 0.15 m 
+x= 0.45 m z= 0.15 m 
 \end_layout
 
 \end_inset
@@ -2319,7 +2425,7 @@ Incidence of Main wing
 \begin_inset Text
 
 \begin_layout Plain Layout
- 5 degree 
+5 degree
 \end_layout
 
 \end_inset
@@ -2377,7 +2483,7 @@ Trim angle
 \begin_inset Text
 
 \begin_layout Plain Layout
-4.5 degree
+5.1 degree
 \end_layout
 
 \end_inset
@@ -2397,8 +2503,8 @@ Trim angle
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
-\begin_inset Formula $_{C.G}$
+X
+\begin_inset Formula $_{cg}$
 \end_inset
 
 
@@ -2430,8 +2536,8 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
-\begin_inset Formula $_{N.P}$
+X
+\begin_inset Formula $_{Np}$
 \end_inset
 
 
@@ -2443,7 +2549,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.243 m
+0.233 m
 \end_layout
 
 \end_inset
@@ -2472,7 +2578,7 @@ Degree of Static Stability (S.M.)
 \begin_inset Text
 
 \begin_layout Plain Layout
-21.2%
+17.2%
 \end_layout
 
 \end_inset
@@ -2494,27 +2600,9 @@ Degree of Static Stability (S.M.)
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\series bold
-comparison between 2 airfoils
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Conclusion of results:
+\end_deeper
+\begin_layout Standard
+Conclusion of results: 
 \end_layout
 
 \begin_layout Enumerate
@@ -2523,15 +2611,15 @@ For configuration:
 
 \begin_deeper
 \begin_layout Itemize
-Before we illustration the main reason to select tandem wing plane to get
- greater lift than conventional wing, because we have two independent source
- of lift (two wings).
+First of all, there is illustration of the main reason to select tandem
+ wing plane to get greater lift than conventional wing, because we have
+ two independent source of lift (two wings).
 \end_layout
 
 \begin_layout Itemize
 Then now we can say the reason of vertical distance (Gap) between 2 wings
  that can affect the resulting vortex and vortex interactions that the wing
- spacing has a noticeable effect on the resultant flow field and aerodynamic
+ spacing has a significant effect on the resultant flow field and aerodynamic
  forces, finally we selected this distance to prevent wings from weak as
  a wing spacing is decrease, vortex structure at last wing became elongated
  and spread due to interactions with the front wing.
@@ -2539,87 +2627,109 @@ Then now we can say the reason of vertical distance (Gap) between 2 wings
 
 \begin_layout Itemize
 Difference at dimension between 2 wings to equivalent to moment results
- from wings.
+ from wings
 \end_layout
 
 \begin_layout Standard
-So this configuration help us to more stable quad-plane that increase stability
+So this configuration help to more stable quad-plane that increase stability
  due to wing spacing.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-For incidence angle: All models we build it before almost of them have a
- negative incidence angle for tail not exceed -3 degree, So we highlight
- at the incidence of second wing in two models; in model (1) has a positive
- incidence angle, And model (2) has a large negative incidence angle.
+For incidence angle: 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+All models have been built it before almost of them have a negative incidence
+ angle for tail not exceed -3 degree, So highlighting at the incidence of
+ second wing in two models; in model (1) has a positive incidence angle,
+ And model (2) has a large negative incidence angle.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
-For Static margin: We know the S.M.
+For Static margin:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+That known the S.M.
  must be (from 5 to 20 %), and the S.M.
- in model (1) is 21.2 that may acceptable range, but at model (2) has 25%.
- 
+ in model (1) is 17.2 that is acceptable range, but at model (2) has 25%.
 \end_layout
 
+\end_deeper
 \begin_layout Enumerate
-For Lift: We find trim angle of attack at 4.5 degree, and we go to Fz VS
- Alpha graph get lift that carry aircraft we get Fz=28(N) at 4.5 degree,
- which carry 2.85 Kg maximum tack-off weight, all of calculations reference
- to 2.7 Kg maximum tack-off weight.
- 
+For Lift:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+We find trim angle of attack at 5.1 degree, and we go to Fz VS Alpha graph
+ get lift that carry aircraft we get Fz=28.8(N) at 5.1 degree, which carry
+ 2.93 Kg maximum tack-off weight, all of calculations reference to 2.7 Kg
+ maximum tack-off weight.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+So, model (1) has been selected because model (1) is more effective than
+ model (2)
+\end_layout
+
+\begin_layout Subsection
+Optimization for aerodynamic stability:
 \end_layout
 
 \begin_layout Standard
-So, we select model (1) because model (1) is more effective than model (2),,
- next step we modified the design to satisfy position of C.G.
-\end_layout
-
-\begin_layout Standard
-In this phase we tried to put point of C.G.
- in the middle of the vehicle to equalize the value of moments resulting
- from two wings to optimize the (𝐶
+In this phase C.G.
+ position is forced to be in the middle of the vehicle to equalize the value
+ of moments resulting from two wings to optimize the (𝐶
 \begin_inset Formula $_{𝑚}$
 \end_inset
 
-−𝛼) graph, First we make several trails with constraints of stability:
+−𝛼) graph, PX4 requirements and control requirements, easy to manufacturing
+ and high accuracy results during assembly.First, making several trails with
+ constraints of stability: 
 \end_layout
 
 \begin_layout Itemize
-We selected variables which allowed to change them.
+Select a set of parameters which can be optimized .
  
 \end_layout
 
 \begin_layout Itemize
-Then we set variables and change one of them, to convert slope of stability
- from positive to negative slope.
+Then set the parameters to constant values and iterate with one variable,
+ to modify slope of stability from positive to negative slope.
  
 \end_layout
 
 \begin_layout Itemize
-We concluded variables that affect the slope:
+Concluded variables that affect the slope:
 \end_layout
 
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Itemize
 Arm
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 The height of second wing 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Incidence of angles of 2 wings 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Geometry of 2 wings specially wing chord 
 \end_layout
 
-\begin_layout Enumerate
-Speed of vehicle 
-\end_layout
-
+\end_deeper
 \begin_layout Itemize
 Put position of C.G.
  and the arm, then change variables.
@@ -2627,14 +2737,17 @@ Put position of C.G.
 \end_layout
 
 \begin_layout Standard
-By trial and error after fail some trails we get the best configuration
- by change parameters:
+In this part the design parameters will be reduces to 6 parameters replacement
+ 7 parameters, because of constant position of CG, 
+\series bold
+By trial and error after fail some trails we get the best performance by
+ change parameters:
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="16" columns="2">
+<lyxtabular version="3" rows="17" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2953,7 +3066,7 @@ X
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2962,11 +3075,31 @@ Degree of Static Stability (S.M.)
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 11.5%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Reylonds number
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+About (100,000 to 200,000)
 \end_layout
 
 \end_inset
@@ -2979,15 +3112,93 @@ Degree of Static Stability (S.M.)
 
 \end_layout
 
-\begin_layout Subsubsection
-Final results
+\begin_layout Subsection
+Final results:
 \end_layout
 
+\begin_layout Itemize
+Foil characteristics:
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Cp-distirbution2.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pressure distribution along NACA0015 at certain angle of attack and Reylonds
+ number
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/foil analysis(NACA0015).png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Polar graph of NACA0015 at a certain Reylonds number=100,000 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3027,10 +3238,14 @@ Lift Vs alpha and Cm Vs alpha
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3070,10 +3285,14 @@ Cl Vs alpha and Cl/Cd Vs alpha
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3112,10 +3331,11 @@ inal static stability and lift generated from airfoil) , slope of Cm Vs
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3146,24 +3366,19 @@ Fz vs alpha and Cm vs alpha
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
-Stability Analysis
+Stability Analysis:
 \end_layout
 
 \begin_layout Standard
-We will illustrate this part by video its shown modes of longitudinal and
- lateral stability of plane by root locus and time response
+In this section longitudinal and lateral stability had been checked as the
+ software use the stability derivatives of the model and get the TF to check
+ the long period and short period for longitudinal motion and the different
+ modes for lateral motion and here are the results 
 \end_layout
 
 \begin_layout Subsubsection
-For longitudinal
+For longitudinal:
 \end_layout
 
 \begin_layout Itemize
@@ -3177,53 +3392,7 @@ Type2: Pitching.
 \end_layout
 
 \begin_layout Itemize
-Type3,4: motion around steady state flight.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/root locus(long).png
-	scale 50
-
-\end_inset
-
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename pics/long.modes(xflr5).JPG
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-zero pole map for Longitudinal mode
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+Type3,4: motion around steady state flight
 \end_layout
 
 \begin_layout Itemize
@@ -3655,7 +3824,46 @@ Neutral Point position= 0.38245 m
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/root locus(long).png
+	scale 50
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/long.modes(xflr5).JPG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+zero pole map for Longitudinal mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -3668,10 +3876,11 @@ Time response characteristics:
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3710,10 +3919,11 @@ where u: horizontal speed.
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -3749,13 +3959,6 @@ At total time=100 second, and step=0.1 second we see the signal is converge
  with time.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsubsection
 For lateral
 \end_layout
@@ -3772,52 +3975,6 @@ Type2,3: dutch roll mode.
 
 \begin_layout Itemize
 Type4: spiral mode.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/root locus(lateral).png
-	scale 50
-
-\end_inset
-
-
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename pics/late.modes(xflr5).JPG
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-zero pole map for Lateral mode
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -4257,7 +4414,46 @@ C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage pagebreak
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/root locus(lateral).png
+	scale 50
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/late.modes(xflr5).JPG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+zero pole map for Lateral mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -4270,10 +4466,11 @@ Time response characteristics
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -4526,8 +4723,2104 @@ Mechanical Design
 Introduction
 \end_layout
 
+\begin_layout Subsubsection
+Why Quad-plane
+\end_layout
+
 \begin_layout Standard
-In this chapter, we will discuss how to build and efficient and sufficient
+A quad-plane vehicle is a mixture between fixed wing-plane and a multi-copter,
+ it has both of their advantages
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Point Of Comparisons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fixed-wing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+multi-copter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quad-Plane
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+vertical takeoff and landing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+yes 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comfortable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+uncomfortable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comfortable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comfortable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+power consumption
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+High
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Low 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Moderate
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cruise speed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+low
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+high
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+high
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Range
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+short
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Endurance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+short
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+quad-plane advantages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as a conclusion from the previous table, it's obvious that a quad-plane
+ is the best choice to achieve this mission 
+\end_layout
+
+\begin_layout Subsubsection
+Scaling
+\end_layout
+
+\begin_layout Standard
+scaling is based in payload, assuming a full scaled model carry a payload
+ of 120 kg including a 80 kg passenger, 20 kg luggage and 20 kg navigation
+ control equipment .Since vision equipment masses doesn't change from a full
+ scaled model to a scaled model, control equipment masses are assumed to
+ be a part of the scaled model payload
+\end_layout
+
+\begin_layout Standard
+A 1/100 scaled model is to be designed so that its payload is 1.2 kg.
+\end_layout
+
+\begin_layout Subsubsection
+Payload
+\end_layout
+
+\begin_layout Standard
+Payload consists of the components that are loaded on the vehicle to carry
+ out its mission so, the payload will be divided into two sections: control
+ payload and passenger payload
+\end_layout
+
+\begin_layout Itemize
+Before optimization
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+components
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+masses (gm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Passenger payload 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Human model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chair
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+123
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Navigation payload
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XPAL power supply
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+517
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jetson KIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+431
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RP Lidar A1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+190
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ZED camera
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+159
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rasspery pi 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+42
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PIX4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+38
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Other electronic devices
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total mass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Non optimized payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+After optimization
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+It was found that the payload exceeded the scaling assumption, so some optimizat
+ion is done in the payload.
+\end_layout
+
+\begin_layout Standard
+also due to limited resources of propulsion systems and batteries, further
+ optimization is done and the final payload is: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+components
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+masses (gm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Passenger payload 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Human model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chair
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+123
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Navigation payload
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nano Jetson KIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ZED camera
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+159
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PIX4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+38
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Other electronic devices
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total mass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+970 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optimized payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Endurance
+\end_layout
+
+\begin_layout Subsubsection
+Range
+\end_layout
+
+\begin_layout Subsection
+Sizing
+\end_layout
+
+\begin_layout Standard
+sizing is an iterative process where the VTOL propulsion system is chosen
+ based on the main payload and then both the main payload and the propulsion
+ system (secondary payload) become the payload of the fixed wing.
+ After sizing the fixed wing, the MTOM is calculated and then VTOL propulsion
+ system is re-chosen and so-on til convergence
+\end_layout
+
+\begin_layout Standard
+Due to limited resources of propulsion systems, only one VTOL propulsion
+ system is available so, sizing process will not be iterative
+\end_layout
+
+\begin_layout Itemize
+As a Multi-copter
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+As a multi-copter, only the propulsion system will be taken in account while
+ the structure will be neglected as the structure will be taken in consideration
+ in fixed wing sizing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+component
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mass of one piece
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no of pieces
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+total mass
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTOL motors
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+71
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+284
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTOL propellers
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+76
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTOL ESC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total mass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+460 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Secondary payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+As a fixed-wing
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Payload in this section will be the summation of both secondary and main
+ payloads, so the payload is 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $Payload=Mainpayload+Secondarypayload=970+460=1430gm$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Propulsion system selection
+\end_layout
+
+\begin_layout Subsubsection
+Vertical takeoff propulsion system
+\end_layout
+
+\begin_layout Itemize
+Motors : the rule of thump in choosing a vertical takeoff propulsion system
+ is that the total propulsive force is twice the weight of the vehicle.
+ See eq
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $T_{motor}\leq\frac{W_{estimated}}{4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Due to limited resources of available motors, we had to estimate the maximum
+ takeoff weight from the available set of motors 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Study/Graduation Project/final month6/grad_project/documentation6/final documentation/iteration_3/final documentation/pics/KDE2315XF_III_865e1186-de77-4a5d-88dc-2ecf16fd3482_large.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+KDE2315XF-965
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constant current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+26+ A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constants watts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+385+ W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No load current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5 A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Voltage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.1 V (3S LiPo) - 17.4 V (4S LiHV)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RPM/V (Kv rating)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+965
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75 grams
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hover motor specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hover motor's performance data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ESCs
+\end_layout
+
+\begin_layout Itemize
+Propellers set
+\end_layout
+
+\begin_layout Subsubsection
+Cruise propulsion system
+\end_layout
+
+\begin_layout Itemize
+Motors : According to many references, the rule of thump in choosing a pusher
+ motor is according to the following table
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+power/weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+vehicle's category
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50-70 watts/pound: 11-15 watts/100g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minimum level of power for decent performance
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70-90 watts/pound; 15-20 watts/100g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Trainer and slow flying scale models
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90-110 watts/pound: 20-24 watts/100g 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sport, aerobatic and fast flying scale models
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+110-130 watts/pound: 24-29 watts/100g 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Advanced aerobatic and high-speed models
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+130-150 watts/pound: 29-33 watts/100g 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lightly loaded 3D models and ducted fans
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+power of motors to vehicle's weight 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/gpmg4595.jpg
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rimfire .10 35-30-1250 Outrunner Brushless
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constant current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum surge current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constants watts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+333W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum brust watts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+390W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No load current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Voltage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.4 - 11.1 V (2-3S LiPo)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RPM/V (Kv rating)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1250
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+71 grams
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pusher motor specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ESCs
+\end_layout
+
+\begin_layout Itemize
+Propellers set
+\end_layout
+
+\begin_layout Subsubsection
+Power source (battery)
+\end_layout
+
+\begin_layout Standard
+A MATlab code is created that roughly calculates the capacity if the battery
+ needed given the endurance time of the mission and the consumption rate
+ of the motors or calculates the mission endurance given the battery’s capacity.
+ This code is based on some assumptions.
+ (code is in the appendix of codes)
+\end_layout
+
+\begin_layout Standard
+Assumptions:
+\end_layout
+
+\begin_layout Enumerate
+The working time of the hovering motors is 20% of the mission endurance
+\end_layout
+
+\begin_layout Enumerate
+The working time of pusher motor is the total mission endurance 
+\end_layout
+
+\begin_layout Itemize
+Battery used in vehicle
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A high quality Lithium battery, low weight /size and high power make it
+ suitable for our application
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/lpb5200.jpg
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Lithium Polymer Battery (11.1 V, 5200 mAH- 35C)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Battery specification
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Capacity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5500 mAh
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Configuration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3S1P / 11.1v / 3Cell
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Peak discharge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35C
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+380 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+140x30x30 mm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+connector type
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T connector
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Battery specification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Mechanical Design
+\end_layout
+
+\begin_layout Standard
+In this chapter, we will discuss how to build an efficient and sufficient
  mechanical design for an autonomous flying taxi.
 \end_layout
 
@@ -4538,8 +6831,8 @@ Our design is both sufficient and efficient so that it can withstand all
  appearance to attract passenger's attention.
 \end_layout
 
-\begin_layout Subsection
-Building a 3D model
+\begin_layout Subsubsection
+Building a 3D mechanical model
 \end_layout
 
 \begin_layout Standard
@@ -4550,10 +6843,11 @@ Solid Works is used to create a 3D model and AutoCAD is used to edit 2D
  Windows.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 SolidWorks outputs:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Files used in machining (laser cutting and 3D printing)
 \end_layout
@@ -4570,10 +6864,12 @@ Gravity center location control
 Some analysis (flow and structural)
 \end_layout
 
-\begin_layout Subsubsection
+\end_deeper
+\begin_layout Itemize
 Steps to draw a 3D model in SolidWorks
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Define components of the payload, their dimensions, weight and fixation
  points
@@ -4596,10 +6892,12 @@ define the components that needs mounts
 Clearance needed for wiring and connections
 \end_layout
 
-\begin_layout Subsubsection
+\end_deeper
+\begin_layout Itemize
 AutoCAD outputs
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 edit 2D machining files obtained from SolidWorks
 \end_layout
@@ -4609,162 +6907,8 @@ Connected to a CNC Laser cutting machine and modify files into G-code for
  the machine
 \end_layout
 
-\begin_layout Subsection
-Configurations
-\end_layout
-
-\begin_layout Standard
-In this part various configurations will be discussed and a certain configuratio
-n will be chosen
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/conv.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Conventional configuration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/wwing.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Flying wing configuration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/Bode.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Pod and Boom Configuration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-After deep research, Tandem wing configuration is found to be the most suitable
- configuration for a flying taxi vehicle where it needs to land and takeoff
- in streets between buildings so it needs to be with very small span, tandem
- wing configurations provide high left with small span
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/4.JPG
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Tandem wing configuration
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
+\end_deeper
+\begin_layout Subsubsection
 Payload 3D models
 \end_layout
 
@@ -4788,7 +6932,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/passenger.PNG
-	scale 50
+	width 4cm
 
 \end_inset
 
@@ -4828,7 +6972,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/chair.PNG
-	scale 50
+	width 4cm
 
 \end_inset
 
@@ -4854,7 +6998,7 @@ Chair
 
 \end_deeper
 \begin_layout Itemize
-Pixhawk
+Pixhawk and its mount
 \end_layout
 
 \begin_deeper
@@ -4876,7 +7020,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pixhawk.png
-	scale 50
+	width 8cm
 
 \end_inset
 
@@ -4887,47 +7031,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Pixhawk 3D model
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Pixhawk mount
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/pixhawk mount.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Pixhawk mount 3D model
+Pixhawk and its mount 3D model
 \end_layout
 
 \end_inset
@@ -4956,7 +7060,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/ZED.png
-	scale 50
+	width 8cm
 
 \end_inset
 
@@ -4982,11 +7086,7 @@ ZED stereo camera 3D model
 
 \end_deeper
 \begin_layout Itemize
-RP Lidar A1
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+Jetson Nano KIT
 \begin_inset Float figure
 wide false
 sideways false
@@ -4995,8 +7095,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/lidar.png
-	scale 50
+	filename pics/jetson.png
+	width 8cm
 
 \end_inset
 
@@ -5007,7 +7107,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-RP Lidar A1 3D model
+Nano Jetson KIT
 \end_layout
 
 \end_inset
@@ -5018,11 +7118,6 @@ RP Lidar A1 3D model
 \end_inset
 
 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Jetson Nano KIT
 \end_layout
 
 \begin_layout Itemize
@@ -5145,11 +7240,162 @@ Battery 3D model
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
+\begin_layout Subsubsection
+Available machining techniques
+\end_layout
+
+\begin_layout Standard
+available machining techniques has put some other constrains on the design
+ process so, available machines and their capabilities must be taken in
+ consideration during design process.
+\end_layout
+
+\begin_layout Itemize
+Laser cutter
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Only cuts foam and wood sheets with maximum size of (90*50*1 cm) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/maxresdefault.jpg
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Laser Cutter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+CNC foam cutter
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Forms wings form foam using hot wire with moderate accuracy 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/rcfoamcutter_hot_wire_cnc_foam_cutter_XL1_s3.jpg
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/1ad2cfdbeb1e8dd0f7b5731dc31493d5.jpg
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+CNC foam cutter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+A 3D printer (20*10*20 cm)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+the available 3D printer is with small dimensions and low both quality and
+ accuracy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/M2Rev.E_2000x.jpg
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+3D printer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
 Wing fixation method
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 Variable incidence angle fixation method
 \end_layout
 
@@ -5339,7 +7585,7 @@ variable incidence fixation at 4 degrees incidence
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 Constant incidence angle fixation method
 \end_layout
 
@@ -5387,7 +7633,7 @@ Constant incidence fixation at 2 degrees incidence
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Fuselage
 \end_layout
 
@@ -5893,926 +8139,6 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
-Propulsion system selection
-\end_layout
-
-\begin_layout Subsubsection
-Vertical takeoff propulsion system
-\end_layout
-
-\begin_layout Itemize
-Motors
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-the rule of thump in choosing a vertical takeoff propulsion system is that
- the total propulsive force is twice the weight of the vehicle.
- See eq
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula $T_{motor}\leq\frac{W_{estimated}}{4}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Note:
-\series default
- Due to limited resources of available motors, we had to estimate the maximum
- takeoff weight from the available set of motors 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/KDE2315XF_III_865e1186-de77-4a5d-88dc-2ecf16fd3482_large.jpg
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-KDE2315XF-965
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constant current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-26+ A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constants watts
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-385+ W
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No load current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.5 A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Input Voltage
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11.1 V (3S LiPo) - 17.4 V (4S LiHV)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RPM/V (Kv rating)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-965
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-75 grams
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Hover motor specifications
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Hover motor's preformance data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-ESCs
-\end_layout
-
-\begin_layout Itemize
-Propellers set
-\end_layout
-
-\begin_layout Subsubsection
-Cruise propulsion system
-\end_layout
-
-\begin_layout Itemize
-Motors
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-According to many references, the rule of thump in choosing a pusher motor
- is according to the following table
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-power/weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-vehicle's category
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-50-70 watts/pound: 11-15 watts/100g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Minimum level of power for decent performance
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-70-90 watts/pound; 15-20 watts/100g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Trainer and slow flying scale models
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-90-110 watts/pound: 20-24 watts/100g 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sport, aerobatic and fast flying scale models
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-110-130 watts/pound: 24-29 watts/100g 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Advanced aerobatic and high-speed models
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-130-150 watts/pound: 29-33 watts/100g 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Lightly loaded 3D models and ducted fans
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-power of motors to vehicle's weight 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/gpmg4595.jpg
-	width 30page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Rimfire .10 35-30-1250 Outrunner Brushless
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constant current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum surge current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-35A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constants watts
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-333W
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum brust watts
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-390W
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No load current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.2A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Input Voltage
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7.4 - 11.1 V (2-3S LiPo)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RPM/V (Kv rating)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1250
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-71 grams
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Pusher motor specifications
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-ESCs
-\end_layout
-
-\begin_layout Itemize
-Propellers set
-\end_layout
-
-\begin_layout Subsubsection
-Power source (battery)
-\end_layout
-
-\begin_layout Standard
-A MATlab code is created that roughly calculates the capacity if the battery
- needed given the endurance time of the mission and the consumption rate
- of the motors or calculates the mission endurance given the battery’s capacity.
- This code is based on some assumptions.
- (code is in the appendix of codes)
-\end_layout
-
-\begin_layout Standard
-Assumptions:
-\end_layout
-
-\begin_layout Enumerate
-The working time of the hovering motors is 20% of the mission endurance
-\end_layout
-
-\begin_layout Enumerate
-The working time of pusher motor is the total mission endurance 
-\end_layout
-
-\begin_layout Itemize
-Battery used in vehicle
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-A high quality Lithium battery, low weight /size and high power make it
- suitable for our application
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pics/lpb5200.jpg
-	width 50page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Lithium Polymer Battery (11.1 V, 5200 mAH- 35C)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Battery specification
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Capacity
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5500 mAh
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Configuration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3S1P / 11.1v / 3Cell
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Peak discharge
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-35C
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-380 gm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-size
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-140x30x30 mm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-connector type
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-T connector
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Battery specification
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Autopilot Design
 \end_layout
