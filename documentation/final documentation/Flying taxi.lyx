@@ -9783,9 +9783,9 @@ Nonlinear Quadrocopter Attitude Control Technical Report,Brescianini, Dario;
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 
 \end_layout
 
@@ -9826,7 +9826,7 @@ ler
 
 
 \begin_inset Graphics
-	filename ../../../../Desktop/documentation_test/graduation-project/documentation/final documentation/pics/pasted422.png
+	filename pics/pasted422.png
 	width 90col%
 
 \end_inset
@@ -9862,7 +9862,7 @@ inputs: velocity setpoint , outputs: required thrust vector , controller:
 
 
 \begin_inset Graphics
-	filename ../../../../Desktop/documentation_test/graduation-project/documentation/final documentation/pics/pasted52.png
+	filename pics/pasted52.png
 	width 90col%
 
 \end_inset
@@ -9873,7 +9873,7 @@ inputs: velocity setpoint , outputs: required thrust vector , controller:
 
 
 \begin_inset Graphics
-	filename ../../../../Desktop/documentation_test/graduation-project/documentation/final documentation/pics/pasted62.png
+	filename pics/pasted62.png
 	width 90col%
 
 \end_inset
