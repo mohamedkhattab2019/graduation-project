@@ -6308,8 +6308,37 @@ Mathematical Model
 \end_layout
 
 \begin_layout Standard
-The mathematical model will be derived mainly to design the controller during
- phase in which the flying taxi acts as multicopter.
+The mathematical model for the flying taxi will be derived then the linearized
+ model will be used to design the autopilot.
+ The main purpose is to estimate initial gains for the PIXHAWK to make it
+ easier to tune since our vehicle isn't conventional.
+ The flying taxi is a quad-plane with 2 main phases, the 1st phase is the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+quad-copter
+\begin_inset Quotes erd
+\end_inset
+
+ phase in which the flying taxi pusher is turned off and the flying taxi
+ acts as ordinary quad-copter during landing or takeoff which has the advantage
+ of less distance for landing or takeoff and higher maneuverability especially
+ for narrow places .
+ In the 2nd phase after finishing takeoff and reaching the required altitude,
+ the pusher is turned on and controlled via external controller code on
+ the companion computer which sends the control action for the pusher to
+ the PIXHAWK such that it achieves required cruise speed.
+ It's assumed that during the 2nd phase (quad-plane phase) the flying taxi
+ has constant heading and this is reasonable as it operates mainly between
+ 2 waypoints at high altitude so we don't need to consider the quad-plane
+ lateral dynamics.
+ On the other hand, during the quad-copter phase, the flying taxi has low
+ speed and low altitude so the position accuracy is important to be more
+ accurate than the GPS readings.
+ Luckily these operating conditions is suitable for generating visual odometry
+ which can aid the GPS also the obstacle avoidance is important during this
+ phase so it's turned on.
 \end_layout
 
 \begin_layout Subsection
@@ -6340,7 +6369,7 @@ the study of forces and moments on system in motion
 Translational motion:
 \bar default
  
-\begin_inset Formula $\overrightarrow{F}=\frac{d}{dt}(m\overrightarrow{v})=m(\mathring{\overrightarrow{v}}+\overrightarrow{\omega}\times\overrightarrow{v})=\overrightarrow{F}_{Aero}+\overrightarrow{F}_{motors}+\overrightarrow{g}$
+\begin_inset Formula $\overrightarrow{F}=\frac{d}{dt}(m\overrightarrow{v})=m(\mathring{\overrightarrow{v}}+\overrightarrow{\omega}\times\overrightarrow{v})=\overrightarrow{F}_{Aero}+\overrightarrow{F}_{pusher}+\overrightarrow{F}_{motors}+\overrightarrow{g}$
 \end_inset
 
 
@@ -6421,7 +6450,25 @@ directions
 \end_inset
 
 can be ignored because during multicopter phase, the flying taxi encounters
- negligible aerodynamic force due to low speed
+ negligible aerodynamic force due to low speed but can't be ignored during
+ the quad-plane phase as the higher velocity of this phase increases the
+ effect of the aerodynamic forces which generates drag forces and lift force
+ which is the main advantage for quad-plane over quad-copter since the generated
+ lift increases range and endurance significantly with respect to the quad-copte
+r configuration.
+ This shows the effectiveness of the quad-plane configuration in the flying
+ taxi application.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\overrightarrow{F}_{pusher}=\left[\begin{array}{c}
+F_{pusher}\\
+0\\
+0
+\end{array}\right]$
+\end_inset
+
+ required to overcome the drag force to achieve required cruise speed.
 \end_layout
 
 \begin_layout Itemize
@@ -6609,11 +6656,15 @@ ed in the body axes directions which is very beneficial also in derivation
 \end_inset
 
 is the inertia tensor in body axes.
- For our flying taxi it's symmetric about xz plane 
+ For our flying taxi it's symmetric only about xz plane
+\begin_inset Newline newline
+\end_inset
+
+ 
 \begin_inset Formula $\therefore I=\left[\begin{array}{ccc}
-Ixx & 0 & -Ixz\\
+Ixx & 0 & \boldsymbol{-Ixz}\\
 0 & Iyy & 0\\
--Ixz & 0 & Izz
+\boldsymbol{-Ixz} & 0 & Izz
 \end{array}\right]$
 \end_inset
 
@@ -6925,12 +6976,12 @@ system:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\mathring{u} & =-gsinθ-qw+rv\\
+\mathring{u} & =-gsinθ-qw+rv+\frac{F_{pusher}}{m}+\frac{X_{aero}}{m}\\
 \mathring{v} & =gcosθsinϕ-ru+pw\\
-\mathring{w} & =gcosθcosϕ-pv+qu-\frac{T_{allmotors}}{m}\\
-\mathring{p} & =\frac{Iy-Iz}{Ix}qr+\frac{M_{x}}{I_{x}}\\
-\mathring{q} & =\frac{Iz-Ix}{Iy}pr+\frac{My}{Iy}\\
-\mathring{r} & =\frac{Iy-Ix}{Iz}pq+\frac{M_{z}}{Iz}\\
+\mathring{w} & =gcosθcosϕ-pv+qu-\frac{T_{allmotors}}{m}+\frac{Z_{aero}}{m}\\
+\mathring{p} & =\frac{I_{x}I_{xz}pq-I_{xz}^{2}qr-I_{xz}I_{y}pq+I_{xz}I_{z}pq+I_{y}I_{z}qr-I_{z}^{2}qr+I_{xz}M_{z}+I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
+\mathring{q} & =\frac{M_{y}-pr(I_{x}-I_{z})-I_{xz}(p^{2}-r^{2})}{I_{y}}=\frac{Iz-Ix}{Iy}pr+\frac{My}{Iy}\\
+\mathring{r} & =\frac{I_{x}^{2}pq-I_{x}I_{xz}qr-I_{x}I_{y}pq+I_{xz}^{2}pq+I_{xz}I_{y}qr-I_{xz}I_{z}qr+I_{x}M_{z}+I_{xz}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
 \mathring{\phi} & =p+qsinϕtanθ+rcosϕtanθ\\
 \mathring{\theta} & =qcosϕ-rsinϕ\\
 \mathring{\psi} & =qsinϕsecθ+rcosϕsecθ\\
@@ -7000,16 +7051,20 @@ Linearization
 
 \begin_layout Standard
 We linearize the dynamics of the flying taxi around equilibrium point at
- hovering where : 
+ steady flight where : 
 \end_layout
 
 \begin_layout Standard
 all rates = 0 , 
-\begin_inset Formula $\phi=\theta=0$
+\begin_inset Formula $\phi_{o}=\theta_{o}=0$
 \end_inset
 
 , 
 \begin_inset Formula $p=q=r=0$
+\end_inset
+
+ , 
+\begin_inset Formula $\alpha=0$
 \end_inset
 
 
@@ -7018,12 +7073,12 @@ all rates = 0 ,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\therefore\mathring{u} & =-g\theta\label{u_rate}\\
-\mathring{v} & =-g\phi\label{v_rate}\\
-\mathring{w} & =-\frac{\Delta T_{allmotors}}{m}\label{w_rate}\\
-\mathring{p} & =\frac{M_{x}}{Ix}\label{p_rate_equ}\\
+\therefore\mathring{\Delta u} & =-g\theta+\frac{\Delta X_{pusher}}{m}+\frac{X_{u}^{aero}}{m}\Delta u+\frac{X_{w}^{aero}}{m}\Delta w\label{u_rate}\\
+\mathring{v} & =g\phi-u_{o}r\label{v_rate}\\
+\mathring{w} & =u_{o}q-\frac{\Delta T_{allmotors}}{m}+\frac{Z_{u}^{aero}}{m}\Delta u+\frac{Z_{w}^{aero}}{m}\Delta w+\frac{Z_{q}^{aero}}{m}\Delta q\label{w_rate}\\
+\mathring{p} & =\frac{I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{xz}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}\label{p_rate_equ}\\
 \mathring{q} & =\frac{M_{y}}{Iy}\label{q_rate}\\
-\mathring{r} & =\frac{Mz}{Iz}\label{r_rate}\\
+\mathring{r} & =\frac{I_{x}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{zx}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\label{r_rate}\\
 \mathring{\phi} & =p\label{roll_rate_equ}\\
 \mathring{\theta} & =q\label{pitch rate}\\
 \mathring{\psi} & =r\label{yaw_rate}\\
@@ -7035,15 +7090,6 @@ all rates = 0 ,
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\mathring{u},\mathring{v},\mathring{X},\mathring{Y}$
-\end_inset
-
- considered not so good approximations as will be proved later by comparing
- linear and nonlinear models but we will use them only to estimate initial
- gains for guidance system.
 \end_layout
 
 \begin_layout Subsection
@@ -7078,6 +7124,16 @@ m
 
 \begin_layout Plain Layout
 1.4
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Need to be modified
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
