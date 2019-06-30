@@ -8825,7 +8825,7 @@ system:
 \mathring{\phi} & =p+qsinϕtanθ+rcosϕtanθ\\
 \mathring{\theta} & =qcosϕ-rsinϕ\\
 \mathring{\psi} & =qsinϕsecθ+rcosϕsecθ\\
-\mathring{X} & =[cos(θ)cos(ψ)]u+[sin(ϕ)cos(ψ)-cos(ϕ)sin(ψ)]v+[cos(ϕ)cos(ψ)+sin(ϕ)sin(ψ)]w\\
+\mathring{X} & =[cos(θ)cos(ψ)]u+[sin(ϕ)cos(ψ)-cos(ϕ)sin(ψ)]v+[cos(ϕ)sin(\theta)cos(ψ)+sin(ϕ)sin(ψ)]w\\
 \mathring{Y} & =[cos(θ)sin(ψ)]u+[sin(ϕ)sin(θ)sin(ψ)+cos(ϕ)cos(ψ)]v+[cos(ϕ)sin(θ)sin(ψ)-sin(ϕ)cos(ψ)]w\\
 \mathring{Z} & =[-sin(θ)]u+[sin(ϕ)cos(θ)]v+[cos(ϕ)cos(θ)]w
 \end{align}
@@ -8879,14 +8879,17 @@ all rates = 0 ,
 \mathring{\phi} & =p\label{roll_rate_equ}\\
 \mathring{\theta} & =q\label{pitch rate}\\
 \mathring{\psi} & =r\label{yaw_rate}\\
-\mathring{X} & =u\label{X_rate}\\
-\mathring{Y} & =v\label{Y_rate}\\
 \mathring{Z} & =w\label{Z_rate}
 \end{align}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The position linearization isn't good approximation since changes in angles
+ especially the heading angle can't be assumed as small variations.
 \end_layout
 
 \begin_layout Subsection
@@ -9081,7 +9084,31 @@ Ixz
 \end_layout
 
 \begin_layout Section
-Autopilot
+Quad-copter phase Autopilot
+\end_layout
+
+\begin_layout Standard
+The modified linearized model for the quad-copter phase:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align}
+\therefore\mathring{\Delta u} & =-g\theta\label{u_rate-1}\\
+\mathring{v} & =g\phi\label{v_rate-1}\\
+\mathring{w} & =-\frac{\Delta T_{allmotors}}{m}\label{w_rate-1}\\
+\mathring{p} & =\frac{I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{xz}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}\label{p_rate_equ-1}\\
+\mathring{q} & =\frac{M_{y}}{Iy}\label{q_rate-1}\\
+\mathring{r} & =\frac{I_{x}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{zx}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\label{r_rate-1}\\
+\mathring{\phi} & =p\label{roll_rate_equ-1}\\
+\mathring{\theta} & =q\label{pitch rate-1}\\
+\mathring{\psi} & =r\label{yaw_rate-1}\\
+\mathring{Z} & =w\label{Z_rate-1}
+\end{align}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -9089,8 +9116,7 @@ Autopilot design
 \end_layout
 
 \begin_layout Standard
-From previous notes we stated after deriving the nonlinear model, we designed
- our control block diagram to be as follows:
+Autopilot block diagram is designed as follows:
 \end_layout
 
 \begin_layout Standard
@@ -9140,10 +9166,18 @@ Roll Controller:
 \end_layout
 
 \begin_layout Standard
+As shown in parameters table, Ixz is very small compared to Iz so the Mz
+ effect is less than Mx on the roll response.
+ The accuracy of this assumption is tested by comparing Linear and Nonlinear
+ response of the flying taxi and it turned out that it's very good assumption
+ for our vehicle.
+\end_layout
+
+\begin_layout Standard
 From Linearization section using equations( 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "p_rate_equ"
+reference "p_rate_equ-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9153,7 +9187,7 @@ noprefix "false"
 ),(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "roll_rate_equ"
+reference "roll_rate_equ-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9161,7 +9195,7 @@ noprefix "false"
 \end_inset
 
 ): 
-\begin_inset Formula $\therefore\ddot{\phi}=\frac{Mx}{Ix}\Rightarrow G_{phi}=\frac{\phi}{Mx}=\frac{1}{Ix\,s^{2}}$
+\begin_inset Formula $\therefore\ddot{\phi}=\frac{I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\Rightarrow G_{phi}=\frac{\phi}{Mx}=\frac{I_{z}}{(I_{x}I_{z}-I_{xz}^{2})\,s^{2}}$
 \end_inset
 
 
@@ -9313,7 +9347,7 @@ Pitch Controller:
 From Linearization section using equations( 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "q_rate"
+reference "q_rate-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9323,7 +9357,7 @@ noprefix "false"
 ),(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "pitch rate"
+reference "pitch rate-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9393,16 +9427,6 @@ Using Matlab SISO tool to obtain robust controller :
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Note: Higher gains for pitch than roll due to higher Iy than Ix so the controlle
-r needs to exert more effort to move the vehicle in pitch direction 
-\end_layout
-
-\begin_layout Standard
-The pitch step response and control action for linear and nonlinear models
- using the designed pitch controller:
 \end_layout
 
 \begin_layout Standard
@@ -9485,10 +9509,18 @@ Yaw Controller:
 \end_layout
 
 \begin_layout Standard
+As shown in parameters table, Ixz is also very small compared to Ix so the
+ Mx effect is less than Mz on the roll response..
+ The accuracy of this assumption is tested by comparing Linear and Nonlinear
+ response of the flying taxi and it turned out that it's very good assumption
+ for our vehicle.
+\end_layout
+
+\begin_layout Standard
 From Linearization section using equations( 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "r_rate"
+reference "r_rate-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9498,7 +9530,7 @@ noprefix "false"
 ),(
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "yaw_rate"
+reference "yaw_rate-1"
 plural "false"
 caps "false"
 noprefix "false"
@@ -9506,7 +9538,7 @@ noprefix "false"
 \end_inset
 
 ): 
-\begin_inset Formula $\therefore\ddot{\psi}=\frac{Mz}{Iz}\Rightarrow G_{\psi}=\frac{\psi}{Mz}=\frac{1}{Iz\,s^{2}}$
+\begin_inset Formula $\therefore\ddot{\psi}=\frac{I_{x}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}\Rightarrow G_{\psi}=\frac{\psi}{Mz}=\frac{I_{x}}{(I_{x}I_{z}-I_{xz}^{2})\,s^{2}}$
 \end_inset
 
 
@@ -9568,17 +9600,6 @@ Using Matlab SISO tool to obtain robust controller :
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Note: Higher gains for yaw than roll and pitch due to higher Iz than Iy
- and Ix so the controller needs to exert more effort to move the vehicle
- in yaw direction 
-\end_layout
-
-\begin_layout Standard
-The yaw step response and control action for linear and nonlinear models
- using the designed yaw controller:
 \end_layout
 
 \begin_layout Standard
@@ -9668,6 +9689,9 @@ As we see from the nonlinear model all attitude states affects each others
  (Coupled) so we need to verify that there disturbance on each other won't
  lead to bad performance or even instability.
  As shown the linear model is decoupled which isn't the case in reality.
+ The disturbance on pitch from changing other states is handled well by
+ the pitch controller which enforce the yaw angle back to zero.
+ There is small effects on the roll and yaw responses and control actions.
 \end_layout
 
 \begin_layout Standard
@@ -9803,11 +9827,6 @@ Using Matlab SISO tool to obtain robust controller :
 \end_layout
 
 \begin_layout Standard
-Note: Higher gains for altitude than attitude due to higher mass than inertia
- as values.
-\end_layout
-
-\begin_layout Standard
 The altitude step response (Z = -1 m) and control action for linear and
  nonlinear models using the designed yaw controller:
 \end_layout
@@ -9898,8 +9917,8 @@ Attitude & Altitude controllers together in action
 \end_layout
 
 \begin_layout Standard
-We will study the effect of changing both attitude and altitude because
- as appearing in the nonlinear model the attitude is affecting the altitude
+The effect of changing both attitude and altitude is studied because as
+ appearing in the nonlinear model the attitude is affecting the altitude
  so we should verify that the altitude controller can handle this effect
  which considered relative to the altitude controller as external disturbance
 \end_layout
@@ -9992,14 +10011,14 @@ LOS
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
+\begin{align}
 \alpha_{k} & =tan^{-1}\left(\frac{Y_{des}^{k}-Y_{des}^{k-1}}{X_{des}^{k}-X_{des}^{k-1}}\right)\\
 \psi_{des} & =\alpha_{k}\\
 e_{cross-track} & =-(X-X_{des}^{k-1})sin(\alpha_{k})+(Y-Y_{des}^{k-1})cos(\alpha_{k})\\
 s & =(X-X_{des}^{k-1})cos(\alpha_{k})+(Y-Y_{des}^{k-1})sin(\alpha_{k})\\
 R & =\sqrt{(Y_{des}^{k}-Y_{des}^{k-1})^{2}+(X_{des}^{k}-X_{des}^{k-1})^{2}}\\
-e_{along-track} & =R-s
-\end{align*}
+e_{along-track} & =R-s\label{eq:e_along}
+\end{align}
 
 \end_inset
 
@@ -10040,26 +10059,23 @@ LOS block diagram
 \end_layout
 
 \begin_layout Standard
-Our strategy to get PID values is using the linearized model to design a
- controller as initial estimate then using LabVIEW simulation of the nonlinear
- model we can tune the controller for better performance.
+Our strategy to get PID values is using a linearized model to design a controlle
+r as initial estimate then using LabVIEW simulation of the nonlinear model
+ we can tune the controller for better performance.
 \end_layout
 
 \begin_layout Standard
-From equ.s (
+The attitude dynamics is much faster than position dynamics.
+ so we can assume that heading angle is settled so the along-track error
+ is in the x-body direction and the cross-track error is in the y-body direction.
+\end_layout
+
+\begin_layout Standard
+From equ.
+ (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "u_rate"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-),(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "X_rate"
+reference "eq:e_along"
 plural "false"
 caps "false"
 noprefix "false"
@@ -10067,10 +10083,28 @@ noprefix "false"
 \end_inset
 
 ) : 
-\begin_inset Formula $\ddot{X}=-g\theta\Rightarrow G_{X}=\frac{X}{\theta}=\frac{-g}{s^{2}}$
+\begin_inset Formula $e_{along-track}=R-s\Rightarrow\mathring{e}_{along-track}=-u\,\Rightarrow\,e_{along-track}=\frac{-u}{s}$
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+from equ.(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "u_rate-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+): 
+\begin_inset Formula $\Delta u=\frac{-g\theta}{s}\Rightarrow\boldsymbol{e_{along-track}=\frac{g\theta}{s^{2}}}$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -10079,7 +10113,9 @@ It's clear that the linearized model only accounts for g component effect
 \begin_inset Formula $\Delta T_{allmotors}$
 \end_inset
 
-component doesn't appear
+component doesn't appear so tuning the nonlinear model is important to be
+ done and it's expected that the deviation between linear and nonlinear
+ is significant.
 \end_layout
 
 \begin_layout Standard
@@ -10387,7 +10423,7 @@ new gains after tunning using nonlinear simulation :
 
 \series default
 in all previous results the altitude control is working as could be seen
- fron Z-force response.
+ from Z-force response.
  
 \series bold
 
@@ -10399,7 +10435,7 @@ in all previous results the altitude control is working as could be seen
 
 \begin_layout Standard
 Similarly, For cross-track error we used the same procedure: 
-\begin_inset Formula $\ddot{Y}=-g\phi\Rightarrow G_{Y}=\frac{Y}{\phi}=\frac{-g}{s^{2}}$
+\begin_inset Formula $\mathring{v}=g\phi\Rightarrow\mathring{e}_{cross-track}=v=\frac{g\phi}{s}\Rightarrow e_{cross-track}=\frac{g\phi}{s^{2}}$
 \end_inset
 
 
