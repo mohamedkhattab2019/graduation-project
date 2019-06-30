@@ -7571,7 +7571,7 @@ s needed to design the controller in the next step:
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -7673,7 +7673,7 @@ Iy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7682,11 +7682,43 @@ Iz
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 0.23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $kg.m^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ixz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.05
 \end_layout
 
 \end_inset
@@ -7879,7 +7911,7 @@ status open
 \begin_inset Graphics
 	filename pics/roll_1deg.bmp
 	lyxscale 70
-	width 100pc
+	width 100col%
 
 \end_inset
 
@@ -9479,6 +9511,1086 @@ LabVIEW attitude controller BD
 
 \begin_layout Subsection
 Commercial Autopilot
+\end_layout
+
+\begin_layout Standard
+We used PIXHAWK as a commercial autopilot.
+ PIXHAWK is an autopilot hardware for academic, hobby and developer communitites
+ and supports flight stacks software like PX4 and ArduPilot.
+ We used PX4 software.
+ PX4 software consists of 2 main parts: Middleware and Flightstack as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="40col%">
+<column alignment="center" valignment="top" width="40col%">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none" width="90col%">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PX4 Software
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Middleware
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Flightstack
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+general robotics layer for any autonomous robot not only drones like rovers.
+ It handles the internal communications between the different running programs
+ using asynchronous message passing(uORB) and external communication using
+ MAVLink or FastRTPS.
+ It provides the hardware integration (GPS-IMU-....)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+It contains the estimation and flight control system.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/PX4_Architecture.svg
+	lyxscale 60
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PX4 architecture from PX4 website
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We are concerned more with the Flightstack so we will take a small dive
+ to show the basics of each subsystem in the flightstack.
+ The flightstack consists of 7 main subsystems: Commander - Navigator -
+ Position Controller - Attitude & Rate Controller - Sensors Hub - Estimator
+ - Output Driver
+\end_layout
+
+\begin_layout Subsection
+Commander
+\end_layout
+
+\begin_layout Standard
+The commander is a state-machine architecture which can switch the flight
+ modes based on specific conditions from the remote control or even from
+ the mavlink (using companion computer).
+ A simple example shows how the commander works: The commander has a main
+ loop inside which check if there is an 
+\begin_inset Quotes eld
+\end_inset
+
+Arming
+\begin_inset Quotes erd
+\end_inset
+
+ signal coming from the remote control and if there is , it will call a
+ function called 
+\begin_inset Quotes eld
+\end_inset
+
+arming_state_transition()
+\begin_inset Quotes erd
+\end_inset
+
+ and after checking if it's valid to 
+\begin_inset Quotes eld
+\end_inset
+
+Arm
+\begin_inset Quotes erd
+\end_inset
+
+ the muticopter.
+ the arm variable will be changed to the arming value and then published
+ for other programs using the uORB message system which is built inside
+ the PX4 middleware.When the output drivers programs read the arm variable,
+ they will initiate the spinning of the motors.
+ We will explain the 
+\begin_inset Quotes eld
+\end_inset
+
+flight modes
+\begin_inset Quotes erd
+\end_inset
+
+ later in this section.
+\end_layout
+
+\begin_layout Subsection
+Navigator
+\end_layout
+
+\begin_layout Standard
+The navigator takes its 
+\series bold
+inputs
+\series default
+ from 
+\bar under
+database(store waypoints or mission),RC(Remote control) or the Commandar
+\bar default
+, and 
+\series bold
+outputs
+\series default
+ 
+\bar under
+position setpoints
+\bar default
+ to be used by the position controller.
+\end_layout
+
+\begin_layout Subsection
+Position controller
+\end_layout
+
+\begin_layout Standard
+inputs: Position setpoints & heading
+\end_layout
+
+\begin_layout Standard
+outputs: 
+\series bold
+Thrust vector
+\series default
+ which can be decomposed into 
+\bar under
+attitude(angles) setpoints
+\bar default
+ and 
+\bar under
+thrust magnitude.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/pasted222.png
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cascaded control architecture from 
+\begin_inset Quotes eld
+\end_inset
+
+Nonlinear Quadrocopter Attitude Control Technical Report,Brescianini, Dario;
+ Hehn, Markus; D'Andrea, Raffaello,2013
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The feedforward signal isn't used for multirotors.
+\end_layout
+
+\begin_layout Standard
+The position controller is implemented such that it consists of 2 loops
+ :
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+1st loop
+\bar default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+inputs: position setpoints , outputs: velocity setpoints , controller: P-control
+ler
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../../../Desktop/documentation_test/graduation-project/documentation/final documentation/pics/pasted422.png
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+2nd loop
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+inputs: velocity setpoint , outputs: required thrust vector , controller:
+ PID-controller
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../../../Desktop/documentation_test/graduation-project/documentation/final documentation/pics/pasted52.png
+	width 90col%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../../../../Desktop/documentation_test/graduation-project/documentation/final documentation/pics/pasted62.png
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But the D-term in the controller don't use the error rate as usual PIDs
+ , it uses the negative rate of the estimated plant velocity to avoid 
+\begin_inset Quotes eld
+\end_inset
+
+the derivative kick
+\begin_inset Quotes erd
+\end_inset
+
+ which causes high control action due to the discrete implementation of
+ the PID.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/position controller.png
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position Controller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Attitude & Rate Controller
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/pasted322.png
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cascaded control architecture from 
+\begin_inset Quotes eld
+\end_inset
+
+Nonlinear Quadrocopter Attitude Control Technical Report,Brescianini, Dario;
+ Hehn, Markus; D'Andrea, Raffaello,2013
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+inputs: attitude setpoints(Roll-Pitch-Yaw)
+\end_layout
+
+\begin_layout Standard
+outputs: 
+\series bold
+Required Forces and Moments
+\end_layout
+
+\begin_layout Standard
+The Attitude controller consists also of 2 loops :
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+1st loop
+\bar default
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+inputs: attitude setpoints , outputs: angular rates setpoints , controller:
+ P-controller (
+\begin_inset Formula $\frac{1}{\tau}$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted72.png
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+2nd loop
+\bar default
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+inputs: angular rates setpoint , outputs: required forces and moments ,
+ controller: PID-controller
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted82.png
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The PX4 provides some measures to account for the nonlinear behavior of
+ the motor in practice.
+ For example if we noticed oscillations when we go towards full-throttle,
+ we can solve this problem using 2 approaches:
+\end_layout
+
+\begin_layout Enumerate
+Thrust Curve method : 
+\begin_inset Formula $thrust=(1-factor)PWM+(factor)\,PWM^{2}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+the 
+\begin_inset Formula $factor$
+\end_inset
+
+ is stored in 
+\begin_inset Quotes eld
+\end_inset
+
+THR_MDL_FAC
+\begin_inset Quotes erd
+\end_inset
+
+ parameter so we can change it to model our motors characteristics.
+\end_layout
+
+\begin_layout Enumerate
+PID attenuation method : after some value of the throttle (for example:
+ 70%) called 
+\begin_inset Quotes eld
+\end_inset
+
+break-point
+\begin_inset Quotes erd
+\end_inset
+
+, we can attenuate the gains to decrease the control effort according to
+ a parameter called 
+\begin_inset Quotes eld
+\end_inset
+
+rate
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The break-point value is configured using 
+\begin_inset Quotes eld
+\end_inset
+
+MC_TPA_BREAK_*
+\begin_inset Quotes erd
+\end_inset
+
+ parameters , and the rate is configured using 
+\begin_inset Quotes eld
+\end_inset
+
+MC_TPA_RATE_* 
+\begin_inset Quotes erd
+\end_inset
+
+ parameters.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted92.png
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/attitude controller.png
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Attitude&rate controller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Estimator
+\end_layout
+
+\begin_layout Standard
+In PX4 flightstack, there is 4 types of estimators are defined so we can
+ choose the one that suits our application.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="22col%">
+<column alignment="center" valignment="top" width="22col%">
+<column alignment="center" valignment="top" width="22col%">
+<column alignment="center" valignment="top" width="22col%">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Estimator
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Q attitude estimator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+INAV position estimator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LPE position estimator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EKF2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+It's a quaternion based 
+\series bold
+complementary filter
+\series default
+ for 
+\series bold
+attitude.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+It's a 
+\series bold
+complementary filter
+\series default
+ for estimating 
+\series bold
+3D position and velocities.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+It's an 
+\series bold
+EKF(Extended Kalman filter)
+\series default
+ for estimating 
+\series bold
+3D position and velocities.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+It's as an 
+\series bold
+EKF(Extended Kalman filter)
+\series default
+ for estimating 
+\series bold
+3D postion , velocities , wind states and attitude.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can choose the required estimator using SYS_MC_EST_GROUP parameter which
+ has 3 possible values to choose the estimator as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="30col%">
+<column alignment="center" valignment="top" width="30col%">
+<column alignment="center" valignment="top" width="30col%">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SYS_MC_EST_GROUP
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Q estimator (Complementary filter for attitude)
+\begin_inset Newline newline
+\end_inset
+
+INAV (Complementary filter for position)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Q estimator (Complementary filter for attitude)
+\begin_inset Newline newline
+\end_inset
+
+LPE (EKF for position)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EKF2 (all multicopter states and wind)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We used the 
+\series bold
+EKF2
+\series default
+ .
+\end_layout
+
+\begin_layout Subsection
+Output drivers
+\end_layout
+
+\begin_layout Standard
+They are responsible for the interfacing including the driver responsible
+ for communicating with the motors ESCs to set the required PWM.
+ They are incude also a program called 
+\begin_inset Quotes eld
+\end_inset
+
+Mixer
+\begin_inset Quotes erd
+\end_inset
+
+ the required forces and moments goes to the mixer which separates the airframe
+ configuraion from the controller.
+ This generalizes the controller to various configurations
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+There is also a very important software called 
+\begin_inset Quotes eld
+\end_inset
+
+
+\series bold
+Logger
+\series default
+
+\begin_inset Quotes erd
+\end_inset
+
+, it's implemented in the Middleware.
+ It's very important to log data for tuning and performance analysis.
+ The logger is automatically started when arming the vehicle and stopped
+ when disarming it and a new log file is generated.
+ There is 2 ways to have the logged data :
+\end_layout
+
+\begin_layout Enumerate
+The most efficient way for large data size is using SD card on the PIXHAWK
+ where the data is logged.
+\end_layout
+
+\begin_layout Enumerate
+The Log Streaming way, which sends the same logging data via MAVLink.
+ The requirement is that the link(for example WiFi) provides at least 50
+ KB/s and only one client can request log streaming at the same time.
+ The connection doesn't necessarily need to be reliable because the protocol
+ can handle drops.
+\end_layout
+
+\begin_layout Standard
+Both methods can be used independently or can be used at the same time.
+ After getting the log file using any way we need to convert the generated
+ 
+\begin_inset Quotes eld
+\end_inset
+
+.ulg
+\begin_inset Quotes erd
+\end_inset
+
+ file to another more useful data structure like 
+\begin_inset Quotes eld
+\end_inset
+
+.csv
+\begin_inset Quotes erd
+\end_inset
+
+ to open using excel or matlab, there is a lot of tools can handle the log
+ file , analyze the data and generate graphs automatically offline like
+ 
+\begin_inset Quotes eld
+\end_inset
+
+PyFlightAnalysis
+\begin_inset Quotes erd
+\end_inset
+
+ or online like 
+\begin_inset Quotes eld
+\end_inset
+
+Flight Review
+\begin_inset Quotes erd
+\end_inset
+
+.
+ We used a python tool to only convert the log file to excel files called
+ 
+\begin_inset Quotes eld
+\end_inset
+
+pylog
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection

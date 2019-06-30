@@ -760,12 +760,12 @@ While the race to develop flying cars has started to gain momentum in recent
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/Curtiss-Autoplane-patent-US1294413A.jpg
+	filename pics/Curtiss-Autoplane-patent-US1294413A.jpg
 	scale 80
 
 \end_inset
@@ -842,12 +842,12 @@ Air taxis, in particular, those that have vertical take-off and landing
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/UBER-landing-pad.jpg
+	filename pics/UBER-landing-pad.jpg
 	scale 70
 
 \end_inset
@@ -1035,7 +1035,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/ehang184.png
+	filename pics/ehang184.png
 	scale 35
 
 \end_inset
@@ -1111,7 +1111,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/Pie-chart.jpg
+	filename pics/Pie-chart.jpg
 	scale 20
 
 \end_inset
@@ -1196,7 +1196,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/boeing taxi.jpg
+	filename pics/boeing taxi.jpg
 	scale 15
 
 \end_inset
@@ -1240,7 +1240,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/uber.png
+	filename pics/uber.png
 	scale 40
 
 \end_inset
@@ -1293,12 +1293,12 @@ More interesting may be the appearance of Honeywell International and General
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/important players.jpg
+	filename pics/important players.jpg
 	scale 10
 
 \end_inset
@@ -1343,12 +1343,12 @@ This project can be assumed as a scaled quadplane prototype to a real flying
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/pics/prototype.jpeg
+	filename pics/prototype.jpeg
 	scale 25
 
 \end_inset
@@ -7571,7 +7571,7 @@ s needed to design the controller in the next step:
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="3">
+<lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -7673,7 +7673,7 @@ Iy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -7682,11 +7682,43 @@ Iz
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 0.23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $kg.m^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ixz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.05
 \end_layout
 
 \end_inset
@@ -7879,7 +7911,7 @@ status open
 \begin_inset Graphics
 	filename pics/roll_1deg.bmp
 	lyxscale 70
-	width 100pc
+	width 100col%
 
 \end_inset
 
