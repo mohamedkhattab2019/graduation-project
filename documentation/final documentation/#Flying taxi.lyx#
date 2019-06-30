@@ -9109,7 +9109,7 @@ in all previous results the altitude control is working as could be seen
 
 \begin_layout Standard
 Similarly, For cross-track error we used the same procedure: 
-\begin_inset Formula $\mathring{v}=g\phi\Rightarrow\mathring{e}_{cross-track}=v=\frac{g\phi}{s}\Rightarrow e_{cross-track}=\frac{-g\phi}{s^{2}}$
+\begin_inset Formula $\mathring{v}=g\phi\Rightarrow G_{Y}=\frac{Y}{\phi}=\frac{-g}{s^{2}}$
 \end_inset
 
 
