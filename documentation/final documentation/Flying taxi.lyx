@@ -729,17 +729,17 @@ FLYING TAXI
 \end_layout
 
 \begin_layout Standard
-A flying taxi is A flying vehicle with a range of 50 to 120 miles, carrying
- two to four passengers, and cruising at an altitude of 3,000 to 5,000 feet.
+A flying taxi is a flying vehicle with a range of 50 to 120 miles, carrying
+ one to four passengers, and cruising at an altitude of 3,000 to 5,000 feet.
  Based on the current battery technology, the most common commute might
- be a 50-mile round trip with two short vertical takeoffs.
+ be a 50-mile round trip with two short vertical takeoff and landing.
  
 \end_layout
 
 \begin_layout Standard
 While the idea of personal flying vehicles is old, advancements in technology
  have reached a point to make this vision a reality.Flying cars, roadable
- aircrafts, VTOLsand personal air vehicles, are a few of the synonyms for
+ aircrafts, VTOLs and personal air vehicles, are a few of the synonyms for
  air taxis.
  
 \end_layout
@@ -1030,7 +1030,7 @@ example for the passenger drone is EHANG184 which is considered as The first
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1106,7 +1106,7 @@ Analysis of the patents allows us to identify the technology areas that
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -1299,6 +1299,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/important players.jpg
+	lyxscale 30
 	scale 10
 
 \end_inset
@@ -1331,11 +1332,14 @@ Prototype
 \begin_layout Standard
 This project can be assumed as a scaled quadplane prototype to a real flying
  taxi, many reasons can drive to build a prototype.
- first of all the cost of real model is very huge in addition to the cost,
- to make a test with real model is very difficult and risky, but this prototype
- has a complete software architecture like a real model it can do obstacle
- avoidance and vision navigation, use EKF to determine the vehicle state
- and it also Compatible with the operational design domain (ODD) 
+ first of all the cost of real model is very huge in addition, to make a
+ test with real model is very difficult and risky, but this prototype has
+ a complete software architecture like the real model.
+ It can do obstacle avoidance and vision navigation, use EKF to fuse GPS
+ and visual odometry to get accurate position estimations also to fuse it
+ with INS for better attitude estimations given that the vision navigation
+ is used in the compatible operational design domain (ODD).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1383,7 +1387,7 @@ Chapter 2: discuss the mission ,sizing and aerodynamic design.
 
 \begin_layout Itemize
 Chapter 3: discuss the mathematical model of quadplane and include comparison
- between self built autopilot and commercial one.
+ between self-built autopilot and commercial one.
 \end_layout
 
 \begin_layout Itemize
@@ -1392,7 +1396,7 @@ Chapter 4: discuss main concepts of vision navigation and obstacle avoidance
 \end_layout
 
 \begin_layout Itemize
-Chapter 5: discuss the used software packages (ROS,PX4,QGC)
+Chapter 5: discuss the used software (ROS,PX4,QGC)
 \end_layout
 
 \begin_layout Itemize

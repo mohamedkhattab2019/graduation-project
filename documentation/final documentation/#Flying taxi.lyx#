@@ -1337,9 +1337,8 @@ This project can be assumed as a scaled quadplane prototype to a real flying
  a complete software architecture like the real model.
  It can do obstacle avoidance and vision navigation, use EKF to fuse GPS
  and visual odometry to get accurate position estimations also to fuse it
- with INS for better attitude estimations given that the vision navigation
- is used in the compatible operational design domain (ODD).
- 
+ with INS  for better attitude estimation.
+ and it also Compatible with the operational design domain (ODD) 
 \end_layout
 
 \begin_layout Standard
