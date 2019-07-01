@@ -3,11 +3,13 @@ clc ; clear vars ; close all ;
 Ix = 0.12;
 Iy = 0.16;
 Iz = 0.23;
+Ixz=0.05;
 m = 1.9;
+Xu = -.17669;
 T =pi/180;
 s = tf('s'); 
 %% Roll
-G_phi_dot= s/(Ix*s^2);
+G_phi_dot= s*Iz/((Ix*Iz-Ixz^2)*s^2);
 PID =   0.29577*(s+0.4938)/s;
 roll_inner_loop = feedback(G_phi_dot*PID , 1);
 inner_action = feedback(PID , G_phi_dot) ;
@@ -656,8 +658,30 @@ legend('NonLinear','Linear')
 title('altitude step control action')
 ylabel('altitude Force (N)')
 grid minor
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% PUSHER
+ 
+ G_u = 1/(m*(s-Xu/m));
+ 
+ PID =  2.9068*(s+0.4304)/s
+ 
+ U =feedback(PID*G_u,1);
+ U_action = feedback(PID,G_u);
+  figure
+subplot(2,1,1)
+step(U)
+grid minor
+subplot(2,1,2)
+step(U_action)
+grid minor
 
-
+figure
+subplot(2,1,1)
+impulse(U)
+grid minor
+subplot(2,1,2)
+impulse(U_action)
+grid minor
 
 
 
