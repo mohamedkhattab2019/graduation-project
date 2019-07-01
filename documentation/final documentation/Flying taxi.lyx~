@@ -7943,7 +7943,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-S
 \begin_inset Graphics
 	filename pics/6th iteration/Capture.PNG
 	width 25page%
@@ -8821,7 +8820,7 @@ system:
 \mathring{v} & =gcosθsinϕ-ru+pw\\
 \mathring{w} & =gcosθcosϕ-pv+qu-\frac{T_{allmotors}}{m}+\frac{Z_{aero}}{m}\\
 \mathring{p} & =\frac{I_{x}I_{xz}pq-I_{xz}^{2}qr-I_{xz}I_{y}pq+I_{xz}I_{z}pq+I_{y}I_{z}qr-I_{z}^{2}qr+I_{xz}M_{z}+I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
-\mathring{q} & =\frac{M_{y}-pr(I_{x}-I_{z})-I_{xz}(p^{2}-r^{2})}{I_{y}}=\frac{Iz-Ix}{Iy}pr+\frac{My}{Iy}\\
+\mathring{q} & =\frac{M_{y}-pr(I_{x}-I_{z})-I_{xz}(p^{2}-r^{2})}{I_{y}}+\frac{M_{aero}}{I_{y}}\\
 \mathring{r} & =\frac{I_{x}^{2}pq-I_{x}I_{xz}qr-I_{x}I_{y}pq+I_{xz}^{2}pq+I_{xz}I_{y}qr-I_{xz}I_{z}qr+I_{x}M_{z}+I_{xz}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
 \mathring{\phi} & =p+qsinϕtanθ+rcosϕtanθ\\
 \mathring{\theta} & =qcosϕ-rsinϕ\\
@@ -10436,7 +10435,7 @@ in all previous results the altitude control is working as could be seen
 
 \begin_layout Standard
 Similarly, For cross-track error we used the same procedure: 
-\begin_inset Formula $\mathring{v}=g\phi\Rightarrow\mathring{e}_{cross-track}=v=\frac{g\phi}{s}\Rightarrow e_{cross-track}=\frac{-g\phi}{s^{2}}$
+\begin_inset Formula $\mathring{v}=g\phi\Rightarrow\mathring{e}_{cross-track}=v=\frac{g\phi}{s}\Rightarrow e_{cross-track}=\frac{g\phi}{s^{2}}$
 \end_inset
 
 

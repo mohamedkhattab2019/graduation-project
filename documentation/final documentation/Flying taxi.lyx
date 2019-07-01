@@ -8820,7 +8820,7 @@ system:
 \mathring{v} & =gcosθsinϕ-ru+pw\\
 \mathring{w} & =gcosθcosϕ-pv+qu-\frac{T_{allmotors}}{m}+\frac{Z_{aero}}{m}\\
 \mathring{p} & =\frac{I_{x}I_{xz}pq-I_{xz}^{2}qr-I_{xz}I_{y}pq+I_{xz}I_{z}pq+I_{y}I_{z}qr-I_{z}^{2}qr+I_{xz}M_{z}+I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
-\mathring{q} & =\frac{M_{y}-pr(I_{x}-I_{z})-I_{xz}(p^{2}-r^{2})}{I_{y}}=\frac{Iz-Ix}{Iy}pr+\frac{My}{Iy}\\
+\mathring{q} & =\frac{M_{y}-pr(I_{x}-I_{z})-I_{xz}(p^{2}-r^{2})}{I_{y}}+\frac{M_{aero}}{I_{y}}\\
 \mathring{r} & =\frac{I_{x}^{2}pq-I_{x}I_{xz}qr-I_{x}I_{y}pq+I_{xz}^{2}pq+I_{xz}I_{y}qr-I_{xz}I_{z}qr+I_{x}M_{z}+I_{xz}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\\
 \mathring{\phi} & =p+qsinϕtanθ+rcosϕtanθ\\
 \mathring{\theta} & =qcosϕ-rsinϕ\\
@@ -8874,7 +8874,7 @@ all rates = 0 ,
 \mathring{v} & =g\phi-u_{o}r\label{v_rate}\\
 \mathring{w} & =u_{o}q-\frac{\Delta T_{allmotors}}{m}+\frac{Z_{u}^{aero}}{m}\Delta u+\frac{Z_{w}^{aero}}{m}\Delta w+\frac{Z_{q}^{aero}}{m}\Delta q\label{w_rate}\\
 \mathring{p} & =\frac{I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{xz}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}\label{p_rate_equ}\\
-\mathring{q} & =\frac{M_{y}}{Iy}\label{q_rate}\\
+\mathring{q} & =\frac{M_{y}}{Iy}+\frac{M_{u}^{aero}}{I_{y}}\Delta u+\frac{M_{w}^{aero}}{I_{y}}\Delta w+\frac{M_{q}^{aero}}{I_{y}}\Delta q\label{q_rate}\\
 \mathring{r} & =\frac{I_{x}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{zx}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\label{r_rate}\\
 \mathring{\phi} & =p\label{roll_rate_equ}\\
 \mathring{\theta} & =q\label{pitch rate}\\
