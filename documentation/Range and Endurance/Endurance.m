@@ -92,7 +92,7 @@ plot (u,R2,'b','LineWidth',1.5)
 plot (u,R3,'r--','LineWidth',1.5)
 plot (u,R4,'r','LineWidth',1.5)
 plot (u,R5,'k--','LineWidth',2.5)
-plot (u,R5,'k','LineWidth',1.5)
+plot (u,R6,'k','LineWidth',1.5)
 
 legend('R:c=4 ,n=1','R:c=4 ,n=1.3','R:c=5 ,n=1','R:c=5,n=1.3','R:c=6,n=1','R:c=6,n=1.30')
  grid minor 
