@@ -1,0 +1,805 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+  
+\pagenumbering{roman}
+\let\myTOC\tableofcontents
+\renewcommand\tableofcontents{%
+\myTOC
+\clearpage
+\pagenumbering{arabic}
+}
+\renewcommand{\ps@plain}{\pagestyle{fancy}}
+\end_preamble
+\use_default_options true
+\begin_modules
+algorithm2e
+braille
+changebars
+customHeadersFooters
+shapepar
+eqs-within-sections
+figs-within-sections
+tabs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref page
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.54cm
+\topmargin 2.54cm
+\rightmargin 2.54cm
+\bottommargin 2.54cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 4
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Section
+FLYING TAXI 
+\end_layout
+
+\begin_layout Standard
+A flying taxi is A flying vehicle with a range of 50 to 120 miles, carrying
+ two to four passengers, and cruising at an altitude of 3,000 to 5,000 feet.
+ Based on the current battery technology, the most common commute might
+ be a 50-mile round trip with two short vertical takeoffs.
+ 
+\end_layout
+
+\begin_layout Standard
+While the idea of personal flying vehicles is old, advancements in technology
+ have reached a point to make this vision a reality.Flying cars, roadable
+ aircrafts, VTOLsand personal air vehicles, are a few of the synonyms for
+ air taxis.
+ 
+\end_layout
+
+\begin_layout Standard
+While the race to develop flying cars has started to gain momentum in recent
+ years, the concept has been around for decades.
+ One of the earliest attempts at a flying car was by Glenn Curtiss who built
+ the Curtiss Autoplane, a roadable aircraft in 1917 , that never achieved
+ full flight.
+ Several subsequent attempts were made during the last century to bring
+ flying cars and autonomous aircraft to the market, but recent developments
+ have paved the way for personal air transport to become a technological
+ reality.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/Curtiss-Autoplane-patent-US1294413A.jpg
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+the Curtiss Autoplane
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+why air taxis are an attractive idea
+\end_layout
+
+\begin_layout Itemize
+Convenience and ease of congestion
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Currently, traffic congestion is a major problem in most urban areas and
+ air travel requires planning and time wasted at airports.
+ For commuters in busy cities, air taxis would ease traffic and reduce daily
+ commute times.
+ For air travel, imagine the convenience of being able to travel with your
+ luggage from your home to your local airport to check in for a flight,
+ instead of dealing with airport parking and shuttles.
+ The idea is that air taxis would operate much like the Uber or Lyft app,
+ an individual would be able to request an air taxi to pick them up from
+ a location at their chosen time, and drop them off directly at, or close
+ to, their chosen destination.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Infrastructure costs 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+While there is skepticism, the costs associated with building the infrastructure
+ for an air taxi network may be more cost-efficient than building infrastructure
+ for ground transportation.
+ Without having to build and maintain roads and the peripheral structures
+ to support them, the infrastructure required for air taxis costs are far
+ less than that for ground transportation.
+\begin_inset Newline newline
+\end_inset
+
+Air taxis, in particular, those that have vertical take-off and landing
+ capabilities, don’t require runways.
+ existing infrastructures can be exploited for air taxi use.
+ Uber Elevate proposes “Vertiports” that have charging facilities, hubs,
+ and pads for take-off and landing that could be developed from existing
+ unused land, tops of parking garages or existing helipads
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/UBER-landing-pad.jpg
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Uber’s vertiport design
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+To reduce emissions and improve safety 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+advances in batteries and electric motors have changed the economics of
+ flying car or air taxi transport.
+ For example, today's helicopters are widely regarded as too fuel inefficient
+ and require expensive and time-consuming maintenance, making them impractical
+ for a mass-scale business.
+\begin_inset Newline newline
+\end_inset
+
+But battery-powered electric motors eliminate more complex transmission
+ systems that need a lot of time and knowledge to repair.
+ They also will be much quieter than helicopters, making them more acceptable
+ to city dwellers.
+\end_layout
+
+\begin_layout Standard
+Meanwhile, improvements in artificial intelligence mean paying a pilot to
+ ferry passengers around won't be necessary.
+ And that frees up another seat for a paying passenger.
+\end_layout
+
+\begin_layout Standard
+Additionally, government initiatives are helping to make these technologies
+ a potential commercial reality.
+ For example, Britain has declared a ban on all diesel and petrol cars and
+ vans from 2040.
+ Dubai has outlined a self-driving strategy that aims to carry out “ 25%
+ of its passenger transportation with the help of autonomous means of transport.”
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+obstacles we need to pass
+\end_layout
+
+\begin_layout Itemize
+Energy limitations
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Design engineers face a big hurdle with today’s all-electric aircraft in
+ that the available batteries pack much less energy per unit of weight than
+ jet fuel.
+ The performance gap we need to bridge is huge about 40 times less [energy
+ than is needed], even if we consider the best batteries available.
+ These energy limitations become especially acute in smaller craft.
+ Electric motors partly compensate for this disadvantage by being more efficient
+ [than jet-fueled propulsion] in converting energy into power, but a considerabl
+e gap in performance still remains.
+ The result is that an aircraft would need either a four- or five-time improveme
+nt in specific energy density or it would need to carry a very heavy battery
+ pack to approach the performance of current airliners.
+\begin_inset Newline newline
+\end_inset
+
+in order to solve this problem, the design engineers explore non-traditional
+ approaches to address the problem.
+ By replacing some of the conventional materials of the aircraft structure
+ with active battery materials, we can add energy while also saving on mass
+ and volume.
+ We can either use the structure of the airplane to store energy or build
+ batteries that can also serve a structural [aerodynamic] function.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+the public is ready to fly aboard an air taxi with no pilot?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Human pilots are more prone to mishaps than an artificial intelligence operator.
+ However, in a recent poll, more than half the people polled responded that
+ they wouldn’t buy a pilotless flight ticket even if it was cheaper than
+ the alternative.
+ It is important to first familiarize the public with commercial self-piloting
+ crafts starting with autonomous cargo planes, which could demonstrate how
+ the systems can safely fly from point A to B.
+ The next step is to remove pilots gradually, shifting from a two-person
+ cockpit to one person monitoring the system before phasing out humans entirely.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+our current air traffic control system doesn't accommodate air taxis 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Urban airspace is open for business today, and with air traffic control
+ systems exactly as they are, a vertical-takeoff-and-landing service could
+ be launched and even scaled to possibly hundreds of vehicles.
+ A successful, optimized on-demand urban VTOL operation, however, will necessita
+te a significantly higher frequency and density of vehicles operating over
+ metropolitan areas simultaneously.
+ Air traffic control is going have to evolve, and new ATC systems will be
+ needed to handle these extra vehicles, especially if a city were to add
+ multiple hubs and potentially hundreds of air taxis.
+\begin_inset Newline newline
+\end_inset
+
+We do not envision air taxis flying in the same space as commercial airliners.
+ A separate air space corridor for air taxis will probably be created.
+ Air taxis could be managed through a server-request-like system that can
+ de-conflict the global traffic, while allowing UAVs and VTOLs to self-separate
+ any potential local conflicts with visual flight rules, even in inclement
+ weather.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Flying taxi categories
+\end_layout
+
+\begin_layout Standard
+Lineberger's team at Deloitte
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Deloitte is one of the "Big Four" accounting organizations and the largest
+ professional services network in the world by revenue and number of professiona
+ls.
+\end_layout
+
+\end_inset
+
+ see three flying vehicle categories in the near future, according to a
+ report released in January 2018.
+\end_layout
+
+\begin_layout Itemize
+Passenger drones: A passenger drone is expected to be an electric or hybrid-elec
+tric quadcopter (although some may have more than four rotors) that can
+ be used to move people or cargo between both established and on-demand
+ origination and destination points.
+ These vehicles can be either manually piloted, remotely piloted, or fully
+ autonomous.
+\begin_inset Newline newline
+\end_inset
+
+example for the passenger drone is EHANG184 which is considered as The first
+ passenger drone and started to work in Dubai since2017, Passenger drones
+ would cover short to medium-range distances (up to 65 miles).
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/ehang184.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+EHANG184 in Dubai
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Traditional flying cars: A traditional flying car would be a vehicle where
+ the driver/pilot can drive the vehicle in its car configuration to an airport,
+ reconfigure the vehicle to an airplane mode, and then fly to a destination
+ airport.
+ It is designed to carry people and fly medium to long distances (50 to
+ 200 miles).
+ Currently, it would need to be operated by a licensed pilot, but it could
+ be made fully autonomous and pilotless/driverless over time.
+ In the near future, flying cars are likely to become VTOL capable.
+\end_layout
+
+\begin_layout Itemize
+Revolutionary vehicles: Revolutionary vehicles, which are expected to be
+ a combination of passenger drone and traditional flying car, would be fully
+ autonomous vehicles that can start or stop anywhere, with speed and range
+ (distances greater than 200 miles) beyond passenger drones and the traditional
+ flying cars.
+ These vehicles have advanced VTOL capability and therefore can land and
+ take off from almost anywhere because they may not require an established
+ airport/vertiport.
+ These would likely be piloted by a licensed pilot initially, but they could
+ be made fully autonomous over time.
+\end_layout
+
+\begin_layout Subsection
+Technology areas dominating air taxi technology
+\end_layout
+
+\begin_layout Standard
+Analysis of the patents allows us to identify the technology areas that
+ are dominating this space .
+ Technology related to propulsion methods or systems have the most patents
+ filed with more than double the number of patents than those relating to
+ control systems and the design of the aircraft.
+ Fewer patents exist on landing platforms or landing systems for aircrafts
+ and wing design.
+ These areas could present potential new opportunities for engineers to
+ enter this space 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/Pie-chart.jpg
+	scale 20
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Technology Breakdown – patent filing activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+from the previous discussion we can conclude that the design of air taxis
+ varies between manufacturers but there are common features.
+ Most have been initially designed for pilot controlled use but some envisage
+ that these aircrafts will be autonomous, thus reducing the costs associated
+ with training and employing pilots.
+\end_layout
+
+\begin_layout Standard
+Vehicles have also been designed to allow for vertical take-off and landing
+ using tiltable electric engines that allow the engines to be rotated depending
+ on the flight mode.
+ Several different designs for propulsion technologies have been used, but
+ now all engineers believe that the successful air taxi design will not
+ use the rotary-wing design of today’s helicopters.
+ Instead, it will be a fixed-wing craft with vertical-takeoff-and-landing
+ capabilities (quad plane)
+\end_layout
+
+\begin_layout Section
+the key players in the flying cars space
+\end_layout
+
+\begin_layout Standard
+To capture this new market, teams across multiple transportation sectors
+ have emerged.
+ Not surprisingly, some of the same industries that are developing electric
+ propulsion and autonomy on the ground are converging on air mobility.Uber
+ has teamed up with Textron's Bell, Boeing's Aurora Flight Sciences and
+ others for Uber Air.Airbus is working with Volkswagen's Audi to design a
+ flying car that can drive on the road and take flight.
+ Airbus is separately developing Vahana, an autonomous single-seat aircraft,
+ and CityAirbus, a four-seat aircraft.Volocopter is building an air taxi
+ with the help of Mercedes-Benz parent Daimler with plans to launch a service
+ in three to five years.And Joby Aviation has received investments from Toyota
+ and JetBlue Airways (JBLU).
+\end_layout
+
+\begin_layout Standard
+Boeing just took an important step toward making them a practical reality.
+ The aircraft maker has completed the first test flight of its autonomous
+ electric VTOL aircraft, verifying that the machine can take off, hover
+ and land.
+ It's a modest start, to put it mildly the taxi has yet to fly forward,
+ let alone transition from vertical to forward flight modes.
+ That still puts it ahead of competitors, though, and it's no mean feat
+ when the aircraft existed as little more than a concept roughly one year
+ ago.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/boeing taxi.jpg
+	scale 15
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Boeing's self-flying taxi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Uber has said it's aiming to begin service in several cities, by 2023 with
+ early demonstrations set for 2020.
+ .
+ An Uber Air conceptual video depicts a customer booking a flight on her
+ smartphone, heading to an "Uber Skyport" at the top of a high-rise, and
+ boarding an aircraft with multiple rotors.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/uber.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Uber Air conceptual video
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And if we look for the players with the strongest patent portfolios are
+ Sikorsky Aircraft (now owned by Lockheed Martin), Boeing, Airbus and LTA
+ Unsurprisingly, large aircraft manufacturers such as Boeing and Airbus
+ appear in the top ten companies.
+ However, it is notable that smaller players such as Larry Page’s start-up
+ Zee Aero and Rafi Yoeli’s Urban Aeronautics are also building strong patent
+ portfolios.
+\begin_inset Newline newline
+\end_inset
+
+More interesting may be the appearance of Honeywell International and General
+ Electric in the top ten.
+ They are leading players in electric or hybrid-electric aircrafts, however,
+ neither seem to be particularly active in manufacturing flying cars, or
+ forming partnerships to provide systems or components for other manufacturers.
+ Honeywell International has patented several control and propulsion systems
+ for VTOLs or unmanned aerial vehicles, and General Electric have several
+ patents on engines for short take-off or vertical take-off and landing
+ vehicles.
+ It may be interesting to see whether these experienced patent licensing
+ companies exploit their portfolios as the industry expands and matures.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/important players.jpg
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Top ten companies filing patents in the flying cars space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Prototype
+\end_layout
+
+\begin_layout Standard
+This project can be assumed as a scaled quadplane prototype to a real flying
+ taxi, many reasons can drive to build a prototype.
+ first of all the cost of real model is very huge in addition to the cost,
+ to make a test with real model is very difficult and risky, but this prototype
+ has a complete software architecture like a real model it can do obstacle
+ avoidance and vision navigation, use EKF to determine the vehicle state
+ and it also Compatible with the operational design domain (ODD) 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../final documentation/pics/prototype.jpeg
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+scaled flying taxi prototype
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+building a prototype isn't easy process especially that you have to use
+ the same sensors like the real model (stereo camera & lidar),so the next
+ chapters will discuss the process of building this prototype hardware and
+ software:
+\end_layout
+
+\begin_layout Itemize
+Chapter 2: discuss the mission ,sizing and aerodynamic design.
+\end_layout
+
+\begin_layout Itemize
+Chapter 3: discuss the mathematical model of quadplane and include comparison
+ between self built autopilot and commercial one.
+\end_layout
+
+\begin_layout Itemize
+Chapter 4: discuss main concepts of vision navigation and obstacle avoidance
+ algorithms.
+\end_layout
+
+\begin_layout Itemize
+Chapter 5: discuss the used software packages (ROS,PX4,QGC)
+\end_layout
+
+\begin_layout Itemize
+Chapter 6:discuss the flight test results.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
