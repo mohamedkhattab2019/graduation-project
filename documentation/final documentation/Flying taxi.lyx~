@@ -8874,7 +8874,7 @@ all rates = 0 ,
 \mathring{v} & =g\phi-u_{o}r\label{v_rate}\\
 \mathring{w} & =u_{o}q-\frac{\Delta T_{allmotors}}{m}+\frac{Z_{u}^{aero}}{m}\Delta u+\frac{Z_{w}^{aero}}{m}\Delta w+\frac{Z_{q}^{aero}}{m}\Delta q\label{w_rate}\\
 \mathring{p} & =\frac{I_{z}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{xz}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}\label{p_rate_equ}\\
-\mathring{q} & =\frac{M_{y}}{Iy}\label{q_rate}\\
+\mathring{q} & =\frac{M_{y}}{Iy}+\frac{M_{u}^{aero}}{I_{y}}\Delta u+\frac{M_{w}^{aero}}{I_{y}}\Delta w+\frac{M_{q}^{aero}}{I_{y}}\Delta q\label{q_rate}\\
 \mathring{r} & =\frac{I_{x}M_{z}}{I_{x}I_{z}-I_{xz}^{2}}+\frac{I_{zx}M_{x}}{I_{x}I_{z}-I_{xz}^{2}}\label{r_rate}\\
 \mathring{\phi} & =p\label{roll_rate_equ}\\
 \mathring{\theta} & =q\label{pitch rate}\\
@@ -11008,7 +11008,7 @@ We are concerned more with the Flightstack so we will take a small dive
  - Output Driver
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Commander
 \end_layout
 
@@ -11058,7 +11058,7 @@ flight modes
  later in this section.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Navigator
 \end_layout
 
@@ -11082,7 +11082,7 @@ position setpoints
  to be used by the position controller.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Position controller
 \end_layout
 
@@ -11292,7 +11292,7 @@ Position Controller
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Attitude & Rate Controller
 \end_layout
 
@@ -11548,7 +11548,7 @@ Attitude&rate controller
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Estimator
 \end_layout
 
@@ -11836,7 +11836,7 @@ EKF2
  .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Output drivers
 \end_layout
 
@@ -11961,6 +11961,136 @@ pylog
 
 \begin_layout Subsection
 Gains Comparison
+\end_layout
+
+\begin_layout Section
+Quad-plane phase cruise controller
+\end_layout
+
+\begin_layout Standard
+Our flying taxi doesn't have control surfaces as conventional quad-plane
+ but uses the quad-copter motors to achieve stability requirements.
+ This configuration comes from the wing span constraint as flying taxi can't
+ have the wing span that should lift off the quad-copter motors as payload
+ so we made use of them to help in lifting and stabilize the flying taxi
+ during the quad-plane phase.
+ The lift from the wings is used to increase the endurance and range by
+ decreasing the thrust and power consumption of the quad-copter motors.
+ 
+\end_layout
+
+\begin_layout Standard
+During the quad-plane phase the quad-copter controller is still on to stabilize
+ the attitude and altitude of the flying taxi which means that 
+\begin_inset Formula $\theta=0,\Delta Z=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To design the pusher controller which is used to achieve constant cruise
+ speed, we can ignore the dynamics in the lateral directions as the flying
+ taxi during this phase will conserve constant heading angle towards the
+ goal beside the guidance controller will eliminate any cross-track error
+ using roll angle.
+ The pitch angle is zero and the altitude is held constant by the quad-copter
+ controller.
+ To design the cruise controller from equ.(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "u_rate"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\mathring{\Delta u}=-g\theta+\frac{\Delta X_{pusher}}{m}+\frac{X_{u}^{aero}}{m}\Delta u+\frac{X_{w}^{aero}}{m}\Delta w$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+based on the previous assumption of stabilized attitude and altitude this
+ equation is reduces to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{\mathring{\Delta u}=\frac{\Delta X_{pusher}}{m}+\frac{X_{u}^{aero}}{m}\Delta u\,\,\Rightarrow\,\,}\frac{\Delta u}{\Delta X_{pusher}}=\frac{1}{m(s-\frac{X_{u}}{m})}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X_{u}^{aero}=-0.17669$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The figure below shows the 
+\begin_inset Formula $\Delta u$
+\end_inset
+
+ step response and the required 
+\begin_inset Formula $\Delta X_{pusher}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/cruise_control.bmp
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cruise Controller
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This figure shows the impulse response and the required control action:
 \end_layout
 
 \begin_layout Standard
