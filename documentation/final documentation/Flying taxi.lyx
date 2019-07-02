@@ -26,7 +26,6 @@ shapepar
 eqs-within-sections
 figs-within-sections
 tabs-within-sections
-graphicboxes
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -10039,20 +10038,6 @@ status open
 
 \end_inset
 
-<<<<<<< HEAD
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-=======
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 
 \end_layout
 
@@ -10149,74 +10134,14 @@ status open
 
 \end_layout
 
-<<<<<<< HEAD
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Iz
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-=======
 \begin_layout Plain Layout
 \begin_inset Caption Standard
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 
 \begin_layout Plain Layout
 X guidance
 \end_layout
 
 \end_inset
-<<<<<<< HEAD
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $kg.m^{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Ixz
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.05
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $kg.m^{2}$
-\end_inset
-=======
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 
 
 \end_layout
@@ -10398,15 +10323,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-<<<<<<< HEAD
-	filename pics/roll_1deg.bmp
-	lyxscale 70
-	scale 30
-=======
 	filename pics/along track control_newGains2_with Iterm.bmp
 	lyxscale 80
 	width 100col%
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 
 \end_inset
 
