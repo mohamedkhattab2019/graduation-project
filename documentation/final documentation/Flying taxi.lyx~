@@ -10045,11 +10045,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
-1.9
-=======
 LOS block diagram
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 \end_layout
 
 \end_inset
@@ -10068,15 +10064,10 @@ r as initial estimate then using LabVIEW simulation of the nonlinear model
  we can tune the controller for better performance.
 \end_layout
 
-<<<<<<< HEAD
-\begin_layout Plain Layout
-0.12
-=======
 \begin_layout Standard
 The attitude dynamics is much faster than position dynamics.
  so we can assume that heading angle is settled so the along-track error
  is in the x-body direction and the cross-track error is in the y-body direction.
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 \end_layout
 
 \begin_layout Standard
@@ -10122,14 +10113,9 @@ It's clear that the linearized model only accounts for g component effect
 \begin_inset Formula $\Delta T_{allmotors}$
 \end_inset
 
-<<<<<<< HEAD
-\begin_layout Plain Layout
-0.16
-=======
 component doesn't appear so tuning the nonlinear model is important to be
  done and it's expected that the deviation between linear and nonlinear
  is significant.
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 \end_layout
 
 \begin_layout Standard
@@ -10152,11 +10138,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
-0.23
-=======
 X guidance
->>>>>>> da692e1775aa53621994c1a94bbc5e73a6fb45ad
 \end_layout
 
 \end_inset
@@ -12058,6 +12040,49 @@ based on the previous assumption of stabilized attitude and altitude this
 \begin_inset Newline newline
 \end_inset
 
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename cruise_controller_BD.png
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Cruise controller Block diagram
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
 The figure below shows the 
 \begin_inset Formula $\Delta u$
 \end_inset
@@ -12109,6 +12134,45 @@ Cruise Controller
 \end_inset
 
 This figure shows the impulse response and the required control action:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/U_impulse.bmp
+	lyxscale 80
+	width 90page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+impulse response
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
