@@ -256,7 +256,7 @@ List of Symbols and Abbreviations
 \paragraph_spacing onehalf
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="18" columns="2">
+<lyxtabular version="3" rows="19" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -656,6 +656,28 @@ Autopilot
 \end_inset
 </cell>
 </row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CAGR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+Compound annual growth rate
+\end_layout
+
+\end_inset
+</cell>
+</row>
 </lyxtabular>
 
 \end_inset
@@ -729,11 +751,22 @@ FLYING TAXI
 \end_layout
 
 \begin_layout Standard
-A flying taxi is a flying vehicle with a range of 50 to 120 miles, carrying
- one to four passengers, and cruising at an altitude of 3,000 to 5,000 feet.
+A flying taxi is a flying vehicle with a range of 50 (80 km) to 120 (195
+ km) miles, carrying one to four passengers, and cruising at an altitude
+ of 3,000 (915 m) to 5,000 (1500 m) feet.
  Based on the current battery technology, the most common commute might
  be a 50-mile round trip with two short vertical takeoff and landing.
  
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+according to Prof.Vikas Prakash to AIR&SPACE at April2018
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1161,6 +1194,56 @@ the key players in the flying cars space
 \end_layout
 
 \begin_layout Standard
+A flying car, air taxi or other air mobility ideas in the works could literally
+ rise above those dilemmas.
+ Industry watchers and proponents see them becoming part of the transportation
+ network and generating as much as $5 billion a year in service revenue.
+\end_layout
+
+\begin_layout Standard
+the market is projected to grow from $5 billion in 2018 to $15.2 billion
+ by 2030 at a CAGR 11.33% from 2018 to 2030.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/urban-air-mobility-market1.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Flying taxi market
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 To capture this new market, teams across multiple transportation sectors
  have emerged.
  Not surprisingly, some of the same industries that are developing electric
@@ -1191,7 +1274,7 @@ Boeing just took an important step toward making them a practical reality.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1235,7 +1318,7 @@ Uber has said it's aiming to begin service in several cities, by 2023 with
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1293,7 +1376,7 @@ More interesting may be the appearance of Honeywell International and General
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1313,6 +1396,48 @@ status open
 
 \begin_layout Plain Layout
 Top ten companies filing patents in the flying cars space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+another important point in this topic is that the startups in this field
+ can find many funding resources, The figure below show that the Funding
+ raised by flying taxi startups till fourth quartet in 2018, about $415
+ million dollar was raised by seven startups, which is hopeful thing to
+ those who try to build their own prototypes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Funding-raised-by-flying-car-and-flying-taxi-startups-till-Q4-2018.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Funding raised by flying taxi startups
 \end_layout
 
 \end_inset
@@ -1347,12 +1472,12 @@ This project can be assumed as a scaled quadplane prototype to a real flying
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/prototype.jpeg
+	filename pics/WhatsApp Image 2019-06-29 at 6.48.15 PM.jpeg
 	scale 25
 
 \end_inset
@@ -12075,14 +12200,6 @@ Cruise controller Block diagram
 
 \end_inset
 
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
 The figure below shows the 
 \begin_inset Formula $\Delta u$
 \end_inset
@@ -12123,14 +12240,6 @@ Cruise Controller
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 This figure shows the impulse response and the required control action:
