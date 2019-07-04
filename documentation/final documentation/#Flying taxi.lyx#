@@ -1955,38 +1955,12 @@ Different configuration simulation
 \end_layout
 
 \begin_layout Standard
-as shown in the figure below, the quad-plane is the best choice for the
- flying taxi, since it has the VTOL advantage of the quad-copter and the
- high range and endurance advantage of the fixed-wing.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename scaling/Modelling.bmp
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename scaling/Modelling_zoomed.bmp
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
 
 \end_layout
 
@@ -1994,11 +1968,15 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Different configuration simulation for 30 min
+
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
