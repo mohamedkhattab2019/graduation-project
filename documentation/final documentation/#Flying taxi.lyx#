@@ -256,7 +256,7 @@ List of Symbols and Abbreviations
 \paragraph_spacing onehalf
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="29" columns="2">
+<lyxtabular version="3" rows="30" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -871,6 +871,26 @@ UAV
 
 \begin_layout Plain Layout
 Unmanned Air Vehicle 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GCS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ground Conrol Station
 \end_layout
 
 \end_inset
@@ -1632,6 +1652,14 @@ Chapter 6:discuss the flight test results.
 
 \begin_layout Chapter
 Aircraft Design
+\end_layout
+
+\begin_layout Section
+Configuration
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
@@ -22095,7 +22123,7 @@ If a mission is stored and PX4 is flying it will execute the mission/flight
 If a mission is stored and PX4 is landed: 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 On copters PX4 will execute the mission/flight plan.
  If the mission does not have a TAKEOFF command then PX4 will fly the vehicle
  to the minimum altitude before executing the remainder of the flight plan
@@ -22103,7 +22131,7 @@ On copters PX4 will execute the mission/flight plan.
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 On fixed-wing vehicles PX4 will not automatically take off (the autopilot
  will detect the lack of movement and set the throttle to zero).
  The vehicle may start executing the mission if hand- or catapult- launched
@@ -22116,12 +22144,12 @@ If no mission is stored, or if PX4 has finished executing all mission commands:
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 If flying the vehicle will loiter.
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 If landed the vehicle will "wait".
  
 \end_layout
@@ -22146,6 +22174,10 @@ Missions can be paused by activating HOLD mode.
  position mode, fly the vehicle elsewhere with RC, and then switch back
  to mission mode, the vehicle will continue the mission from its current
  position and will fly to the next mission waypoint not visited yet.
+\end_layout
+
+\begin_layout Standard
+NOTE : Mission mode requires SD card and GPS
 \end_layout
 
 \begin_layout Section
