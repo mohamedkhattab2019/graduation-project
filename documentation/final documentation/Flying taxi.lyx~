@@ -256,7 +256,11 @@ List of Symbols and Abbreviations
 \paragraph_spacing onehalf
 \align center
 \begin_inset Tabular
+<<<<<<< HEAD
 <lyxtabular version="3" rows="19" columns="2">
+=======
+<lyxtabular version="3" rows="29" columns="2">
+>>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -661,7 +665,11 @@ Autopilot
 \begin_inset Text
 
 \begin_layout Plain Layout
+<<<<<<< HEAD
 CAGR
+=======
+RC
+>>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
 \end_layout
 
 \end_inset
@@ -670,9 +678,213 @@ CAGR
 \begin_inset Text
 
 \begin_layout Plain Layout
+<<<<<<< HEAD
 
 \shape italic
 Compound annual growth rate
+=======
+Remote contol
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acro
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Acrobatic
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PDB
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+power distribution board
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PPM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pulse Position Modulation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PRS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pitch/Roll Stick
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Center of Gravity
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ESC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Electronic Speed Controller
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FPV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+First Person View
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BEC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Battery Elimination Circuit 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PWM
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Pulse Width Modulation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+UAV
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unmanned Air Vehicle 
+>>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
 \end_layout
 
 \end_inset
@@ -19559,6 +19771,44 @@ Gains tuning
 px4 and Mavros
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/3d-robotics-pixhawk.jpg
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pixhawk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Introduction
 \end_layout
@@ -19690,7 +19940,7 @@ So Pixhawk was a better choice for our project as we will be processing
 User guides to Pixhawk
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 
 \series bold
 Step 1: Wiring and Connections
@@ -19740,16 +19990,46 @@ power module:
 \series default
 The power module is used in order to power the Pixhawk from the battery
  or from any power supply and to power the ESCs through the PDB , and it
- is connected to the Pixhawk as shown 
+ is connected to the Pixhawk as shown
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/powermodule-analog-pixhawk.png
 	scale 70
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+power module
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -19773,11 +20053,36 @@ It is connected to the Pixhawk as shown
 \end_layout
 
 \begin_layout Standard
-\noindent
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/maxresdefault.jpg
-	scale 20
+	filename pics/59136ac77fe4ab58.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+telemetry connection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -19816,11 +20121,38 @@ It is a module used to connect the channels of flight controller receiver
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/jDrones_PPM_Encoder_V21_Above_with_numbers_500px.jpg
 	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PPM encoder
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -19838,6 +20170,47 @@ The flight controller is used to control the vehicle manually by sending
  PWM signals to the receiver which sends the signals to the PPM then the
  PPM fuses them to one channel and sends them to the Pixhawk to perform
  the control action sent.
+\end_layout
+
+\begin_layout Standard
+The used one in this project is the 8 channels DX8 RC.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/s-l300.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+DX8
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -19859,10 +20232,37 @@ Is a board used to distribute the power that comes from the battery or power
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/download.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+PDB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -19877,17 +20277,9 @@ Android USB cable:
 
 \begin_layout Standard
 The cable will only be used during the Calibration of the gyros and ESCs.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 
 \series bold
 Step 2: Connect to PC
@@ -19897,7 +20289,7 @@ Step 2: Connect to PC
 First connect the Pixhawk only to the PC using the usb cable.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 
 \series bold
 Step 3: Ground Station
@@ -19907,7 +20299,7 @@ Step 3: Ground Station
 Open Qgroundconrol app to connect the Pixhawk to the ground station.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 
 \series bold
 Step 4: Firmware selection
@@ -19925,7 +20317,45 @@ note that before connecting the Pixhawk you need to remove any other power
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/QGroundControl-OnagoFly-5.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Firmware loading
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 
 \series bold
 Step 5: Frame Selection
@@ -19936,6 +20366,12 @@ Next we will select the frame type of the vehicle you are using.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
@@ -19947,11 +20383,66 @@ Next we will select the frame type of the vehicle you are using.
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+frame types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/modes/qav250_qgc_firmware.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Qground frames
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Take care of the direction of the propellers (clockwise & anti clockwise).
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 
 \series bold
 Step 6: Calibration
@@ -19968,14 +20459,185 @@ calibration can be done in two ways
 \end_layout
 
 \begin_layout Itemize
-The first way is doing it on the Pixhawk alone.(recommended and easier)
+The first way is doing it on the Pixhawk alone.(easier)
 \end_layout
 
 \begin_layout Itemize
-the second way is doing it after manufacturing the vehicle.
+the second way is doing it after manufacturing the vehicle.(recommended)
+\end_layout
+
+\begin_layout Standard
+There are 4 types of calibration that should be done
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/23469_image2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Calibration interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
+Compass calibration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/20170515175356938.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+compass calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gyroscope calibration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/gyroscope_calibrate_complete_px4.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+gyro calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Accelerometer calibration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/accelerometer_positions_px4.jpg
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Accelerometer calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Level horizon calibration.
+\end_layout
+
+\begin_layout Subsubsection
 
 \series bold
 Step 7: Radio calibration
@@ -19996,13 +20658,48 @@ Set all trimming to zero before start the calibration.
 
 \begin_layout Itemize
 start the calibration and follow the steps given by the Qgroundcontrol.
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/radio_start_setup.jpg
+	scale 50
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+radio calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 
 \series bold
 Step 8: Modes
@@ -20022,14 +20719,69 @@ Choose stabilize mode and set it to an AUX channel.
 \end_layout
 
 \begin_layout Standard
-We will be using stabilize mode during testing and flight.
- 
+Many modes will be used like stabilized, altitude , position ,and acro mode.
+\end_layout
+
+\begin_layout Subsubsection
+Step 9: Battery calibration
 \end_layout
 
 \begin_layout Itemize
+Connect the vehicle to the battery.
+\end_layout
+
+\begin_layout Itemize
+Select the number of cells of the battery used.
+\end_layout
+
+\begin_layout Itemize
+Press calculate and write down the measured voltage of the battery you are
+ using.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/modes/qgc_esc_calibration.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+battery and Esc calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 
 \series bold
-Step 9: ESCs and motors
+Step 10: ESCs and motors
 \end_layout
 
 \begin_layout Standard
@@ -20060,11 +20812,34 @@ Connect the signal pins of the ESCs to the Pixhawk output channels according
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/cae0384839ae0630258b3882725779b08ab5a024.jpg
-	scale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+pixhawk channels
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -20101,10 +20876,10 @@ Connect the USB cable again and we are done with ESCs calibration.
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 
 \series bold
-Step 9: Tuning
+Step 11: Tuning
 \end_layout
 
 \begin_layout Itemize
@@ -20122,11 +20897,34 @@ Now we should set the hovering thrust of the vehicle in order to make it
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/px4_copter_basic.jpg
-	scale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+hover throttle tuning
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -20248,6 +21046,12 @@ In our case after tuning and testing the final values set to the first quad
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
@@ -20259,7 +21063,30 @@ In our case after tuning and testing the final values set to the first quad
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pitch tuning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
@@ -20271,12 +21098,58 @@ In our case after tuning and testing the final values set to the first quad
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+roll tuning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/yaw2.PNG
 	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+yaw tuning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -20402,6 +21275,13 @@ At the beginning we will use USB.
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 User interface of Qground
 \end_layout
@@ -20416,10 +21296,33 @@ Before you are connected to the Pixhawk the Interface you get is as shown
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename pics/map.png
 	width 80page%
 	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Qgroundcontrol user interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -20505,7 +21408,14 @@ The first thing to do is to download the software from it's official site,
  station.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
@@ -20518,7 +21428,23 @@ The first thing to do is to download the software from it's official site,
 
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mission planner installation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Step 2: Connect to Pixhawk
 \end_layout
@@ -20529,12 +21455,36 @@ Once you have installed a ground station on your computer, connect the flight
  controller using the micro USB cable as shown below.
 \end_layout
 
+\end_deeper
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/pixhawk_usb_connection.jpg
 	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pixhawk usb connection
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -20547,11 +21497,34 @@ On Mission Planner, the connection and data rate are set up using the drop
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/MisionPlanner_ConnectButton.png
 	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Disconnectded status
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -20575,6 +21548,12 @@ Select the desired port and data rate and then press the Connect button
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
@@ -20586,7 +21565,23 @@ Select the desired port and data rate and then press the Connect button
 
 \end_layout
 
-\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Connected status
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -20604,11 +21599,34 @@ The sections are organized to match the major section of the Mission Planner
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/1.png
-	scale 50
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mission planner user interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -20709,15 +21727,42 @@ Language Translations.
 \end_layout
 
 \begin_layout Itemize
-Other Mission Planner Features
+Other Mission Planner Features.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
 	filename pics/mp_hud_full.jpg
-	scale 70
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Mission Planner details
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -20734,9 +21779,38 @@ Other Mission Planner Features
 \begin_layout Standard
 \noindent
 \align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Graphics
 	filename pics/mp_hud_detail.jpg
 	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+mission planner interface
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -20815,6 +21889,693 @@ In our Project we used both Qgroundcontrol and Mission Planner in order
  to get the required mission, We will discuss how We have done that and
  how We managed to fly Our vehicle using both ground stations in the next
  chapter.
+\end_layout
+
+\begin_layout Chapter
+Flight Test using RC
+\end_layout
+
+\begin_layout Paragraph*
+On talking about flight test you should first have a look at the flight
+ modes of the vehicle so at first modes will be the target to get a good
+ knowledge of it.
+\end_layout
+
+\begin_layout Section
+flight modes
+\end_layout
+
+\begin_layout Paragraph*
+Flight modes are very important to walk through so the modes we are talking
+ about are manual/stabilized , acrobatic, altitude, position ,and mission
+ modes.
+ 
+\end_layout
+
+\begin_layout Subsection
+Manual/Stabilized
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/modes/manual_stabilized_MC.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Manual/Stabilized
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+In this mode the pitch/roll stick (right stick) input are angles so when
+ the PRS is moved your input to the vehicle will be angle input, while the
+ input of the thrust/yaw stick (left stick) will be a rate, a rate of climb,
+ a rate of descend and a rate of rotation (spin).
+\end_layout
+
+\begin_layout Paragraph*
+The advantage of this mode is that it automatically stabilize the vehicle
+ when you leave the RC sticks centered it levels the vehicle so it's very
+ useful at testing your vehicle as it gives you manual control to it.
+ 
+\end_layout
+
+\begin_layout Subsection
+Acrobatic mode (acro)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename E:/Aerospace 4th year/GP/documentation3/presentation/manual_acrobatic_MC.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+acro mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Acro mode is a very special mode but you should be careful while using it.
+\end_layout
+
+\begin_layout Paragraph*
+All the inputs in this mode are rates.
+\end_layout
+
+\begin_layout Paragraph*
+In our project this mode was used for testing the alignment of the vehicle
+ body (motors specially), for example if you input was just thrust input
+ , all the motors will increase the thrust so the vehicle is supposed to
+ vertically takeoff with no rotation or tilting in any direction, so if
+ the vehicle behaves in a different way then there is a problem in the alignment
+ of the vehicles and it will need to be solved as it is very critical because
+ it will not fly will without this alignment done or it may not fly at all.
+\end_layout
+
+\begin_layout Subsection
+Altitude mode
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename E:/Aerospace 4th year/GP/documentation3/presentation/altitude_control_mode_copter.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Altitude mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+This mode is a very useful mode for flying a vehicle as it provide altitude
+ hold control automatically.
+\end_layout
+
+\begin_layout Paragraph*
+When using this mode We mast take care of many things and here is few notes
+ about this mode.
+\end_layout
+
+\begin_layout Itemize
+You can switch to this mode while flying the vehicle but take care how it
+ works as it will ascend if the throttle stick is over 50%, so after switching
+ to this mode remember to center the throttle stick.
+\end_layout
+
+\begin_layout Itemize
+If this mode is used while the vehicle is on ground, it will start to takeoff
+ only when the throttle sticks is more than 62.5% which is a parameter that
+ can be changed.
+\end_layout
+
+\begin_layout Itemize
+Take good care of the maximum climb speed and descend speed the default
+ values of them is 3m/s and 1m/s , and can be changed.
+\end_layout
+
+\begin_layout Itemize
+Note that the vehicle may drift in this mode and it will not hold its position
+ just the altitude 
+\end_layout
+
+\begin_layout Itemize
+The inputs in this mode are climb and descend rates for throttle stick,
+ rotation rate for yaw sticks, and angle control for pitching and rolling.
+ 
+\end_layout
+
+\begin_layout Itemize
+This mode is recommended for flying after tuning the vehicle.
+\end_layout
+
+\begin_layout Subsection
+Position mode
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename E:/Aerospace 4th year/GP/documentation3/presentation/position_MC.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position control
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Position mode is very good mode for beginners as it holds the position of
+ the vehicle and maintain its position if disturbed (x,y,z coordinates).
+\end_layout
+
+\begin_layout Itemize
+In this mode the inputs of the RC sticks are climb and descend rates for
+ throttle stick and rotation rate for yaw stick, and angle control for pitching
+ and rolling for right stick.
+\end_layout
+
+\begin_layout Itemize
+This mode requires GPS to operate.
+\end_layout
+
+\begin_layout Itemize
+It is better than the altitude control as it holds the position as will
+ as the altitude.
+\end_layout
+
+\begin_layout Subsection
+Mission mode
+\end_layout
+
+\begin_layout Standard
+Mission mode causes the vehicle to execute a predefined autonomous mission
+ (flight plan) that has been uploaded to the flight controller.
+ The mission is typically created and uploaded with a Ground Control Station
+ (GCS) application like QGroundControl (QGC).
+\end_layout
+
+\begin_layout Standard
+Missions are usually created in a ground control station (e.g.
+ QGroundControl) and uploaded prior to launch.
+ They may also be created by a developer API, and/or uploaded in flight.
+ 
+\end_layout
+
+\begin_layout Standard
+Individual mission commands are handled in a way that is appropriate for
+ each vehicle's flight characteristics (for example loiter is implemented
+ as hover for copter and circle for fixed-wing).
+ VTOL vehicles follow the behavior and parameters of fixed-wing when in
+ FW mode, and of copter when in MC mode.
+\end_layout
+
+\begin_layout Standard
+At high level all vehicle types behave in the same way when MISSION mode
+ is engaged: 
+\end_layout
+
+\begin_layout Enumerate
+If a mission is stored and PX4 is flying it will execute the mission/flight
+ plan from the current step.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If a mission is stored and PX4 is landed: 
+\end_layout
+
+\begin_layout Enumerate
+On copters PX4 will execute the mission/flight plan.
+ If the mission does not have a TAKEOFF command then PX4 will fly the vehicle
+ to the minimum altitude before executing the remainder of the flight plan
+ from the current step.
+ 
+\end_layout
+
+\begin_layout Enumerate
+On fixed-wing vehicles PX4 will not automatically take off (the autopilot
+ will detect the lack of movement and set the throttle to zero).
+ The vehicle may start executing the mission if hand- or catapult- launched
+ while in mission mode.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If no mission is stored, or if PX4 has finished executing all mission commands:
+ 
+\end_layout
+
+\begin_layout Enumerate
+If flying the vehicle will loiter.
+ 
+\end_layout
+
+\begin_layout Enumerate
+If landed the vehicle will "wait".
+ 
+\end_layout
+
+\begin_layout Enumerate
+You can manually change the current mission command by selecting it in QGroundCo
+ntrol.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The mission will only reset when the vehicle is disarmed or when a new mission
+ is uploaded.
+\end_layout
+
+\begin_layout Standard
+Missions can be paused by activating HOLD mode.
+ The mission will then continue from the current mission command when you
+ reactivate the MISSION flight mode.
+ While flying in mission mode, if you decide to discontinue the mission
+ and switch to any other mode e.g.
+ position mode, fly the vehicle elsewhere with RC, and then switch back
+ to mission mode, the vehicle will continue the mission from its current
+ position and will fly to the next mission waypoint not visited yet.
+\end_layout
+
+\begin_layout Standard
+NOTE : Mission mode requires SD card and GPS
+\end_layout
+
+\begin_layout Section
+Flying
+\end_layout
+
+\begin_layout Standard
+Flying an unconventional vehicle is something that needs a great attention
+ as there is nearly NO reference to look at, our vehicle is a flying taxi
+ that should vertically takeoff and then move forward as a plane in order
+ to decrease the consumption of the quadrotors.
+\end_layout
+
+\begin_layout Standard
+Our model of tandem wing has a two leveled wings and though the quad-rotors
+ have two levels too, so it was hard to decide which is the best frame type
+ to go on with.
+\end_layout
+
+\begin_layout Standard
+H-quad was selected with equal arm for all rotors, but we must take care
+ that at taking of the thrust of the upper rotors (rear) will be greater
+ that the lower (front).
+\end_layout
+
+\begin_layout Subsection
+Calibration
+\end_layout
+
+\begin_layout Standard
+Qgroundcontrol was found to be easier than mission planner for calibration
+ process so we used it at this section.
+\end_layout
+
+\begin_layout Standard
+There is a few notes about calibration to get the best results of it.
+\end_layout
+
+\begin_layout Itemize
+After trying many models and flying them it was found that it is better
+ to do the calibration on the vehicle itself not on the pixhawk separated
+ as there may be some defects on the body during manufacturing so it is
+ not perfect and if the calibration was done on the pixhawk separated it
+ will act good in flying the vehicle itself.
+\end_layout
+
+\begin_layout Itemize
+When calibrating the accelerometer make sure that the rotation is about
+ the CG of the vehicle and rotate one rotation in 7 seconds for best results.
+\end_layout
+
+\begin_layout Itemize
+Before any flight test make sure to calibrate the level horizon again to
+ reset the values of roll and pitch to zeros so that the vehicle does not
+ drift, and because the pixhawk may be moved or rotated due to vibration
+ or a hit to the body.
+\end_layout
+
+\begin_layout Itemize
+ESC calibration is very important to get the four rotors rotating at the
+ same speed.
+\end_layout
+
+\begin_layout Subsection
+Safety switch
+\end_layout
+
+\begin_layout Standard
+Safety switch is a safety device which is used to turn on/off the ability
+ of arming the rotors.
+\end_layout
+
+\begin_layout Standard
+During calibration make sure that safety switch is turned on so that the
+ motors do not rotate for safety reasons.
+\end_layout
+
+\begin_layout Standard
+The safety parameter is set to 0 by default to prevent arming so if the
+ switch is not found as hardware you can change the value of the parameter
+ manually to 22027 to disable it and to be able to arm the vehicle.
+\end_layout
+
+\begin_layout Subsection
+Telemetry 
+\end_layout
+
+\begin_layout Itemize
+Telemetry is used to connect the vehicle to the ground station without a
+ wire and to monitor it's behavior.
+\end_layout
+
+\begin_layout Itemize
+The telemetry has a very poor range so problems may occur while using it
+ is that the data link may be lost many times, so KEEP THE VEHICLE CLOSE
+ to the station during loading the parameters at least.
+\end_layout
+
+\begin_layout Itemize
+The connection is also so weak so take care during connecting and disconnecting.
+\end_layout
+
+\begin_layout Section
+Important notes for flying
+\end_layout
+
+\begin_layout Standard
+It is recommended to read all the notes before starting the vehicle as it
+ is very important.
+\end_layout
+
+\begin_layout Itemize
+Two ground stations may be used together for example the Qgroundcontrol
+ is easier for calibration process but the Mission planner is easier for
+ logging and monitoring the status of everything so everyone of them may
+ be used at it's point of advantage.
+\end_layout
+
+\begin_layout Itemize
+If the telemetry is not working properly the first thing to do is to check
+ the connections and make sure that it is connected in a good shape, the
+ second thing to do is to keep the vehicle close to the ground station to
+ be able to load and write to the parameter variables.
+\end_layout
+
+\begin_layout Itemize
+Take care NOT to connect two power sources together as it may destroy the
+ autopilot board (pixhawk).
+\end_layout
+
+\begin_layout Itemize
+The only case that two power sources are connected together is when calibrating
+ the ESCs first we connect the pixhawk using the USB cable only and run
+ the calibration then the Qgroundcontrol will ask you to connect the battery,
+ by connecting it the calibration will run then after it is done disconnect
+ the battery first then the USB to reboot the pixhawk and the calibration
+ is done.
+\end_layout
+
+\begin_layout Itemize
+When flying the vehicle with the RC the first mode to go with is the stabilized
+ flight mode as it makes you able to control all the vehicle actions manually
+ and stabilizes it.
+\end_layout
+
+\begin_layout Itemize
+If it is noticed that there is a problem during flying using stabilized
+ mode like drifting or something like it, go for the acro mode to make sure
+ that this problem occurs due to body deflection or misalignment of the
+ motors.
+\end_layout
+
+\begin_layout Itemize
+Notice the direction of the propellers before flying the vehicle as it may
+ flip if they are not at the right position (clockwise/anti-clockwise).
+\end_layout
+
+\begin_layout Itemize
+The quad motors drains a lot of power while running so keep an eye on the
+ battery level.
+\end_layout
+
+\begin_layout Itemize
+Batteries are very critical parameter in the vehicle so make sure to use
+ the right one and search carefully about the ESCs used if it uses three
+ or four cells because a wrong connection may spoil the components of the
+ vehicle.
+\end_layout
+
+\begin_layout Itemize
+On switching between modes on flight time be careful as the vehicle may
+ behave in a bad way so keep an eye on the vehicle during switching.
+\end_layout
+
+\begin_layout Itemize
+It is preferred to keep the vehicle attached with roped as it will be safer
+ during flight.
+\end_layout
+
+\begin_layout Itemize
+Be careful not to get close to the propellers if armed as it will be dangerous
+ and may cause serious damage.
+\end_layout
+
+\begin_layout Itemize
+If foam is used make sure to use closed sections because of it's torsional
+ rigidity.
+\end_layout
+
+\begin_layout Itemize
+If noticed that the vehicle is yawing then there is something wrong with
+ the sensor calibration or with the body itself so recalibrate the sensors
+ again and see what happens.
+\end_layout
+
+\begin_layout Itemize
+At taking off make sure that increasing the throttle is very slow to be
+ able to see the behavior of the vehicle and be able to counter any unexpected
+ actions.
+\end_layout
+
+\begin_layout Itemize
+There is a different in the radio channels between the Qgroundcontrol and
+ the mission planner so follow one of them only during the radio calibration
+ (Qgroundcontrol is recommended).
+\end_layout
+
+\begin_layout Itemize
+The center of gravity (CG) is a very important parameter as it will effect
+ the behavior of the vehicle during everything so be sure that the CG is
+ centered and will calculated to avoid its problems.
+\end_layout
+
+\begin_layout Itemize
+The vehicle must hover in range of 50% to 60% of the thrust to be able to
+ control it as if it hover at 100% thrust there will be no power for the
+ control so it will be uncontrollable so be careful when choosing the motors
+ and the propellers.
+\end_layout
+
+\begin_layout Itemize
+Tuning is very important and it is reflected on the vehicle by the way it
+ respond to the orders it get so never forget the tuning of pitch, roll
+ ,and yaw.
+\end_layout
+
+\begin_layout Itemize
+Battery will get low very fast so make the best use of it.
+\end_layout
+
+\begin_layout Itemize
+If the vehicle did not arm try to reboot the vehicle.
+\end_layout
+
+\begin_layout Itemize
+There is two methods to arm the vehicle the first one is using the RC and
+ moving the throttle stick to the lower right position for 2 second , the
+ second method is using the mission planner by intering the action tab and
+ select arm/disarm button.
+\end_layout
+
+\begin_layout Itemize
+There is also two methods to disarm the vehicle the first one is using the
+ RC and moving the throttle stick to the lower left position for 2 second
+ , the second method is using the mission planner by intering the action
+ tab and select arm/disarm button.
+\end_layout
+
+\begin_layout Itemize
+Before connecting the battery make sure that the RC is turned ON.
+\end_layout
+
+\begin_layout Itemize
+Connection of the ESCs to the pixhawk is very important so if using NO BEC
+ ESCs then connect the signal ONLY to the pixhawk if using BEC ESCs then
+ the signal and the ground are connected to the pixhawk.
+\end_layout
+
+\begin_layout Itemize
+If the ESCs start making sound then the ground is not connected the right
+ way or is not connected at all so be careful.
+\end_layout
+
+\begin_layout Section
+Pusher connection
+\end_layout
+
+\begin_layout Standard
+As it is required to design a quad-plane it was very important to know how
+ we are going to use and connect a pusher to the controller as we are not
+ using any control surfaces so all the control actions come from the quad-rotors
+, so there was three ways to do this
+\end_layout
+
+\begin_layout Itemize
+The first way is to connect the pusher on its own on a separated RC.
+\end_layout
+
+\begin_layout Itemize
+The second way is to connect the pusher on an auxiliary on/off switch.
+\end_layout
+
+\begin_layout Itemize
+The third way is to connect the pusher on an auxiliary channel that can
+ control the PWM coming out to the ESC.
+\end_layout
+
+\begin_layout Standard
+It was decided to go on with the third method as it was better to just use
+ one RC than two and it was way better to connect to a channel that can
+ contol the PWM rather than on/off switch,so Y connection was make to connect
+ power to the ESC and it was connected directly to the RC receiver to the
+ required channel.
+\end_layout
+
+\begin_layout Standard
+By doing this the vehicle will deal with the pusher thrust as a disturbance
+ and will stabilize itself as a quad copter automatically.
+\end_layout
+
+\begin_layout Standard
+The pusher will push the vehicle forward so the wings will generate lift
+ so the altitude of the vehicle will increase ,so in case of using altitude
+ mode the vehicle will decrease the thrust of the quad-rotors to compensate
+ the increase in altitude by descending using the rotors, so the power consumpti
+on of the vehicle will decrease and that is the main reason for doing this
+ setup as will as it will travel faster and as an air taxi it will be more
+ comfortable for users.
+ 
 \end_layout
 
 \begin_layout Standard
