@@ -256,11 +256,7 @@ List of Symbols and Abbreviations
 \paragraph_spacing onehalf
 \align center
 \begin_inset Tabular
-<<<<<<< HEAD
-<lyxtabular version="3" rows="19" columns="2">
-=======
-<lyxtabular version="3" rows="29" columns="2">
->>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
+<lyxtabular version="3" rows="31" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -665,11 +661,7 @@ Autopilot
 \begin_inset Text
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
-CAGR
-=======
 RC
->>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
 \end_layout
 
 \end_inset
@@ -678,12 +670,31 @@ RC
 \begin_inset Text
 
 \begin_layout Plain Layout
-<<<<<<< HEAD
+
+\shape italic
+Remote contol
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CAGR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 
 \shape italic
 Compound annual growth rate
-=======
-Remote contol
 \end_layout
 
 \end_inset
@@ -884,7 +895,26 @@ UAV
 
 \begin_layout Plain Layout
 Unmanned Air Vehicle 
->>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GCS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Ground Conrol Station>>>>>>> 830e526307877c60d7625419a0d2edd0b8c64b84
 \end_layout
 
 \end_inset
@@ -1752,6 +1782,359 @@ Aircraft Design
 \end_layout
 
 \begin_layout Section
+Vehicle Configuration
+\end_layout
+
+\begin_layout Standard
+Our vehicle is an electric vehicle so the battery is a very important design
+ element since it supplies the required current or power to carry or speed
+ up the vehicle against weight or drag.
+ Battery should be modeled to simulate a simple mission.
+ The purpose is to find the best configuration for the flying taxi (Quad-copter
+ , Quad-plane and Fixed wing ) .
+ Besides from this simulation we can determine approximate range and endurance
+ for each configuration.
+\end_layout
+
+\begin_layout Standard
+Battery has important 2 parameters :
+\end_layout
+
+\begin_layout Itemize
+C : battery capacity in Ahr
+\end_layout
+
+\begin_layout Itemize
+n : A discharge parameter depends on battery type and temperature for ideal
+ battery it equals 1, for LiPo batteries which we uses, it's very near to
+ 1.
+\begin_inset Newline newline
+\end_inset
+
+The physical meaning of (n) can be seen in Peukert's equation : 
+\begin_inset Formula $t=\frac{C}{i^{n}}$
+\end_inset
+
+ , from this equation we can see that the apparent capacity of the battery
+ decreases as current increases in another way if we have a 5 Ah battery
+ and it's rated at 1 A, if the drawn current is 1A, the battery will last
+ for 5hr but if we the drawn current is 2A, it will last 
+\series bold
+less than
+\series default
+ 2.5 hr 
+\end_layout
+
+\begin_layout Subsection
+Battery parameters effect
+\end_layout
+
+\begin_layout Standard
+The effect of these parameters can be shown for example for fixed wing configura
+tion.
+ If the power required is simulated against the drag to fly at specific
+ speed, we get the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename scaling/Endurance_final.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Endurance"
+
+\end_inset
+
+Endurance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scaling/Range_final.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Range"
+
+\end_inset
+
+Range
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+from fig(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Endurance"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and fig(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Range"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+At first, the current draw decreases with speed because the required Cl
+ decreases which decreases the induces drag.
+ After specific speed of max.
+ range and max.
+ endurance, the effect of the parasite drag starts dominating the induced
+ drag so the power required and current are increased.
+\end_layout
+
+\begin_layout Enumerate
+The batteries with large capacity with respect to the current draw, it's
+ desirable to have higher n for better range and endurance.
+ But with less capacity batteries with respect to the current, less n has
+ better range and endurance.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Consumed current is the same for any Capacity.
+\end_layout
+
+\begin_layout Enumerate
+Points at which dotted lines(n=1.3) intersects with solid lines(n=1) at the
+ same capacity is called 
+\begin_inset Quotes eld
+\end_inset
+
+crossover
+\begin_inset Quotes erd
+\end_inset
+
+, this points is at I=1 which is reasonable because the Peukert's equation
+ becomes independent on (n).
+\end_layout
+
+\begin_layout Subsection
+Effects of Cdo and K on choosing the battery capacity
+\end_layout
+
+\begin_layout Standard
+The Cd-Cl curve can be fitted using the following relation: 
+\begin_inset Formula $C_{d}=C_{do}+kCl^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $C_{do}$
+\end_inset
+
+effect
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename scaling/increasing_Cd0by0.01by.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+increasing Cdo by 0.01
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+increasing Cdo significantly affects the optimum speed and the battery behavior.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k$
+\end_inset
+
+ effect
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename scaling/Endurance_doubleCd.bmp
+	lyxscale 80
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+double K
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Different configuration simulation
+\end_layout
+
+\begin_layout Standard
+as shown in the figure below, the quad-plane is the best choice for the
+ flying taxi, since it has the VTOL advantage of the quad-copter and the
+ high range and endurance advantage of the fixed-wing.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scaling/Modelling.bmp
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scaling/Modelling_zoomed.bmp
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Different configuration simulation for 30 min
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Aerodynamic Design
 \end_layout
 
@@ -1943,7 +2326,7 @@ The two airfoils are analysed using panel method with 150 panel for smooth
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2021,7 +2404,7 @@ Pressure distribution along NACA0015 with difference angle of attack
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2062,7 +2445,7 @@ We make analysis at different Re (from 20,000 to 1,000,000) and see plots
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2098,7 +2481,7 @@ Polar graph of NACA0015
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
