@@ -321,7 +321,6 @@ legend('NonLinear','Linear')
 title('Roll step response')
 ylabel('phi(deg)')
 grid minor
-
 temp = lvm_import('attitude10/roll_action.lvm',0);
 nonL_roll_action = temp.Segment1.data;
 subplot(2,1,2)
@@ -358,7 +357,6 @@ theta_action = feedback(Kp*inner_action , G_theta_dot/s);
 % step(theta_action*T)
 % grid minor
 % title('\theta_{action}')
-
 %nonLinear
 input = 10;
 temp = lvm_import('attitude10/pitch_response.lvm',0);
@@ -372,7 +370,6 @@ legend('NonLinear','Linear')
 title('pitch step response')
 ylabel('theta(deg)')
 grid minor
-
 temp = lvm_import('attitude10/pitch_action.lvm',0);
 nonL_pitch_action = temp.Segment1.data;
 subplot(2,1,2)
@@ -410,7 +407,6 @@ psi_action = feedback(Kp*inner_action , G_psi_dot/s);
 % step(psi_action*T)
 % grid minor
 % title('\Psi_{action}')
-
 %nonLinear
 input = 10;
 temp = lvm_import('attitude10/yaw_response.lvm',0);
@@ -424,7 +420,6 @@ legend('NonLinear','Linear')
 title('yaw step response')
 ylabel('psi(deg)')
 grid minor
-
 temp = lvm_import('attitude10/yaw_action.lvm',0);
 nonL_yaw_action = temp.Segment1.data;
 subplot(2,1,2)
@@ -435,7 +430,6 @@ legend('NonLinear','Linear')
 title('yaw step control action')
 ylabel('Yaw Torque (N.m)')
 grid minor
-
 %% Altitude Control
 G_alt_dot = s/m/s^2;
 PID = 3.753*(s+0.4938)/s;
@@ -449,7 +443,6 @@ inner_action = feedback(PID , G_alt_dot) ;
 % step(inner_action)
 % grid minor
 %outer
-
 G_al_outer = alt_inner_loop/s;
 Kp =.86913;
 alt_outer_loop = feedback(Kp *G_al_outer , 1);
@@ -464,7 +457,6 @@ alt_action = feedback(Kp*inner_action , G_alt_dot/s);
 % step(alt_action)
 % grid minor
 % title('h_action')
-
 %nonLinear
 input = -10;
 temp = lvm_import('altitude10/alt_response.lvm',0);
@@ -478,7 +470,6 @@ legend('NonLinear','Linear')
 title('altitude step response')
 ylabel('alt (m)')
 grid minor
-
 temp = lvm_import('altitude10/alt_action.lvm',0);
 nonL_alt_action = temp.Segment1.data;
 subplot(2,1,2)
@@ -489,13 +480,10 @@ legend('NonLinear','Linear')
 title('altitude step control action')
 ylabel('altitude Force (N)')
 grid minor
-
 %% Coupling  attitude
 inputR = 5;
 inputP = 0;
 inputY = 5;
-
-
 % roll
 temp = lvm_import('R5P0Y5/roll_response.lvm',0);
 nonL_roll_response = temp.Segment1.data;
@@ -518,7 +506,6 @@ legend('NonLinear','Linear')
 title('Roll step control action')
 ylabel('Roll Torque (N.m)')
 grid minor
-
 %pitch
 temp = lvm_import('R5P0Y5/pitch_response.lvm',0);
 nonL_pitch_response = temp.Segment1.data;
@@ -540,7 +527,6 @@ legend('NonLinear','Linear')
 title('pitch step control action')
 ylabel('pitch torque (N.m)')
 grid minor
-
 %yaw
 temp = lvm_import('R5P0Y5/yaw_response.lvm',0);
 nonL_yaw_response = temp.Segment1.data;
@@ -569,7 +555,6 @@ inputR = -5;
 inputP = -5;
 inputY = 0;
 inputZ = -4;
-
 % roll
 temp = lvm_import('A-4R5P-5Y0/roll_response.lvm',0);
 nonL_roll_response = temp.Segment1.data;
@@ -592,7 +577,6 @@ legend('NonLinear','Linear')
 title('Roll step control action')
 ylabel('Roll Torque (N.m)')
 grid minor
-
 %pitch
 temp = lvm_import('A-4R5P-5Y0/pitch_response.lvm',0);
 nonL_pitch_response = temp.Segment1.data;
@@ -614,7 +598,6 @@ legend('NonLinear','Linear')
 title('pitch step control action')
 ylabel('pitch torque (N.m)')
 grid minor
-
 %yaw
 temp = lvm_import('A-4R5P-5Y0/yaw_response.lvm',0);
 nonL_yaw_response = temp.Segment1.data;
@@ -636,7 +619,6 @@ legend('NonLinear','Linear')
 title('yaw step control action')
 ylabel('Yaw Torque (N.m)')
 grid minor
-
 % altitude
 temp = lvm_import('A-4R5P-5Y0/alt_response.lvm',0);
 nonL_alt_response = temp.Segment1.data;
@@ -660,21 +642,17 @@ ylabel('altitude Force (N)')
 grid minor
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %% PUSHER
- 
- G_u = 1/(m*(s-Xu/m));
- 
- PID =  2.9068*(s+0.4304)/s
- 
- U =feedback(PID*G_u,1);
- U_action = feedback(PID,G_u);
-  figure
+G_u = 1/(m*(s-Xu/m));
+PID =  2.9068*(s+0.4304)/s
+U =feedback(PID*G_u,1);
+U_action = feedback(PID,G_u);
+figure
 subplot(2,1,1)
 step(U)
 grid minor
 subplot(2,1,2)
 step(U_action)
 grid minor
-
 figure
 subplot(2,1,1)
 impulse(U)
