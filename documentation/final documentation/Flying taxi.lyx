@@ -2032,7 +2032,9 @@ increasing Cdo by 0.01
 \begin_inset Newline newline
 \end_inset
 
-increasing Cdo significantly affects the optimum speed and the battery behavior.
+increasing Cdo by 0.01 significantly affects the optimum speed and the battery
+ behavior such that at optimum speed for C = 6 & n = 1: decreasing the endurance
+ by 50% - increasing current by 100%- decreasing optimum speed by 36%
 \end_layout
 
 \begin_layout Enumerate
@@ -2075,6 +2077,16 @@ double K
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+doubling k effect at optimum speed for C = 6 & n = 1 : decreasing the endurance
+ by 50% - increasing current by 100% - don't affect optimum speed.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -17647,7 +17659,7 @@ We wanted to increase our experience in ROS so we decided to build a differentia
 l drive robot using ROS.
  In addition the very useful feature of ROS is that we can use the Odometry
  message resulting from encoders (very simple sensors) to simulate the results
- of algorithms that handles the vision navigation.
+ of algorithms that handles the vision navigation (Visual odometry).
  Hence, this project deepens our understanding of ROS independently of the
  complexity of the sensors (Cameras and Lidars) and the controlled system(Multi-
 rotor which is more critical in control than DD robots).
@@ -17709,9 +17721,8 @@ noprefix "false"
  , this control needs encoders and IMU as feedback in case of using Incremental
  encoders , encoders only in case of using quadrature encoders , or fusion
  of encoders and IMU.
- In our case , It is very fine that our DD robot won't have backward movement
- for motors so we don't need to neither fuse data for the linear and angular
- velocities control loop nor using quadrature encoders.
+ In our case ,We fused the data for the linear and angular velocities control
+ loop using encoders and IMU.
 \end_layout
 
 \begin_layout Enumerate
@@ -17745,6 +17756,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:differential-drive-model"
+
+\end_inset
+
 differential drive model
 \end_layout
 
@@ -17865,7 +17882,7 @@ nodes
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -17937,7 +17954,7 @@ twist_to_motors
 \begin_inset Text
 
 \begin_layout Plain Layout
-transforms the required linearvelocity and angular velocity(Twist) of the
+transforms the required linear velocity and angular velocity(Twist) of the
  DD robot torequired velocity of motors.
 \end_layout
 
@@ -19195,7 +19212,7 @@ topics
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -19412,15 +19429,29 @@ pid_velocity and diff_tf
 Localization
 \end_layout
 
+\begin_layout Standard
+At first the encoder (odometry) only is used to estimate the state of the
+ robot then we fused the IMU data and odometry data using Extended kalman
+ filter (EKF) and compared the effect of both techniques on the position
+ control performance of the differential-drive robot.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Encoders only
+\end_layout
+
 \begin_layout Itemize
-nodes
+nodes 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -19580,7 +19611,7 @@ topics
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -20164,6 +20195,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/3d-robotics-pixhawk.jpg
+	lyxscale 50
 	scale 10
 
 \end_inset
