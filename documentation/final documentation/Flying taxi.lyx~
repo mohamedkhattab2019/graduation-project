@@ -9860,7 +9860,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/control loops of autopilot.png
+	filename pics/control loops of autopilot.bmp
 	lyxscale 80
 	scale 80
 
@@ -9948,6 +9948,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/roll controller.png
+	scale 80
 
 \end_inset
 
@@ -10118,6 +10119,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pitch controller.png
+	scale 80
 
 \end_inset
 
@@ -10291,6 +10293,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/yaw controller.png
+	scale 80
 
 \end_inset
 
@@ -10515,6 +10518,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/altitude controller.png
+	scale 80
 
 \end_inset
 
@@ -19429,8 +19433,22 @@ pid_velocity and diff_tf
 Localization
 \end_layout
 
+\begin_layout Standard
+At first the encoder (odometry) only is used to estimate the state of the
+ robot then we fused the IMU data and odometry data using Extended kalman
+ filter (EKF) and compared the effect of both techniques on the position
+ control performance of the differential-drive robot.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Encoders only
+\end_layout
+
 \begin_layout Itemize
-nodes
+nodes 
 \end_layout
 
 \begin_layout Standard
@@ -23017,16 +23035,374 @@ name "chap:ROS-Examples"
 publisher.py
 \end_layout
 
+\begin_layout Standard
+This node publishes consecutive integers on the topic counter at a rate
+ of 2 Hz.
+\end_layout
+
+\begin_layout LyX-Code
+#!/usr/bin/env python                    #lets the operating system know
+ that this is a Python file.
+\end_layout
+
+\begin_layout LyX-Code
+import rospy                             #imports all of the basic functionality
+ that we’ll need.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+from std_msgs.msg import Int32           #imports the definition of the message
+ that we’re going to send over the topic 
+\end_layout
+
+\begin_layout LyX-Code
+rospy.init_node('topic_publisher')       #After initializing the node, we
+ advertise it with a Publisher This gives the                     
+\end_layout
+
+\begin_layout LyX-Code
+pub = rospy.Publisher('counter', Int32)  #topic a name (counter)
+\end_layout
+
+\begin_layout LyX-Code
+rate = rospy.Rate(2)
+\end_layout
+
+\begin_layout LyX-Code
+count = 0
+\end_layout
+
+\begin_layout LyX-Code
+while not rospy.is_shutdown():
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+pub.publish(count)
+\end_layout
+
+\begin_layout LyX-Code
+count += 1
+\end_layout
+
+\begin_layout LyX-Code
+rate.sleep()
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+now we open new terminal and run the topic_publisher.py node and echo and
+ see the messeges being published :
+\end_layout
+
+\begin_layout Standard
+user@hostname$ rosrun basics topic_publisher.py (run)
+\end_layout
+
+\begin_layout Standard
+user@hostname$ rostopic echo counter -n 5 (echo)
+\end_layout
+
 \begin_layout Section
 subscriber.py
 \end_layout
 
+\begin_layout Standard
+Node that subscribes to the counter topic and prints out the values in the
+ messages as they arrive.: 
+\end_layout
+
+\begin_layout Standard
+#!/usr/bin/env python
+\end_layout
+
+\begin_layout Standard
+import rospy
+\end_layout
+
+\begin_layout Standard
+from std_msgs.msg import Int32
+\end_layout
+
+\begin_layout Standard
+def callback(msg): #the callback that handles the messages as they come
+ in.
+\end_layout
+
+\begin_layout Standard
+print msg.data
+\end_layout
+
+\begin_layout Standard
+rospy.init_node('topic_subscriber) #After initializing the node, as before,
+ we subscribe to the counter topic.
+\end_layout
+
+\begin_layout Standard
+sub = rospy.Subscriber('counter', Int32, callback)
+\end_layout
+
+\begin_layout Standard
+rospy.spin()
+\end_layout
+
+\begin_layout Itemize
+Checking That Everything Works as Expected
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+First, make sure that the publisher node is still running and that it is
+ still publishing messages on the counter topic.
+ Then, in another terminal, start up the subscriber node:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+user@hostname$ rosrun basics topic_subscriber.py
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Section
 publisher.cpp
 \end_layout
 
+\begin_layout Standard
+The following node will send the data with the node name, and publish this
+ sentence " I am the Flying Taxi " 
+\end_layout
+
+\begin_layout LyX-Code
+#include "ros/ros.h" 
+\end_layout
+
+\begin_layout LyX-Code
+#include "std_msgs/String.h"
+\end_layout
+
+\begin_layout LyX-Code
+#include <sstream> 
+\end_layout
+
+\begin_layout LyX-Code
+int main(int argc, char **argv) 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+ros::init(argc, argv, "example1_a");  //At this point,we initialize the
+ node and set the name
+\end_layout
+
+\begin_layout LyX-Code
+ros::NodeHandle n; //This is the handler of our process; it allows us to
+ interact with the environment
+\end_layout
+
+\begin_layout LyX-Code
+ros::Publisher chatter_pub = n.advertise<std_msgs::String>("message", 1000);
+\end_layout
+
+\begin_layout LyX-Code
+ros::Rate loop_rate(10);
+\end_layout
+
+\begin_layout LyX-Code
+while (ros::ok()) 
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+std_msgs::String msg;
+\end_layout
+
+\begin_layout LyX-Code
+std::stringstream ss;
+\end_layout
+
+\begin_layout LyX-Code
+ss<< " I am the Flying Taxi ";
+\end_layout
+
+\begin_layout LyX-Code
+msg.data = ss.str();
+\end_layout
+
+\begin_layout LyX-Code
+//ROS_INFO("%s", msg.data.c_str());
+\end_layout
+
+\begin_layout LyX-Code
+chatter_pub.publish(msg);
+\end_layout
+
+\begin_layout LyX-Code
+ros::spinOnce(); loop_rate.sleep();
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+code explaination :
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Itemize
+ros::Publisher chatter_pub = n.advertise<std_msgs::String>("message", 1000);
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We instantiate a publisher and tell the master the name of the topic and
+ the type.
+ The name is message, and the second parameter is the buffer size.
+ If the topic is publishing data quickly, the buffer will keep at least
+ 1000 messages
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ros::Rate loop_rate(10);
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+set the data sending frequency, which in this case is 10 Hz
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+ros::ok()
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+stops the node if Ctrl + C is pressed or if ROS stops all the nodes
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In this part, we create a variable for the message with the correct type
+ to send the data
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+std_msgs::String msg; 
+\end_layout
+
+\begin_layout Standard
+std::stringstream ss;
+\end_layout
+
+\begin_layout Standard
+ss<< " I am the example1_a node ";
+\end_layout
+
+\begin_layout Standard
+msg.data = ss.str();
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+We continue by sending the message, in this case, the semantic is to publish
+ a message, using the previously defined publisher:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+chatter_pub.publish(msg);
+\end_layout
+
+\end_deeper
 \begin_layout Section
 subscriber.cpp
+\end_layout
+
+\begin_layout Standard
+Now we will create the other node.
+ Copy the following code inside the example1_b.cpp file 
+\end_layout
+
+\begin_layout LyX-Code
+#include "ros/ros.h" 
+\end_layout
+
+\begin_layout LyX-Code
+#include "std_msgs/String.h"
+\end_layout
+
+\begin_layout Standard
+//The following type of function is a callback and happens in response to
+ an action, which in this case is the reception of a String message.
+ This function allows us to do something with the data; in this case, we
+ display it in the terminal
+\end_layout
+
+\begin_layout LyX-Code
+void chatterCallback(const std_msgs::String::ConstPtr& msg)
+\end_layout
+
+\begin_layout LyX-Code
+{
+\end_layout
+
+\begin_layout LyX-Code
+ROS_INFO("I heard: [%s]", msg->data.c_str());
+\end_layout
+
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+int main(int argc, char **argv) { ros::init(argc, argv, "example1_b"); 
+\end_layout
+
+\begin_layout LyX-Code
+ros::NodeHandle n;
+\end_layout
+
+\begin_layout LyX-Code
+ros::Subscriber sub = n.subscribe("message", 1000, chatterCallback);
+\end_layout
+
+\begin_layout LyX-Code
+ros::spin();
+\end_layout
+
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
 \end_layout
 
 \begin_layout Section
