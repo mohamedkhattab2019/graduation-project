@@ -19429,8 +19429,22 @@ pid_velocity and diff_tf
 Localization
 \end_layout
 
+\begin_layout Standard
+At first the encoder (odometry) only is used to estimate the state of the
+ robot then we fused the IMU data and odometry data using Extended kalman
+ filter (EKF) and compared the effect of both techniques on the position
+ control performance of the differential-drive robot.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Encoders only
+\end_layout
+
 \begin_layout Itemize
-nodes
+nodes 
 \end_layout
 
 \begin_layout Standard
@@ -19722,6 +19736,58 @@ to be identified by twist_to_motors node
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The X , Y position and heading of the rover is estimated using the encoders
+ only and this is the results:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/localization_encoder.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/heading_encoder.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Localization using encoders only
+\end_layout
 
 \end_inset
 

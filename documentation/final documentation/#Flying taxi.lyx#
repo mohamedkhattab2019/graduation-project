@@ -19745,10 +19745,125 @@ to be identified by twist_to_motors node
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-juj
+The X , Y position and heading of the rover is estimated using the encoders
+ only and this is the results:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/localization_encoder.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/heading_encoder.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Localization using encoders only
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Encoders drifts from ground truth especially at corners during acceleration
+ or deceleration due to wheels slipping.
+ This causes bad heading estimation.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Fusing encoders and IMU readings
+\end_layout
+
+\begin_layout Standard
+Encoders and IMU readings are fused using EKF to enhance the Localization
+ of the robot especially the heading estimates.
+ The IMU problem is that it's noisy more than encoders but doesn't have
+ the problem of drift due to slipping.
+ This sensors fusion system still has drifting problem due to velocity integrati
+on to get position but this problem appears for relatively long distances
+ so it needs global position sensor like GPS for oudoor or Visual odometry
+ for indoor.
+ Our experiment is done based on only traveling along a square with 1m long
+ so this problem doesn't appear and our estimates is fairly good.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/Loca_IMU_encoder.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Fusing Encoder and IMU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
