@@ -15,6 +15,7 @@
 \pagenumbering{arabic}
 }
 \renewcommand{\ps@plain}{\pagestyle{fancy}}
+\usepackage{matlab-prettifier}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -106,6 +107,7 @@ tabs-within-sections
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\listings_params "style={Matlab-editor}"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -1782,6 +1784,2196 @@ Aircraft Design
 \end_layout
 
 \begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Why Quad-plane
+\end_layout
+
+\begin_layout Standard
+A quad-plane vehicle is a mixture between fixed wing-plane and a multi-copter,
+ it has both of their advantages
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Point Of Comparisons
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Multi-copter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fixed-wing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Quad-Plane
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+vertical takeoff and landing
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+yes 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comfortable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+uncomfortable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comfortable
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+comfortable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+power consumption
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+High
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Low 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Moderate
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cruise speed
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+low
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+high
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+high
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Range
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+short
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Endurance
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+short
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+long
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+quad-plane advantages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as a conclusion from the previous table, it's obvious that a quad-plane
+ is the best choice to achieve this mission 
+\end_layout
+
+\begin_layout Subsection
+Scaling
+\end_layout
+
+\begin_layout Standard
+scaling is based in payload, assuming a full scaled model carry a payload
+ of 120 kg including a 80 kg passenger, 20 kg luggage and 20 kg navigation
+ control equipment .Since vision equipment masses doesn't change from a full
+ scaled model to a scaled model, control equipment masses are assumed to
+ be a part of the scaled model payload
+\end_layout
+
+\begin_layout Standard
+A 1/100 scaled model is to be designed so that its payload is 1.2 kg.
+\end_layout
+
+\begin_layout Subsection
+Payload
+\end_layout
+
+\begin_layout Standard
+Payload consists of the components that are loaded on the vehicle to carry
+ out its mission so, the payload will be divided into two sections: control
+ payload and passenger payload
+\end_layout
+
+\begin_layout Itemize
+Before optimization
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="13" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+components
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+masses (gm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Passenger payload 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Human model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chair
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+123
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Navigation payload
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+XPAL power supply
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+517
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Jetson KIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+431
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RP Lidar A1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+190
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ZED camera
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+159
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Rasspery pi 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+42
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PIX4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+38
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Other electronic devices
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total mass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2000 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Non optimized payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+After optimization
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+It was found that the payload exceeded the scaling assumption, so some optimizat
+ion is done in the payload.
+\end_layout
+
+\begin_layout Standard
+also due to limited resources of propulsion systems and batteries, further
+ optimization is done and the final payload is: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="10" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+components
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+masses (gm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Passenger payload 
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Human model
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+200
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Chair
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+123
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Navigation payload
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+nano Jetson KIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ZED camera
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+159
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PIX4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+38
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Other electronic devices
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+300
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total mass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+970 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Optimized payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Endurance
+\end_layout
+
+\begin_layout Subsection
+Range
+\end_layout
+
+\begin_layout Subsection
+Sizing
+\end_layout
+
+\begin_layout Standard
+sizing is an iterative process where the VTOL propulsion system is chosen
+ based on the main payload and then both the main payload and the propulsion
+ system (secondary payload) become the payload of the fixed wing.
+ After sizing the fixed wing, the MTOM is calculated and then VTOL propulsion
+ system is re-chosen and so-on til convergence
+\end_layout
+
+\begin_layout Standard
+Due to limited resources of propulsion systems, only one VTOL propulsion
+ system is available so, sizing process will not be iterative
+\end_layout
+
+\begin_layout Subsubsection
+As a Multi-copter
+\end_layout
+
+\begin_layout Standard
+As a multi-copter, only the propulsion system will be taken in account while
+ the structure will be neglected as the structure will be taken in consideration
+ in fixed wing sizing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+component
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mass of one piece
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+no of pieces
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+total mass
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTOL motors
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+71
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+284
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTOL propellers
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+76
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTOL ESC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Total mass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+460 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Secondary payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+As a fixed-wing
+\end_layout
+
+\begin_layout Standard
+Payload in this section will be the summation of both secondary and main
+ payloads, so the payload is 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $Payload=Mainpayload+Secondarypayload=970+460=1430gm$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Propulsion system selection
+\end_layout
+
+\begin_layout Subsection
+Vertical takeoff propulsion system
+\end_layout
+
+\begin_layout Subsubsection
+Motors : 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $T_{motor}\leq\frac{W_{estimated}}{4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ Due to limited resources of available motors, we had to estimate the maximum
+ takeoff weight from the available set of motors 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/KDE2315XF_III_865e1186-de77-4a5d-88dc-2ecf16fd3482_large.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+KDE2315XF-965
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constant current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+26+ A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constants watts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+385+ W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No load current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5 A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Voltage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.1 V (3S LiPo) - 17.4 V (4S LiHV)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RPM/V (Kv rating)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+965
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75 grams
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Quad motor specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Hover motor's performance data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ESCs
+\end_layout
+
+\begin_layout Standard
+ESC are are chosen based on the maximum voltage and amperage they can withstand
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $A_{ESC}\geq FOS*A_{motor_{peak}}=1.3*27.4=35.62A$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Formula $V_{ESC}\geq V_{motor_{max}}=17.4$
+\end_inset
+
+V
+\end_layout
+
+\begin_layout Standard
+So, the following ESCs are chosen based on the motor's manufacturer recommendati
+on
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/KDEXF-UAS35_I_large.jfif
+	width 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+KDEXF-UAS35
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/esc specification.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ESC specification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cruise propulsion system
+\end_layout
+
+\begin_layout Subsubsection
+Motors : According to many references, the rule of thump in choosing a pusher
+ motor is according to the following table
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+power/weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+vehicle's category
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50-70 watts/pound: 11-15 watts/100g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Minimum level of power for decent performance
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70-90 watts/pound; 15-20 watts/100g
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Trainer and slow flying scale models
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90-110 watts/pound: 20-24 watts/100g 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sport, aerobatic and fast flying scale models
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+110-130 watts/pound: 24-29 watts/100g 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Advanced aerobatic and high-speed models
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+130-150 watts/pound: 29-33 watts/100g 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lightly loaded 3D models and ducted fans
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+power of motors to vehicle's weight 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/gpmg4595.jpg
+	width 30page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Rimfire .10 35-30-1250 Outrunner Brushless
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constant current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum surge current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum constants watts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+333W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maximum brust watts
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+390W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No load current
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.2A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Input Voltage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.4 - 11.1 V (2-3S LiPo)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RPM/V (Kv rating)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1250
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+71 grams
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Pusher motor specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ESCs
+\end_layout
+
+\begin_layout Standard
+previous ESC are used for this motor too
+\end_layout
+
+\begin_layout Subsubsection
+Propellers set
+\end_layout
+
+\begin_layout Subsection
+Power source (battery)
+\end_layout
+
+\begin_layout Standard
+A MATlab code is created that roughly calculates the capacity if the battery
+ needed given the endurance time of the mission and the consumption rate
+ of the motors or calculates the mission endurance given the battery’s capacity.
+ This code is based on some assumptions.
+ (code is in the appendix of codes)
+\end_layout
+
+\begin_layout Standard
+Assumptions:
+\end_layout
+
+\begin_layout Enumerate
+The working time of the hovering motors is 20% of the mission endurance
+\end_layout
+
+\begin_layout Enumerate
+The working time of pusher motor is the total mission endurance 
+\end_layout
+
+\begin_layout Itemize
+Battery used in vehicle
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+A high quality Lithium battery, low weight /size and high power make it
+ suitable for our application
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/lpb5200.jpg
+	width 25page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Lithium Polymer Battery (11.1 V, 5200 mAH- 35C)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Battery specification
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Capacity
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5500 mAh
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Configuration
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3S1P / 11.1v / 3Cell
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Peak discharge
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35C
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+weight
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+380 gm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+140x30x30 mm
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+connector type
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+T connector
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Battery specification
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
 Vehicle Configuration
 \end_layout
 
@@ -2147,7 +4339,7 @@ Different configuration simulation for 30 min
 \end_layout
 
 \begin_layout Section
-Aerodynamic Design
+Fixed-wing vehicle Design
 \end_layout
 
 \begin_layout Subsection
@@ -2338,7 +4530,7 @@ The two airfoils are analysed using panel method with 150 panel for smooth
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2416,7 +4608,7 @@ Pressure distribution along NACA0015 with difference angle of attack
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2457,7 +4649,7 @@ We make analysis at different Re (from 20,000 to 1,000,000) and see plots
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2493,7 +4685,7 @@ Polar graph of NACA0015
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2672,6 +4864,13 @@ s (incidence angle, CG position, cruise speed and dimensions of wings) is
 
 \begin_layout Standard
 \align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
 <features tabularvalignment="middle">
@@ -2844,6 +5043,23 @@ Static stability
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Design parameters and their effect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Results:
 \end_layout
@@ -2934,6 +5150,14 @@ Comparison between 2 air foils:
 
 \begin_deeper
 \begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
 <features tabularvalignment="middle">
@@ -3326,6 +5550,23 @@ Degree of Static Stability (S.M.)
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+airfoils comparison 
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -3924,7 +6165,6 @@ Polar graph of NACA0015 at a certain Reylonds number=100,000
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -4055,6 +6295,7 @@ Cl
 
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 Finally we must check for our results by focus on 2 important figures, (longitud
 inal static stability and lift generated from airfoil) , slope of Cm Vs
@@ -4127,13 +6368,14 @@ Type2: Pitching.
 Type3,4: motion around steady state flight
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Longitudinal derivatives from Xflr5
-\end_layout
-
 \begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
@@ -4555,6 +6797,25 @@ Neutral Point position= 0.38245 m
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Longitudinal derivatives from Xflr5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -4709,13 +6970,14 @@ Type2,3: dutch roll mode.
 Type4: spiral mode.
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Lateral derivatives from Xflr5
-\end_layout
-
 \begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="4">
@@ -5145,6 +7407,25 @@ C
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Lateral derivatives from Xflr5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -5240,13 +7521,14 @@ where v: velocity speed.
  
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Non-dimensional Stability Derivatives calculated by program: 
-\end_layout
-
 \begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
@@ -5440,6 +7722,25 @@ Cnr = -0.15451
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\series bold
+Non-dimensional Stability Derivatives calculated by XFLR5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
@@ -5448,2106 +7749,6 @@ Cnr = -0.15451
 \end_layout
 
 \begin_layout Section
-Mechanical Design
-\end_layout
-
-\begin_layout Subsection
-Introduction
-\end_layout
-
-\begin_layout Subsubsection
-Why Quad-plane
-\end_layout
-
-\begin_layout Standard
-A quad-plane vehicle is a mixture between fixed wing-plane and a multi-copter,
- it has both of their advantages
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Point Of Comparisons
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Fixed-wing
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-multi-copter
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Quad-Plane
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-vertical takeoff and landing
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-yes 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-no
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-yes
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-comfortable
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-uncomfortable
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-comfortable
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-comfortable
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-power consumption
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-High
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Low 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Moderate
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-cruise speed
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-low
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-high
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-high
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Range
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-short
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-long
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-long
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Endurance
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-short
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-long
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-long
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-quad-plane advantages
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-as a conclusion from the previous table, it's obvious that a quad-plane
- is the best choice to achieve this mission 
-\end_layout
-
-\begin_layout Subsubsection
-Scaling
-\end_layout
-
-\begin_layout Standard
-scaling is based in payload, assuming a full scaled model carry a payload
- of 120 kg including a 80 kg passenger, 20 kg luggage and 20 kg navigation
- control equipment .Since vision equipment masses doesn't change from a full
- scaled model to a scaled model, control equipment masses are assumed to
- be a part of the scaled model payload
-\end_layout
-
-\begin_layout Standard
-A 1/100 scaled model is to be designed so that its payload is 1.2 kg.
-\end_layout
-
-\begin_layout Subsubsection
-Payload
-\end_layout
-
-\begin_layout Standard
-Payload consists of the components that are loaded on the vehicle to carry
- out its mission so, the payload will be divided into two sections: control
- payload and passenger payload
-\end_layout
-
-\begin_layout Itemize
-Before optimization
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-components
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-masses (gm)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Passenger payload 
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Human model
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-200
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Chair
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-123
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Navigation payload
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-XPAL power supply
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-517
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Jetson KIT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-431
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RP Lidar A1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-190
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ZED camera
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-159
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Rasspery pi 2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-42
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PIX4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-38
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Other electronic devices
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-300
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Total mass
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2000 gm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Non optimized payload
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-After optimization
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-It was found that the payload exceeded the scaling assumption, so some optimizat
-ion is done in the payload.
-\end_layout
-
-\begin_layout Standard
-also due to limited resources of propulsion systems and batteries, further
- optimization is done and the final payload is: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-components
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-masses (gm)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Passenger payload 
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Human model
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-200
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Chair
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-123
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Navigation payload
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-nano Jetson KIT
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-150
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-ZED camera
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-159
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-PIX4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-38
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Other electronic devices
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-300
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Total mass
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-970 gm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Optimized payload
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
-Endurance
-\end_layout
-
-\begin_layout Subsubsection
-Range
-\end_layout
-
-\begin_layout Subsection
-Sizing
-\end_layout
-
-\begin_layout Standard
-sizing is an iterative process where the VTOL propulsion system is chosen
- based on the main payload and then both the main payload and the propulsion
- system (secondary payload) become the payload of the fixed wing.
- After sizing the fixed wing, the MTOM is calculated and then VTOL propulsion
- system is re-chosen and so-on til convergence
-\end_layout
-
-\begin_layout Standard
-Due to limited resources of propulsion systems, only one VTOL propulsion
- system is available so, sizing process will not be iterative
-\end_layout
-
-\begin_layout Itemize
-As a Multi-copter
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-As a multi-copter, only the propulsion system will be taken in account while
- the structure will be neglected as the structure will be taken in consideration
- in fixed wing sizing
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-component
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-mass of one piece
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-no of pieces
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-total mass
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VTOL motors
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-71
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-284
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VTOL propellers
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-76
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-VTOL ESC
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-25
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-100
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Total mass
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-460 gm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Secondary payload
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-As a fixed-wing
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Payload in this section will be the summation of both secondary and main
- payloads, so the payload is 
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula $Payload=Mainpayload+Secondarypayload=970+460=1430gm$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-Propulsion system selection
-\end_layout
-
-\begin_layout Subsubsection
-Vertical takeoff propulsion system
-\end_layout
-
-\begin_layout Itemize
-Motors : the rule of thump in choosing a vertical takeoff propulsion system
- is that the total propulsive force is twice the weight of the vehicle.
- See eq
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula $T_{motor}\leq\frac{W_{estimated}}{4}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Note:
-\series default
- Due to limited resources of available motors, we had to estimate the maximum
- takeoff weight from the available set of motors 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/KDE2315XF_III_865e1186-de77-4a5d-88dc-2ecf16fd3482_large.jpg
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-KDE2315XF-965
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constant current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-26+ A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constants watts
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-385+ W
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No load current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.5 A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Input Voltage
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11.1 V (3S LiPo) - 17.4 V (4S LiHV)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RPM/V (Kv rating)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-965
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-75 grams
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Hover motor specifications
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Hover motor's performance data
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-ESCs
-\end_layout
-
-\begin_layout Itemize
-Propellers set
-\end_layout
-
-\begin_layout Subsubsection
-Cruise propulsion system
-\end_layout
-
-\begin_layout Itemize
-Motors : According to many references, the rule of thump in choosing a pusher
- motor is according to the following table
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-power/weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-vehicle's category
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-50-70 watts/pound: 11-15 watts/100g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Minimum level of power for decent performance
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-70-90 watts/pound; 15-20 watts/100g
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Trainer and slow flying scale models
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-90-110 watts/pound: 20-24 watts/100g 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Sport, aerobatic and fast flying scale models
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-110-130 watts/pound: 24-29 watts/100g 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Advanced aerobatic and high-speed models
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-130-150 watts/pound: 29-33 watts/100g 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Lightly loaded 3D models and ducted fans
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-power of motors to vehicle's weight 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/gpmg4595.jpg
-	width 30page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Rimfire .10 35-30-1250 Outrunner Brushless
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constant current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-30A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum surge current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-35A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum constants watts
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-333W
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Maximum brust watts
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-390W
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-No load current
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1.2A
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Input Voltage
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-7.4 - 11.1 V (2-3S LiPo)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RPM/V (Kv rating)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1250
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-71 grams
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Pusher motor specifications
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-ESCs
-\end_layout
-
-\begin_layout Itemize
-Propellers set
-\end_layout
-
-\begin_layout Subsubsection
-Power source (battery)
-\end_layout
-
-\begin_layout Standard
-A MATlab code is created that roughly calculates the capacity if the battery
- needed given the endurance time of the mission and the consumption rate
- of the motors or calculates the mission endurance given the battery’s capacity.
- This code is based on some assumptions.
- (code is in the appendix of codes)
-\end_layout
-
-\begin_layout Standard
-Assumptions:
-\end_layout
-
-\begin_layout Enumerate
-The working time of the hovering motors is 20% of the mission endurance
-\end_layout
-
-\begin_layout Enumerate
-The working time of pusher motor is the total mission endurance 
-\end_layout
-
-\begin_layout Itemize
-Battery used in vehicle
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-A high quality Lithium battery, low weight /size and high power make it
- suitable for our application
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/lpb5200.jpg
-	width 50page%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Lithium Polymer Battery (11.1 V, 5200 mAH- 35C)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Battery specification
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Capacity
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5500 mAh
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Configuration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3S1P / 11.1v / 3Cell
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Peak discharge
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-35C
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-weight
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-380 gm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-size
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-140x30x30 mm
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-connector type
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-T connector
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Battery specification
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
 Mechanical Design
 \end_layout
 
@@ -7563,7 +7764,7 @@ Our design is both sufficient and efficient so that it can withstand all
  appearance to attract passenger's attention.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Building a 3D mechanical model
 \end_layout
 
@@ -7575,15 +7776,15 @@ Solid Works is used to create a 3D model and AutoCAD is used to edit 2D
  Windows.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 SolidWorks outputs:
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Files used in machining (laser cutting and 3D printing)
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Accurate weight estimation
 \end_layout
@@ -7597,11 +7798,10 @@ Some analysis (flow and structural)
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
+\begin_layout Subsubsection
 Steps to draw a 3D model in SolidWorks
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Define components of the payload, their dimensions, weight and fixation
  points
@@ -7624,23 +7824,22 @@ define the components that needs mounts
 Clearance needed for wiring and connections
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Subsubsection
 AutoCAD outputs
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 edit 2D machining files obtained from SolidWorks
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Connected to a CNC Laser cutting machine and modify files into G-code for
  the machine
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection
+\begin_layout Subsection
 Payload 3D models
 \end_layout
 
@@ -7658,7 +7857,7 @@ Assuming a regular Human body weighs 200 kg, a scaled model is used to be
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7698,7 +7897,7 @@ Chair
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7746,13 +7945,13 @@ Pixhawk position and orientation are the constraints that must be taken
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/pixhawk.png
-	width 8cm
+	width 4cm
 
 \end_inset
 
@@ -7786,7 +7985,7 @@ ZED camera
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7819,10 +8018,13 @@ ZED stereo camera 3D model
 \end_deeper
 \begin_layout Itemize
 Jetson Nano KIT
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7861,13 +8063,13 @@ Quad Motor
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/hover motor.png
-	scale 50
+	width 4cm
 
 \end_inset
 
@@ -7901,13 +8103,13 @@ Pusher motor
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/pusher motor.png
-	scale 50
+	width 4cm
 
 \end_inset
 
@@ -7941,13 +8143,13 @@ Battery
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/battery.png
-	scale 50
+	width 4cm
 
 \end_inset
 
@@ -7972,7 +8174,7 @@ Battery 3D model
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection
+\begin_layout Subsection
 Available machining techniques
 \end_layout
 
@@ -7995,7 +8197,7 @@ Only cuts foam and wood sheets with maximum size of (90*50*1 cm)
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8039,7 +8241,7 @@ Forms wings form foam using hot wire with moderate accuracy
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8052,7 +8254,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/1ad2cfdbeb1e8dd0f7b5731dc31493d5.jpg
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -8091,7 +8293,7 @@ the available 3D printer is with small dimensions and low both quality and
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8123,11 +8325,11 @@ status open
 \end_layout
 
 \end_deeper
-\begin_layout Subsubsection
+\begin_layout Subsection
 Wing fixation method
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 Variable incidence angle fixation method
 \end_layout
 
@@ -8147,7 +8349,7 @@ Variable incidence fixation method is explained in the following figures:
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8182,7 +8384,7 @@ variable incidence fixation assembly
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8217,7 +8419,7 @@ variable incidence fixation Front view
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8252,7 +8454,7 @@ variable incidence fixation at zero incidence
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8287,7 +8489,7 @@ variable incidence fixation at -4 degrees incidence
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8317,7 +8519,7 @@ variable incidence fixation at 4 degrees incidence
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsubsection
 Constant incidence angle fixation method
 \end_layout
 
@@ -8334,7 +8536,7 @@ following figures:
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8365,7 +8567,7 @@ Constant incidence fixation at 2 degrees incidence
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 Fuselage
 \end_layout
 
@@ -8385,21 +8587,24 @@ After Aerodynamic analysis and bringing our CG in the middle between the
 \begin_layout Standard
 
 \series bold
-NOTE: 
-\series default
+NOTES: 
+\end_layout
+
+\begin_layout Itemize
+lateral stability is achieved from fuselage height instead of using vertical
+ tail to keep weight optimized and make use of the large fuselage
+\end_layout
+
+\begin_layout Itemize
 after the eighth iteration, new set of motors with higher propulsive power
  was available increasing the maximum takeoff weight so, the ability of
  creating more stiff designs increased
 \end_layout
 
-\begin_layout Itemize
-First iteration :This iteration was manufactures and tested and found to
- be very efficient but it has one fetal disadvantage, that the tractor propeller
- covers the vision of the ZED camera so, we had to switch to a pusher motor
- instead of tractor motor
+\begin_layout Subsubsection
+First iteration: 
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -8411,16 +8616,14 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/1st iteration/1st iteration (1).JPG
-	width 25page%
-	height 25pheight%
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename pics/1st iteration/1st iteration (2).JPG
-	width 25page%
-	height 25pheight%
+	filename pics/1st iteration/1st iteration (3).JPG
+	height 4cm
 
 \end_inset
 
@@ -8430,15 +8633,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/1st iteration/1st iteration (3).JPG
-	width 25page%
-	height 25pheight%
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename pics/1st iteration/1st iteration (4).JPG
+	filename pics/1st iteration/1st iteration (2).JPG
+	width 35page%
 
 \end_inset
 
@@ -8462,12 +8658,39 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+stiff
+\end_layout
+
+\begin_layout Enumerate
+provides lateral stability
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+heavy in weight as it's full of material
+\end_layout
+
+\begin_layout Enumerate
+not compatible with the vision angel of ZED camera as shown in the following
+ figures 
+\end_layout
+
+\begin_layout Subsubsection
 Second iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -8478,9 +8701,26 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/2nd iteration/Capture.PNG
-	width 25page%
-	height 25pheight%
+	filename pics/3rd iteration/Capture.PNG
+	height 4cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/3rd iteration/4.PNG
+	height 4cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/3rd iteration/3.PNG
+	width 35page%
 
 \end_inset
 
@@ -8504,12 +8744,39 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+very light
+\end_layout
+
+\begin_layout Enumerate
+attractive appearance 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+very weak in the links between wings
+\end_layout
+
+\begin_layout Enumerate
+has no lateral stability, where lateral stability is achieved from fuselage
+ height instead of using a vertical tail
+\end_layout
+
+\begin_layout Subsubsection
 Third iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -8520,17 +8787,15 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/3rd iteration/Capture.PNG
-	width 25page%
-	height 25pheight%
+	filename pics/4th iteration/2.PNG
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename pics/3rd iteration/4.PNG
-	width 25page%
-	height 25pheight%
+	filename pics/4th iteration/1.PNG
+	height 4cm
 
 \end_inset
 
@@ -8540,19 +8805,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/3rd iteration/Capture2.PNG
-	width 25page%
-	height 25pheight%
-
-\end_inset
-
-
-\backslash
-
-\begin_inset Graphics
-	filename pics/3rd iteration/3.PNG
-	width 25page%
-	height 25pheight%
+	filename pics/4th iteration/3.PNG
+	width 35page%
 
 \end_inset
 
@@ -8576,25 +8830,64 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Fourth iteration
+\begin_layout Standard
+
+\series bold
+Advantages:
 \end_layout
 
-\begin_deeper
+\begin_layout Enumerate
+stiffer than previous iteration
+\end_layout
+
+\begin_layout Enumerate
+provides better lateral stability
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+very weak in the links between wings
+\end_layout
+
+\begin_layout Subsubsection
+Forth iteration
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/4th iteration/1.PNG
+	filename pics/5th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/5th iteration/1.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/5th iteration/3.PNG
 	width 25page%
-	height 25pheight%
 
 \end_inset
 
@@ -8618,25 +8911,60 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+stiffer than the previous iteration
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+heavy in weight
+\end_layout
+
+\begin_layout Subsubsection
 Fifth iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/5th iteration/1.PNG
+	filename pics/7th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/7th iteration/1.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/7th iteration/1.PNG
 	width 25page%
-	height 25pheight%
 
 \end_inset
 
@@ -8660,18 +8988,37 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+weight optimized from fuselage
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+spars to fuselage fixation is made of 3 mm thickness foam, due to motors'
+ vibrations the hole diameter changes and the fixation becomes weak
+\end_layout
+
+\begin_layout Subsubsection
 Sixth iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8702,25 +9049,74 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+this is the first iteration to solve wing fixation and vibrations problem
+ and the following picture show the internal structure which is integrated
+ with the previous iteration
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+very stiff
+\end_layout
+
+\begin_layout Enumerate
+easy in assembly
+\end_layout
+
+\begin_layout Enumerate
+provide more accuracy during assembly as it works as a jig
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+it's very heavy in weight
+\end_layout
+
+\begin_layout Subsubsection
 Seventh iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/7th iteration/1.PNG
+	filename pics/8th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/8th iteration/Capture.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/8th iteration/3.PNG
 	width 25page%
-	height 25pheight%
 
 \end_inset
 
@@ -8744,25 +9140,65 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+legs are added to mounts for orientation and fixation
+\end_layout
+
+\begin_layout Enumerate
+wing to fuselage fixation is replaced by a wooden part
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+weak in torsion created due to yaw by quad motors, where every two opposite
+ motors generate a different value of thrust than the two others
+\end_layout
+
+\begin_layout Subsubsection
 Eighth iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/8th iteration/Capture.PNG
+	filename pics/9th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/9th iteration/Capture.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/9th iteration/3.PNG
 	width 25page%
-	height 25pheight%
 
 \end_inset
 
@@ -8786,12 +9222,30 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+links between spars are added to minimize torsion
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+Not stiff enough due to the high torsion produced in rough disturbance
+\end_layout
+
+\begin_layout Subsubsection
 Ninth iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -8802,9 +9256,26 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/9th iteration/Capture.PNG
-	width 25page%
-	height 25pheight%
+	filename pics/10th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/10th iteration/Capture.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/10th iteration/3.PNG
+	width 35page%
 
 \end_inset
 
@@ -8828,12 +9299,39 @@ status open
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+legs is added to fuselage to improve assembly quality
+\end_layout
+
+\begin_layout Enumerate
+an internal wooden structure is added to improve torsion resistance
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+Not stiff enough due to the high torsion produced in rough disturbance
+\end_layout
+
+\begin_layout Enumerate
+pusher motor efficiency is reduced because the fuselage blocks some area
+ where the pusher
+\end_layout
+
+\begin_layout Subsubsection
 Tenth iteration
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -8844,9 +9342,26 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/10th iteration/Capture.PNG
-	width 25page%
-	height 25pheight%
+	filename pics/11th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/11th iteration/1.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/11th iteration/3.PNG
+	width 35page%
 
 \end_inset
 
@@ -8870,7 +9385,133 @@ status open
 
 \end_layout
 
-\end_deeper
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+motors mounts have the same incidence as the wings to provide motors alignment
+ with the fuselage and the structure
+\end_layout
+
+\begin_layout Enumerate
+more fixation points between skin and structure are added to improve alignment
+\end_layout
+
+\begin_layout Enumerate
+bulkheads are used to improve torsion resistance 
+\end_layout
+
+\begin_layout Enumerate
+allows more area for pusher to push air through
+\end_layout
+
+\begin_layout Enumerate
+provides a movable door to achieve access to the internal components 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_layout Enumerate
+due to imperfection in the rods used as spars there is a miss alignment
+ between motors and their directions
+\end_layout
+
+\begin_layout Subsubsection
+Eleventh iteration
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/12th iteration/2.PNG
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/12th iteration/Capture.PNG
+	height 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/12th iteration/3.PNG
+	width 35page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+11th mechanical design iteration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_layout Enumerate
+motors mounts have the same incidence as the wings to provide motors alignment
+ with the fuselage and the structure
+\end_layout
+
+\begin_layout Enumerate
+more fixation points between skin and structure are added to improve alignment
+\end_layout
+
+\begin_layout Enumerate
+bulkheads are used to improve torsion resistance 
+\end_layout
+
+\begin_layout Enumerate
+allows more area for pusher to push air through
+\end_layout
+
+\begin_layout Enumerate
+provides a movable door to achieve access to the internal components 
+\end_layout
+
+\begin_layout Enumerate
+links between main wing spar and rear wing spar improve alignment and avoid
+ the effect of deflection in rods 
+\end_layout
+
 \begin_layout Chapter
 Autopilot Design
 \end_layout
@@ -23409,6 +24050,10 @@ return 0;
 ROS services using python
 \end_layout
 
+\begin_layout LyX-Code
+
+\end_layout
+
 \begin_layout Subsection
 Server
 \end_layout
@@ -23427,6 +24072,3347 @@ Action server
 
 \begin_layout Subsection
 node uses action
+\end_layout
+
+\begin_layout Chapter*
+Appendix B
+\end_layout
+
+\begin_layout Chapter
+Matlab codes
+\end_layout
+
+\begin_layout Section
+Autopilot controller design 
+\end_layout
+
+\begin_layout TeX
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+clc ; clear vars ; close all ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% data 
+\end_layout
+
+\begin_layout Plain Layout
+
+Ix = 0.12;
+\end_layout
+
+\begin_layout Plain Layout
+
+Iy = 0.16;
+\end_layout
+
+\begin_layout Plain Layout
+
+Iz = 0.23;
+\end_layout
+
+\begin_layout Plain Layout
+
+Ixz=0.05;
+\end_layout
+
+\begin_layout Plain Layout
+
+m = 1.9;
+\end_layout
+
+\begin_layout Plain Layout
+
+Xu = -.17669;
+\end_layout
+
+\begin_layout Plain Layout
+
+T =pi/180;
+\end_layout
+
+\begin_layout Plain Layout
+
+s = tf('s'); 
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Roll
+\end_layout
+
+\begin_layout Plain Layout
+
+G_phi_dot= s*Iz/((Ix*Iz-Ixz^2)*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID =   0.29577*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_inner_loop = feedback(G_phi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_phi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_outer = roll_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp = 1.1681;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_outer_loop = feedback(Kp *G_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final roll control action
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_action = feedback(Kp*inner_action , G_phi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% %nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% theta/pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+G_theta_dot = s/(Iy*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.31599*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch__inner_loop = feedback(G_theta_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_theta_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch__inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_th = pitch__inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 0.89671;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch_outer_loop = feedback(Kp * G_out_th , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final Pitch control action
+\end_layout
+
+\begin_layout Plain Layout
+
+theta_action = feedback(Kp*inner_action , G_theta_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(theta_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+G_psi_dot = s/(Iz*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.71996*(s+0.7826)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_inner_loop = feedback(G_psi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_psi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer 
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_psi = yaw_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 1.8681;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_outer_loop = feedback(Kp * G_out_psi , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+psi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final yaw control action
+\end_layout
+
+\begin_layout Plain Layout
+
+psi_action = feedback(Kp*inner_action , G_psi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(psi_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+Psi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Altitude Control
+\end_layout
+
+\begin_layout Plain Layout
+
+G_alt_dot = s/m/s^2;
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 3.753*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_inner_loop = feedback(G_alt_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_alt_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+G_al_outer = alt_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp =.86913;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_outer_loop = feedback(Kp *G_al_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_al_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_action = feedback(Kp*inner_action , G_alt_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('alt_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_response(:,1),nonL_alt_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('alt (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('alt_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_action(:,1),nonL_alt_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_action,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('altitude Force (N)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% x control
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_x_dot = -9.81*s/s^2 * pitch_outer_loop;
+\end_layout
+
+\begin_layout Plain Layout
+
+% PID = -0.060006*(s+0.009831)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% X_inner_loop = feedback(G_x_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% inner_action = feedback(PID , G_x_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(X_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% %outer
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_X_outer = X_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kp =.27023;
+\end_layout
+
+\begin_layout Plain Layout
+
+% X_outer_loop = feedback(Kp *G_X_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer_action = feedback(Kp ,G_X_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(X_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('X_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+% X_action = feedback(Kp*inner_action , G_x_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(X_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('X_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% y control
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_y_dot = -9.81*s/s^2 * roll_outer_loop;
+\end_layout
+
+\begin_layout Plain Layout
+
+% PID = -0.074259*(s+0.01242)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% y_inner_loop = feedback(G_y_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% inner_action = feedback(PID , G_y_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(y_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+% %outer
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_y_outer = y_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kp = 0.37071;
+\end_layout
+
+\begin_layout Plain Layout
+
+% y_outer_loop = feedback(Kp *G_y_outer ,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer_action = feedback(Kp ,G_y_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(y_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('Y_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+% y_action = feedback(Kp*inner_action , G_y_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(y_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('Y_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+%________________________________________________%
+\end_layout
+
+\begin_layout Plain Layout
+
+%______INPUT 10_________________________________%
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Roll
+\end_layout
+
+\begin_layout Plain Layout
+
+G_phi_dot= s/(Ix*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID =   0.29577*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_inner_loop = feedback(G_phi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_phi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_outer = roll_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp = 1.1681;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_outer_loop = feedback(Kp *G_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final roll control action
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_action = feedback(Kp*inner_action , G_phi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% %nonlinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% theta/pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+G_theta_dot = s/(Iy*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.31599*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch__inner_loop = feedback(G_theta_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_theta_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch__inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_th = pitch__inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 0.89671;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch_outer_loop = feedback(Kp * G_out_th , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final Pitch control action
+\end_layout
+
+\begin_layout Plain Layout
+
+theta_action = feedback(Kp*inner_action , G_theta_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(theta_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+G_psi_dot = s/(Iz*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.71996*(s+0.7826)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_inner_loop = feedback(G_psi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_psi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer 
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_psi = yaw_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 1.8681;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_outer_loop = feedback(Kp * G_out_psi , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+psi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final yaw control action
+\end_layout
+
+\begin_layout Plain Layout
+
+psi_action = feedback(Kp*inner_action , G_psi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(psi_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+Psi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Altitude Control
+\end_layout
+
+\begin_layout Plain Layout
+
+G_alt_dot = s/m/s^2;
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 3.753*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_inner_loop = feedback(G_alt_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_alt_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_al_outer = alt_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp =.86913;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_outer_loop = feedback(Kp *G_al_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_al_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_action = feedback(Kp*inner_action , G_alt_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = -10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('altitude10/alt_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_response(:,1),nonL_alt_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('alt (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('altitude10/alt_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_action(:,1),nonL_alt_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_action,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('altitude Force (N)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Coupling  attitude
+\end_layout
+
+\begin_layout Plain Layout
+
+inputR = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputP = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputY = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+% roll
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['Roll step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2s
+tr(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['pitch step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2
+str(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,4)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['yaw step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2st
+r(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,6)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Coupling altitude and attitude
+\end_layout
+
+\begin_layout Plain Layout
+
+inputR = -5;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputP = -5;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputY = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputZ = -4;
+\end_layout
+
+\begin_layout Plain Layout
+
+% roll
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['Roll step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2s
+tr(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['pitch step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2
+str(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,4)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['yaw step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2st
+r(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,6)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% altitude
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/alt_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,7)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_response(:,1),nonL_alt_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputZ*alt_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('alt (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/alt_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,8)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_action(:,1),nonL_alt_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputZ*alt_action,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('altitude Force (N)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+ %% PUSHER
+\end_layout
+
+\begin_layout Plain Layout
+
+G_u = 1/(m*(s-Xu/m));
+\end_layout
+
+\begin_layout Plain Layout
+
+PID =  2.9068*(s+0.4304)/s
+\end_layout
+
+\begin_layout Plain Layout
+
+U =feedback(PID*G_u,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+U_action = feedback(PID,G_u);
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(U)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(U_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+impulse(U)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+impulse(U_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
