@@ -551,7 +551,7 @@ grid minor
 
 
 %% Coupling altitude and attitude
-inputR = -5;
+inputR = 5;
 inputP = -5;
 inputY = 0;
 inputZ = -4;

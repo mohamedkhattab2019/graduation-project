@@ -15,6 +15,7 @@
 \pagenumbering{arabic}
 }
 \renewcommand{\ps@plain}{\pagestyle{fancy}}
+\usepackage{matlab-prettifier}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -106,6 +107,7 @@ tabs-within-sections
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
+\listings_params "style={Matlab-editor}"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -185,14 +187,6 @@ By:
 \begin_inset Newpage pagebreak
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
@@ -1454,10 +1448,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/urban-air-mobility-market1.png
@@ -1473,10 +1463,6 @@ Flying taxi market
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -9947,7 +9933,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/roll controller.png
+	filename pics/roll controller.png.png
 	scale 80
 
 \end_inset
@@ -10292,7 +10278,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/yaw controller.png
+	filename pics/psi.png
 	scale 80
 
 \end_inset
@@ -10681,7 +10667,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-desired roll = -5 deg , desired pitch = -5 deg , desired altitude = -4 m
+desired roll = 5 deg , desired pitch = -5 deg , desired altitude = -4 m
  ( Z = 4 m) 
 \end_layout
 
@@ -19804,6 +19790,79 @@ Localization using encoders only
 \end_layout
 
 \begin_layout Standard
+Encoders drifts from ground truth especially at corners during acceleration
+ or deceleration due to wheels slipping.
+ This causes bad heading estimation.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Fusing encoders and IMU readings
+\end_layout
+
+\begin_layout Standard
+Encoders and IMU readings are fused using EKF to enhance the Localization
+ of the robot especially the heading estimates.
+ The IMU problem is that it's noisy more than encoders but doesn't have
+ the problem of drift due to slipping.
+ This sensors fusion system still has drifting problem due to velocity integrati
+on to get position but this problem appears for relatively long distances
+ so it needs global position sensor like GPS for oudoor or Visual odometry
+ for indoor.
+ Our experiment is done based on only traveling along a square with 1m long
+ so this problem doesn't appear and our estimates is fairly good.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/Loca_IMU_encoder.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rover/localization_encoder2.bmp
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Fusing Encoder and IMU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -23461,6 +23520,10 @@ return 0;
 ROS services using python
 \end_layout
 
+\begin_layout LyX-Code
+
+\end_layout
+
 \begin_layout Subsection
 Server
 \end_layout
@@ -23479,6 +23542,3347 @@ Action server
 
 \begin_layout Subsection
 node uses action
+\end_layout
+
+\begin_layout Chapter*
+Appendix B
+\end_layout
+
+\begin_layout Chapter
+Matlab codes
+\end_layout
+
+\begin_layout Section
+Autopilot controller design 
+\end_layout
+
+\begin_layout TeX
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+clc ; clear vars ; close all ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% data 
+\end_layout
+
+\begin_layout Plain Layout
+
+Ix = 0.12;
+\end_layout
+
+\begin_layout Plain Layout
+
+Iy = 0.16;
+\end_layout
+
+\begin_layout Plain Layout
+
+Iz = 0.23;
+\end_layout
+
+\begin_layout Plain Layout
+
+Ixz=0.05;
+\end_layout
+
+\begin_layout Plain Layout
+
+m = 1.9;
+\end_layout
+
+\begin_layout Plain Layout
+
+Xu = -.17669;
+\end_layout
+
+\begin_layout Plain Layout
+
+T =pi/180;
+\end_layout
+
+\begin_layout Plain Layout
+
+s = tf('s'); 
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Roll
+\end_layout
+
+\begin_layout Plain Layout
+
+G_phi_dot= s*Iz/((Ix*Iz-Ixz^2)*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID =   0.29577*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_inner_loop = feedback(G_phi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_phi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_outer = roll_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp = 1.1681;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_outer_loop = feedback(Kp *G_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final roll control action
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_action = feedback(Kp*inner_action , G_phi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% %nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% theta/pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+G_theta_dot = s/(Iy*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.31599*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch__inner_loop = feedback(G_theta_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_theta_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch__inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_th = pitch__inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 0.89671;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch_outer_loop = feedback(Kp * G_out_th , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final Pitch control action
+\end_layout
+
+\begin_layout Plain Layout
+
+theta_action = feedback(Kp*inner_action , G_theta_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(theta_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+G_psi_dot = s/(Iz*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.71996*(s+0.7826)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_inner_loop = feedback(G_psi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_psi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer 
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_psi = yaw_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 1.8681;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_outer_loop = feedback(Kp * G_out_psi , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+psi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final yaw control action
+\end_layout
+
+\begin_layout Plain Layout
+
+psi_action = feedback(Kp*inner_action , G_psi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(psi_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+Psi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Altitude Control
+\end_layout
+
+\begin_layout Plain Layout
+
+G_alt_dot = s/m/s^2;
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 3.753*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_inner_loop = feedback(G_alt_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_alt_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+G_al_outer = alt_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp =.86913;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_outer_loop = feedback(Kp *G_al_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_al_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_action = feedback(Kp*inner_action , G_alt_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('alt_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_response(:,1),nonL_alt_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('alt (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('alt_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_action(:,1),nonL_alt_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_action,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('altitude Force (N)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% x control
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_x_dot = -9.81*s/s^2 * pitch_outer_loop;
+\end_layout
+
+\begin_layout Plain Layout
+
+% PID = -0.060006*(s+0.009831)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% X_inner_loop = feedback(G_x_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% inner_action = feedback(PID , G_x_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(X_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% %outer
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_X_outer = X_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kp =.27023;
+\end_layout
+
+\begin_layout Plain Layout
+
+% X_outer_loop = feedback(Kp *G_X_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer_action = feedback(Kp ,G_X_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(X_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('X_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+% X_action = feedback(Kp*inner_action , G_x_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(X_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('X_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% y control
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_y_dot = -9.81*s/s^2 * roll_outer_loop;
+\end_layout
+
+\begin_layout Plain Layout
+
+% PID = -0.074259*(s+0.01242)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% y_inner_loop = feedback(G_y_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% inner_action = feedback(PID , G_y_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(y_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\end_layout
+
+\begin_layout Plain Layout
+
+% %outer
+\end_layout
+
+\begin_layout Plain Layout
+
+% G_y_outer = y_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+% Kp = 0.37071;
+\end_layout
+
+\begin_layout Plain Layout
+
+% y_outer_loop = feedback(Kp *G_y_outer ,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer_action = feedback(Kp ,G_y_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(y_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('Y_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+% y_action = feedback(Kp*inner_action , G_y_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(y_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('Y_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+%________________________________________________%
+\end_layout
+
+\begin_layout Plain Layout
+
+%______INPUT 10_________________________________%
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Roll
+\end_layout
+
+\begin_layout Plain Layout
+
+G_phi_dot= s/(Ix*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID =   0.29577*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_inner_loop = feedback(G_phi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_phi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_outer = roll_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp = 1.1681;
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_outer_loop = feedback(Kp *G_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final roll control action
+\end_layout
+
+\begin_layout Plain Layout
+
+roll_action = feedback(Kp*inner_action , G_phi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(roll_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+phi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% %nonlinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% theta/pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+G_theta_dot = s/(Iy*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.31599*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch__inner_loop = feedback(G_theta_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_theta_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch__inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_th = pitch__inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 0.89671;
+\end_layout
+
+\begin_layout Plain Layout
+
+pitch_outer_loop = feedback(Kp * G_out_th , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(pitch_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final Pitch control action
+\end_layout
+
+\begin_layout Plain Layout
+
+theta_action = feedback(Kp*inner_action , G_theta_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(theta_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+theta_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+G_psi_dot = s/(Iz*s^2);
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 0.71996*(s+0.7826)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_inner_loop = feedback(G_psi_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_psi_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer 
+\end_layout
+
+\begin_layout Plain Layout
+
+G_out_psi = yaw_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp= 1.8681;
+\end_layout
+
+\begin_layout Plain Layout
+
+yaw_outer_loop = feedback(Kp * G_out_psi , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(yaw_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+psi_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+% %final yaw control action
+\end_layout
+
+\begin_layout Plain Layout
+
+psi_action = feedback(Kp*inner_action , G_psi_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(psi_action*T)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('
+\backslash
+Psi_{action}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('attitude10/yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Altitude Control
+\end_layout
+
+\begin_layout Plain Layout
+
+G_alt_dot = s/m/s^2;
+\end_layout
+
+\begin_layout Plain Layout
+
+PID = 3.753*(s+0.4938)/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_inner_loop = feedback(G_alt_dot*PID , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+inner_action = feedback(PID , G_alt_dot) ;
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_inner_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(inner_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%outer
+\end_layout
+
+\begin_layout Plain Layout
+
+G_al_outer = alt_inner_loop/s;
+\end_layout
+
+\begin_layout Plain Layout
+
+Kp =.86913;
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_outer_loop = feedback(Kp *G_al_outer , 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+outer_action = feedback(Kp ,G_al_outer );
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_outer_loop)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_{step_{response}}')
+\end_layout
+
+\begin_layout Plain Layout
+
+%final altitude control action
+\end_layout
+
+\begin_layout Plain Layout
+
+alt_action = feedback(Kp*inner_action , G_alt_dot/s);
+\end_layout
+
+\begin_layout Plain Layout
+
+% figure 
+\end_layout
+
+\begin_layout Plain Layout
+
+% step(alt_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+% grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% title('h_action')
+\end_layout
+
+\begin_layout Plain Layout
+
+%nonLinear
+\end_layout
+
+\begin_layout Plain Layout
+
+input = -10;
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('altitude10/alt_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_response(:,1),nonL_alt_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('alt (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('altitude10/alt_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_action(:,1),nonL_alt_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(input*alt_action,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('altitude Force (N)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Coupling  attitude
+\end_layout
+
+\begin_layout Plain Layout
+
+inputR = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputP = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputY = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+% roll
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['Roll step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2s
+tr(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['pitch step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2
+str(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,4)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['yaw step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2st
+r(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('R5P0Y5/yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,6)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%% Coupling altitude and attitude
+\end_layout
+
+\begin_layout Plain Layout
+
+inputR = -5;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputP = -5;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputY = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+inputZ = -4;
+\end_layout
+
+\begin_layout Plain Layout
+
+% roll
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/roll_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['Roll step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2s
+tr(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('phi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/roll_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_roll_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_roll_action(:,1),nonL_roll_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputR*roll_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('Roll step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Roll Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%pitch
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/pitch_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_response(:,1),nonL_pitch_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*pitch_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['pitch step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2
+str(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('theta(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/pitch_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_pitch_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,4)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_pitch_action(:,1),nonL_pitch_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputP*theta_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('pitch step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('pitch torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+%yaw
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/yaw_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_response(:,1),nonL_yaw_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*yaw_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title(['yaw step response R=',num2str(inputR),',P=',num2str(inputP),',Y=',num2st
+r(inputY)])
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('psi(deg)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/yaw_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_yaw_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,6)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_yaw_action(:,1),nonL_yaw_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputY*psi_action*T,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('yaw step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('Yaw Torque (N.m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+% altitude
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/alt_response.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_response = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,7)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_response(:,1),nonL_alt_response(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputZ*alt_outer_loop,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step response')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('alt (m)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+temp = lvm_import('A-4R5P-5Y0/alt_action.lvm',0);
+\end_layout
+
+\begin_layout Plain Layout
+
+nonL_alt_action = temp.Segment1.data;
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(4,2,8)
+\end_layout
+
+\begin_layout Plain Layout
+
+hold all
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(nonL_alt_action(:,1),nonL_alt_action(:,2),'--','LineWidth',2.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(inputZ*alt_action,15)
+\end_layout
+
+\begin_layout Plain Layout
+
+legend('NonLinear','Linear')
+\end_layout
+
+\begin_layout Plain Layout
+
+title('altitude step control action')
+\end_layout
+
+\begin_layout Plain Layout
+
+ylabel('altitude Force (N)')
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+ %% PUSHER
+\end_layout
+
+\begin_layout Plain Layout
+
+G_u = 1/(m*(s-Xu/m));
+\end_layout
+
+\begin_layout Plain Layout
+
+PID =  2.9068*(s+0.4304)/s
+\end_layout
+
+\begin_layout Plain Layout
+
+U =feedback(PID*G_u,1);
+\end_layout
+
+\begin_layout Plain Layout
+
+U_action = feedback(PID,G_u);
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(U)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+step(U_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+figure
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+impulse(U)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\begin_layout Plain Layout
+
+subplot(2,1,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+impulse(U_action)
+\end_layout
+
+\begin_layout Plain Layout
+
+grid minor
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

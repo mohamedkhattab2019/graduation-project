@@ -190,14 +190,6 @@ By:
 
 \end_layout
 
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
 \begin_layout Chapter*
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
@@ -1456,10 +1448,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/urban-air-mobility-market1.png
@@ -1475,10 +1463,6 @@ Flying taxi market
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -9949,7 +9933,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/roll controller.png
+	filename pics/roll controller.png.png
 	scale 80
 
 \end_inset
@@ -10294,7 +10278,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/yaw controller.png
+	filename pics/psi.png
 	scale 80
 
 \end_inset
@@ -10683,7 +10667,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-desired roll = -5 deg , desired pitch = -5 deg , desired altitude = -4 m
+desired roll = 5 deg , desired pitch = -5 deg , desired altitude = -4 m
  ( Z = 4 m) 
 \end_layout
 
@@ -26350,7 +26334,7 @@ grid minor
 
 \begin_layout Plain Layout
 
-inputR = -5;
+inputR = 5;
 \end_layout
 
 \begin_layout Plain Layout
