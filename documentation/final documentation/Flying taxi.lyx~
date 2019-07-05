@@ -8863,20 +8863,20 @@ Forth iteration
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/5th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/5th iteration/1.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -8887,7 +8887,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename pics/5th iteration/3.PNG
-	width 25page%
+	width 35page%
 
 \end_inset
 
@@ -8940,20 +8940,20 @@ Fifth iteration
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/7th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/7th iteration/1.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -8964,7 +8964,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename pics/7th iteration/1.PNG
-	width 25page%
+	width 35page%
 
 \end_inset
 
@@ -9018,14 +9018,13 @@ Sixth iteration
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/6th iteration/Capture.PNG
 	width 25page%
-	height 25pheight%
 
 \end_inset
 
@@ -9092,20 +9091,20 @@ Seventh iteration
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/8th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/8th iteration/Capture.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -9116,7 +9115,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename pics/8th iteration/3.PNG
-	width 25page%
+	width 35page%
 
 \end_inset
 
@@ -9174,20 +9173,20 @@ Eighth iteration
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/9th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/9th iteration/Capture.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -9198,7 +9197,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename pics/9th iteration/3.PNG
-	width 25page%
+	width 35page%
 
 \end_inset
 
@@ -9257,14 +9256,14 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/10th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/10th iteration/Capture.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -9343,14 +9342,14 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/11th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/11th iteration/1.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
@@ -9438,14 +9437,14 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/12th iteration/2.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename pics/12th iteration/Capture.PNG
-	height 8cm
+	height 4cm
 
 \end_inset
 
