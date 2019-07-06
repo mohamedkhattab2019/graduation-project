@@ -10004,7 +10004,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/control loops of autopilot.bmp
+	filename pics/attitude controller.png
 	lyxscale 80
 	scale 80
 
