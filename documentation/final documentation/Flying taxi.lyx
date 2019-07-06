@@ -2133,7 +2133,7 @@ Different configuration simulation for 30 min
 \end_layout
 
 \begin_layout Section
-Aerodynamic Design
+Vehicle Design
 \end_layout
 
 \begin_layout Subsection
@@ -2181,7 +2181,7 @@ Max.
 
 \begin_layout Itemize
 Max.
- width of vehicle 0.8 meter, This constraint has been selected to satisfy
+ width of vehicle one meter, This constraint has been selected to satisfy
  mission, be easy to manufacture and to suit the wind tunnel width for future
  work in testing.
  
@@ -2189,13 +2189,17 @@ Max.
 
 \begin_layout Itemize
 Minimum length for easy landing at any place.
- XFLR5 program is chosen to design and analyse the aerodynamic parts of
- the flying taxi starting from airfoil design to the stability analysis
- of the complete plane.
  
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+XFLR5 program is chosen to design and analyse the aerodynamic parts of the
+ flying taxi starting from airfoil design to the stability analysis of the
+ complete plane.
+ 
+\end_layout
+
 \begin_layout Subsection
 Wing configuration 
 \end_layout
@@ -2324,7 +2328,7 @@ The two airfoils are analysed using panel method with 150 panel for smooth
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2357,7 +2361,7 @@ The 2 airfoils
 
 \begin_layout Standard
 Shown below the boundary layer thickness and pressure distribution along
- the two selected airfoils with change at angle of attack from: (0 to 6
+ the two selected airfoils with change at angle of attack from: (0 to 10
  & 0 to -4 ) degree :
 \end_layout
 
@@ -2371,7 +2375,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/NACA0015-lift distribution.png
+	filename pics/Aerodynamics pic/NACA0015/Cp-dist.png
 	scale 50
 
 \end_inset
@@ -2402,12 +2406,12 @@ Pressure distribution along NACA0015 with difference angle of attack
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Eppler(Cp dist).png
+	filename pics/Aerodynamics pic/Eppler423/cp-dist.png
 	scale 50
 
 \end_inset
@@ -2443,12 +2447,12 @@ We make analysis at different Re (from 20,000 to 1,000,000) and see plots
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/NACA0015-Batch analysis.png
+	filename pics/Aerodynamics pic/NACA0015/polar graph.png
 	scale 50
 
 \end_inset
@@ -2479,12 +2483,12 @@ Polar graph of NACA0015
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Eppler-Batch analysis.png
+	filename pics/Aerodynamics pic/Eppler423/polar graph.png
 	scale 50
 
 \end_inset
@@ -2526,12 +2530,19 @@ Now after choosing air foils, the wing will be designed.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/3D-final1.png
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/vortex.PNG
 	scale 50
 
 \end_inset
@@ -2558,95 +2569,6 @@ Configuration
 \end_layout
 
 \begin_layout Subsubsection
-Investigating goals and requirements:
-\end_layout
-
-\begin_layout Itemize
-For stability: 
-\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/Cm-alpha(NACA0015).png
-	scale 25
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Investigating stability
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-For lift: At trim angle the lift must carry the vehicle
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/lift(NACA0015).png
-	scale 25
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Investigating lift
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
 Design parameters
 \end_layout
 
@@ -2659,7 +2581,7 @@ s (incidence angle, CG position, cruise speed and dimensions of wings) is
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
+<lyxtabular version="3" rows="7" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2784,31 +2706,11 @@ Static stability
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Position of CG
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Static stability
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Position of second wing
+Position of CG
 \end_layout
 
 \end_inset
@@ -2824,6 +2726,254 @@ Static stability
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Investigating goals and requirements:
+\end_layout
+
+\begin_layout Itemize
+For stability: 
+\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/acceptable slope for stability.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating stability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For lift: At trim angle the lift must carry the vehicle
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/acceptable lift.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating lift
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Effect design parameter
+\end_layout
+
+\begin_layout Itemize
+Cruise speed:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/Speed.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of velocity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Span:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/Span.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of span
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chord:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/Chord.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of chord
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+C.G:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/CG.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of center of gravity position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -2861,7 +3011,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-NACA0015 Lift and Cm-alpha
+NACA0015 plane analysis
 \end_layout
 
 \end_inset
@@ -2901,7 +3051,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Eppler423 Lift and Cm
+Eppler423 plane analysis
 \end_layout
 
 \end_inset
@@ -3665,7 +3815,7 @@ Incidence of Main wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-3 degree
+9 degree
 \end_layout
 
 \end_inset
@@ -3685,7 +3835,7 @@ Incidence of Second wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-2 degree
+8 degree
 \end_layout
 
 \end_inset
@@ -3705,7 +3855,7 @@ Trim angle
 \begin_inset Text
 
 \begin_layout Plain Layout
-6.7 degree
+0.13 degree
 \end_layout
 
 \end_inset
@@ -3848,7 +3998,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename pics/Cp-distirbution2.png
+	filename pics/Aerodynamics pic/Final results/foil char..png
 	scale 50
 
 \end_inset
@@ -3884,7 +4034,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/foil analysis(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/foil char.2.png
 	scale 50
 
 \end_inset
@@ -3921,7 +4071,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/lift(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Lift.png
 	scale 25
 
 \end_inset
@@ -3932,7 +4082,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename pics/Cm-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cm-alpha.png
 	scale 25
 
 \end_inset
@@ -3963,12 +4113,12 @@ Lift Vs alpha and Cm Vs alpha
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Cl-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl-alpha.png
 	scale 25
 
 \end_inset
@@ -3979,7 +4129,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename pics/Cl-Cd_alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl-Cd_alpha.png
 	scale 25
 
 \end_inset
@@ -4010,12 +4160,12 @@ Cl Vs alpha and Cl/Cd Vs alpha
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/(Cl-Cd)3.2-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl(3-2)-Cd_alpha.png
 	scale 30
 
 \end_inset
@@ -4546,7 +4696,7 @@ Neutral Point position= 0.38245 m
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4598,7 +4748,7 @@ Time response characteristics:
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4641,7 +4791,7 @@ where u: horizontal speed.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5136,7 +5286,7 @@ C
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5188,7 +5338,7 @@ Time response characteristics
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center

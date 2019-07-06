@@ -2133,7 +2133,7 @@ Different configuration simulation for 30 min
 \end_layout
 
 \begin_layout Section
-Aerodynamic Design
+Vehicle Design
 \end_layout
 
 \begin_layout Subsection
@@ -2181,7 +2181,7 @@ Max.
 
 \begin_layout Itemize
 Max.
- width of vehicle 0.8 meter, This constraint has been selected to satisfy
+ width of vehicle one meter, This constraint has been selected to satisfy
  mission, be easy to manufacture and to suit the wind tunnel width for future
  work in testing.
  
@@ -2189,13 +2189,17 @@ Max.
 
 \begin_layout Itemize
 Minimum length for easy landing at any place.
- XFLR5 program is chosen to design and analyse the aerodynamic parts of
- the flying taxi starting from airfoil design to the stability analysis
- of the complete plane.
  
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+XFLR5 program is chosen to design and analyse the aerodynamic parts of the
+ flying taxi starting from airfoil design to the stability analysis of the
+ complete plane.
+ 
+\end_layout
+
 \begin_layout Subsection
 Wing configuration 
 \end_layout
@@ -2324,7 +2328,7 @@ The two airfoils are analysed using panel method with 150 panel for smooth
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2357,7 +2361,7 @@ The 2 airfoils
 
 \begin_layout Standard
 Shown below the boundary layer thickness and pressure distribution along
- the two selected airfoils with change at angle of attack from: (0 to 6
+ the two selected airfoils with change at angle of attack from: (0 to 10
  & 0 to -4 ) degree :
 \end_layout
 
@@ -2371,7 +2375,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/NACA0015-lift distribution.png
+	filename pics/Aerodynamics pic/NACA0015/Cp-dist.png
 	scale 50
 
 \end_inset
@@ -2402,12 +2406,12 @@ Pressure distribution along NACA0015 with difference angle of attack
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Eppler(Cp dist).png
+	filename pics/Aerodynamics pic/Eppler423/cp-dist.png
 	scale 50
 
 \end_inset
@@ -2443,12 +2447,12 @@ We make analysis at different Re (from 20,000 to 1,000,000) and see plots
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/NACA0015-Batch analysis.png
+	filename pics/Aerodynamics pic/NACA0015/polar graph.png
 	scale 50
 
 \end_inset
@@ -2479,12 +2483,12 @@ Polar graph of NACA0015
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Eppler-Batch analysis.png
+	filename pics/Aerodynamics pic/Eppler423/polar graph.png
 	scale 50
 
 \end_inset
@@ -2526,12 +2530,19 @@ Now after choosing air foils, the wing will be designed.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename pics/3D-final1.png
+	scale 50
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/vortex.PNG
 	scale 50
 
 \end_inset
@@ -26334,7 +26345,7 @@ grid minor
 
 \begin_layout Plain Layout
 
-inputR = -5;
+inputR = 5;
 \end_layout
 
 \begin_layout Plain Layout
