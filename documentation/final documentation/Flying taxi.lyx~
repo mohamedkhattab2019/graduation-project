@@ -1865,7 +1865,7 @@ Endurance
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1899,13 +1899,17 @@ Range
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+.
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
 from fig(
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1988,7 +1992,7 @@ effect
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2012,6 +2016,10 @@ increasing Cdo by 0.01
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -2569,95 +2577,6 @@ Configuration
 \end_layout
 
 \begin_layout Subsubsection
-Investigating goals and requirements:
-\end_layout
-
-\begin_layout Itemize
-For stability: 
-\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/Cm-alpha(NACA0015).png
-	scale 25
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Investigating stability
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-For lift: At trim angle the lift must carry the vehicle
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename pics/lift(NACA0015).png
-	scale 25
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Investigating lift
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
 Design parameters
 \end_layout
 
@@ -2670,7 +2589,7 @@ s (incidence angle, CG position, cruise speed and dimensions of wings) is
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="8" columns="2">
+<lyxtabular version="3" rows="7" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2795,31 +2714,11 @@ Static stability
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Position of CG
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Static stability
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Position of second wing
+Position of CG
 \end_layout
 
 \end_inset
@@ -2835,6 +2734,254 @@ Static stability
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Investigating goals and requirements:
+\end_layout
+
+\begin_layout Itemize
+For stability: 
+\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/acceptable slope for stability.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating stability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For lift: At trim angle the lift must carry the vehicle
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/acceptable lift.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating lift
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Effect design parameter
+\end_layout
+
+\begin_layout Itemize
+Cruise speed:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/Speed.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of velocity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Span:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/Span.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of span
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chord:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/Chord.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of chord
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+C.G:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/CG.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Effect of center of gravity position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -2872,7 +3019,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-NACA0015 Lift and Cm-alpha
+NACA0015 plane analysis
 \end_layout
 
 \end_inset
@@ -2912,7 +3059,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Eppler423 Lift and Cm
+Eppler423 plane analysis
 \end_layout
 
 \end_inset
@@ -3676,7 +3823,7 @@ Incidence of Main wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-3 degree
+9 degree
 \end_layout
 
 \end_inset
@@ -3696,7 +3843,7 @@ Incidence of Second wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-2 degree
+8 degree
 \end_layout
 
 \end_inset
@@ -3716,7 +3863,7 @@ Trim angle
 \begin_inset Text
 
 \begin_layout Plain Layout
-6.7 degree
+0.13 degree
 \end_layout
 
 \end_inset
@@ -3859,7 +4006,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename pics/Cp-distirbution2.png
+	filename pics/Aerodynamics pic/Final results/foil char..png
 	scale 50
 
 \end_inset
@@ -3895,7 +4042,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/foil analysis(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/foil char.2.png
 	scale 50
 
 \end_inset
@@ -3932,7 +4079,7 @@ status collapsed
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/lift(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Lift.png
 	scale 25
 
 \end_inset
@@ -3943,7 +4090,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename pics/Cm-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cm-alpha.png
 	scale 25
 
 \end_inset
@@ -3974,12 +4121,12 @@ Lift Vs alpha and Cm Vs alpha
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Cl-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl-alpha.png
 	scale 25
 
 \end_inset
@@ -3990,7 +4137,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename pics/Cl-Cd_alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl-Cd_alpha.png
 	scale 25
 
 \end_inset
@@ -4021,12 +4168,12 @@ Cl Vs alpha and Cl/Cd Vs alpha
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/(Cl-Cd)3.2-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl(3-2)-Cd_alpha.png
 	scale 30
 
 \end_inset
@@ -4557,7 +4704,7 @@ Neutral Point position= 0.38245 m
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4609,7 +4756,7 @@ Time response characteristics:
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -4652,7 +4799,7 @@ where u: horizontal speed.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5147,7 +5294,7 @@ C
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5199,7 +5346,7 @@ Time response characteristics
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -14254,46 +14401,6 @@ ization
 \end_layout
 
 \begin_layout Itemize
-Hardware:
-\series bold
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-PIXHAWK
-\end_layout
-
-\begin_layout Itemize
-4 USB cameras / gray scale image / 640*480 :
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-2 forward cameras : 11 cm baseline - frame rate of 30Hz
-\end_layout
-
-\begin_layout Itemize
-2 downward cameras : 5 cm baseline - frame rate of 15Hz to reduce computations
-\end_layout
-
-\begin_layout Itemize
-both configurations are synchronoused to capture data ar the same time.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-On-board computer with Intel Core 2 Due CPU with 1.86GHz to execute image
- processing and motion estimation
-\end_layout
-
-\begin_layout Itemize
-Microcontroller with IMU to send IMU data to the on-board computer and receive
- from it the high-level control instructions using I2c bus.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
 
 \bar under
 The 2 forward facing cameras
@@ -14400,21 +14507,6 @@ To have a large field of view (FOV) , they used small focal length which
  so they did image rectification first.
 \end_layout
 
-\end_deeper
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Final Configurarion
-\end_layout
-
-\begin_deeper
 \begin_layout Standard
 \begin_inset Float figure
 placement H
@@ -14454,119 +14546,6 @@ final configuration
 \end_deeper
 \begin_layout Standard
 \begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\bar under
-Final Results
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pics/pasted24.png
-	scale 60
-
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Graphics
-	filename pics/pasted25.png
-	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Graphics
-	filename pics/pasted26.png
-	scale 70
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pics/pasted27.png
-	scale 50
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename pics/pasted28.png
-	scale 50
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -15127,6 +15106,9 @@ status open
 
 \end_deeper
 \begin_layout Itemize
+
+\series bold
+\bar under
 Vector Field Histogram
 \end_layout
 
@@ -15268,11 +15250,47 @@ onal motion planning methods, it finds the optimal path to the goal which
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+\bar under
 Grassfire algorithm
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename Grassfire.PNG
 
@@ -15281,7 +15299,56 @@ Grassfire algorithm
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Planning optimum path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename Grassfire_nosol.PNG
 
@@ -15290,13 +15357,96 @@ Grassfire algorithm
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+No possible path case
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Grassfire algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It will find the shortest path between the start and goal if one exists.
+\end_layout
+
+\begin_layout Itemize
+It will detect if there is no path.
+\end_layout
+
+\begin_layout Itemize
+It's complete.
+\end_layout
+
+\begin_layout Itemize
+computational effort increases linearly with the number of nodes O(n)
+\end_layout
+
+\begin_layout Itemize
+Every node in the graph is visited which is a problem for lorge graph espicially
+ 3D graphs which is our case.
+\end_layout
+
+\begin_layout Itemize
+Same approach can be extended to 3D to be applicable on drones by using
+ cubes instead of squares.
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
+
+\series bold
+\bar under
 Dijkstra's algorithm
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename Dijkstra.PNG
 
@@ -15305,13 +15455,93 @@ Dijkstra's algorithm
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dijkstra algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+It will find the shortest path between start and goal.
+ It will detect if there is no one.
+\end_layout
+
+\begin_layout Itemize
+Simple implementation has O(
+\begin_inset Formula $n^{2}$
+\end_inset
+
+) but good one with optimized data structure known as 
+\begin_inset Quotes eld
+\end_inset
+
+priority queue
+\begin_inset Quotes erd
+\end_inset
+
+ complexity reduced to 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $O[(e+n)log(n)]$
+\end_inset
+
+ where 
+\begin_inset Formula $e$
+\end_inset
+
+ is the no.
+ of edges , so it's slightly higher in complexity than grassfire.
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
+
+\series bold
+\bar under
 A* search algorithm
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename A_alg..PNG
 	width 40col%
@@ -15319,6 +15549,31 @@ A* search algorithm
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename A_alg_compared to Dijk or Grossf.PNG
 	width 40col%
@@ -15326,6 +15581,70 @@ A* search algorithm
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+A* algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Better performance than Grassfire and Dijkstra by using a heuristic function
+ that guides the path planner
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $Heuristic\,function\,:\,y=H(x)$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+where x is the node and y is a number indicates the distance from that node
+ to the goal.
+\end_layout
+
+\begin_layout Itemize
+Unlike Grassfire and Dijkstra which search in all directions in the map
+ evenly, this approach uses the information we have about the direction
+ of the goal and try to use this information to decrease the computational
+ effort by focusing the search in the nodes close to that direction not
+ all the nodes which enhance performance.
 \end_layout
 
 \end_deeper
