@@ -26814,6 +26814,14 @@ subplot(4,2,6)
 \end_layout
 
 \begin_layout Plain Layout
+<<<<<<< HEAD
+=======
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/modes/manual_acrobatic_MC.png
+	scale 50
+>>>>>>> 32a10cc96298e2714665b59ed7e72cc1553df5ff
 
 hold all
 \end_layout
@@ -26849,6 +26857,13 @@ grid minor
 \end_layout
 
 \begin_layout Plain Layout
+<<<<<<< HEAD
+=======
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/modes/altitude_control_mode_copter.png
+>>>>>>> 32a10cc96298e2714665b59ed7e72cc1553df5ff
 
 \end_layout
 
@@ -26917,6 +26932,14 @@ plot(nonL_roll_response(:,1),nonL_roll_response(:,2),'--','LineWidth',2.5)
 \end_layout
 
 \begin_layout Plain Layout
+<<<<<<< HEAD
+=======
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/modes/position_MC.png
+	scale 50
+>>>>>>> 32a10cc96298e2714665b59ed7e72cc1553df5ff
 
 step(inputR*roll_outer_loop,15)
 \end_layout
