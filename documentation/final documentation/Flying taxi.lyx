@@ -21886,7 +21886,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/Aerospace 4th year/GP/documentation3/presentation/manual_acrobatic_MC.png
+	filename pics/modes/manual_acrobatic_MC.png
 	scale 50
 
 \end_inset
@@ -21944,7 +21944,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/Aerospace 4th year/GP/documentation3/presentation/altitude_control_mode_copter.png
+	filename pics/modes/altitude_control_mode_copter.png
 
 \end_inset
 
@@ -22027,7 +22027,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/Aerospace 4th year/GP/documentation3/presentation/position_MC.png
+	filename pics/modes/position_MC.png
 	scale 50
 
 \end_inset
