@@ -22431,6 +22431,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted36.png
+	width 70col%
 
 \end_inset
 
@@ -22465,6 +22466,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted48.png
+	width 95col%
 
 \end_inset
 
@@ -22499,6 +22501,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted49.png
+	width 90col%
 
 \end_inset
 
@@ -22544,7 +22547,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted29.png
-	scale 80
+	width 95col%
 
 \end_inset
 
@@ -22945,7 +22948,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted30.png
-	scale 80
+	width 95col%
 
 \end_inset
 
@@ -23190,6 +23193,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/pasted31.png
+	width 95col%
 
 \end_inset
 
@@ -23237,6 +23241,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/pasted32.png
+	width 95col%
 
 \end_inset
 
@@ -23284,6 +23289,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/pasted33.png
+	width 95col%
 
 \end_inset
 
@@ -23335,7 +23341,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted34.png
-	scale 70
+	width 95col%
 
 \end_inset
 
@@ -23739,7 +23745,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted37.png
-	scale 80
+	width 95col%
 
 \end_inset
 
@@ -31798,6 +31804,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted44.png
+	width 95col%
 
 \end_inset
 
@@ -31851,7 +31858,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename pics/pasted46.png
-	scale 70
+	width 40col%
 
 \end_inset
 
@@ -31859,7 +31866,7 @@ status open
 \begin_inset Graphics
 	filename pics/pasted45.png
 	lyxscale 50
-	scale 30
+	width 40col%
 
 \end_inset
 
@@ -31958,7 +31965,7 @@ Output :
 \align center
 \begin_inset Graphics
 	filename pics/pasted41.png
-	scale 90
+	width 95col%
 
 \end_inset
 
@@ -31994,6 +32001,231 @@ Output :
 \align center
 \begin_inset Graphics
 	filename pics/pasted42.png
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\bar under
+Our Model
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pasted1.png
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Global planner vs Local planner results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Obastacle_avoidance_simulation.png
+	lyxscale 50
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pasted2.png
+	width 95col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Obstacle Avoidance Simulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/glopal_palnner.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Global Planner
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/localplanner.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Local Planner
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Obstacle Avoidance
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
