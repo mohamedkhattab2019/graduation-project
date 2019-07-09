@@ -21007,14 +21007,6 @@ to be identified by twist_to_motors node
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21597,10 +21589,9 @@ IMU readings after removing bias
 Gains tuning
 \bar default
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -21751,10 +21742,9 @@ first trial
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -21790,10 +21780,9 @@ adding (Ka = 10) term in myPID to the previous gains
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -21938,14 +21927,13 @@ Increasing I term
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -22149,23 +22137,18 @@ Sampling time effect1
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Standard
 configuration 2 has better control on sampling time than configuration 1
  because config1 depends on the frequency of the setpoint and the feedback
  , but both still have variations in sampling time which still have a bad
  effect on the response so we need real-time operating system (RTOS) especially
  in inner loops for better performance.This is the reason for which we preferred
  to use PIXHAWK which achieve this requirment.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -22448,6 +22431,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted36.png
+	width 70col%
 
 \end_inset
 
@@ -22482,6 +22466,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted48.png
+	width 95col%
 
 \end_inset
 
@@ -22516,6 +22501,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted49.png
+	width 90col%
 
 \end_inset
 
@@ -22534,10 +22520,6 @@ SDF file example which used to describe robots in Gazebo
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -22565,7 +22547,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted29.png
-	scale 80
+	width 95col%
 
 \end_inset
 
@@ -22966,7 +22948,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted30.png
-	scale 80
+	width 95col%
 
 \end_inset
 
@@ -23211,6 +23193,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/pasted31.png
+	width 95col%
 
 \end_inset
 
@@ -23258,6 +23241,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/pasted32.png
+	width 95col%
 
 \end_inset
 
@@ -23305,6 +23289,7 @@ status open
 
 \begin_inset Graphics
 	filename pics/pasted33.png
+	width 95col%
 
 \end_inset
 
@@ -23356,7 +23341,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted34.png
-	scale 70
+	width 95col%
 
 \end_inset
 
@@ -23760,7 +23745,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted37.png
-	scale 80
+	width 95col%
 
 \end_inset
 
@@ -31819,6 +31804,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted44.png
+	width 95col%
 
 \end_inset
 
@@ -31872,7 +31858,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename pics/pasted46.png
-	scale 70
+	width 40col%
 
 \end_inset
 
@@ -31880,7 +31866,7 @@ status open
 \begin_inset Graphics
 	filename pics/pasted45.png
 	lyxscale 50
-	scale 30
+	width 40col%
 
 \end_inset
 
@@ -31979,7 +31965,7 @@ Output :
 \align center
 \begin_inset Graphics
 	filename pics/pasted41.png
-	scale 90
+	width 95col%
 
 \end_inset
 
@@ -32015,6 +32001,7 @@ Output :
 \align center
 \begin_inset Graphics
 	filename pics/pasted42.png
+	width 95col%
 
 \end_inset
 

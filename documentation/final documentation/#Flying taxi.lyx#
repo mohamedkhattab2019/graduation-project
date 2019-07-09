@@ -21007,14 +21007,6 @@ to be identified by twist_to_motors node
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -21597,10 +21589,9 @@ IMU readings after removing bias
 Gains tuning
 \bar default
  
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -21751,10 +21742,9 @@ first trial
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -21790,10 +21780,9 @@ adding (Ka = 10) term in myPID to the previous gains
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -21938,14 +21927,13 @@ Increasing I term
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -22146,10 +22134,6 @@ Sampling time effect1
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -22534,10 +22518,6 @@ SDF file example which used to describe robots in Gazebo
 
 \end_layout
 
-\end_inset
-
-
-\begin_inset Newline newline
 \end_inset
 
 
@@ -31791,6 +31771,234 @@ Acceleration (or Forces) setpoints :
 
 \begin_layout Itemize
 Actuator control : PWM
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Position Control Example from Ref
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mavros_usage_position_control"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/pasted44.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Position control example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This example shows a position control using Mocap system (External Motion
+ Capture) to get accurate estimation of the current position of the vehicle
+ and sending this estimation to the PX4 to fuse it with its pose estimation
+ to get a more accurate one to achieve the required position control.
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Trajectory following Example from Ref
+\begin_inset CommandInset citation
+LatexCommand cite
+key "trajectory_following_mavros"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/pasted46.png
+	scale 70
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted45.png
+	lyxscale 50
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Trajectory following example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this example, they used Raspberry Pi as a companion computer that generates
+ the position setpoints and sends it to the PIXHAWK.
+\end_layout
+
+\begin_layout Subsection*
+
+\bar under
+Our simulation simple test
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+First case : setpoint is
+\bar under
+ required POSE ( position and orientation ) 
+\end_layout
+
+\begin_layout Enumerate
+Publish the required POSE
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted40.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+First step to change PX4 mode to Offboard mode
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted38.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Arming the vehicle
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename pics/pasted39.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Output :
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/pasted41.png
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Second case : setpoint is
+\bar under
+ required Linear and Angular Velocities
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename pics/pasted43.png
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Output :
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename pics/pasted42.png
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
