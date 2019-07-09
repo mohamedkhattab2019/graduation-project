@@ -118,7 +118,8 @@ tabs-within-sections
 \begin_layout Title
 
 \series bold
-Autonomous Air transportation using Vision Navigation 
+\size giant
+Autonomous Air transportation using vision navigation 
 \end_layout
 
 \begin_layout Author
@@ -138,6 +139,8 @@ Submitted to:
 \end_inset
 
 
+\series bold
+\shape slanted
 \size larger
 Prof.
  Basman Elhadidi
@@ -159,33 +162,45 @@ Asst.
  Mohannad
 \size default
  Draz
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset VSpace 1.5cm
-\end_inset
-
+\series default
+\shape default
 
 \begin_inset Newline newline
 \end_inset
 
-By:
+by:
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset VSpace 1.5cm
+Shady Ammar Ahmed
+\begin_inset Newline newline
 \end_inset
 
+Marco Atef
+\begin_inset Newline newline
+\end_inset
 
+Michael Tharwat
+\begin_inset Newline newline
+\end_inset
+
+Michael Magdy
+\begin_inset Newline newline
+\end_inset
+
+Mohamed Ahmed Hussim Khattab
+\begin_inset Newline newline
+\end_inset
+
+Mohamed Abd Eladel
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
+\begin_layout Date
+Giza,Egypt
+\end_layout
 
-
+\begin_layout Date
+July,2019
 \end_layout
 
 \begin_layout Chapter*
@@ -18990,8 +19005,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/pasted12.png
-	scale 60
+	filename pics/DDrobot_architecture.PNG
+	width 95col%
 
 \end_inset
 
@@ -19037,6 +19052,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/pasted11.png
+	width 95col%
 
 \end_inset
 
@@ -20991,6 +21007,14 @@ to be identified by twist_to_motors node
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -21212,10 +21236,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset External
 	template PDFPages
 	filename Book1.pdf
@@ -21227,9 +21247,7 @@ status open
 
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -21486,14 +21504,14 @@ Results & Conclusions
 \end_layout
 
 \begin_layout Itemize
-Sampling Time
+
+\bar under
+IMU Bias
 \end_layout
 
 \begin_layout Standard
-configuration 2 has better control on sampling time than configuration 1
- because config1 depends on the frequency of the setpoint and the feedback
- , we build a similar code to ROSpid and the Ts was collected and plotted
- alongside with Ts achieved by myPID as shown
+We noticed that when motors are on , there is biasing in the IMU readings
+ as shown in fig
 \end_layout
 
 \begin_layout Standard
@@ -21501,6 +21519,487 @@ configuration 2 has better control on sampling time than configuration 1
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/Bias effect on response2.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Biasing in IMU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The solution is to make a simple startup code which gathers the data from
+ IMU before running the controller and then removing the bias by taking
+ the average and subtracting it from the IMU estimates.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/bias removing 2.PNG
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+IMU readings after removing bias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Gains tuning
+\bar default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/1_myPID 60 10 30 no cutoff2.PNG
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+myPID : Kp = 60 , Ki = 10 , Kd = 30 , no cutoff frequency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/1_ROSpid 60 10 30_2.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROSpid : Kp = 60 .
+ Ki = 10 , Kd = 30 , no cutoff frequency
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+first trial
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/2_myPID 60 10 30 and Ka 10.PNG
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+adding (Ka = 10) term in myPID to the previous gains
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/3_my PID 60 15 30 10_2.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+myPID : Kp = 60 , Ki = 15 , Kd = 30 , Ka = 10
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/3_ROSpid 60 15 30_2.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ROSpid : Kp = 60 , Ki = 15 , Kd = 30
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Increasing I term
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/graphs plot/untitled.jpg
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+All together
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\bar under
+Sampling Time:
+\bar default
+
+\begin_inset Newline newline
+\end_inset
+
+configuration 2 has better control on sampling time than configuration 1
+ because config1 depends on the frequency of the setpoint and the feedback
+ , but both still have variations in sampling time which still have a bad
+ effect on the response.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -21516,29 +22015,170 @@ status open
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 To show the effect of not constant sampling time , we choose the gains as
- Kp = some value , Ki = Kd = Ka = 0 , so the control should be = Kp * error
+ 
+\begin_inset Newline newline
+\end_inset
+
+Kp = some value , Ki = Kd = Ka = 0 , so the control should be = Kp * error
  = - Kp * state
 \begin_inset Newline newline
 \end_inset
 
-which is simply a scaled reflection of the state if the sampling time is
- constant and synchronous with the feedback.
+which should be simply a scaled reflection of the state if the sampling
+ time is constant and synchronous with the feedback but we had the following
+ control action:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/const Ts 2.PNG
+	width 100col%
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-IMU Bias
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuration with less sampling time variations
 \end_layout
 
-\begin_layout Standard
-We noticed that when motors are on , there is biasing in the IMU readings
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Gains tuning
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename graphs/not const Ts 2.jpg
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Configuration with high sampling time variations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sampling time effect1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -21556,7 +22196,7 @@ px4 and Mavros
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -21674,12 +22314,15 @@ The APM flight controller uses an Atmega2560, uses an I2c bus and runs at
 
 \series bold
 Why Pixhawk
-\end_layout
+\series default
 
-\begin_layout Standard
+\begin_inset Newline newline
+\end_inset
+
 We choose the Pixhawk over Arducopter for the following reasons
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 It has much more capabilities and processing power .
 \end_layout
@@ -21704,10 +22347,9 @@ Available in Egypt.
  
 \end_layout
 
+\end_deeper
 \begin_layout Standard
-So Pixhawk was a better choice for our project as we will be processing
- images and we will use SLAM so we need a lot of processing power for our
- mission .
+So Pixhawk was a better choice for our project and our mission .
  
 \end_layout
 
@@ -21716,6 +22358,10 @@ So Pixhawk was a better choice for our project as we will be processing
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Simulation
 \end_layout
 
 \begin_layout Subsection
@@ -24358,10 +25004,6 @@ on of the vehicle will decrease and that is the main reason for doing this
  setup as will as it will travel faster and as an air taxi it will be more
  comfortable for users.
  
-\end_layout
-
-\begin_layout Chapter*
-References
 \end_layout
 
 \end_body
