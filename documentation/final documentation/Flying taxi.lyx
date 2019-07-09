@@ -15,7 +15,6 @@
 \pagenumbering{arabic}
 }
 \renewcommand{\ps@plain}{\pagestyle{fancy}}
-\usepackage{matlab-prettifier}
 \end_preamble
 \use_default_options true
 \begin_modules
@@ -107,7 +106,6 @@ tabs-within-sections
 \papercolumns 1
 \papersides 1
 \paperpagestyle fancy
-\listings_params "style={Matlab-editor}"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -120,7 +118,8 @@ tabs-within-sections
 \begin_layout Title
 
 \series bold
-Autonomous Airtransportation using Vision Navigation 
+\size giant
+Autonomous Air transportation using vision navigation 
 \end_layout
 
 \begin_layout Author
@@ -140,6 +139,8 @@ Submitted to:
 \end_inset
 
 
+\series bold
+\shape slanted
 \size larger
 Prof.
  Basman Elhadidi
@@ -152,42 +153,54 @@ Prof.
 \size larger
 Asst.
  Prof.
- Osama Saaid
+ Osama Mohamady
 \begin_inset Newline newline
 \end_inset
 
 Asst.
  Prof.
- Mohanad
+ Mohannad
 \size default
+ Draz
+\series default
+\shape default
 
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset VSpace 1.5cm
-\end_inset
-
-
+by:
 \begin_inset Newline newline
 \end_inset
 
-By:
+Shady Ammar Ahmed
 \begin_inset Newline newline
 \end_inset
 
-
-\begin_inset VSpace 1.5cm
+Marco Atef
+\begin_inset Newline newline
 \end_inset
 
+Michael Tharwat
+\begin_inset Newline newline
+\end_inset
 
+Michael Magdy
+\begin_inset Newline newline
+\end_inset
+
+Mohamed Ahmed Hussim Khattab
+\begin_inset Newline newline
+\end_inset
+
+Mohamed Abd Eladel
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
+\begin_layout Date
+Giza,Egypt
+\end_layout
 
-
+\begin_layout Date
+July,2019
 \end_layout
 
 \begin_layout Chapter*
@@ -211,7 +224,7 @@ first of all we have to thank and appreciate our directly
 \shape italic
 Asst.
  Prof.
- Osama Saaid
+ Osama Mohamady 
 \shape default
  who helped us alot and gave us from his wide knowledge we would like to
  thank him for his great help through this year,
@@ -221,8 +234,7 @@ Asst.
 and we also should thank 
 \shape italic
 Prof.
- Basman Elhadidi & Eng.
- Mohanad 
+ Basman Elhadidi & Asst.Prof Mohannad Draz 
 \shape default
 for their time and their contribution in the design phase, and we also want
  to thank the all members in ASTL & UDC who helped us alot with their technical
@@ -250,7 +262,7 @@ List of Symbols and Abbreviations
 \paragraph_spacing onehalf
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="31" columns="2">
+<lyxtabular version="3" rows="32" columns="2">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
@@ -708,6 +720,8 @@ Acro
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Acrobatic
 \end_layout
 
@@ -728,6 +742,8 @@ PDB
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 power distribution board
 \end_layout
 
@@ -748,6 +764,8 @@ PPM
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Pulse Position Modulation
 \end_layout
 
@@ -768,6 +786,8 @@ PRS
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Pitch/Roll Stick
 \end_layout
 
@@ -788,6 +808,8 @@ CG
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Center of Gravity
 \end_layout
 
@@ -808,6 +830,8 @@ ESC
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Electronic Speed Controller
 \end_layout
 
@@ -828,6 +852,8 @@ FPV
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 First Person View
 \end_layout
 
@@ -848,6 +874,8 @@ BEC
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Battery Elimination Circuit 
 \end_layout
 
@@ -868,6 +896,8 @@ PWM
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Pulse Width Modulation
 \end_layout
 
@@ -888,6 +918,8 @@ UAV
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Unmanned Air Vehicle 
 \end_layout
 
@@ -908,7 +940,31 @@ GCS
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\shape italic
 Ground Conrol Station
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SOC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\shape italic
+State of Charge
 \end_layout
 
 \end_inset
@@ -996,22 +1052,31 @@ according to Prof.Vikas Prakash to AIR&SPACE at April2018
 \end_inset
 
 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 While the idea of personal flying vehicles is old, advancements in technology
  have reached a point to make this vision a reality.Flying cars, roadable
  aircrafts, VTOLs and personal air vehicles, are a few of the synonyms for
  air taxis.
  
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Standard
 While the race to develop flying cars has started to gain momentum in recent
  years, the concept has been around for decades.
  One of the earliest attempts at a flying car was by Glenn Curtiss who built
- the Curtiss Autoplane, a roadable aircraft in 1917 , that never achieved
- full flight.
+ the Curtiss Autoplane, a roadable aircraft in 1917 shown in fig (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:the-Curtiss-Autoplane"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) , that never achieved full flight.
  Several subsequent attempts were made during the last century to bring
  flying cars and autonomous aircraft to the market, but recent developments
  have paved the way for personal air transport to become a technological
@@ -1039,6 +1104,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:the-Curtiss-Autoplane"
+
+\end_inset
+
 the Curtiss Autoplane
 \end_layout
 
@@ -1053,7 +1124,7 @@ the Curtiss Autoplane
 \end_layout
 
 \begin_layout Subsection
-why air taxis are an attractive idea
+Why air taxis are an attractive idea ?
 \end_layout
 
 \begin_layout Itemize
@@ -1094,9 +1165,19 @@ While there is skepticism, the costs associated with building the infrastructure
 Air taxis, in particular, those that have vertical take-off and landing
  capabilities, don’t require runways.
  existing infrastructures can be exploited for air taxi use.
- Uber Elevate proposes “Vertiports” that have charging facilities, hubs,
- and pads for take-off and landing that could be developed from existing
- unused land, tops of parking garages or existing helipads
+ Uber Elevate proposes “Vertiports”,shown in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uber’s-vertiport-design"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) that have charging facilities, hubs, and pads for take-off and landing
+ that could be developed from existing unused land, tops of parking garages
+ or existing helipads
 \begin_inset Newline newline
 \end_inset
 
@@ -1121,6 +1202,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uber’s-vertiport-design"
+
+\end_inset
+
 Uber’s vertiport design
 \end_layout
 
@@ -1207,7 +1294,7 @@ in order to solve this problem, the design engineers explore non-traditional
 
 \end_deeper
 \begin_layout Itemize
-the public is ready to fly aboard an air taxi with no pilot?
+The public is ready to fly aboard an air taxi with no pilot?
 \end_layout
 
 \begin_deeper
@@ -1225,7 +1312,7 @@ Human pilots are more prone to mishaps than an artificial intelligence operator.
 
 \end_deeper
 \begin_layout Itemize
-our current air traffic control system doesn't accommodate air taxis 
+Our current air traffic control system doesn't accommodate air taxis 
 \end_layout
 
 \begin_deeper
@@ -1282,9 +1369,19 @@ tric quadcopter (although some may have more than four rotors) that can
 \begin_inset Newline newline
 \end_inset
 
-example for the passenger drone is EHANG184 which is considered as The first
- passenger drone and started to work in Dubai since2017, Passenger drones
- would cover short to medium-range distances (up to 65 miles).
+example for the passenger drone is EHANG184,shown in fig(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:EHANG184-in-Dubai"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), which is considered as The first passenger drone and started to work
+ in Dubai since2017, Passenger drones would cover short to medium-range
+ distances (up to 65 miles).
 \end_layout
 
 \begin_layout Standard
@@ -1310,7 +1407,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-EHANG184 in Dubai
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:EHANG184-in-Dubai"
+
+\end_inset
+
+HANG184 in Dubai
 \end_layout
 
 \end_inset
@@ -1647,7 +1750,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/fund.png
-	scale 80
+	width 80col%
 
 \end_inset
 
@@ -1677,10 +1780,21 @@ Prototype
 
 \begin_layout Standard
 This project can be assumed as a scaled quadplane prototype to a real flying
- taxi, many reasons can drive to build a prototype.
- first of all the cost of real model is very huge in addition, to make a
- test with real model is very difficult and risky, but this prototype has
- a complete software architecture like the real model.
+ taxi.
+ scaling is based on payload, assuming a full scaled model carry a payload
+ of 120 kg including a 80 kg passenger, 20 kg luggage and 20 kg navigation
+ control equipment.
+ Since vision equipment masses doesn't change from a full scaled model to
+ a scaled model, control equipment masses are assumed to be a part of the
+ scaled model payload, a 1/100 scaled model is to be designed so that its
+ payload is 1.2 kg.
+\begin_inset Newline newline
+\end_inset
+
+many reasons can drive to build a prototype, first of all the cost of real
+ model is very huge ,also to make a test with real model is very difficult
+ and risky, but this prototype has a complete software architecture like
+ the real model.
  It can do obstacle avoidance and vision navigation, use EKF to fuse GPS
  and visual odometry to get accurate position estimations also to fuse it
  with INS for better attitude estimations given that the vision navigation
@@ -1693,17 +1807,21 @@ This project can be assumed as a scaled quadplane prototype to a real flying
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/WhatsApp Image 2019-06-29 at 6.48.15 PM.jpeg
-	scale 25
+	filename pics/outdoor.jpeg
+	width 80col%
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -1721,32 +1839,14 @@ scaled flying taxi prototype
 \end_layout
 
 \begin_layout Standard
-building a prototype isn't easy process especially that you have to use
- the same sensors like the real model (stereo camera & lidar),so the next
- chapters will discuss the process of building this prototype hardware and
- software:
-\end_layout
-
-\begin_layout Itemize
-Chapter 2: discuss the mission ,sizing and aerodynamic design.
-\end_layout
-
-\begin_layout Itemize
-Chapter 3: discuss the mathematical model of quadplane and include comparison
- between self-built autopilot and commercial one.
-\end_layout
-
-\begin_layout Itemize
-Chapter 4: discuss main concepts of vision navigation and obstacle avoidance
- algorithms.
-\end_layout
-
-\begin_layout Itemize
-Chapter 5: discuss the used software (ROS,PX4,QGC)
-\end_layout
-
-\begin_layout Itemize
-Chapter 6:discuss the flight test results.
+The next chapters will discuss the process of building this prototype hardware
+ and software: Chapter 2 will discuss the mission ,sizing and aerodynamic
+ design.
+ , Chapter 3: discuss the mathematical model of quadplane and include comparison
+ between self-built autopilot and commercial one ,Chapter 4: discuss main
+ concepts of vision navigation and obstacle avoidance algorithms, Chapter
+ 5: discuss the used software (ROS,PX4,QGC) and Chapter 6:discuss the flight
+ test results.
 \end_layout
 
 \begin_layout Standard
@@ -1765,7 +1865,60 @@ Introduction
 \end_layout
 
 \begin_layout Subsection
-Why Quad-plane
+Different configuration simulation
+\end_layout
+
+\begin_layout Standard
+A simulation is created to calculate range, endurance and power consumption
+ for the three different configurations that are multi-copter, fixed-wing
+ and quad-plan.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scaling/Modelling.bmp
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scaling/Modelling_zoomed.bmp
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Different configuration simulation for 30 min
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1774,6 +1927,13 @@ A quad-plane vehicle is a mixture between fixed wing-plane and a multi-copter,
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="4">
@@ -2055,25 +2215,26 @@ long
 
 \end_layout
 
-\begin_layout Standard
-as a conclusion from the previous table, it's obvious that a quad-plane
- is the best choice to achieve this mission 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+different configuration specs
 \end_layout
 
-\begin_layout Subsection
-Scaling
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-scaling is based in payload, assuming a full scaled model carry a payload
- of 120 kg including a 80 kg passenger, 20 kg luggage and 20 kg navigation
- control equipment .Since vision equipment masses doesn't change from a full
- scaled model to a scaled model, control equipment masses are assumed to
- be a part of the scaled model payload
-\end_layout
-
-\begin_layout Standard
-A 1/100 scaled model is to be designed so that its payload is 1.2 kg.
+as a conclusion, it's obvious that a quad-plane is the best choice to achieve
+ this mission 
 \end_layout
 
 \begin_layout Subsection
@@ -2092,6 +2253,13 @@ Before optimization
 
 \begin_deeper
 \begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="2">
@@ -2365,6 +2533,23 @@ Total mass
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+non-optmized payload
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 After optimization
@@ -2385,7 +2570,7 @@ also due to limited resources of propulsion systems and batteries, further
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -2620,14 +2805,6 @@ Optimized payload
 
 \end_deeper
 \begin_layout Subsection
-Endurance
-\end_layout
-
-\begin_layout Subsection
-Range
-\end_layout
-
-\begin_layout Subsection
 Sizing
 \end_layout
 
@@ -2644,7 +2821,7 @@ Due to limited resources of propulsion systems, only one VTOL propulsion
  system is available so, sizing process will not be iterative
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 As a Multi-copter
 \end_layout
 
@@ -2883,7 +3060,7 @@ Secondary payload
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 As a fixed-wing
 \end_layout
 
@@ -2900,7 +3077,25 @@ Payload in this section will be the summation of both secondary and main
 
 \end_layout
 
+\begin_layout Standard
+\align center
+\begin_inset Formula $MTOW=2*payload=2860gm\backsimeq3kg$
+\end_inset
+
+ (estimated based on UDC data)
+\end_layout
+
+\begin_layout Standard
+where, UDC is a Unmanned Areal systems Development Center.
+\end_layout
+
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Propulsion-system-selection"
+
+\end_inset
+
 Propulsion system selection
 \end_layout
 
@@ -2908,13 +3103,13 @@ Propulsion system selection
 Vertical takeoff propulsion system
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 Motors : 
 \end_layout
 
 \begin_layout Standard
 \align center
-\begin_inset Formula $T_{motor}\leq\frac{W_{estimated}}{4}$
+\begin_inset Formula $T_{motor}\leq\frac{W_{estimated}}{4}*2$
 \end_inset
 
 
@@ -2964,6 +3159,13 @@ KDE2315XF-965
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
@@ -3097,17 +3299,34 @@ Weight
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Quad motor specs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/final doc/graduation-project/documentation/final documentation/pics/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
-	scale 70
+	filename pics/KDE_Direct_XF_CF_Brushless_Performance_Testing_-_KDE2315XF-965.png
+	width 80col%
 
 \end_inset
 
@@ -3131,12 +3350,12 @@ Hover motor's performance data
 
 \end_layout
 
-\begin_layout Subsubsection
-ESCs
+\begin_layout Itemize
+Electric Speed Controller (ESC
 \end_layout
 
 \begin_layout Standard
-ESC are are chosen based on the maximum voltage and amperage they can withstand
+ESC are chosen based on the maximum voltage and amperage they can withstand
 \end_layout
 
 \begin_layout Standard
@@ -3149,27 +3368,22 @@ ESC are are chosen based on the maximum voltage and amperage they can withstand
 
 \begin_layout Standard
 \align center
-\begin_inset Formula $V_{ESC}\geq V_{motor_{max}}=17.4$
+\begin_inset Formula $V_{ESC}\geq V_{motor_{max}}=17.4V$
 \end_inset
 
-V
-\end_layout
 
-\begin_layout Standard
-So, the following ESCs are chosen based on the motor's manufacturer recommendati
-on
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/final doc/graduation-project/documentation/final documentation/pics/KDEXF-UAS35_I_large.jfif
+	filename pics/KDEXF-UAS35_I_large.jfif
 	width 5cm
 
 \end_inset
@@ -3195,10 +3409,10 @@ KDEXF-UAS35
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
+\begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3231,12 +3445,23 @@ ESC specification
 Cruise propulsion system
 \end_layout
 
-\begin_layout Subsubsection
-Motors : According to many references, the rule of thump in choosing a pusher
- motor is according to the following table
+\begin_layout Itemize
+Motors 
 \end_layout
 
 \begin_layout Standard
+The rule of thump in choosing a pusher motor is according to the following
+ table:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
@@ -3370,6 +3595,23 @@ Lightly loaded 3D models and ducted fans
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+pusher motor power categories
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \align center
 \begin_inset Float figure
@@ -3406,6 +3648,13 @@ Rimfire .10 35-30-1250 Outrunner Brushless
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="2">
@@ -3579,47 +3828,319 @@ Weight
 
 \end_layout
 
-\begin_layout Subsubsection
-ESCs
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+pusher motor specs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Electric Speed Controller
 \end_layout
 
 \begin_layout Standard
-previous ESC are used for this motor too
-\end_layout
-
-\begin_layout Subsubsection
-Propellers set
+previous ESC is used for this motor too
 \end_layout
 
 \begin_layout Subsection
 Power source (battery)
 \end_layout
 
-\begin_layout Standard
-A MATlab code is created that roughly calculates the capacity if the battery
- needed given the endurance time of the mission and the consumption rate
- of the motors or calculates the mission endurance given the battery’s capacity.
- This code is based on some assumptions.
- (code is in the appendix of codes)
+\begin_layout Subsubsection
+Battery parameters effect
 \end_layout
 
 \begin_layout Standard
-Assumptions:
+Our vehicle is an electric vehicle so the battery is a very important design
+ element since it supplies the required current or power to carry or speed
+ up the vehicle against weight or drag.
+ Battery should be modeled to simulate a simple mission.
+ The purpose is to find the best configuration for the flying taxi (Quad-copter
+ , Quad-plane and Fixed wing ) .
+ Besides from this simulation we can determine approximate range and endurance
+ for each configuration.
 \end_layout
 
-\begin_layout Enumerate
-The working time of the hovering motors is 20% of the mission endurance
-\end_layout
-
-\begin_layout Enumerate
-The working time of pusher motor is the total mission endurance 
+\begin_layout Standard
+Battery has important 2 parameters :
 \end_layout
 
 \begin_layout Itemize
+C : battery capacity in Ahr
+\end_layout
+
+\begin_layout Itemize
+n : A discharge parameter depends on battery type and temperature for ideal
+ battery it equals 1, for LiPo batteries which we uses, it's very near to
+ 1.
+\begin_inset Newline newline
+\end_inset
+
+The physical meaning of (n) can be seen in Peukert's equation : 
+\begin_inset Formula $t=\frac{C}{i^{n}}$
+\end_inset
+
+ , from this equation we can see that the apparent capacity of the battery
+ decreases as current increases in another way if we have a 5 Ah battery
+ and it's rated at 1 A, if the drawn current is 1A, the battery will last
+ for 5hr but if we the drawn current is 2A, it will last 
+\series bold
+less than
+\series default
+ 2.5 hr 
+\end_layout
+
+\begin_layout Standard
+The effect of these parameters can be shown for example for fixed wing configura
+tion.
+ If the power required is simulated against the drag to fly at specific
+ speed, we get the following:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename scaling/Endurance_final.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Endurance-1"
+
+\end_inset
+
+Endurance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename scaling/Range_final.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Range-1"
+
+\end_inset
+
+Range
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+from fig(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Endurance-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and fig(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Range-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+At first, the current draw decreases with speed because the required Cl
+ decreases which decreases the induces drag.
+ After specific speed of max.
+ range and max.
+ endurance, the effect of the parasite drag starts dominating the induced
+ drag so the power required and current are increased.
+\end_layout
+
+\begin_layout Enumerate
+The batteries with large capacity with respect to the current draw, it's
+ desirable to have higher n for better range and endurance.
+ But with less capacity batteries with respect to the current, less n has
+ better range and endurance.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Consumed current is the same for any Capacity.
+\end_layout
+
+\begin_layout Enumerate
+Points at which dotted lines(n=1.3) intersects with solid lines(n=1) at the
+ same capacity is called 
+\begin_inset Quotes eld
+\end_inset
+
+crossover
+\begin_inset Quotes erd
+\end_inset
+
+, this points is at I=1 which is reasonable because the Peukert's equation
+ becomes independent on (n).
+\end_layout
+
+\begin_layout Subsubsection
+Effects of Cdo and K on choosing the battery capacity
+\end_layout
+
+\begin_layout Standard
+The Cd-Cl curve can be fitted using the following relation: 
+\begin_inset Formula $C_{d}=C_{do}+kCl^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $C_{do}$
+\end_inset
+
+effect
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename scaling/increasing_Cd0by0.01by.bmp
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+increasing Cdo by 0.01
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+increasing Cdo by 0.01 significantly affects the optimum speed and the battery
+ behavior such that at optimum speed for C = 6 & n = 1: decreasing the endurance
+ by 50% - increasing current by 100%- decreasing optimum speed by 36%
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k$
+\end_inset
+
+ effect
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename scaling/Endurance_doubleCd.bmp
+	lyxscale 80
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+double K
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+doubling k effect at optimum speed for C = 6 & n = 1 : decreasing the endurance
+ by 50% - increasing current by 100% - don't affect optimum speed.
+ 
+\end_layout
+
+\begin_layout Subsubsection
 Battery used in vehicle
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 A high quality Lithium battery, low weight /size and high power make it
  suitable for our application
@@ -3629,7 +4150,7 @@ A high quality Lithium battery, low weight /size and high power make it
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3660,17 +4181,11 @@ Lithium Polymer Battery (11.1 V, 5200 mAH- 35C)
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Battery specification
-\end_layout
-
-\begin_deeper
 \begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -3823,374 +4338,8 @@ Battery specification
 
 \end_layout
 
-\end_deeper
 \begin_layout Section
-Vehicle Configuration
-\end_layout
-
-\begin_layout Standard
-Our vehicle is an electric vehicle so the battery is a very important design
- element since it supplies the required current or power to carry or speed
- up the vehicle against weight or drag.
- Battery should be modeled to simulate a simple mission.
- The purpose is to find the best configuration for the flying taxi (Quad-copter
- , Quad-plane and Fixed wing ) .
- Besides from this simulation we can determine approximate range and endurance
- for each configuration.
-\end_layout
-
-\begin_layout Standard
-Battery has important 2 parameters :
-\end_layout
-
-\begin_layout Itemize
-C : battery capacity in Ahr
-\end_layout
-
-\begin_layout Itemize
-n : A discharge parameter depends on battery type and temperature for ideal
- battery it equals 1, for LiPo batteries which we uses, it's very near to
- 1.
-\begin_inset Newline newline
-\end_inset
-
-The physical meaning of (n) can be seen in Peukert's equation : 
-\begin_inset Formula $t=\frac{C}{i^{n}}$
-\end_inset
-
- , from this equation we can see that the apparent capacity of the battery
- decreases as current increases in another way if we have a 5 Ah battery
- and it's rated at 1 A, if the drawn current is 1A, the battery will last
- for 5hr but if we the drawn current is 2A, it will last 
-\series bold
-less than
-\series default
- 2.5 hr 
-\end_layout
-
-\begin_layout Subsection
-Battery parameters effect
-\end_layout
-
-\begin_layout Standard
-The effect of these parameters can be shown for example for fixed wing configura
-tion.
- If the power required is simulated against the drag to fly at specific
- speed, we get the following:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename scaling/Endurance_final.bmp
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Endurance"
-
-\end_inset
-
-Endurance
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename scaling/Range_final.bmp
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Range"
-
-\end_inset
-
-Range
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-from fig(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Endurance"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) and fig(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Range"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-):
-\end_layout
-
-\begin_layout Enumerate
-At first, the current draw decreases with speed because the required Cl
- decreases which decreases the induces drag.
- After specific speed of max.
- range and max.
- endurance, the effect of the parasite drag starts dominating the induced
- drag so the power required and current are increased.
-\end_layout
-
-\begin_layout Enumerate
-The batteries with large capacity with respect to the current draw, it's
- desirable to have higher n for better range and endurance.
- But with less capacity batteries with respect to the current, less n has
- better range and endurance.
- 
-\end_layout
-
-\begin_layout Enumerate
-Consumed current is the same for any Capacity.
-\end_layout
-
-\begin_layout Enumerate
-Points at which dotted lines(n=1.3) intersects with solid lines(n=1) at the
- same capacity is called 
-\begin_inset Quotes eld
-\end_inset
-
-crossover
-\begin_inset Quotes erd
-\end_inset
-
-, this points is at I=1 which is reasonable because the Peukert's equation
- becomes independent on (n).
-\end_layout
-
-\begin_layout Subsection
-Effects of Cdo and K on choosing the battery capacity
-\end_layout
-
-\begin_layout Standard
-The Cd-Cl curve can be fitted using the following relation: 
-\begin_inset Formula $C_{d}=C_{do}+kCl^{2}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $C_{do}$
-\end_inset
-
-effect
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename scaling/increasing_Cd0by0.01by.bmp
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-increasing Cdo by 0.01
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-increasing Cdo by 0.01 significantly affects the optimum speed and the battery
- behavior such that at optimum speed for C = 6 & n = 1: decreasing the endurance
- by 50% - increasing current by 100%- decreasing optimum speed by 36%
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $k$
-\end_inset
-
- effect
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename scaling/Endurance_doubleCd.bmp
-	lyxscale 80
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-double K
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-doubling k effect at optimum speed for C = 6 & n = 1 : decreasing the endurance
- by 50% - increasing current by 100% - don't affect optimum speed.
- 
-\end_layout
-
-\begin_layout Subsection
-Different configuration simulation
-\end_layout
-
-\begin_layout Standard
-as shown in the figure below, the quad-plane is the best choice for the
- flying taxi, since it has the VTOL advantage of the quad-copter and the
- high range and endurance advantage of the fixed-wing.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename scaling/Modelling.bmp
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename scaling/Modelling_zoomed.bmp
-	lyxscale 50
-	width 100col%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Different configuration simulation for 30 min
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Fixed-wing vehicle Design
+Vehicle Design
 \end_layout
 
 \begin_layout Subsection
@@ -4296,12 +4445,12 @@ Decalage (δ=α
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../../../Desktop/final doc/graduation-project/documentation/final documentation/pics/stagger.JPG
+	filename pics/stagger.JPG
 	scale 60
 
 \end_inset
@@ -4428,7 +4577,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/NACA0015-lift distribution.png
+	filename pics/Aerodynamics pic/NACA0015/Cp-dist.png
 	scale 50
 
 \end_inset
@@ -4464,7 +4613,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Eppler(Cp dist).png
+	filename pics/Aerodynamics pic/Eppler423/cp-dist.png
 	scale 50
 
 \end_inset
@@ -4505,7 +4654,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/NACA0015-Batch analysis.png
+	filename pics/Aerodynamics pic/NACA0015/polar graph.png
 	scale 50
 
 \end_inset
@@ -4541,7 +4690,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Eppler-Batch analysis.png
+	filename pics/Aerodynamics pic/Eppler423/polar graph.png
 	scale 50
 
 \end_inset
@@ -4567,8 +4716,55 @@ Polar graph of Eppler423
 
 \end_layout
 
+\begin_layout Subsubsection
+Wing design
+\end_layout
+
+\begin_layout Standard
+After many iterations, the wing that can carry that weight appear to have
+ the following characteristics
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Final fig areooo/NACA0015(3D).png
+	width 30col%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename pics/Final fig areooo/Eppler423(3D).png
+	width 30col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+wing design
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-Aerodynamic analysis:
+Vehicle analysis:
 \end_layout
 
 \begin_layout Standard
@@ -4598,6 +4794,17 @@ status open
 
 \begin_layout Plain Layout
 \align center
+\begin_inset Graphics
+	filename pics/vortex.PNG
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -4615,98 +4822,12 @@ Configuration
 \end_layout
 
 \begin_layout Subsubsection
-Investigating goals and requirements:
-\end_layout
-
-\begin_layout Itemize
-For stability: 
-\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../../../Desktop/final doc/graduation-project/documentation/final documentation/pics/Cm-alpha(NACA0015).png
-	scale 25
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Investigating stability
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-For lift: At trim angle the lift must carry the vehicle
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename ../../../../Desktop/final doc/graduation-project/documentation/final documentation/pics/lift(NACA0015).png
-	scale 25
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Investigating lift
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Subsubsection
 Design parameters
 \end_layout
 
 \begin_layout Standard
 In this part stability of quad-plane is checked and the airfoil design parameter
-s (incidence angle, CG position, cruise speed and dimensions of wings) is
- chosen
+s (incidence angle, cruise speed and dimensions of wings) is chosen
 \end_layout
 
 \begin_layout Standard
@@ -4714,7 +4835,7 @@ s (incidence angle, CG position, cruise speed and dimensions of wings) is
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -4907,6 +5028,242 @@ Design parameters and their effect
 
 \end_layout
 
+\begin_layout Itemize
+Cruise speed
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Final fig areooo/Speed.png
+	width 60col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+velocity effect 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Span
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Final fig areooo/Span.png
+	width 60col%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+span effect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chord
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename pics/Final fig areooo/Chord.png
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+chord effect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Incidence angles
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Final fig areooo/incidence1.PNG
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Final fig areooo/incidence2.PNG
+	width 30col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+incidence angle effect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Investigating goals and requirements:
+\end_layout
+
+\begin_layout Itemize
+For stability: 
+\begin_inset Formula $\frac{dC_{m}}{d\alpha}<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/acceptable slope for stability.png
+	scale 25
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating stability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For lift: At trim angle the lift must carry the vehicle
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/Aerodynamics pic/acceptable lift.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Investigating lift
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Subsubsection
 Results:
 \end_layout
@@ -5319,7 +5676,7 @@ X
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.19 m
+0.2 m
 \end_layout
 
 \end_inset
@@ -5381,7 +5738,7 @@ Degree of Static Stability (S.M.)
 \begin_inset Text
 
 \begin_layout Plain Layout
-17.2%
+13.2%
 \end_layout
 
 \end_inset
@@ -5501,70 +5858,14 @@ So, model (1) has been selected because model (1) is more effective than
  model (2)
 \end_layout
 
-\begin_layout Subsection
-Optimization for aerodynamic stability:
-\end_layout
-
 \begin_layout Standard
-In this phase C.G.
- position is forced to be in the middle of the vehicle to equalize the value
- of moments resulting from two wings to optimize the (𝐶
-\begin_inset Formula $_{𝑚}$
-\end_inset
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status open
 
-−𝛼) graph, PX4 requirements and control requirements, easy to manufacturing
- and high accuracy results during assembly.First, making several trails with
- constraints of stability: 
-\end_layout
-
-\begin_layout Itemize
-Select a set of parameters which can be optimized .
- 
-\end_layout
-
-\begin_layout Itemize
-Then set the parameters to constant values and iterate with one variable,
- to modify slope of stability from positive to negative slope.
- 
-\end_layout
-
-\begin_layout Itemize
-Concluded variables that affect the slope:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Arm
-\end_layout
-
-\begin_layout Itemize
-The height of second wing 
-\end_layout
-
-\begin_layout Itemize
-Incidence of angles of 2 wings 
-\end_layout
-
-\begin_layout Itemize
-Geometry of 2 wings specially wing chord 
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Put position of C.G.
- and the arm, then change variables.
- 
-\end_layout
-
-\begin_layout Standard
-In this part the design parameters will be reduces to 6 parameters replacement
- 7 parameters, because of constant position of CG, 
-\series bold
-By trial and error after fail some trails we get the best performance by
- change parameters:
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="17" columns="2">
@@ -5767,7 +6068,7 @@ Incidence of Main wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-3 degree
+9 degree
 \end_layout
 
 \end_inset
@@ -5787,7 +6088,7 @@ Incidence of Second wing
 \begin_inset Text
 
 \begin_layout Plain Layout
-2 degree
+8 degree
 \end_layout
 
 \end_inset
@@ -5807,7 +6108,7 @@ Trim angle
 \begin_inset Text
 
 \begin_layout Plain Layout
-6.7 degree
+0.13 degree
 \end_layout
 
 \end_inset
@@ -5932,6 +6233,23 @@ About (100,000 to 200,000)
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+NACA0015 optimization
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Final results:
 \end_layout
@@ -5950,7 +6268,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename pics/Cp-distirbution2.png
+	filename pics/Aerodynamics pic/Final results/foil char..png
 	scale 50
 
 \end_inset
@@ -5986,7 +6304,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/foil analysis(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/foil char.2.png
 	scale 50
 
 \end_inset
@@ -6022,7 +6340,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/lift(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Lift.png
 	scale 25
 
 \end_inset
@@ -6033,7 +6351,7 @@ status open
 
 
 \begin_inset Graphics
-	filename pics/Cm-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cm-alpha.png
 	scale 25
 
 \end_inset
@@ -6069,7 +6387,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/Cl-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl-alpha.png
 	scale 25
 
 \end_inset
@@ -6080,7 +6398,7 @@ status open
 
 
 \begin_inset Graphics
-	filename pics/Cl-Cd_alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl-Cd_alpha.png
 	scale 25
 
 \end_inset
@@ -6116,7 +6434,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/(Cl-Cd)3.2-alpha(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/Cl(3-2)-Cd_alpha.png
 	scale 30
 
 \end_inset
@@ -6160,7 +6478,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename pics/ahm 2fig(NACA0015).png
+	filename pics/Aerodynamics pic/Final results/important 2 fig.png
 	scale 50
 
 \end_inset
@@ -6308,7 +6626,7 @@ C
 \begin_inset Formula $_{xa}$
 \end_inset
 
-= 0.28216
+= 0.28065
 \end_layout
 
 \end_inset
@@ -6378,7 +6696,7 @@ Z
 \begin_inset Formula $_{w}$
 \end_inset
 
-= -9.8047
+= -10.031
 \end_layout
 
 \end_inset
@@ -6424,7 +6742,7 @@ Z
 \begin_inset Formula $_{q}$
 \end_inset
 
-= -1.9192
+= -1.8945
 \end_layout
 
 \end_inset
@@ -6470,7 +6788,7 @@ M
 \begin_inset Formula $_{u}$
 \end_inset
 
-= 5.3903e-07
+= 5.3903e-7
 \end_layout
 
 \end_inset
@@ -6492,7 +6810,7 @@ C
 \begin_inset Formula $_{Mu}$
 \end_inset
 
-= 1.911e-06
+=1.911e-6
 \end_layout
 
 \end_inset
@@ -6516,7 +6834,7 @@ M
 \begin_inset Formula $_{w}$
 \end_inset
 
-= -0.22008
+=-0.22008
 \end_layout
 
 \end_inset
@@ -6562,7 +6880,7 @@ M
 \begin_inset Formula $_{q}$
 \end_inset
 
-= -1.20971
+=-1.20791
 \end_layout
 
 \end_inset
@@ -6604,7 +6922,7 @@ C
 \begin_inset Text
 
 \begin_layout Plain Layout
-Neutral Point position= 0.38245 m
+Neutral Point position= 0.38245m
 \end_layout
 
 \end_inset
@@ -6684,7 +7002,7 @@ status open
 
 
 \begin_inset Graphics
-	filename pics/long.modes(xflr5).JPG
+	filename pics/Aerodynamics pic/Final results/longitudinal modes.PNG
 	scale 50
 
 \end_inset
@@ -6842,7 +7160,7 @@ Y
 \begin_inset Formula $_{V}$
 \end_inset
 
-= 1.0832e-27
+= -1.4123
 \end_layout
 
 \end_inset
@@ -6864,7 +7182,7 @@ C
 \begin_inset Formula $_{Yb}$
 \end_inset
 
-= 7.6802e-28
+= −𝟏.𝟎𝟎𝟓𝟓
 \end_layout
 
 \end_inset
@@ -6888,7 +7206,7 @@ Y
 \begin_inset Formula $_{P}$
 \end_inset
 
-= 2.3296e-19
+= -0.00051128
 \end_layout
 
 \end_inset
@@ -6910,7 +7228,7 @@ C
 \begin_inset Formula $_{Yp}$
 \end_inset
 
-= 5.506e-19
+=−𝟎.𝟎𝟎𝟏𝟐𝟏𝟑𝟓
 \end_layout
 
 \end_inset
@@ -6934,7 +7252,7 @@ Y
 \begin_inset Formula $_{r}$
 \end_inset
 
-= -1.0915e-20
+= 0.51861
 \end_layout
 
 \end_inset
@@ -6956,7 +7274,7 @@ C
 \begin_inset Formula $_{Yr}$
 \end_inset
 
-= -2.5798e-20
+= 𝟏.𝟐𝟑𝟎𝟗
 \end_layout
 
 \end_inset
@@ -6980,7 +7298,7 @@ L
 \begin_inset Formula $_{V}$
 \end_inset
 
-= 9.9393e-15
+= −𝟎.𝟎𝟕𝟖𝟏𝟏𝟔
 \end_layout
 
 \end_inset
@@ -7002,7 +7320,7 @@ C
 \begin_inset Formula $_{lb}$
 \end_inset
 
-= 1.1746e-14
+= −𝟎.𝟎𝟗𝟐𝟔𝟗𝟗
 \end_layout
 
 \end_inset
@@ -7026,7 +7344,7 @@ L
 \begin_inset Formula $_{P}$
 \end_inset
 
-= -0.22653
+= −𝟎.𝟐𝟑𝟒𝟖𝟏
 \end_layout
 
 \end_inset
@@ -7048,7 +7366,7 @@ C
 \begin_inset Formula $_{lp}$
 \end_inset
 
-= -0.89234
+= −𝟎.𝟗𝟐𝟖𝟖𝟑
 \end_layout
 
 \end_inset
@@ -7072,7 +7390,7 @@ L
 \begin_inset Formula $_{r}$
 \end_inset
 
-= 0.082947
+= 𝟎.𝟏𝟏𝟎𝟖𝟏
 \end_layout
 
 \end_inset
@@ -7118,7 +7436,7 @@ N
 \begin_inset Formula $_{V}$
 \end_inset
 
-= 1.1912e-14
+= 𝟎.𝟒𝟏𝟔𝟐𝟏
 \end_layout
 
 \end_inset
@@ -7140,7 +7458,7 @@ C
 \begin_inset Formula $_{nb}$
 \end_inset
 
-= 1.4077e-14
+= 𝟎.𝟒𝟗𝟑𝟗𝟏
 \end_layout
 
 \end_inset
@@ -7164,7 +7482,7 @@ N
 \begin_inset Formula $_{P}$
 \end_inset
 
-= -0.048585
+= −𝟎.𝟎𝟒𝟕𝟎𝟓𝟕
 \end_layout
 
 \end_inset
@@ -7186,7 +7504,7 @@ C
 \begin_inset Formula $_{np}$
 \end_inset
 
-= -0.19138
+= −𝟎.𝟏𝟖𝟔𝟏𝟒
 \end_layout
 
 \end_inset
@@ -7210,7 +7528,7 @@ N
 \begin_inset Formula $_{r}$
 \end_inset
 
-= -3.9184e-13
+= −𝟎.𝟏𝟓𝟔𝟕𝟏
 \end_layout
 
 \end_inset
@@ -7232,7 +7550,7 @@ C
 \begin_inset Formula $_{nr}$
 \end_inset
 
-= -1.5435e-12
+= −𝟎.𝟔𝟏𝟗𝟖𝟖
 \end_layout
 
 \end_inset
@@ -7294,7 +7612,7 @@ status open
 
 
 \begin_inset Graphics
-	filename pics/late.modes(xflr5).JPG
+	filename pics/Aerodynamics pic/Final results/Lateral modes.PNG
 	scale 50
 
 \end_inset
@@ -7623,32 +7941,29 @@ Solid Works is used to create a 3D model and AutoCAD is used to edit 2D
  Windows.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 SolidWorks outputs:
 \end_layout
 
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Itemize
 Files used in machining (laser cutting and 3D printing)
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 Accurate weight estimation
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Gravity center location control
 \end_layout
 
-\begin_layout Enumerate
-Some analysis (flow and structural)
-\end_layout
-
 \end_deeper
-\begin_layout Subsubsection
-Steps to draw a 3D model in SolidWorks
+\begin_layout Itemize
+Considerations for building a 3D model in SolidWorks
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Define components of the payload, their dimensions, weight and fixation
  points
@@ -7671,15 +7986,16 @@ define the components that needs mounts
 Clearance needed for wiring and connections
 \end_layout
 
-\begin_layout Subsubsection
+\end_deeper
+\begin_layout Itemize
 AutoCAD outputs
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 edit 2D machining files obtained from SolidWorks
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
 Connected to a CNC Laser cutting machine and modify files into G-code for
  the machine
@@ -7704,7 +8020,7 @@ Assuming a regular Human body weighs 200 kg, a scaled model is used to be
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7744,7 +8060,7 @@ Chair
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7792,7 +8108,7 @@ Pixhawk position and orientation are the constraints that must be taken
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7832,7 +8148,7 @@ ZED camera
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7871,7 +8187,7 @@ Jetson Nano KIT
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7910,7 +8226,7 @@ Quad Motor
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7950,7 +8266,7 @@ Pusher motor
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -7990,7 +8306,7 @@ Battery
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8044,7 +8360,7 @@ Only cuts foam and wood sheets with maximum size of (90*50*1 cm)
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8088,7 +8404,7 @@ Forms wings form foam using hot wire with moderate accuracy
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8140,7 +8456,7 @@ the available 3D printer is with small dimensions and low both quality and
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8176,7 +8492,7 @@ status open
 Wing fixation method
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 Variable incidence angle fixation method
 \end_layout
 
@@ -8196,7 +8512,7 @@ Variable incidence fixation method is explained in the following figures:
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8231,7 +8547,7 @@ variable incidence fixation assembly
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8266,7 +8582,7 @@ variable incidence fixation Front view
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8301,7 +8617,7 @@ variable incidence fixation at zero incidence
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8336,7 +8652,7 @@ variable incidence fixation at -4 degrees incidence
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8366,7 +8682,7 @@ variable incidence fixation at 4 degrees incidence
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Itemize
 Constant incidence angle fixation method
 \end_layout
 
@@ -8383,7 +8699,7 @@ following figures:
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8415,7 +8731,7 @@ Constant incidence fixation at 2 degrees incidence
 \end_layout
 
 \begin_layout Subsection
-Fuselage
+Assembly
 \end_layout
 
 \begin_layout Standard
@@ -8431,15 +8747,16 @@ After Aerodynamic analysis and bringing our CG in the middle between the
  iterations and our final mechanical design 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
-NOTES: 
+NOTES:
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 lateral stability is achieved from fuselage height instead of using vertical
- tail to keep weight optimized and make use of the large fuselage
+ tail to keep weight optimized and make use of the large fuselage.
 \end_layout
 
 \begin_layout Itemize
@@ -8448,16 +8765,72 @@ after the eighth iteration, new set of motors with higher propulsive power
  creating more stiff designs increased
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
+assembly main iterations
+\end_layout
+
+\begin_layout Itemize
 First iteration: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Advantages:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+stiff
+\end_layout
+
+\begin_layout Enumerate
+provides lateral stability
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Disadvantages:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+heavy in weight as it's full of material
+\end_layout
+
+\begin_layout Enumerate
+not compatible with the vision angel of ZED camera as shown in the following
+ figures
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+mass optimization 
+\end_layout
+
+\begin_layout Enumerate
+change configuration from tractor to pusher
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8505,45 +8878,67 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Second iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-stiff
+very light
 \end_layout
 
 \begin_layout Enumerate
-provides lateral stability
+attractive appearance 
 \end_layout
 
-\begin_layout Standard
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-heavy in weight as it's full of material
+very weak in the links between wings
 \end_layout
 
 \begin_layout Enumerate
-not compatible with the vision angel of ZED camera as shown in the following
- figures 
+has no lateral stability, where lateral stability is achieved from fuselage
+ height instead of using a vertical tail
 \end_layout
 
-\begin_layout Subsubsection
-Second iteration
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+design more surfaces that helps lateral stability
+\end_layout
+
+\begin_layout Enumerate
+add stiffener to the links between motors 
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8591,45 +8986,58 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Third iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-very light
+stiffer than previous iteration
 \end_layout
 
 \begin_layout Enumerate
-attractive appearance 
+provides better lateral stability
 \end_layout
 
-\begin_layout Standard
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 very weak in the links between wings
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
-has no lateral stability, where lateral stability is achieved from fuselage
- height instead of using a vertical tail
+change fro links between two wings to one part fuselage
 \end_layout
 
-\begin_layout Subsubsection
-Third iteration
-\end_layout
-
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8677,40 +9085,54 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Forth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-stiffer than previous iteration
+stiffer than the previous iteration
 \end_layout
 
-\begin_layout Enumerate
-provides better lateral stability
-\end_layout
-
-\begin_layout Standard
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-very weak in the links between wings
+heavy in weight
 \end_layout
 
-\begin_layout Subsubsection
-Forth iteration
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+remove non used areas of fuselage to save mass
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8758,36 +9180,55 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Fifth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-stiffer than the previous iteration
+weight optimized from fuselage
 \end_layout
 
-\begin_layout Standard
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-heavy in weight
+spars to fuselage fixation is made of 3 mm thickness foam, due to motors'
+ vibrations the hole diameter changes and the fixation becomes weak
 \end_layout
 
-\begin_layout Subsubsection
-Fifth iteration
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+use wooden structure to maintain alignment 
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8835,37 +9276,68 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Sixth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+this is the first iteration to solve wing fixation and vibrations problem
+ and the following picture show the internal structure which is integrated
+ with the previous iteration
+\end_layout
+
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-weight optimized from fuselage
+very stiff
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
+easy in assembly
+\end_layout
+
+\begin_layout Enumerate
+provide more accuracy during assembly as it works as a jig
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-spars to fuselage fixation is made of 3 mm thickness foam, due to motors'
- vibrations the hole diameter changes and the fixation becomes weak
+it's very heavy in weight
 \end_layout
 
-\begin_layout Subsubsection
-Sixth iteration
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+use small wooden parts in places of contact between fuselage and wing spars
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8895,50 +9367,59 @@ status open
 
 \end_layout
 
-\begin_layout Standard
-this is the first iteration to solve wing fixation and vibrations problem
- and the following picture show the internal structure which is integrated
- with the previous iteration
+\begin_layout Itemize
+Seventh iteration
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-very stiff
+legs are added to mounts for orientation and fixation
 \end_layout
 
 \begin_layout Enumerate
-easy in assembly
+wing to fuselage fixation is replaced by a wooden part
 \end_layout
 
-\begin_layout Enumerate
-provide more accuracy during assembly as it works as a jig
-\end_layout
-
-\begin_layout Standard
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-it's very heavy in weight
+weak in torsion created due to yaw by quad motors, where every two opposite
+ motors generate a different value of thrust than the two others
 \end_layout
 
-\begin_layout Subsubsection
-Seventh iteration
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+add links to fix spars and prevent relative motion due to torsion
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -8986,41 +9467,77 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Eighth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Note:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+from this iteration, new set of motors were available which was calculated
+ and chosen in refer to
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Propulsion-system-selection"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-legs are added to mounts for orientation and fixation
+links between spars are added to minimize torsion
 \end_layout
 
-\begin_layout Enumerate
-wing to fuselage fixation is replaced by a wooden part
-\end_layout
-
-\begin_layout Standard
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-weak in torsion created due to yaw by quad motors, where every two opposite
- motors generate a different value of thrust than the two others
+Not stiff enough due to the high torsion produced in rough disturbance
 \end_layout
 
-\begin_layout Subsubsection
-Eighth iteration
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+remove links and apply wooden structure for fuselage
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9068,36 +9585,64 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Ninth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-links between spars are added to minimize torsion
+legs is added to fuselage to improve assembly quality
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
+an internal wooden structure is added to improve torsion resistance
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 Not stiff enough due to the high torsion produced in rough disturbance
 \end_layout
 
-\begin_layout Subsubsection
-Ninth iteration
+\begin_layout Enumerate
+pusher motor efficiency is reduced because the fuselage blocks some area
+ where the pusher
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+add fixed wooden frames, taking in concentration wiring area and components
+ fixation
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9145,45 +9690,89 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Tenth iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Note:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+in this step we had to switch between using 3S battery to a 4S battery to
+ gain more thrust for takeoff to be able to apply structural modifications
+ needed in the previous iteration
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-legs is added to fuselage to improve assembly quality
+motors mounts have the same incidence as the wings to provide motors alignment
+ with the fuselage and the structure
 \end_layout
 
 \begin_layout Enumerate
-an internal wooden structure is added to improve torsion resistance
+more fixation points between skin and structure are added to improve alignment
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
+bulkheads are used to improve torsion resistance 
+\end_layout
+
+\begin_layout Enumerate
+allows more area for pusher to push air through
+\end_layout
+
+\begin_layout Enumerate
+provides a movable door to achieve access to the internal components 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
 Disadvantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
-Not stiff enough due to the high torsion produced in rough disturbance
+due to imperfection in the rods used as spars there is a miss alignment
+ between motors and their directions
 \end_layout
 
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Needed modifications:
+\end_layout
+
+\begin_deeper
 \begin_layout Enumerate
-pusher motor efficiency is reduced because the fuselage blocks some area
- where the pusher
+use fixed frames, internal structure and links between spars ( mix between
+ the last three iterations)
 \end_layout
 
-\begin_layout Subsubsection
-Tenth iteration
-\end_layout
-
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9231,12 +9820,18 @@ status open
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Eleventh iteration
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
 
 \series bold
 Advantages:
 \end_layout
 
+\begin_deeper
 \begin_layout Enumerate
 motors mounts have the same incidence as the wings to provide motors alignment
  with the fuselage and the structure
@@ -9258,27 +9853,19 @@ allows more area for pusher to push air through
 provides a movable door to achieve access to the internal components 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Disadvantages:
-\end_layout
-
 \begin_layout Enumerate
-due to imperfection in the rods used as spars there is a miss alignment
- between motors and their directions
+links between main wing spar and rear wing spar improve alignment and avoid
+ the effect of deflection in rods 
 \end_layout
 
-\begin_layout Subsubsection
-Eleventh iteration
-\end_layout
-
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -9326,36 +9913,45 @@ status open
 
 \end_layout
 
+\begin_layout Subsubsection
+mass properties extracted from 3D model
+\end_layout
+
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
-\series bold
-Advantages:
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pics/mass properties.PNG
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
-motors mounts have the same incidence as the wings to provide motors alignment
- with the fuselage and the structure
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+mass properties
 \end_layout
 
-\begin_layout Enumerate
-more fixation points between skin and structure are added to improve alignment
+\end_inset
+
+
 \end_layout
 
-\begin_layout Enumerate
-bulkheads are used to improve torsion resistance 
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Enumerate
-allows more area for pusher to push air through
-\end_layout
+\end_inset
 
-\begin_layout Enumerate
-provides a movable door to achieve access to the internal components 
-\end_layout
 
-\begin_layout Enumerate
-links between main wing spar and rear wing spar improve alignment and avoid
- the effect of deflection in rods 
 \end_layout
 
 \begin_layout Chapter
@@ -10349,7 +10945,7 @@ status open
 \begin_inset Graphics
 	filename pics/attitude controller.png
 	lyxscale 80
-	scale 80
+	width 80col%
 
 \end_inset
 
@@ -10435,7 +11031,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/roll controller.png.png
-	scale 80
+	width 80col%
 
 \end_inset
 
@@ -10780,7 +11376,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/psi.png
-	scale 80
+	width 80col%
 
 \end_inset
 
@@ -11005,7 +11601,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/altitude controller.png
-	scale 80
+	width 80col%
 
 \end_inset
 
@@ -11351,6 +11947,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/X guidance.png
+	width 80col%
 
 \end_inset
 
@@ -11683,6 +12280,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename pics/Y guidance.png
+	width 80col%
 
 \end_inset
 
@@ -20408,10 +21006,6 @@ to be identified by twist_to_motors node
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -23186,7 +23780,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/Aerospace 4th year/GP/documentation3/presentation/manual_acrobatic_MC.png
+	filename pics/modes/manual_acrobatic_MC.png
 	scale 50
 
 \end_inset
@@ -23244,7 +23838,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/Aerospace 4th year/GP/documentation3/presentation/altitude_control_mode_copter.png
+	filename pics/modes/altitude_control_mode_copter.png
 
 \end_inset
 
@@ -23327,7 +23921,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename E:/Aerospace 4th year/GP/documentation3/presentation/position_MC.png
+	filename pics/modes/position_MC.png
 	scale 50
 
 \end_inset
@@ -23779,10 +24373,6 @@ on of the vehicle will decrease and that is the main reason for doing this
  setup as will as it will travel faster and as an air taxi it will be more
  comfortable for users.
  
-\end_layout
-
-\begin_layout LyX-Code
-
 \end_layout
 
 \end_body
